@@ -15,7 +15,9 @@ author: Mahdi Ebrahimi Kahou
 
 navbar-links:
   About Me: "aboutme"
+
   Research: "aboutme"
+  
   Teaching: "aboutme"
   #Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
