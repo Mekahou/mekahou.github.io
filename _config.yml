@@ -6,7 +6,7 @@
 # --- Required options --- #
 
 # Name of website
-title: Personal Webpage
+title: Mahdi Ebrahimi Kahou
 
 # Your name to show in the footer
 author: Mahdi Ebrahimi Kahou 
@@ -117,7 +117,7 @@ footer-link-col: "#404040"
 # Alternatively, the navbar, footer, and page background can be set to an image
 # instead of colour
 
-navbar-img: "/assets/img/bgimage.png"
+#navbar-img: "/assets/img/bgimage.png"
 #footer-img: "/assets/img/bgimage.png"
 #page-img: "/assets/img/bgimage.png"
 
