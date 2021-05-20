@@ -19,6 +19,8 @@ navbar-links:
   Research: "aboutme"
 
   Teaching: "aboutme"
+
+  Contact me: "aboutme"
   #Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
   #  - Learn markdown: "https://www.markdowntutorial.com/"
