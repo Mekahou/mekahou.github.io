@@ -4,7 +4,7 @@ title:
 subtitle: 
 ---
  `"I find that teaching and the students keep life going, and I would never accept any position in which somebody has invented a happy situation for me where I don't have to teach. Never."` <br />
-`Richard P. Feynman` 
+<div style="text-align: left">`Richard P. Feynman`</div> 
 
 # University of British Columbia 
 
