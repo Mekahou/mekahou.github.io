@@ -1,0 +1,415 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Simple LaTeX CV Template %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% NOTE: If you find that it says                                     %%
+%%                                                                    %%
+%%                           1 of ??                                  %%
+%%                                                                    %%
+%% at the bottom of your first page, this means that the AUX file     %%
+%% was not available when you ran LaTeX on this source. Simply RERUN  %%
+%% LaTeX to get the ``??'' replaced with the number of the last page  %%
+%% of the document. The AUX file will be generated on the first run   %%
+%% of LaTeX and used on the second run to fill in all of the          %%
+%% references.                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[10pt]{article}
+
+% The automated optical recognition software used to digitize resume
+% information works best with fonts that do not have serifs. This
+% command uses a sans serif font throughout. Uncomment both lines (or at
+% least the second) to restore a Roman font (i.e., a font with serifs).
+%\usepackage{times}
+%\renewcommand{\familydefault}{\sfdefault}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+\usepackage{comment}
+
+% Simpler bibsection for CV sections
+% (thanks to natbib for inspiration)
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em} %1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newenvironment{bibsection}%
+        {\begin{enumerate}{}{%
+%        {\begin{list}{}{%
+       \setlength{\leftmargin}{\bibhang}%
+       \setlength{\itemindent}{-\leftmargin}%
+       \setlength{\itemsep}{\bibsep}%
+       \setlength{\parsep}{\z@}%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{enumerate}\vspace{-.6\baselineskip}}
+%        {\end{list}\vspace{-.6\baselineskip}}
+\makeatother
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=letterpaper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=1.2in,     % Length of section titles
+            marginparsep=.05in,       % Space between titles and text
+            margin=1in,               % 1 inch margins
+            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+\usepackage[shortlabels]{enumitem}
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.45}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The title (name) with a horizontal rule under it
+% (optional argument typesets an object right-justified across from name
+%  as well)
+%
+% Usage: \makeheading{name}
+%        OR
+%        \makeheading[right_object]{name}
+%
+% Place at top of document. It should be the first thing.
+% If ``right_object'' is provided in the square-braced optional
+% argument, it will be right justified on the same line as ``name'' at
+% the top of the CV. For example:
+%
+%       \makeheading[\emph{Curriculum vitae}]{Your Name}
+%
+% will put an emphasized ``Curriculum vitae'' at the top of the document
+% as a title. Likewise, a picture could be included:
+%
+%   \makeheading[\includegraphics[height=1.5in]{my_picutre}]{Your Name}
+%
+% the picture will be flush right across from the name.
+\newcommand{\makeheading}[2][]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+             {\large \bfseries #2 \hfill #1}\\[-0.15\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+% The section headings
+%
+% Usage: \section{section name}
+\renewcommand{\section}[1]{\pagebreak[3]%
+    \hyphenpenalty=10000%
+    \vspace{1.3\baselineskip}%
+    \phantomsection\addcontentsline{toc}{section}{#1}%
+    \noindent\llap{\scshape\smash{\parbox[t]{\marginparwidth}{\raggedright #1}}}%
+    \vspace{-\baselineskip}\par}
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt]}
+        {\end{itemize}}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt]}
+        {\end{itemize}\vspace{-.6\baselineskip}}
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[3]}
+\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+
+% Uses hyperref to link DOI
+\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
+\newcommand\doi[1]{doi:\doilink{#1}}
+
+% For \url{SOME_URL}, links SOME_URL to the url SOME_URL
+\providecommand*\url[1]{\href{#1}{#1}}
+% Same as above, but pretty-prints SOME_URL in teletype fixed-width font
+\renewcommand*\url[1]{\href{#1}{\texttt{#1}}}
+
+% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
+\providecommand*\email[1]{\href{mailto:#1}{#1}}
+% Same as above, but pretty-prints ADDRESS in teletype fixed-width font
+%\renewcommand*\email[1]{\href{mailto:#1}{\texttt{#1}}}
+
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    \TeX}}
+\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    \TeX}}
+\providecommand\Matlab{\textsc{Matlab}}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{{\Large Curriculum Vitae}\vspace{2 mm} \\Mahdi Ebrahimi Kahou \hfill {\tiny Last Update: Feb 2018}} \\
+\vspace{5 mm}
+
+\section{Personal Information}\vspace{3 mm}
+\makeheading{}\vspace{2 mm}
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table.
+%
+% ALSO: \rcollength is the width of the right column of the table
+%       (adjust it to your liking; default is 1.85in).
+%
+\newlength{\rcollength}\setlength{\rcollength}{1.4in}%
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+
+  
+ Citizenship: Iranian \hfill \href{mahdi.ebk@gmail.com}{\email{mahdi.ebk[at]gmail.com}} \\
+  Canadian Permanent Resident\hfill \href{https://sites.google.com/site/mahdiebrahimikahou/} {Website} 
+                      
+\end{tabular}
+
+%\section{Objective}
+
+%Insert text here if you want to
+%\begin{innerlist}
+%\item More information and auxiliary documents can be found at\\\url{http://www.tedpavlic.com/facjobsearch/}
+%\end{innerlist}
+
+%\section{Research Interests}\vspace{3 mm}
+%\makeheading{}\vspace{2 mm}
+%Corporate Finance, Banking Regulations, Dynamical Systems.
+
+\section{Education}\vspace{0 mm}
+\makeheading{}\vspace{2 mm}
+\begin{outerlist}
+
+\item Doctor of Philosophy in Economics, \href{https://economics.ubc.ca/}
+              {University British Columbia}. \hfill {2017-}\\
+\end{outerlist}
+\begin{outerlist}
+\item Doctor of Philosophy in Economics, \href{http://cla.umn.edu/economics}
+              {University of Minnesota}.\\
+             Voluntary withdrawal due to the U.S. travel ban
+%\item Doctor of Philosophy in Finance, \href{http://www.haskayne.ucalgary.ca/}
+%             {Haskayne School of Business}, \hspace{2mm}  \hfill {2013-2016}\\
+%             University of Calgary,
+%Calgary, AB.
+%            
+%       
+%       Supervisor:
+%             \href{http://homepages.ucalgary.ca/~alehar/}
+%                   {Dr. Alfred Lehar}\\
+%                    %GPA: 3.98   
+%                       
+             
+\end{outerlist}
+\begin{outerlist}
+\item Master of Science in Physics, \hspace{2mm} \\ \href{http://www.iqst.ca/}{Institute for Quantum Science and Technology}, \href{http://www.ucalgary.ca/}{University of Calgary}.
+           
+         Thesis Topic: \href{http://theses.ucalgary.ca/handle/11023/542}
+             {Spatial search via non-linear quantum walk}\\
+         Supervisor:
+              \href{http://www.iqst.ca/people/home/dfeder/index.php}
+                  {Dr. David Feder}\\ 
+         %GPA: 4.0      
+       
+\end{outerlist}
+
+
+\begin{outerlist}
+\item Bachelor of Science in Physics, 
+             \href{http://www.sharif.ir/web/en/}{Sharif University of Technology}.\\
+      % GPA: 17.71/20 (3.9)\\
+       %Rank 3rd out of 50, Physics Department, \\ Sharif
+%University of Technology\\
+       
+\end{outerlist}
+
+\section{Publications}\vspace{0 mm}
+\makeheading{}\vspace{2 mm}
+\begin{innerlist}
+  \item   Mahdi Ebrahimi Kahou, David L. Feder, \href{http://pra.aps.org/abstract/PRA/v88/i3/e032310}{``Quantum search with interacting Bose-Einstein condensates"},  Physical Review A, {\bf 88},  032310  (2013).
+  
+  \item   Mahdi Ebrahimi Kahou, Alfred Lehar, \href{http://www.sciencedirect.com/science/article/pii/S1572308916302297}{{ ``Macroprudential Policy:~A Review"}}, Journal of Financial Stability, 2017.
+\end{innerlist}
+
+
+\section{Scholarships, Awards and Honours}\vspace{7 mm}
+\makeheading{}\vspace{2 mm}
+\begin{innerlist}
+%\item Global Risk Institute research grant  \hfill 2015-2016 %($\$ 25,000$) 
+\item Eyes High International Doctoral Scholarship \hfill 2015-2016 %($\$ 12,000$)  \hfill 2015-2016
+\item Dr. Murray Fraser Memorial Graduate Scholarship \hfill 2015%($\$ 800$) 
+\item Eyes High International Doctoral Scholarship \hfill 2014-2015%($\$ 12,000$)  
+\item Marion Janet \& Ian Stormont Forbes Scholarship \hfill 2014-2015%($\$ 8,000$) 
+\item AIMCO Graduate Scholarship in Finance \hfill 2014%($\$ 10,000$) 
+\item Faculty of Graduate Studies Award \hfill  2012%($\$ 2,500$)  
+\item Full tuition fee scholarship [Competitive] \hfill 2010-2012%($\$ 9,000$) 
+\item IQST ``Top-Up Students Award" \hfill 2011%($\$ 2,000$)  
+\item Bronze medal in National Physics Olympiad \hfill 2004 %
+\end{innerlist}
+
+
+
+\section{Conference Presentations}\vspace{3 mm}
+\makeheading{}\vspace{2 mm}
+\begin{innerlist}
+\item  Mahdi Ebrahimi Kahou, {\it David L. Feder}, ``Spatial Search by Non-Linear Quantum Walk". Southwest Quantum Information and Technology \\
+Albuquerque, New Mexico.   \hfill{16-19 February 2012 }
+\end{innerlist}
+
+\begin{innerlist}
+\item  {\it Mahdi Ebrahimi Kahou},  David L. Feder, ``Non-linear quantum walk".\\ Canadian Association of Physicists, Calgary.   \hfill{23-27 June 2012}
+\end{innerlist}
+
+
+
+%\section{Other Publications}\vspace{3 mm}
+%
+%\makeheading{}\vspace{2 mm}
+%\begin{innerlist}
+% 
+%    \item Mahdi Ebrahimi Kahou ,\href{http://theses.ucalgary.ca/handle/11023/542}{``Spatial search via non-linear quantum walk."}  \emph{M.Sc. Thesis}, University of Calgary Current Theses Repository - The Vault, January 2013 .\\
+  
+%\end{innerlist}
+\section{Teaching Experience}\vspace{3 mm}
+\makeheading{}\vspace{2 mm}
+\begin{innerlist}
+\item TA for Econ 514 (Information and Incentive), UBC.\hfill 2019
+\item TA for Econ 626 (PhD Econometrics Theory), UBC.\hfill 2018
+\item TA for Econ 4698, Economic Growth University of Minnesota. \hfill 2016
+\item Tutorials for FNCE 601, Managerial Finance. \hfill 2014-15
+\item TA for Phys 211/221, Phys 259 and Phys 369, University of Calgary.  \hfill 2010-2012
+\item TA for Analytical mechanics I\& II, Sharif University of Technology. \hfill 2007-2008
+\item Physics Olympiad teacher in several branches of NODET (National
+Organization for Development of Exceptional Talents). \hfill 2004-2010
+\end{innerlist}
+
+
+\section{Computer Programming}\vspace{3 mm}
+\makeheading{}\vspace{2 mm}
+
+\begin{innerlist}
+    \item \Matlab, Mathematica, Julia.  
+\end{innerlist}
+
+\section{Languages}\vspace{0 mm}
+\makeheading{}\vspace{2 mm}
+\begin{innerlist}
+\item English
+\item Farsi
+\end{innerlist}
+
+%\section{References}\vspace{0 mm}
+%\makeheading{}\vspace{2 mm}
+%References available upon request
+%\begin{innerlist}
+%\item Dr. Alfred Lehar 
+%
+% Associate Professor \hfill {Phone:  403-220-4567}\\
+%Chair of Finance 
+%  \hfill{E-mail: \email{alfred.lehar@haskayne.ucalgary.ca}}\\
+%University of Calgary, Haskayne School of Business.
+%\end{innerlist}
+%\begin{innerlist}
+%\item \href {http://haskayne.ucalgary.ca/haskayne_info/profiles/alfred-lehar}{Dr. Alfred Lehar}
+%
+% Associate Professor \hfill {Phone: 403-220-4567}\\
+%Area Chair of Finance and Operation management  \hfill{E-mail: \email{alehar@ucalgary.ca}}\\
+%University of Calgary, Haskayne School of Business.
+%\end{innerlist}
+%
+%\halfblankline
+%\begin{innerlist}
+%\item \href {http://www.iqst.ca/people/home/dfeder/}{Dr. David Feder}
+%
+%Associate Professor \hfill {Phone: 403-220-3638}\\
+%Institute for Quantum Science and Technology \hfill{E-mail: \email{feder@phas.ucalgary.ca}}\\
+%Department of Physics and Astronomy, University of Calgary.
+%\end{innerlist}
+\halfblankline
+
+
+\end{document}
+
