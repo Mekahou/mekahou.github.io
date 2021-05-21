@@ -231,7 +231,7 @@ exclude:
   - LICENSE
   - README.md
   - screenshot.png
-  - docs/
+  #- docs/CV
 
 plugins:
   - jekyll-paginate
