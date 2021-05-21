@@ -1,6 +1,6 @@
 ---
-layout: 
-title: 
+layout: page
+title: Teaching
 subtitle: 
 ---
 
