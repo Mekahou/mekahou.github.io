@@ -11,17 +11,15 @@ subtitle:
 ## University of British Columbia (TA) 
 -------------
 ### Graduate courses
-<div>
-Econ 626: Econometric Theory I  <div align="right"> hi</div>
 
-Econ 622: Computational Economics with Data Science Applications
+Econ 626: Econometric Theory I &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Evaluation: 4.0/5.0
+
+Econ 622: Computational Economics with Data Science Applications &nbsp;&nbsp;hi
 
 Econ 514:  Information and Incentives
-</div>
 
 ### Undergraduate courses
 
-<div>
 Econ 307: Honours Intermediate Macroeconomics II
 
 Econ 306: Honours Intermediate Microeconomics II
@@ -31,7 +29,6 @@ Econ 305: Honours Intermediate Macroeconomic Analysis I
 Econ 326: Methods of Empirical Research in Economics
 
 Econ 102: Principles of Macroeconomics
-</div>
 
 ## University of Minnesota (TA)
 -------------
