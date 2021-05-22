@@ -13,8 +13,7 @@ subtitle:
 ## University of British Columbia (TA) 
 -------------
 ### Graduate courses
-Econ 626: Econometric Theory I 
-<p style='text-align: right;'> Evaluation 4.0/5 </p> <br/> 
+Econ 626: Econometric Theory I Evaluation: 4.0/5.0<br/>
 Econ 622: Computational Economics with Data Science Applications <br/>
 Econ 514:  Information and Incentives <br/>
 ### Undergraduate courses
