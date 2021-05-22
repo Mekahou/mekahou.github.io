@@ -13,7 +13,7 @@ subtitle:
 ## University of British Columbia (TA) 
 -------------
 ### Graduate courses
-Econ 626: Econometric Theory I $<br/> 
+Econ 626: Econometric Theory I <br/> 
 Econ 622: Computational Economics with Data Science Applications <br/>
 Econ 514:  Information and Incentives <br/>
 ### Undergraduate courses
