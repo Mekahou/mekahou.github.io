@@ -14,7 +14,7 @@ subtitle:
 -------------
 ### Graduate courses
 
- Econ 626: Econometric Theory I  <div align="right"> hi</div>
+Econ 626: Econometric Theory I  <div align="right"> hi</div>
 
 Econ 622: Computational Economics with Data Science Applications
 
