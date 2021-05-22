@@ -10,7 +10,7 @@ subtitle:
 
 
 
-## Teaching Assistant (University of British Columbia) 
+## University of British Columbia (TA) 
 -------------
 ### Graduate courses
 Econ 626: Econometric Theory I <br/>
@@ -22,6 +22,6 @@ Econ 306: Honours Intermediate Microeconomics II<br/>
 Econ 305: Honours Intermediate Macroeconomic Analysis I<br/>
 Econ 326: Methods of Empirical Research in Economics<br/>
 
-## Teaching Assistant (University of Minnesota)
+## University of Minnesota (TA)
 -------------
 Econ 4698: Modern Economic Growth
