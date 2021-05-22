@@ -17,8 +17,8 @@ Econ 626: Econometric Theory I <br/>
 Econ 622: Computational Economics with Data Science Applications <br/>
 Econ 514:  Information and Incentives <br/>
 ### Undergraduate courses
-Econ 307: Honours Intermediate Macroeconomics II<br/
-Econ 306: Honours Intermediate Microeconomics II<br/
+Econ 307: Honours Intermediate Macroeconomics II<br/>
+Econ 306: Honours Intermediate Microeconomics II<br/>
 Econ 305: Honours Intermediate Macroeconomic Analysis I<br/>
 Econ 326: Methods of Empirical Research in Economics<br/>
 Econ 102: Principles of Macroeconomics
