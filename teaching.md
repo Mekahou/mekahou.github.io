@@ -8,8 +8,6 @@ subtitle:
 > which somebody has invented a happy situation for me where I don't have to teach. Never.
 ><div style="text-align: right"> Richard Feynman </div>
 
-
-
 ## University of British Columbia (TA) 
 -------------
 ### Graduate courses
