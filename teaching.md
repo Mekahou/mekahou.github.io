@@ -4,8 +4,8 @@ title:
 subtitle: 
 ---
 
- > "I find that teaching and the students keep life going,  and I would never accept any position in 
-> which somebody has invented a happy situation for me where I don't have to teach. Never."
+ > I find that teaching and the students keep life going,  and I would never accept any position in 
+> which somebody has invented a happy situation for me where I don't have to teach. Never.
 ><div style="text-align: right"> Richard Feynman </div>
 
 
@@ -13,7 +13,7 @@ subtitle:
 ## University of British Columbia (TA) 
 -------------
 ### Graduate courses
-Econ 626: Econometric Theory I Evaluation: 4.0/5.0<br/>
+Econ 626: Econometric Theory I <br/>
 Econ 622: Computational Economics with Data Science Applications <br/>
 Econ 514:  Information and Incentives <br/>
 ### Undergraduate courses
