@@ -8,7 +8,7 @@ subtitle:
 ### Working Papers
 -----
 - Mahdi Ebrahimi Kahou, "Optimal entry decision with correlated variable cost and output price" 
-- Mahdi Ebrahimi Kahou, Jesús Fernández-Villaverde, Jesse Perla, Arnav Sood, "Exploiting symmetry in high dimensional dynamic programming" 
+- Mahdi Ebrahimi Kahou, Jesús Fernández-Villaverde, Jesse Perla, Arnav Sood, <a href="./docs/Papers/SDP1st.pdf" target="_blank">"Exploiting Symmetryin High-Dimensional Dynamic Programming"</a>
 
 ### Publications
 -----
