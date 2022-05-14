@@ -21,6 +21,8 @@ navbar-links:
   Teaching: "teaching"
 
   Contact me: "aboutme"
+
+  Blog Posts : "blogposts"
   #Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
   #  - Learn markdown: "https://www.markdowntutorial.com/"
