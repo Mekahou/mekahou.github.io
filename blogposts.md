@@ -1,19 +1,7 @@
+---
+layout: page
+title: 
+subtitle: 
+---
+>
 
-<html>
-    <head>
-        <style>
-        img {
-          float: right;
-        }
-        </style>
-        </head>    
-<body>
-<p><img src="./assets/img/profile_pic.JPG" alt="pr_pic" style="width:450px;height:300px;margin-left:30px;">
-    <small> I am a PhD candidate at the University of British Columbia. I received my M.Sc. in 
-        theoretical physics from the University of Calgary, and my B.Sc. 
-        in physics and astronomy from Sharif University of Technology, Tehran, Iran. <br /> <br />
-
-        Here is the link to my  <a href="./docs/CV/Mahdi CV.pdf" target="_blank" >CV</a>
-        </small></p>
-</body>
-</html>   
