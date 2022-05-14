@@ -1,9 +1,3 @@
----
-layout: page
-title: 
-subtitle: 
----
->
 
 <html>
     <head>
