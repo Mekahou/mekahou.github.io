@@ -5,9 +5,21 @@ subtitle:
 ---
 >
 
-#### [On Stochastic Gradient Descent](https://github.com/Mekahou/Fun-Stuff/blob/main/codes/stochastic%20gradient%20descent/1%20Gradient%20Descent%20and%20Stochastic%20Gradient%20Descent.ipynb)
-<img src="https://user-images.githubusercontent.com/43940086/168412027-a5af5016-36cc-43e3-ab35-138dab6ad190.gif" width="40" height="40" />
+<html>
+    <head>
+        <style>
+        img {
+          float: right;
+        }
+        </style>
+        </head>    
+<body>
+<p><img src="./assets/img/profile_pic.JPG" alt="pr_pic" style="width:450px;height:300px;margin-left:30px;">
+    <small> I am a PhD candidate at the University of British Columbia. I received my M.Sc. in 
+        theoretical physics from the University of Calgary, and my B.Sc. 
+        in physics and astronomy from Sharif University of Technology, Tehran, Iran. <br /> <br />
 
-
-
-![SGD_2nd](https://user-images.githubusercontent.com/43940086/168412027-a5af5016-36cc-43e3-ab35-138dab6ad190.gif)
+        Here is the link to my  <a href="./docs/CV/Mahdi CV.pdf" target="_blank" >CV</a>
+        </small></p>
+</body>
+</html>   
