@@ -9,13 +9,9 @@ subtitle:
 
 What happens if someone uses stochastic gradient descent with batch size **one** in a simple linear regression problem? Does the estimator converge to the OLS estimator which uses the full data? 
 
-<img src="../docs/Webpage/Content/SGD_2nd.gif" width="300" height="180" />
-
 <a href="https://colab.research.google.com/drive/1o0Ds4FWpo8rEfHkKn0_8wkOZ6LMejkxL?usp=sharing" target="_blank"> Google Colab Link</a>
 
-<table border="0">
- <tr>
-    <td>What happens if someone uses stochastic gradient descent with batch size **one** in a simple linear regression problem? Does the estimator converge to the OLS estimator which uses the full data?</td>
-    <td><img src="../docs/Webpage/Content/SGD_2nd.gif" width="300" height="180" /></td>
- </tr>
-</table>
+<img src="../docs/Webpage/Content/SGD_2nd.gif" width="300" height="180" class="center" />
+
+
+
