@@ -11,11 +11,7 @@ What happens if someone uses stochastic gradient descent with batch size **one**
 
 <a href="https://colab.research.google.com/drive/1o0Ds4FWpo8rEfHkKn0_8wkOZ6LMejkxL?usp=sharing" target="_blank"> Google Colab Link</a>
 
-<<<<<<< Updated upstream
-<img src="../docs/Webpage/Content/SGD_2nd.gif" width="300" height="180" class="center" >
-=======
-<img src="../docs/Webpage/Content/SGD_2nd.gif" width="450" height="270" class="center" />
->>>>>>> Stashed changes
+<img src="../docs/Webpage/Content/SGD_2nd.gif" width="450" height="270" class="center" >
 
 
 
