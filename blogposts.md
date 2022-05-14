@@ -14,4 +14,13 @@ What happens if someone uses stochastic gradient descent with batch size **one**
 <img src="../docs/Webpage/Content/SGD_2nd.gif" width="450" height="270" class="center" >
 
 
+#### <a href="https://github.com/Mekahou/Fun-Stuff/blob/main/codes/linear%20quadratic%20DP%20DNN/3.%20LQ_DP_DNN_Training_Main.ipynb" target="_blank"> How does a deep neural network solve a recursive dynamic problem: A simple example</a>
+
+Using deep neural nets to solve an optimal control problem. Example from Recursive Macroeconomic Theory by Lars Ljungqvist and Tom Sargent, 3rd edition, Exercise 5.11 
+
+<a href="https://colab.research.google.com/drive/1x3Q8KKvZ3y5_a8VyMAU0NJTRBomH8gPU?usp=sharing" target="_blank"> Google Colab Link</a>
+
+<img src="../docs/Webpage/Content/SGD_2nd.gif" width="450" height="270" class="center" >
+
+
 
