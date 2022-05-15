@@ -37,4 +37,6 @@ The code is written as a gift for a great teacher and mentor
 
 #### Symmetry: Dimensionality reduction and generalization (Working on it)
 
+Symmetry as an a priori information can lead to extensive dimensionality reduction (alleviation of curse of dimensionality) and extreme generalization power. I provide two examples: rotation and permutation invariance
+
 <img src="../docs/Webpage/Content/symm_rotation.png" width="450" height="270" class="center" >
