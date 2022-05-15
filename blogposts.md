@@ -31,6 +31,10 @@ The code is written as a gift for a great teacher and mentor
 
 
 #### Concentration of measures: A simple observation
-"it is of course impossible to even think the word Gaussian without immediately mentioning the most important property of  Gaussian processes, that is concentration of measure."  M. Talagrand 
+"It is of course impossible to even think the word Gaussian without immediately mentioning the most important property of  Gaussian processes, that is concentration of measure."  M. Talagrand 
 
 <img src="../docs/Webpage/Content/con_gaus_mes.gif" width="450" height="270" class="center" >
+
+#### Symmetry: Dimensionality reduction and generalization (Working on it)
+
+<img src="../docs/Webpage/Content/symm_rotation.png" width="450" height="270" class="center" >
