@@ -12,10 +12,6 @@ subtitle:
 Exploring Transversality and Stationarity with Deep Learning"
 - Mahdi Ebrahimi Kahou, <a href="./docs/Papers/input_output.pdf" target="_blank">"Optimal entry decision with correlated variable cost and output price"</a>
 
- 
-
-
-
 ### Publications
 -----
 - Mahdi Ebrahimi Kahou, David L. Feder, <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.88.032310" target="_blank">"Quantum search with interacting Bose-Einstein condensates"</a> Physical Review A, 2013.
