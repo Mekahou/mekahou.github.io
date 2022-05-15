@@ -28,3 +28,9 @@ Using deep neural nets to solve an optimal control problem. Example from Recursi
 The code is written as a gift for a great teacher and mentor 
 <img src="../docs/Webpage/Content/ms_lln.gif" width="450" height="270" class="center" >
 
+
+
+#### Concentration of measures: A simple observation
+"it is of course impossible to even think the word Gaussian without immediately mentioning the most important property of  Gaussian processes, that is concentration of measure."  M. Talagrand 
+
+<img src="../docs/Webpage/Content/con_gaus_mes.gif" width="450" height="270" class="center" >
