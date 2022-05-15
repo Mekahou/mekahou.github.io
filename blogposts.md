@@ -26,4 +26,5 @@ Using deep neural nets to solve an optimal control problem. Example from Recursi
 
 #### <a href="https://github.com/Mekahou/Fun-Stuff/tree/main/codes/LLNPic" target="_blank"> Having fun with the Law of Large Numbers</a>
 The code is written as a gift for a great teacher and mentor 
+<img src="../docs/Webpage/Content/ms_lln.gif" width="450" height="270" class="center" >
 
