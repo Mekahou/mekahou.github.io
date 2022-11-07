@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.4.14)  7 NOV 2022 15:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.4.14)  7 NOV 2022 15:46
 entering extended mode
 **./Mahdi_CV.tex
 (Mahdi_CV.tex
@@ -372,12 +372,6 @@ e-try in High-Dimensional Dy-namic Pro-gram-ming"[][],
  []
 
 
-Overfull \hbox (10.85977pt too wide) in paragraph at lines 324--327
-\OT1/cmr/m/n/10 thanks to three com-ple-men-tary tech-niques: (1) ex-ploit-ing 
-sym-me-try in the ap-prox-i-mate
- []
-
-
 Overfull \hbox (1.96158pt too wide) in paragraph at lines 324--327
 \OT1/cmr/m/n/10 ar-chi-tec-tures that ex-ploit sym-me-try and con-cen-tra-tion 
 of mea-sure. As an ap-pli-ca-tion,
@@ -432,7 +426,7 @@ Here is how much of TeX's memory you used:
  21820 multiletter control sequences out of 15000+200000
  534503 words of font info for 31 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,13n,45p,1088b,460s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,13n,45p,1077b,460s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/mahdi/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm
 -super-ts1.enc}<C:/Users/mahdi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmbx10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX 2.9/f
@@ -442,7 +436,7 @@ cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/ma
 hdi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb>
 <C:/Users/mahdi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/s
 frm1000.pfb>
-Output written on Mahdi_CV.pdf (4 pages, 97963 bytes).
+Output written on Mahdi_CV.pdf (4 pages, 97964 bytes).
 PDF statistics:
  120 PDF objects out of 1000 (max. 8388607)
  16 named destinations out of 1000 (max. 500000)
