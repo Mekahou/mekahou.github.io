@@ -1,0 +1,22 @@
+\begin{tabular}{llrrrrr}
+\toprule
+                         &                 & \shortstack{Time \\ (s)} & \shortstack{Params\\ (K)} & \shortstack{Train MSE \\ ($\varepsilon$)} & \shortstack{Test MSE \\ ($\varepsilon$)} & \shortstack{Val MSE \\ ($\varepsilon$)} \\
+group & description &                          &                           &                                           &                                          &                                         \\
+\midrule
+\multirow{6}{*}{$\phi(\textup{Moments})$} & Baseline &                       26 &                      49.8 &                                   6.0e-06 &                                  5.0e-06 &                                 3.8e-06 \\
+                         %& Moments (1) &                       24 &                      49.4 &                                   2.7e-05 &                                  6.5e-06 &                                 3.4e-06 \\
+                         & Moments (1,2) &                       27 &                      49.5 &                                   8.0e-06 &                                  5.1e-06 &                                 3.6e-06 \\
+                         & \emphcolor{Very Shallow (1 layer)} &                      252 &                       \emphcolor{0.6} &                                   8.3e-06 &                                  \emphcolor{1.4e+00} &                                 5.0e-06 \\
+                        % & Shallow (2 layers) &                       35 &                      17.0 &                                   5.8e-06 &                                  1.2e+00 &                                 4.4e-06 \\
+                         & Thin (32 nodes) &                       66 &                       3.2 &                                   1.1e-05 &                                  9.7e-06 &                                 4.4e-06 \\
+\cline{1-7}
+\multirow{8}{*}{$\phi(\textup{ReLU})$} & Baseline &                       60 &                      67.1 &                                   1.4e-05 &                                  4.7e-06 &                                 3.3e-06 \\
+                         %& L = 1 &                      109 &                      66.3 &                                   9.4e-06 &                                  1.3e-05 &                                 4.5e-06 \\
+                         %& L = 2 &                       73 &                      66.6 &                                   1.0e-05 &                                  3.3e-06 &                                 2.3e-06 \\
+                         & L = 8 &                       73 &                      68.1 &                                   1.1e-05 &                                  4.9e-06 &                                 2.0e-06 \\
+                         & L = 16 &                       72 &                      70.2 &                                   1.5e-05 &                                  5.4e-06 &                                 1.7e-06 \\
+                         & \emphcolor{\textup{Very Shallow} ($\phi,\rho$ : \textup{1 layer})} &                      136 &                       \emphcolor{1.4} &                                   8.9e-06 &                                  \emphcolor{4.8e+06} &                                 4.9e-06 \\
+                         & \textup{Shallow} ($\phi,\rho$: \textup{2 layers}) &                       47 &                      34.3 &                                   1.0e-05 &                                  9.2e-06 &                                 2.8e-06 \\
+                         & \textup{Thin} ($\phi,\rho$ :\textup{32 nodes}) &                       52 &                       4.5 &                                   1.3e-05 &                                  6.0e-06 &                                 2.7e-06 \\
+\bottomrule
+\end{tabular}
