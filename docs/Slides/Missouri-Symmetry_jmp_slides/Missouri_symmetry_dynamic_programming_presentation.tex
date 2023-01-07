@@ -277,6 +277,17 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 	
 %\end{frame}
 
+\begin{frame}{Literature Review}
+	\begin{itemize}
+	\item Deep learning as a functional approximation: \textcolor{red}{Maliar et al. (2019)}, \textcolor{red}{Fern\'{a}ndez-Villaverde et al. (2022)}, \textcolor{red}{Duarte (2018)}, \textcolor{red}{Azinovic et al. (2022)}, \textcolor{red}{Han et al. (2021)} (a mean-field approach). \vspace{0.1in}
+	\item Symmetry in statistics and machine learning:  \textcolor{red}{Bloem-Reddy and Teh (2020)}, \textcolor{red}{Zaheer et al. (2017)}, and \textcolor{red}{Yarotsky (2018)}.\vspace{0.1in}
+	\item Symmetry in computer science (MDP/RL):  \textcolor{red}{Ravindran and Barto (2001)} and \textcolor{red}{Narayanamurthy
+	and Ravindran (2008)},  \textcolor{red}{van der Pol et al. (2020)}.\vspace{0.1in}
+	\item Symmetry in micro and games: \textcolor{red}{Jovanovic and Rosenthal, (1988)},  \textcolor{red}{Hartford et al. (2016)}
+
+
+	\end{itemize}
+\end{frame}
 
 \section{\textcolor{PennBlue}{Background: Deep learning for functional equations}}
 
@@ -296,7 +307,7 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 \begin{frame}
 	\frametitle{Classical solution method for functional equations}
 	
-	Quick \emphcolor{review} of collocation methods:
+	Quick \emphcolor{review} of collocation-like methods:
 	
 	\begin{enumerate}
 		\item \emphcolor{Pick} finite set of $D$ points $\Xtrain \subset \Xdom$ (e.g., a grid).
@@ -672,7 +683,7 @@ If time permits: I will discuss it in details, and the implications in our probl
 		
 		
 		\begin{frame}{Curse of dimensionality in this example}
-			Recall there are three separate sources of the ``curse'' here.
+			Recall there are three separate sources of the ``curse'' here as we increase the number of agents:
 			\begin{enumerate}
 				\item Can we approximate $u(x,X)$ for high dimensional $X\in \R^N$ without massive increases in the $\Xdom$ grid?
 					  \begin{itemize}
@@ -680,7 +691,7 @@ If time permits: I will discuss it in details, and the implications in our probl
 						  %\item With smart and economics informed $\mathcal{H}(\Theta)$  might generalize well for small $\Xtrain$.
 					  \end{itemize}\medskip
 		
-				\item Given intuition that individual $X_i$ have limited effect on $u(x,X)$, how to calculate $\expec{u(x',X')}$?\smallskip
+				\item Given intuition that individual $X_i \in X$ have limited effect on $u(x,X)$, how to calculate $\expec{u(x',X')}$?\smallskip
 					  \begin{itemize}
 						  \item  Look at $\condexpec{u(x', X')}{w,\omega}$ to condition on firm's idiosyncratic $w$ aggregate shock $\omega$.\smallskip
 						  \item Why conditioning on these two? They matter a lot. Now, can something similar to the law of large numbers happen?
@@ -696,7 +707,7 @@ If time permits: I will discuss it in details, and the implications in our probl
 			\end{enumerate}
 		\end{frame}
 		
-		\begin{frame}{Main result I: Representation of permutation-invariant functions: }
+		\begin{frame}{Main result I: Representation of permutation-invariant functions }
 		
 			\metroset{block=fill}
 			\begin{proposition}{ (based on Wagstaff et al., 2019)}
@@ -771,9 +782,21 @@ $$ \mathbb{E}_W \left[\|\nabla u(x',X')\|^2\right] \leq \frac{C}{N}$$
 				\item Reducing an $N+1$-dimensional conditional expectation to a $2$-D one (with good approximation). 
 			\end{itemize}
 %\hyperlink{Bounded}{\beamerskipbutton{Expected gradient bounded  in $N$}}		
-		
-		
-		\end{frame}
+\end{frame}
+
+\begin{frame}{Summarizing results}
+	\begin{itemize}
+		\item The structure symmetry imposes on the functions leads to better \emphcolor{generalization}\vspace{0.1in}
+		\begin{itemize}
+			\item Functions extrapolate better outside of the grid points $\Xtrain$.
+		\end{itemize} \vspace{0.1in}
+		\item Concentration of measures provides a fast method for calculating the conditional expectations. \vspace{0.1in}
+		\begin{itemize}
+			\item Calculate with \emphcolor{one draw} of the idiosyncratic shocks (conditional on the aggregate shock).\vspace{0.1in}
+		\end{itemize} 
+	\item \emphcolor{No non-heuristic} algorithm exists to solve this problem.
+	\end{itemize}
+\end{frame}
 		\section{Solving the Model}
 	% \begin{frame}{Solving the model}
 	
@@ -807,7 +830,7 @@ Three cases for $\phi$:\vspace{0.1in}
 	\item Up to degree four polynomials: $4$ moments $\rightarrow$ $\phi(\text{Moments})$. \vspace{0.1in}
 	\item A deep neural network for $\phi$, with $L=4$ $\rightarrow$ $\phi(\text{ReLU})$.\vspace{0.1in}
 \end{enumerate}
-If polynomials for $\phi$: A finite set of ``moments" \`a la Krusell-Smith but in a fully nonlinear way as in \textcolor{red}{Fern\'andez-Villaverde et al. (2022)}. \vspace{0.1in}
+If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith but in a fully nonlinear way as in \textcolor{red}{Fern\'andez-Villaverde et al. (2022)}. \vspace{0.1in}
 		
 \begin{itemize}
 		\item In all cases, $\rho$ is a highly over-parameterized neural network with four layers.\vspace{0.1in}
@@ -928,7 +951,7 @@ If polynomials for $\phi$: A finite set of ``moments" \`a la Krusell-Smith but i
 			
 			\item The LQ solution gives us a benchmark against which we can compare our deep learning solution.\vspace{0.1in}
 			
-			\item The neural network ``learns'' very quickly that the solution is $u(x, X) = H_0 +\frac{1}{N}H_1\sum_{i=1}^N X_i$ and finds a high-dimensional approximation which matches that for the training grid.\vspace{0.1in}
+			\item The neural network figures out very quickly that the solution is $u(x, X) = H_0 +\frac{1}{N}H_1\sum_{i=1}^N X_i$ and finds a high-dimensional approximation which matches that for the training grid.\vspace{0.1in}
 			
 			%\item We also compute a modified linear regulator solution with \textcolor{blue}{\textit{one}} Monte Carlo draw instead of setting the individual shocks to zero: illustrates how concentration of measure works.\vspace{0.1in}
 			
@@ -1010,6 +1033,7 @@ If polynomials for $\phi$: A finite set of ``moments" \`a la Krusell-Smith but i
 
 
 \begin{frame}{Some challenging question: Generalization puzzle}
+	\emphcolor{Question I}: Generalization 
 	\begin{itemize}
 		\item From statistical learning and numerical analysis we know:\vspace{0.1in}
 		\begin{itemize}
@@ -1018,24 +1042,24 @@ If polynomials for $\phi$: A finite set of ``moments" \`a la Krusell-Smith but i
 			\item The results indicate the opposite: More coefficients $\rightarrow$ better generalization.  \vspace{0.1in}
 		\end{itemize}
 	\end{itemize}
-\emphcolor{Question}: How come we achieve great generalization?  
+How come we achieve great generalization?  
 \end{frame}
 
-\begin{frame}{Some challenging questions: Stationarity and transversality puzzle}
+\begin{frame}{Some challenging questions: Multiplicity and transversality puzzle}
+\emphcolor{Question II}: Multiplicity and transversality 
 	\begin{empheq}[box=\tcbhighmath]{align*}
 		&\gamma u(X) = \beta \expec{p(X')+\gamma (1-\delta) u(X') }\\
-		  X'_i & = (1-\delta)X_i + u(X) + \sigma W_i + \eta \omega,\quad\text{for } i \in \{1,...,N\},
+		  X'_i & = (1-\delta)X_i + u(X) + \sigma W_i + \eta \omega,\quad\text{for } i \in \{1,...,N\}
 	\end{empheq}
 with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \sum_{i=1}^N X_i$  
 \begin{itemize}
 		\item The Euler equation is quadratic $\rightarrow$ \emphcolor{two} solutions: $(H_0^-, H_1^-), (H_0^+, H_1^+)$:\vspace{0.1in}
 	\begin{itemize}
-		\item $H_1^- <0 \rightarrow$  \emphcolor{stationary} solution. \vspace{0.1in} 
-		\item $H_1^+ > 0$ $\rightarrow$ \emphcolor{non-stationary} solution. \vspace{0.1in}
+		\item $H_1^- <0 \rightarrow$  \emphcolor{stationary} solution, $H_1^+ > 0$ $\rightarrow$ \emphcolor{non-stationary} solution. \vspace{0.1in}
 		%\item We can show $|H_1^-| < |H_1^+|$.\vspace{0.1in}
 		\item We have \emphcolor{no explicit} device in our algorithm to weed out the second solution. \vspace{0.1in}
 	\end{itemize}
-	\emphcolor{Question}: How come we never observe the non-stationary solution in the results? 
+	How come we never observe the non-stationary solution in the results? 
 	\vspace{0.1in}
 	
 	Understanding the \emphcolor{implicit bias} of deep neural networks answers both questions. The \textcolor{red}{Ebrahimi Kahou et al. (2022)} addresses these two challenging questions. 
@@ -1181,7 +1205,7 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 			\item If the true underlying functions is flat between (and outside) the points.\vspace{0.1in}
 			\item The cure to over-fitting is to add more parameters.\vspace{0.1in}
 		\end{itemize}
-	 \item Answering \emphcolor{stationarity puzzle}: In the linear set-up, the explosive solution has larger derivatives (less flat) than the non-explosive one i.e, $|H_1^+| > |H_1^-|$:\vspace{0.1in}
+	 \item Answering \emphcolor{Multiplicity puzzle}: In the linear set-up, the explosive solution has larger derivatives (less flat) than the non-explosive one i.e, $|H_1^+| > |H_1^-|$:\vspace{0.1in}
 	 \begin{itemize}
 	 	\item The deep-learning based solution \emphcolor{automatically} satisfies stationarity. \vspace{0.1in}
 	 \end{itemize}
@@ -1248,7 +1272,7 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 					\item Concentration of measures: Dimensionality is a \emphcolor{blessing} not a curse.\vspace{0.1in}
 				\end{itemize}
 
-				\item Using \emphcolor{economic theory} and\emphcolor{deep learning} for function approximation with a huge \# of parameters ($\gg$ grid points)\vspace{0.1in}
+				\item Using \emphcolor{economic theory} (i.e., exchangeability) and \emphcolor{deep learning} for function approximation with a huge \# of parameters ($\gg$ grid points)\vspace{0.1in}
 			      \begin{itemize}
 				 	\item Achieve great generalization: key to alleviate the curse of dimensionality.\vspace{0.1in}
 				 \end{itemize}

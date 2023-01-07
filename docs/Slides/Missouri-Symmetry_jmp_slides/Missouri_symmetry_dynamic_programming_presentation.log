@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.4.14)  5 JAN 2023 21:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.4.14)  6 JAN 2023 21:21
 entering extended mode
 **./Missouri_symmetry_dynamic_programming_presentation.tex
 (Missouri_symmetry_dynamic_programming_presentation.tex
@@ -1550,22 +1550,22 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 
 ] [5
 
+] [6
+
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/b/n' undefined
-(Font)              using `OT1/cmss/m/n' instead on input line 293.
+(Font)              using `OT1/cmss/m/n' instead on input line 304.
 
-[6
+[7
 
-] [7
+] [8
 
 ]
-Overfull \vbox (5.17159pt too high) detected at line 477
+Overfull \vbox (5.17159pt too high) detected at line 488
  []
 
-[8
-
-] [9
+[9
 
 ] [10
 
@@ -1573,29 +1573,29 @@ Overfull \vbox (5.17159pt too high) detected at line 477
 
 ] [12
 
-]
-Overfull \vbox (24.26022pt too high) detected at line 558
- []
-
-[13
-
-] [14
+] [13
 
 ]
-Overfull \vbox (16.35356pt too high) detected at line 606
+Overfull \vbox (24.26022pt too high) detected at line 569
  []
 
-[15
+[14
 
-] [16
+] [15
 
 ]
-Overfull \vbox (43.25142pt too high) detected at line 648
+Overfull \vbox (16.35356pt too high) detected at line 617
  []
 
-[17
+[16
 
-] [18
+] [17
+
+]
+Overfull \vbox (43.25142pt too high) detected at line 659
+ []
+
+[18
 
 ] [19
 
@@ -1605,147 +1605,147 @@ Overfull \vbox (43.25142pt too high) detected at line 648
 
 ] [22
 
-]
-Overfull \vbox (3.86784pt too high) detected at line 776
- []
-
-[23
-
-] [24
+] [23
 
 ]
-Overfull \vbox (49.83846pt too high) detected at line 817
+Overfull \vbox (3.86784pt too high) detected at line 785
  []
 
-[25
+[24
+
+] [25
 
 ] [26
 
-] [27
+]
+Overfull \vbox (49.83846pt too high) detected at line 840
+ []
+
+[27
 
 ] [28
 
+] [29
+
+] [30
+
 ]
-<./figures/identity-moments-deep-sets-linear-residual.pdf, id=217, 578.16pt x 2
+<./figures/identity-moments-deep-sets-linear-residual.pdf, id=227, 578.16pt x 2
 52.945pt>
 File: ./figures/identity-moments-deep-sets-linear-residual.pdf Graphic file (ty
 pe pdf)
 <use ./figures/identity-moments-deep-sets-linear-residual.pdf>
 Package pdftex.def Info: ./figures/identity-moments-deep-sets-linear-residual.p
-df  used on input line 950.
+df  used on input line 973.
 (pdftex.def)             Requested size: 379.93706pt x 166.2212pt.
 
-Overfull \vbox (26.47871pt too high) detected at line 950
+Overfull \vbox (26.47871pt too high) detected at line 973
  []
 
-[29
+[31
 
  <./figures/identity-moments-deep-sets-linear-residual.pdf>]
-<./figures/linear-baseline-theory-vs-predicted.pdf, id=260, 433.62pt x 252.945p
+<./figures/linear-baseline-theory-vs-predicted.pdf, id=271, 433.62pt x 252.945p
 t>
 File: ./figures/linear-baseline-theory-vs-predicted.pdf Graphic file (type pdf)
 
 <use ./figures/linear-baseline-theory-vs-predicted.pdf>
 Package pdftex.def Info: ./figures/linear-baseline-theory-vs-predicted.pdf  use
-d on input line 960.
+d on input line 983.
 (pdftex.def)             Requested size: 310.9695pt x 181.40622pt.
 
-Overfull \vbox (29.0138pt too high) detected at line 960
+Overfull \vbox (29.0138pt too high) detected at line 983
  []
 
-[30
+[32
 
  <./figures/linear-baseline-theory-vs-predicted.pdf>]
-<./figures/deep-sets-linear-profiling-var-n.pdf, id=295, 578.16pt x 252.945pt>
+<./figures/deep-sets-linear-profiling-var-n.pdf, id=306, 578.16pt x 252.945pt>
 File: ./figures/deep-sets-linear-profiling-var-n.pdf Graphic file (type pdf)
 <use ./figures/deep-sets-linear-profiling-var-n.pdf>
 Package pdftex.def Info: ./figures/deep-sets-linear-profiling-var-n.pdf  used o
-n input line 970.
+n input line 993.
 (pdftex.def)             Requested size: 444.24408pt x 194.35527pt.
 
-Overfull \vbox (29.31291pt too high) detected at line 970
+Overfull \vbox (29.31291pt too high) detected at line 993
  []
 
-[31
+[33
 
- <./figures/deep-sets-linear-profiling-var-n.pdf>] [32
+ <./figures/deep-sets-linear-profiling-var-n.pdf>] [34
 
 ]
-<./figures/moments-deep-sets-nonlinear-residual.pdf, id=326, 433.62pt x 252.945
+<./figures/moments-deep-sets-nonlinear-residual.pdf, id=336, 433.62pt x 252.945
 pt>
 File: ./figures/moments-deep-sets-nonlinear-residual.pdf Graphic file (type pdf
 )
 <use ./figures/moments-deep-sets-nonlinear-residual.pdf>
 Package pdftex.def Info: ./figures/moments-deep-sets-nonlinear-residual.pdf  us
-ed on input line 999.
+ed on input line 1022.
 (pdftex.def)             Requested size: 288.75594pt x 168.44946pt.
 
-Overfull \vbox (28.70697pt too high) detected at line 999
+Overfull \vbox (28.70697pt too high) detected at line 1022
  []
 
-[33
+[35
 
  <./figures/moments-deep-sets-nonlinear-residual.pdf>]
-<./figures/deep-sets-nonlinear-var-nu.pdf, id=355, 433.62pt x 252.945pt>
+<./figures/deep-sets-nonlinear-var-nu.pdf, id=365, 433.62pt x 252.945pt>
 File: ./figures/deep-sets-nonlinear-var-nu.pdf Graphic file (type pdf)
 <use ./figures/deep-sets-nonlinear-var-nu.pdf>
 Package pdftex.def Info: ./figures/deep-sets-nonlinear-var-nu.pdf  used on inpu
-t line 1008.
+t line 1031.
 (pdftex.def)             Requested size: 310.9695pt x 181.40622pt.
 
-Overfull \vbox (29.0138pt too high) detected at line 1008
- []
-
-[34
-
- <./figures/deep-sets-nonlinear-var-nu.pdf>] [35
-
-]
-Overfull \vbox (21.52779pt too high) detected at line 1043
+Overfull \vbox (29.0138pt too high) detected at line 1031
  []
 
 [36
 
-] [37
+ <./figures/deep-sets-nonlinear-var-nu.pdf>] [37
 
-] [38
+]
+Overfull \vbox (10.59486pt too high) detected at line 1067
+ []
+
+[38
 
 ] [39
 
+] [40
+
+] [41
+
 ]
-<./figures/doubledescent.pdf, id=402, 203.12387pt x 75.23106pt>
+<./figures/doubledescent.pdf, id=412, 203.12387pt x 75.23106pt>
 File: ./figures/doubledescent.pdf Graphic file (type pdf)
 <use ./figures/doubledescent.pdf>
-Package pdftex.def Info: ./figures/doubledescent.pdf  used on input line 1102.
+Package pdftex.def Info: ./figures/doubledescent.pdf  used on input line 1126.
 (pdftex.def)             Requested size: 390.31883pt x 144.54pt.
- [40
+ [42
 
  <./figures/doubledescent.pdf>]
-Overfull \vbox (24.21034pt too high) detected at line 1127
- []
-
-[41
-
-] [42
-
-]
-<./figures/fourplots_example_reg.pdf, id=444, 462.52798pt x 346.89601pt>
-File: ./figures/fourplots_example_reg.pdf Graphic file (type pdf)
-<use ./figures/fourplots_example_reg.pdf>
-Package pdftex.def Info: ./figures/fourplots_example_reg.pdf  used on input lin
-e 1158.
-(pdftex.def)             Requested size: 260.17134pt x 195.12877pt.
-
-Overfull \vbox (3.4365pt too high) detected at line 1158
+Overfull \vbox (24.21034pt too high) detected at line 1151
  []
 
 [43
 
- <./figures/fourplots_example_reg.pdf>] [44
+] [44
 
-] [45
+]
+<./figures/fourplots_example_reg.pdf, id=455, 462.52798pt x 346.89601pt>
+File: ./figures/fourplots_example_reg.pdf Graphic file (type pdf)
+<use ./figures/fourplots_example_reg.pdf>
+Package pdftex.def Info: ./figures/fourplots_example_reg.pdf  used on input lin
+e 1182.
+(pdftex.def)             Requested size: 260.17134pt x 195.12877pt.
 
-] [46
+Overfull \vbox (3.4365pt too high) detected at line 1182
+ []
+
+[45
+
+ <./figures/fourplots_example_reg.pdf>] [46
 
 ] [47
 
@@ -1753,27 +1753,31 @@ Overfull \vbox (3.4365pt too high) detected at line 1158
 
 ] [49
 
-]
-[50
+] [50
 
 ] [51
 
 ]
-<./figures/concentration_euler_residual_linear.pdf, id=519, 578.16pt x 252.945p
+[52
+
+] [53
+
+]
+<./figures/concentration_euler_residual_linear.pdf, id=529, 578.16pt x 252.945p
 t>
 File: ./figures/concentration_euler_residual_linear.pdf Graphic file (type pdf)
 
 <use ./figures/concentration_euler_residual_linear.pdf>
 Package pdftex.def Info: ./figures/concentration_euler_residual_linear.pdf  use
-d on input line 1313.
+d on input line 1337.
 (pdftex.def)             Requested size: 346.89867pt x 151.76744pt.
- [52
+ [54
 
  <./figures/concentration_euler_residual_linear.pdf>]
-(figures/linear_performance_table.tex) [53
+(figures/linear_performance_table.tex) [55
 
 ]
-(figures/full_nonlinear_performance_table.tex) [54
+(figures/full_nonlinear_performance_table.tex) [56
 
 ]
 \tf@nav=\write7
@@ -1785,12 +1789,12 @@ d on input line 1313.
 \tf@snm=\write9
 \openout9 = `Missouri_symmetry_dynamic_programming_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1350.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1350.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1374.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1374.
 
 (Missouri_symmetry_dynamic_programming_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1350.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1350.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1374.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1374.
 
 Package rerunfilecheck Info: File `Missouri_symmetry_dynamic_programming_presen
 tation.out' has not changed.
@@ -1801,10 +1805,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 32616 strings out of 480896
- 685082 string characters out of 2898165
+ 32624 strings out of 480896
+ 685156 string characters out of 2898165
  992870 words of memory out of 3000000
- 47657 multiletter control sequences out of 15000+200000
+ 47661 multiletter control sequences out of 15000+200000
  549144 words of font info for 84 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,26n,107p,1886b,829s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1844,10 +1848,10 @@ type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/mahdi/AppData/Local/Programs
 /MiKTeX 2.9/fonts/type1/public/cm-super/sfss0800.pfb><C:/Users/mahdi/AppData/Lo
 cal/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss0900.pfb><C:/Users/mahd
 i/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/cm-super/sfss1000.pfb>
-Output written on Missouri_symmetry_dynamic_programming_presentation.pdf (54 pa
-ges, 864519 bytes).
+Output written on Missouri_symmetry_dynamic_programming_presentation.pdf (56 pa
+ges, 868353 bytes).
 PDF statistics:
- 655 PDF objects out of 1000 (max. 8388607)
- 125 named destinations out of 1000 (max. 500000)
+ 667 PDF objects out of 1000 (max. 8388607)
+ 129 named destinations out of 1000 (max. 500000)
  131 words of extra memory for PDF output out of 10000 (max. 10000000)
 
