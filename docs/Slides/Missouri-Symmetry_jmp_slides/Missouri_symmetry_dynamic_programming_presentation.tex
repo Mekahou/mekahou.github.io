@@ -547,7 +547,7 @@ If time permits: I will discuss it in details, and the implications in our probl
 			
 			\item Industry consisting of $N > 1$ firms, each producing the same good.\vspace{0.1in}
 			
-			\item A firm $i$ produces output $x$ ($x$ units of capital).\vspace{0.1in}
+			\item Firm of interest  produces output $x$ ($x$ units of capital).\vspace{0.1in}
 			
 			\item Thus, the vector $X \equiv [X_1, \ldots X_N]^\top$ is the production (or capital) of the whole industry.\vspace{0.1in}
 			
@@ -693,7 +693,7 @@ If time permits: I will discuss it in details, and the implications in our probl
 		
 				\item Given intuition that individual $X_i \in X$ have limited effect on $u(x,X)$, how to calculate $\expec{u(x',X')}$?\smallskip
 					  \begin{itemize}
-						  \item  Look at $\condexpec{u(x', X')}{w,\omega}$ to condition on firm's idiosyncratic $w$ aggregate shock $\omega$.\smallskip
+						  \item  Look at $\mathbb{E}_W[u(x', X')|w, \omega]$ to condition on firm's idiosyncratic $w$ aggregate shock $\omega$.\smallskip
 						  \item Why conditioning on these two? They matter a lot. Now, can something similar to the law of large numbers happen?
 					  \end{itemize}\medskip
 				\item What about the stationary solutions and transversality condition?\smallskip
@@ -776,9 +776,9 @@ $$ \mathbb{E}_W \left[\|\nabla u(x',X')\|^2\right] \leq \frac{C}{N}$$
 				\item With concentration of measure, dimensionality is not a curse; it is a blessing.\vspace{0.1in}
 					  % \item If a single firm has ``too much'' impact, condition on it and use quadrature
 			\end{itemize}
-			\emphcolor{Implication}: We can calculate $\condexpec{u(x', X')}{w, \omega}$ with a \textit{single draw} of idiosyncratic shocks $W$:
+			\emphcolor{Implication}: We can calculate $\mathbb{E}_W[u(x', X')|w, \omega]$ with a \textit{single draw} of idiosyncratic shocks $W$:
 			\begin{itemize}
-				\item $\condexpec{u(x', X')}{w, \omega}\approx u(x',X')$.\vspace{0.1in} 
+				\item $\mathbb{E}_W[u(x', X')|w, \omega]\approx u(x',X')$.\vspace{0.1in} 
 				\item Reducing an $N+1$-dimensional conditional expectation to a $2$-D one (with good approximation). 
 			\end{itemize}
 %\hyperlink{Bounded}{\beamerskipbutton{Expected gradient bounded  in $N$}}		
