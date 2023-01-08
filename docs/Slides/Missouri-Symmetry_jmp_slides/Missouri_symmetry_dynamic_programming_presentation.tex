@@ -41,7 +41,7 @@
 \setbeamercolor{background canvas}{bg=cosmiclatte}
 %\titlegraphic{\hfill\includegraphics[height=0.8cm]{/Users/jesusfv/dropbox/Templates_Slides/penn_fulllogo.pdf}}
 \newcommand{\emphcolor}[1]{\textbf{\textcolor{emphcolorval}{#1}}}
-\newcommand{\mathcolor}[1]{{\mathbf{\color{emphcolorval}{#1}}}}
+%\newcommand{\mathcolor}[1]{{\mathbf{\color{emphcolorval}{#1}}}}
 \newcommand{\highlightcolor}[1]{{\textbf{\color{highlightcolorval}{#1}}}}
 
 % \usepackage{natbib}
@@ -1205,7 +1205,7 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 			\item If the true underlying functions is flat between (and outside) the points.\vspace{0.1in}
 			\item The cure to over-fitting is to add more parameters.\vspace{0.1in}
 		\end{itemize}
-	 \item Answering \emphcolor{Multiplicity puzzle}: In the linear set-up, the explosive solution has larger derivatives (less flat) than the non-explosive one i.e, $|H_1^+| > |H_1^-|$:\vspace{0.1in}
+	 \item Answering \emphcolor{multiplicity puzzle}: In the linear set-up, the explosive solution has larger derivatives (less flat) than the non-explosive one i.e, $|H_1^+| > |H_1^-|$:\vspace{0.1in}
 	 \begin{itemize}
 	 	\item The deep-learning based solution \emphcolor{automatically} satisfies stationarity. \vspace{0.1in}
 	 \end{itemize}
@@ -1369,6 +1369,10 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 	
 \end{frame}	
 
-
+\begin{frame}{Parameters}
+	\begin{itemize}
+		\item $\gamma = 90$, $\beta = 0.95$, $\sigma = 0.005$, $\eta = 0.001$.
+	\end{itemize}
+\end{frame}
 
 \end{document}
