@@ -1,4 +1,4 @@
-\beamer@sectionintoc {1}{\textcolor {PennBlue}{Background: Deep learning for functional equations}}{6}{0}{1}
+\beamer@sectionintoc {1}{\leavevmode {\color {PennBlue}Background: Deep learning for functional equations}}{6}{0}{1}
 \beamer@sectionintoc {2}{Application}{11}{0}{2}
 \beamer@sectionintoc {3}{Solving the Model}{26}{0}{3}
 \beamer@sectionintoc {4}{Implicit bias, Generalization, and Stationarity.}{39}{0}{4}
