@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  5 MAR 2023 21:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  10 MAR 2023 22:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -345,36 +345,19 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 244.
 
-Overfull \hbox (29.26204pt too wide) in paragraph at lines 324--327
-[]\OT1/cmr/bx/n/10 Job mar-ket pa-per: [][]\OT1/cmr/m/n/10 ``Ex-ploit-ing Sym-m
-e-try in High-Dimensional Dy-namic Pro-gram-ming"[][],
+Overfull \hbox (5.27547pt too wide) in paragraph at lines 324--327
+[][][]\OT1/cmr/m/n/10 ``Exploiting Sym-me-try in High-Dimensional Dy-namic Pro-
+gram-ming"[][], NBER Work-ing
  []
 
 
-Overfull \hbox (1.96158pt too wide) in paragraph at lines 324--327
-\OT1/cmr/m/n/10 ar-chi-tec-tures that ex-ploit sym-me-try and con-cen-tra-tion 
-of mea-sure. As an ap-pli-ca-tion,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 324--327
-
- []
-
-
-Overfull \hbox (3.44305pt too wide) in paragraph at lines 329--332
-\OT1/cmr/m/n/10 ac-cu-rate tran-si-tion dy-nam-ics with high-dimensional state 
-spaces, and with-out di-rectly
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 329--332
+Underfull \hbox (badness 10000) in paragraph at lines 333--335
 
  []
 
 [1
 
-{C:/Users/mahdi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
+{C:/Users/mahdi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 Overfull \hbox (0.27635pt too wide) in paragraph at lines 366--367
 []\OT1/cmr/m/n/10 Institute for Quan-tum Sci-ence and Tech-nol-ogy ``Top-Up Stu
 -dents Award"(University
@@ -386,31 +369,30 @@ Overfull \hbox (5.13756pt too wide) in paragraph at lines 376--377
 sity of Min-nesota, Uni-ver-sity
  []
 
-[3] 
+[2] 
 AED: lastpage setting LastPage
-[4] (Mahdi_CV.aux)
+[3] (Mahdi_CV.aux)
 Package rerunfilecheck Info: File `Mahdi_CV.out' has not changed.
 (rerunfilecheck)             Checksum: F271ECCF20B27789D86948DF2B8ABC3E;1433.
  ) 
 Here is how much of TeX's memory you used:
- 9093 strings out of 475385
- 146807 string characters out of 2776906
- 512899 words of memory out of 3000000
- 30375 multiletter control sequences out of 15000+600000
- 471424 words of font info for 35 fonts, out of 8000000 for 9000
+ 9090 strings out of 475385
+ 146780 string characters out of 2776906
+ 510899 words of memory out of 3000000
+ 30374 multiletter control sequences out of 15000+600000
+ 471116 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,13n,77p,1076b,583s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,13n,77p,1077b,576s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-ts1.enc}<C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmbx10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmbx12.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmbx5.pfb><C:/Users/mahdi/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/mahdi/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/mahdi/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Mahdi_CV.pdf (4 pages, 103676 bytes).
+fonts/cm/cmbx12.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmbx5.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/mahdi/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/mahdi/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on Mahdi_CV.pdf (3 pages, 87814 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 16 named destinations out of 1000 (max. 500000)
+ 117 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 500000)
  89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
