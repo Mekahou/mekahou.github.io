@@ -39,7 +39,7 @@
 
 \definecolor{cosmiclatte}{rgb}{1.0, 0.99, 0.95}
 \setbeamercolor{background canvas}{bg=cosmiclatte}
-%\titlegraphic{\hfill\includegraphics[height=0.8cm]{/Users/jesusfv/dropbox/Templates_Slides/penn_fulllogo.pdf}}
+
 \newcommand{\emphcolor}[1]{\textbf{\textcolor{emphcolorval}{#1}}}
 %\newcommand{\mathcolor}[1]{{\mathbf{\color{emphcolorval}{#1}}}}
 \newcommand{\highlightcolor}[1]{{\textbf{\color{highlightcolorval}{#1}}}}
@@ -98,17 +98,142 @@
 %\maketitle
 	
 	
-\title{{\vspace{0.4in}\hspace{0.2in}\textcolor{PennBlue}{Exploiting Symmetry in\\\hspace{0.2in}High-Dimensional Dynamic Programming}}}
-\author{\hspace{0.2in}Mahdi Ebrahimi Kahou\inst{1}\and
-Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{1} \and Arnav Sood\inst{3}}
-\institute{\inst{\hspace{0.2in}1}University of British Columbia,  Vancouver School of Economics\and
-	\inst{\hspace{0.2in}2}University of Pennsylvania\and
-	\inst{\hspace{0.2in}3} Carnegie Mellon University}
+\title{{\vspace{0.4in}\hspace{0.0in}\textcolor{PennBlue}{Solving Equilibrium Models with \\ Modern Machine Learning Methods}}}
+\author{\hspace{0.2in}Mahdi Ebrahimi Kahou\inst{1}}
+\institute{\inst{\hspace{0.2in}1}University of British Columbia,  Vancouver School of Economics}
 \date{\hspace{0.2in}\today }
 \maketitle
 
 
+\begin{frame}{Articles}
+	\begin{itemize}
+			\item \emphcolor{Exploiting Symmetry in High-Dimensional Dynamic Programming:} {\small with Jes\'{u}s Fern\'{a}ndez-Villaverde, Jesse Perla, and Arnav Sood}.\\ \medskip
+			\item \emphcolor{Spooky Boundaries at a Distance: Exploring Transversality and Stability with Deep Learning:}  {\small with Jes\'{u}s Fern\'{a}ndez-Villaverde, Sebasti\'an G\'omez-Cardona, Jesse Perla, and Jan Rosa}.\\ \medskip
+			\item \emphcolor{Are Minimizing the Euler and Bellman Residuals Enough?}
+			
+	\end{itemize}
 
+\end{frame}
+
+
+\section{\textcolor{PennBlue}{Background: Deep learning for functional equations}}
+
+\begin{frame}
+	\frametitle{Equilibrium conditions as functional equations}
+	Most theoretical models in economics with equilibrium conditions can be written as functional equations:
+	\begin{itemize}
+		\item Take some function(s) $\psi \in \varPsi$ where $\psi : \Xdom\to \Yrange$ (e.g. asset price, investment choice, best-response).\vspace{0.1in}
+		\item Domain $\Xdom$ could be state (e.g. dividends, capital, opponents state) or time if sequential.\vspace{0.1in}
+		\item The ``model'' is $\ell: \varPsi \times \Xdom \rightarrow \Resid$ (e.g., Euler and Bellman residuals, equilibrium FOCs).\vspace{0.1in}
+		\item The solution is the root of the model (residuals operator), i.e., $\mathbf{0} \in \Resid$, at each $x \in \Xdom$.\vspace{0.1in}
+	\end{itemize}
+	Then a \emphcolor{solution} is a $\psi^*\in \varPsi$ where $\ell(\psi^*,x) = 0$ for all $x \in \Xdom$.  How do we find an approximate solution?\vspace{0.1in}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example: recursive formulation of the neoclassical growth}
+	An example of a recursive case:
+	\begin{itemize}
+		\item Domain: $x = \begin{bmatrix*}
+			k
+		\end{bmatrix*}
+		$ and $\Xdom = \R_+$.\vspace{0.1in}
+		\item Solve for the optimal policy $k'(\cdot)$ and consumption function $c(\cdot)$: So $\psi : \R \to \R^2$ and $\Yrange = \R^2_+$.\vspace{0.1in}
+		\item  Residuals are the Euler equation and feasibility condition, so $\Resid = \R^2$:
+		\begin{align*}
+			\ell(\underbrace{\begin{bmatrix*}k'(\cdot) & c(\cdot)\end{bmatrix*}}_{\equiv \psi}, \underbrace{k}_{\equiv x}) =
+			\underbrace{\begin{bmatrix*}
+					u'(c(k)) - \beta u'(c(k'(k)))\left(f'(k'(k)) + 1-\delta\right) \\
+					f(k) - c(k) - k'(k) + (1-\delta)k
+			\end{bmatrix*}}_{\text{model}}
+		\end{align*}
+		\item Finally,  $\psi^* = \left[k'(\cdot),c(\cdot)\right]$ is a solution if it has zero residuals on domain $\Xdom$.
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Classical solution method for functional equations}
+	
+	Quick \emphcolor{review} of collocation-like methods:
+	
+	\begin{enumerate}
+		\item \emphcolor{Pick} finite set of $D$ points $\Xtrain \subset \Xdom$ (e.g., a grid).
+		\smallskip
+		\item \emphcolor{Choose} approximation $\hat{\psi}(\cdot;\theta) \in \mathcal{H}(\Theta)$ with coefficients $\Theta \subseteq \R^M$ (e.g., Chebyshev polynomials).
+		\smallskip
+		\item \emphcolor{Fit} with nonlinear least-squares 
+		$$
+		\min_{\theta \in \Theta} \sum_{x \in \Xtrain} \ell(\hat{\psi}(\cdot;\theta),x)^2
+		$$
+		\smallskip
+		If $\theta \in \Theta$ is such that $\ell(\hat{\psi}(\cdot;\theta),x) = 0$ for all $x \in \Xtrain$ we say $\hat{\psi}(\cdot;\theta)$ \emphcolor{interpolates} $\Xtrain$.
+		\smallskip
+		\item The goal is to have good \emphcolor{generalization}:
+		\begin{itemize}\smallskip
+			\item The approximate function is close to the solution outside of $\Xtrain$.\smallskip
+			\item In high dimensions this becomes very important.
+		\end{itemize}
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{A deep learning approach: 1}
+ Recall we need a parametric function $\hat{\psi}(\cdot;\theta) \in \mathcal{H}(\Theta)$:
+	\begin{itemize}
+		\item \emphcolor{Deep neural networks} are \emphcolor{highly-overparameterized} functions designed for good generalization.\medskip
+		\item Number of coefficients much larger than the grid points ($M\gg N$). \medskip
+	
+		\item Example: one layer neural network, $\hat{\psi} : \mathbb{R}^Q\rightarrow \mathbb{R}$:
+		\begin{equation*}
+			\hat{\psi}(x;\theta) = W_2 \cdot \sigma \left(W_1\cdot x+b_1\right)+b_2
+		\end{equation*}
+		\medskip
+		\item $W_1\in \mathbb{R}^{P\times Q}$, $b_1\in \mathbb{R}^{P\times 1}$, $W_2 \in \mathbb{R}^{1\times P}$, and $b_2 \in \mathbb{R}$.
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}{A deep learning approach: 2}
+	\begin{itemize}
+	\item $\sigma(\cdot)$ is a nonlinear function applied element-wise (e.g., $\max\{\cdot,0\}$, Sigmoid, Tanh,...).
+	\smallskip
+	\item $\Theta \equiv \{b_1,W_1,b_2,W_2\}$ are the coefficients, in this example $M = PQ+P+P+1$.
+	\item Making it ``deeper" by adding another ``layer":
+	\begin{align*}
+		\hat{\psi}(x;\theta)\equiv W_3\cdot\sigma(W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2)+b_3.
+	\end{align*}
+	\item Architecture of the neural networks can be flexibly informed by the economic insight and theory.\smallskip
+	\begin{itemize}
+		\item The \emphcolor{Symmetry} paper heavily relies on this.
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Concerns regarding over-parameterization}
+	\begin{quote}
+		``I remember my friend Johnny von Neumann used to say, with four parameters I can fit an elephant, and with five I can make him wiggle his trunk."\\
+		\hfill Enrico Fermi
+	\end{quote}
+	\begin{quote}
+		``The best way to solve the problem from practical standpoint is you build a very big system ... basically you want to make sure you hit the zero training error."\\
+		\hfill Ruslan Salakhutdinov, SI 2017
+	\end{quote}
+
+\begin{itemize}
+	\item If the number of parameters is much larger than the grid points (i.e. $M\gg N$), there might be many interpolating solutions.
+	\item \emphcolor{So which solution are we going to find?} I will come back to this.
+	\begin{itemize}
+		\item The \emphcolor{Spooky} paper will try to shed light on this for some economic applications.
+	\end{itemize}
+\end{itemize}
+
+\end{frame}	
+
+
+
+\begin{frame}
+	\emphcolor{Upto here}
+\end{frame}
 
 
 \begin{frame}{Motivation}
@@ -487,22 +612,7 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Over-parameterization and convergence}
 
-		If the number of coefficients is much larger than the number of grid points $M\gg D$, there are many different sets of coefficients that achieve interpolation.
-		\begin{itemize}
-		\item What is going on?  \vspace{0.1in}
-		\begin{itemize}
-			\item Deep neural networks and their optimizers have an inherent \emphcolor{implicit bias} toward a  \emphcolor{unique} class of interpolating solutions.\vspace{0.1in}
-			\item Figuring out this property is a very active field in computer science and optimization theory.\vspace{0.1in}
-			\item Converges to \emphcolor{``simple"} (flat) interpolating functions. \vspace{0.1in}
-			\begin{itemize}
-				\item They have a built-in \emphcolor{Occam's razor}.
-			\end{itemize}
-		\end{itemize}
-	\end{itemize}		 
-If time permits: I will discuss it in details, and the implications in our problem, see the \textcolor{red}{Ebrahimi Kahou et al. (2022)}.
-\end{frame}	
 
 
 %%%%%%%%%%%
@@ -966,7 +1076,7 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 			
 			\begin{figure}[h!]
 			\centering
-			\includegraphics[height = 2.3in]{./figures/identity-moments-deep-sets-linear-residual}
+			\includegraphics[height = 2.3in]{./figures/identity_moments_deep_sets_linear_relative}
 			\caption{The Euler residuals for $\nu = 1$ and $N=\mapvar{N}$ for $\phi(\text{Identity})$, $\phi(\text{Moments})$, and $\phi(\text{ReLU})$. The dark blue curve shows the average residuals along equilibrium paths for $\mapvar{test_trajectories}$ different trajectories. The shaded areas depict the $2.5$th and $97.5$th percentiles.}
 			\end{figure}
 			
@@ -976,7 +1086,7 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 			
 			\begin{figure}[h!]
 			\centering
-			\includegraphics[width=0.99\linewidth]{./figures/linear-baseline-theory-vs-predicted_new.pdf}
+			\includegraphics[width=0.99\linewidth]{./figures/linear-baseline-theory-vs-predicted.pdf}
 			\caption{Comparison between baseline approximate solutions and the LQ solution for the case with $\nu= 1$ and $N=\mapvar{N}$.}
 			\end{figure}
 			
@@ -1336,38 +1446,9 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 	\end{figure}
 \end{frame}		
 
-\begin{frame}
-	
-	\renewcommand{\arraystretch}{1.2}
-	\begin{table}[h!]
-		\caption{Performance of Different Networks in Solving the Linear Model}\vspace{-0.1in}
-		\begin{center}
-			\resizebox{\textwidth}{!}{\begin{tabular}{c}
-					\input{./figures/linear_performance_table.tex}
-			\end{tabular}}
-		\end{center}
-	\end{table}
-	\renewcommand{\arraystretch}{1.0}
-	
-\end{frame}	
 
 
-\begin{frame}
-	
-	\renewcommand{\arraystretch}{1.2}
-	
-	\begin{table}[h!]
-		\caption{Nonlinear Model Performance}\vspace{-0.1in}
-		\begin{center}
-			\scalebox{0.75}{\begin{tabular}{c}
-					\input{./figures/full_nonlinear_performance_table.tex}
-			\end{tabular}}
-		\end{center}
-	\end{table}
-	
-	\renewcommand{\arraystretch}{1.0}
-	
-\end{frame}	
+
 
 \begin{frame}{Parameters}
 	\begin{itemize}
