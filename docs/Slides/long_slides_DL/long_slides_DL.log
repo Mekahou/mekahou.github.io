@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  27 JUL 2023 16:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  1 AUG 2023 14:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1542,62 +1542,66 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 ] [17
 
 ]
-Overfull \vbox (5.17159pt too high) detected at line 613
+Overfull \vbox (24.26022pt too high) detected at line 375
  []
 
 [18
 
-] [19
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 394.
 
-] [20
+ [19
+
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 424.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 424.
+
+
+Overfull \vbox (16.35356pt too high) detected at line 424
+ []
+
+[20
 
 ] [21
 
 ]
-Overfull \vbox (24.26022pt too high) detected at line 679
+Overfull \vbox (43.25142pt too high) detected at line 469
  []
 
 [22
 
-]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 697.
+] [23
 
- [23
-
-]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 727.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 727.
-
-
-Overfull \vbox (16.35356pt too high) detected at line 727
- []
-
-[24
+] [24
 
 ] [25
 
-]
-Overfull \vbox (43.25142pt too high) detected at line 769
- []
-
-[26
+] [26
 
 ] [27
 
-] [28
+]
+Overfull \vbox (20.48839pt too high) detected at line 590
+ []
 
-] [29
+[28
+
+]
+Overfull \vbox (3.86784pt too high) detected at line 613
+ []
+
+[29
 
 ] [30
 
 ] [31
 
 ]
-Overfull \vbox (3.86784pt too high) detected at line 895
+Overfull \vbox (15.56673pt too high) detected at line 667
  []
 
 [32
@@ -1606,164 +1610,128 @@ Overfull \vbox (3.86784pt too high) detected at line 895
 
 ] [34
 
-]
-Overfull \vbox (15.56673pt too high) detected at line 950
- []
-
-[35
-
-] [36
-
-] [37
-
-] [38
+] [35
 
 ]
-<./figures/identity_moments_deep_sets_linear_relative.pdf, id=274, 722.7pt x 25
+<./figures/identity_moments_deep_sets_linear_relative.pdf, id=260, 722.7pt x 25
 2.945pt>
 File: ./figures/identity_moments_deep_sets_linear_relative.pdf Graphic file (ty
 pe pdf)
 <use ./figures/identity_moments_deep_sets_linear_relative.pdf>
 Package pdftex.def Info: ./figures/identity_moments_deep_sets_linear_relative.p
-df  used on input line 1083.
-(pdftex.def)             Requested size: 474.92133pt x 166.2212pt.
+df  used on input line 782.
+(pdftex.def)             Requested size: 412.97986pt x 144.54pt.
 
-Overfull \hbox (30.67725pt too wide) in paragraph at lines 1083--1083
- [] 
+Overfull \vbox (17.44595pt too high) detected at line 782
  []
 
-
-Overfull \vbox (40.27864pt too high) detected at line 1083
- []
-
-[39
+[36
 
  <./figures/identity_moments_deep_sets_linear_relative.pdf>]
-<./figures/linear-baseline-theory-vs-predicted.pdf, id=311, 433.62pt x 252.945p
+<./figures/linear-baseline-theory-vs-predicted.pdf, id=297, 433.62pt x 252.945p
 t>
 File: ./figures/linear-baseline-theory-vs-predicted.pdf Graphic file (type pdf)
 
 <use ./figures/linear-baseline-theory-vs-predicted.pdf>
 Package pdftex.def Info: ./figures/linear-baseline-theory-vs-predicted.pdf  use
-d on input line 1093.
-(pdftex.def)             Requested size: 439.80408pt x 256.5647pt.
-
-Overfull \vbox (104.17227pt too high) detected at line 1093
- []
-
-[40
+d on input line 792.
+(pdftex.def)             Requested size: 247.78792pt x 144.54pt.
+ [37
 
  <./figures/linear-baseline-theory-vs-predicted.pdf>]
-<./figures/deep-sets-linear-profiling-var-n.pdf, id=347, 578.16pt x 252.945pt>
+<./figures/deep-sets-linear-profiling-var-n.pdf, id=334, 578.16pt x 252.945pt>
 File: ./figures/deep-sets-linear-profiling-var-n.pdf Graphic file (type pdf)
 <use ./figures/deep-sets-linear-profiling-var-n.pdf>
 Package pdftex.def Info: ./figures/deep-sets-linear-profiling-var-n.pdf  used o
-n input line 1103.
-(pdftex.def)             Requested size: 444.24408pt x 194.35527pt.
+n input line 802.
+(pdftex.def)             Requested size: 330.38388pt x 144.54pt.
+ [38
 
-Overfull \vbox (29.31291pt too high) detected at line 1103
- []
-
-[41
-
- <./figures/deep-sets-linear-profiling-var-n.pdf>] [42
+ <./figures/deep-sets-linear-profiling-var-n.pdf>] [39
 
 ]
-<./figures/moments-deep-sets-nonlinear-residual.pdf, id=377, 578.16pt x 252.945
+<./figures/moments-deep-sets-nonlinear-residual.pdf, id=364, 578.16pt x 252.945
 pt>
 File: ./figures/moments-deep-sets-nonlinear-residual.pdf Graphic file (type pdf
 )
 <use ./figures/moments-deep-sets-nonlinear-residual.pdf>
 Package pdftex.def Info: ./figures/moments-deep-sets-nonlinear-residual.pdf  us
-ed on input line 1132.
-(pdftex.def)             Requested size: 288.75594pt x 126.32938pt.
- [43
+ed on input line 831.
+(pdftex.def)             Requested size: 330.38388pt x 144.54pt.
+ [40
 
  <./figures/moments-deep-sets-nonlinear-residual.pdf>]
-<./figures/deep-sets-nonlinear-var-nu.pdf, id=403, 433.62pt x 252.945pt>
+<./figures/deep-sets-nonlinear-var-nu.pdf, id=389, 433.62pt x 252.945pt>
 File: ./figures/deep-sets-nonlinear-var-nu.pdf Graphic file (type pdf)
 <use ./figures/deep-sets-nonlinear-var-nu.pdf>
 Package pdftex.def Info: ./figures/deep-sets-nonlinear-var-nu.pdf  used on inpu
-t line 1141.
+t line 840.
 (pdftex.def)             Requested size: 310.9695pt x 181.40622pt.
 
-Overfull \vbox (29.0138pt too high) detected at line 1141
+Overfull \vbox (29.0138pt too high) detected at line 840
  []
 
-[44
+[41
 
- <./figures/deep-sets-nonlinear-var-nu.pdf>] [45
+ <./figures/deep-sets-nonlinear-var-nu.pdf>] [42
 
 ]
-Overfull \vbox (10.59486pt too high) detected at line 1177
+(figures/linear_baseline_convergence_table.tex) [43
+
+] [44
+
+] [45
+
+]
+Overfull \vbox (24.21034pt too high) detected at line 928
  []
 
 [46
 
 ] [47
 
-] [48
-
-] [49
-
 ]
-<./figures/doubledescent.pdf, id=453, 203.12387pt x 75.23106pt>
-File: ./figures/doubledescent.pdf Graphic file (type pdf)
-<use ./figures/doubledescent.pdf>
-Package pdftex.def Info: ./figures/doubledescent.pdf  used on input line 1236.
-(pdftex.def)             Requested size: 390.31883pt x 144.54pt.
- [50
-
- <./figures/doubledescent.pdf>]
-Overfull \vbox (24.21034pt too high) detected at line 1261
- []
-
-[51
-
-] [52
-
-]
-<./figures/fourplots_example_reg.pdf, id=495, 462.52798pt x 346.89601pt>
+<./figures/fourplots_example_reg.pdf, id=448, 462.52798pt x 346.89601pt>
 File: ./figures/fourplots_example_reg.pdf Graphic file (type pdf)
 <use ./figures/fourplots_example_reg.pdf>
 Package pdftex.def Info: ./figures/fourplots_example_reg.pdf  used on input lin
-e 1292.
+e 959.
 (pdftex.def)             Requested size: 260.17134pt x 195.12877pt.
 
-Overfull \vbox (3.4365pt too high) detected at line 1292
+Overfull \vbox (3.4365pt too high) detected at line 959
  []
 
-[53
+[48
 
- <./figures/fourplots_example_reg.pdf>] [54
+ <./figures/fourplots_example_reg.pdf>] [49
 
-] [55
+] [50
+
+] [51
+
+] [52
+
+] [53
+
+] [54
+
+]
+[55
 
 ] [56
 
-] [57
-
-] [58
-
-] [59
-
 ]
-[60
-
-] [61
-
-]
-<./figures/concentration_euler_residual_linear.pdf, id=572, 578.16pt x 252.945p
+<./figures/concentration_euler_residual_linear.pdf, id=525, 578.16pt x 252.945p
 t>
 File: ./figures/concentration_euler_residual_linear.pdf Graphic file (type pdf)
 
 <use ./figures/concentration_euler_residual_linear.pdf>
 Package pdftex.def Info: ./figures/concentration_euler_residual_linear.pdf  use
-d on input line 1447.
+d on input line 1096.
 (pdftex.def)             Requested size: 346.89867pt x 151.76744pt.
- [62
+ [57
 
- <./figures/concentration_euler_residual_linear.pdf>] [63
+ <./figures/concentration_euler_residual_linear.pdf>] [58
 
 ]
 \tf@nav=\write7
@@ -1778,53 +1746,54 @@ d on input line 1447.
 
 (long_slides_DL.aux)
 Package rerunfilecheck Info: File `long_slides_DL.out' has not changed.
-(rerunfilecheck)             Checksum: 8DFB16DC69075958AF42DE0DE036CA7E;1324.
+(rerunfilecheck)             Checksum: B687A202313168FE390F46730EFA71F7;1600.
  ) 
 Here is how much of TeX's memory you used:
- 36988 strings out of 475385
- 780806 string characters out of 2776906
+ 36970 strings out of 475385
+ 780827 string characters out of 2776906
  1116188 words of memory out of 3000000
- 57517 multiletter control sequences out of 15000+600000
+ 57506 multiletter control sequences out of 15000+600000
  486607 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,23n,122p,1918b,849s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-ts1.enc}<C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmex10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmmi10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/mahdi/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/mahdi/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/mahdi/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/mahdi/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users
-/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
-12.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmr5.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmr7.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmr8.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/mahdi/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/mahdi/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/mahdi/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/
-mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
-><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mssi10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmssi12.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmssi8.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Users/mahdi/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/mahdi/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/mahdi/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/mahdi
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Use
-rs/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm
-10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-supe
-r/sfss0900.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/cm-super/sfss1000.pfb>
-Output written on long_slides_DL.pdf (63 pages, 899265 bytes).
+ublic/amsfonts/cmextra/cmex9.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/mahdi/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/mahdi/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/mahdi/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/ma
+hdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/
+Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.
+pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmr10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmr12.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmr5.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmr7.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/mahdi/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/mahdi/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/mahdi/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/mah
+di/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/U
+sers/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.p
+fb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmssbx10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmssi10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmssi12.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/mahdi/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Users/mahdi/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/mahdi/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/
+mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C
+:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy
+9.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/cm-super/sfss0900.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/cm-super/sfss1000.pfb>
+Output written on long_slides_DL.pdf (58 pages, 863429 bytes).
 PDF statistics:
- 730 PDF objects out of 1000 (max. 8388607)
- 144 named destinations out of 1000 (max. 500000)
- 139 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 686 PDF objects out of 1000 (max. 8388607)
+ 134 named destinations out of 1000 (max. 500000)
+ 134 words of extra memory for PDF output out of 10000 (max. 10000000)
 

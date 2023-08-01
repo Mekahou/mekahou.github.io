@@ -178,7 +178,7 @@
 \end{frame}
 
 
-\begin{frame}{A deep learning approach: 1}
+\begin{frame}{A deep learning approach: I}
  Recall we need a parametric function $\hat{\psi}(\cdot;\theta) \in \mathcal{H}(\Theta)$:
 	\begin{itemize}
 		\item \emphcolor{Deep neural networks} are \emphcolor{highly-overparameterized} functions designed for good generalization.\medskip
@@ -189,19 +189,20 @@
 			\hat{\psi}(x;\theta) = W_2 \cdot \sigma \left(W_1\cdot x+b_1\right)+b_2
 		\end{equation*}
 		\medskip
-		\item $W_1\in \mathbb{R}^{P\times Q}$, $b_1\in \mathbb{R}^{P\times 1}$, $W_2 \in \mathbb{R}^{1\times P}$, and $b_2 \in \mathbb{R}$.
+		\item $W_1\in \mathbb{R}^{P\times Q}$, $b_1\in \mathbb{R}^{P\times 1}$, $W_2 \in \mathbb{R}^{1\times P}$, and $b_2 \in \mathbb{R}$.\smallskip
+		\item $\sigma(\cdot)$ is a nonlinear function applied element-wise (e.g., $\max\{\cdot,0\}$, Sigmoid, Tanh,...).
 	\end{itemize}	
 \end{frame}
 
-\begin{frame}{A deep learning approach: 2}
+\begin{frame}{A deep learning approach: II}
 	\begin{itemize}
-	\item $\sigma(\cdot)$ is a nonlinear function applied element-wise (e.g., $\max\{\cdot,0\}$, Sigmoid, Tanh,...).
-	\smallskip
-	\item $\Theta \equiv \{b_1,W_1,b_2,W_2\}$ are the coefficients, in this example $M = PQ+P+P+1$.
+
+	\item $\Theta \equiv \{b_1,W_1,b_2,W_2\}$ are the coefficients, in this example $M = PQ+P+P+1$.\smallskip
 	\item Making it ``deeper" by adding another ``layer":
 	\begin{align*}
 		\hat{\psi}(x;\theta)\equiv W_3\cdot\sigma(W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2)+b_3.
 	\end{align*}
+	\item Think of deep neural networks as \emphcolor{parametric functions}.\smallskip
 	\item Architecture of the neural networks can be flexibly informed by the economic insight and theory.\smallskip
 	\begin{itemize}
 		\item The \emphcolor{Symmetry} paper heavily relies on this.
@@ -221,20 +222,16 @@
 
 \begin{itemize}
 	\item If the number of parameters is much larger than the grid points (i.e. $M\gg N$), there might be many interpolating solutions.
-	\item \emphcolor{So which solution are we going to find?} I will come back to this.
+	\item So \emphcolor{which solution(s)} are we going to find? .
 	\begin{itemize}
-		\item The \emphcolor{Spooky} paper will try to shed light on this for some economic applications.
+		\item I will come back to this in the \emphcolor{Spooky} paper.
 	\end{itemize}
 \end{itemize}
 
 \end{frame}	
 
 
-
-\begin{frame}
-	\emphcolor{Upto here}
-\end{frame}
-
+\section{\textcolor{PennBlue}{Exploiting Symmetry in High-Dimensional Dynamic Programming}}
 
 \begin{frame}{Motivation}
 	\begin{itemize}
@@ -255,92 +252,9 @@
 			\item \emphcolor{No (non-heuristic)} algorithm exists providing \emphcolor{global} solutions in the presence of aggregate uncertainty.  
 		\end{itemize}	
 	\end{itemize}	
-	
-		%\item Solve heterogenous agent models defined with standard recursive equilibria we know (and love!)\vspace{0.1in}
-
-		%\item  Many  dynamic models in macro (also IO and trade) have a finite number of agents:\vspace{0.1in}
-
-		      %\begin{itemize}
-				%  \item Industry dynamics with many firms, agents and industries.\vspace{0.1in}
-				
-			     % \item Many locations (countries, regions, metropolitan areas, industries).\vspace{0.1in}
-				%\item Models of networks.\vspace{0.1in}
-			      %\item Even bread-and-butter heterogeneous agent labor models (e.g., overlapping generations, different types)\vspace{0.1in}
-		      %\end{itemize}\medskip
-
-		
-		%\item We can use ``continuum'' approximations, but have difficulty with aggregate shocks.%, and perturbation solutions have very particular properties (i.e. local to distributional steady states)
-		 %     \vspace{0.1in}
-		%\item \emphcolor{No (non-heuristic) algorithm exists} for global heterogeneous agent models with aggregate shocks\medskip
-		 %     \begin{itemize}
-		%	      \item Krusell-Smith solves related but different problem with behavioral approximations.\medskip
-			      %\item ``Reinforcement learning'' also solves a behavioral variation. %(e.g., $\approx$ adaptive expectations)\medskip
-			      %\item We solve \emphcolor{exact model} with finite number of agents.  %Will not claim convergence towards continuum.
-		%      \end{itemize}
-	%\end{itemize}
+			  
 \end{frame}
 
-% \begin{frame}{Limitations of existing methods}
-
-% 	\begin{itemize}
-% 	\item Aggregate uncertainty and transition dynamics are difficult with a continuum approximation\smallskip
-% 	\begin{itemize}
-% 		\item Krusell-Smith style approaches: powerful but heuristic, require intimate knowledge of problem structure\medskip
-% 		\item Perturbative solutions may lose key economics since local to non-stochastic distributional steady state.\medskip
-% 		% \medskip
-% 		% \item Continuous-time + continuous-state requires perturbative solutions (i.e., SPDE).\vspace{0.1in}
-% 		% \item Approximating evolution of distributions, so the dimensionality must be small.
-% 	\end{itemize}
-% 	% \bigskip
-% 	% \item In cases where the assumptions underlying perturbative solutions make sense, these immediate methods won't yield d
-% 	% \item Krusell-Smith style approaches are extremely powerful but heuristic.  Is there a general theory which explains why they work, and also how far they can be pushed (e.g. ``deep learning'')?\bigskip	
-% 	\item Many interesting models have a finite number of agents:\vspace{0.1in}
-
-% 	\begin{itemize}
-
-% 	\item Models with many locations (countries, regions, metropolitan areas, industries).\vspace{0.1in}
-
-
-% 	\item Models of industry dynamics with many firms and industries.\vspace{0.1in}
-
-% 	\item Models of networks.\vspace{0.1in}
-% 	\item Even bread-and-butter heterogeneous agent labor models (e.g., overlapping generations, different types)\medskip
-% 	\end{itemize}
-% 	\bigskip
-% 	\item Lots of interesting models we cannot solve (e.g. growth, path-dependence, networks)
-% 	\begin{itemize}
-% 		\item Avoid selection bias: economics driven by the models we can solve vs. the models we need?
-% 	\end{itemize}
-% 	\end{itemize}
-
-% 	\end{frame}
-
-% \begin{frame}{Challenge}
-
-% \begin{itemize}
-
-% \item In (most) models with a finite number of agents and aggregate shocks, agents need to keep track of their own states and the states of everyone else.\vspace{0.1in}
-
-% \item Think about an $N$-locations business cycle model \`a la \textcolor{red}{Backus, Kehoe, and Kydland (1992)}: the agent in location $n$ needs to know her own 8 states and the 8 states in each of the other $N-1$ locations.\vspace{0.1in} 
-
-% \item With $N = 50$ (U.S. states), number of state variables is $400$.\vspace{0.1in}
-
-% \item How do you solve a model with $400$ state variables?\vspace{0.1in}
-
-% \begin{enumerate}
-
-% \item What about perturbation \`a la \textcolor{red}{Judd and Guu (1993)}? Problems are often inherently nonlinear (e.g., occasionally binding constraints) or non-ergodic (e.g., no steady states, large transitional dynamics).\vspace{0.1in}
-
-% \item What about sparse grids? Even the most aggressive approaches \`a la \textcolor{red}{Brumm and Scheidegger (2017)} cannot be pushed beyond 30 state variables in most real life applications.\vspace{0.1in} 
-
-% \item What about something that looks like \textcolor{red}{Krusell and Smith (1998)}? Wait for it!
-
-% \end{enumerate}
-% \vspace{0.1in}
-% \item We will start with a generalization of  \textcolor{red}{\cite{LucasPrescott1971}}, then suggest extensions.
-% \end{itemize}
-
-% \end{frame}
 
 \begin{frame}{Challenges: the curse of dimensionality in equilibrium models}
 	 Three components to the curse of dimensionality with many agents (\textcolor{red}{Bellman, 1958, p. IX})\vspace{0.1in}
@@ -359,6 +273,7 @@
 		      \end{enumerate}
 \end{frame}
 
+
 \begin{frame}{Contribution}
 	Inspired by economic theory, providing novel method for \emphcolor{globally} solving high-dimensional heterogeneous agent models with \emphcolor{aggregate shocks} which relies on:\vspace{0.1in}
 	\begin{enumerate}
@@ -375,32 +290,12 @@
 			\item More agents makes it easier to forecast the evolution of distributions. \vspace{0.1in}  
 		\end{itemize}	 
 
-		\item We show how to implement the symmetry when using \emphcolor{deep neural networks}. \vspace{0.1in} 
+		\item Show how to implement the symmetry when using \emphcolor{deep neural networks}. \vspace{0.1in} 
 		
 	\end{enumerate}
 With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and even more) agents which was \emphcolor{not possible} before.
 \end{frame}
 
-
-%\begin{frame}{Why am I presenting this?}
-%	\begin{itemize}
-%		\item This paper uses an example from macroeconomics:\vspace{0.1in}
-%		\begin{itemize}
-%			\item It can be applied to non-macro situations.
-%			\vspace{0.1in}
-%			\item The non-strategic assumption can be relaxed, this is just an example.
-%			\vspace{0.1in}
-%		\end{itemize}		
-%		\item Combining \emphcolor{deep learning} and \emphcolor{economic theory} can help us to solve problems that were not solvable before:			\vspace{0.1in}
-%		\begin{itemize}
-%			\item High-dimensional optimal control problems, ODEs.			\vspace{0.1in}
-%			\item High-dimensional PDEs.			\vspace{0.1in}
-%			\item Even high-dimensional fixed points problems. \vspace{0.1in}
-%		\end{itemize}
-		
-%	\end{itemize}
-	
-%\end{frame}
 
 \begin{frame}{Literature Review}
 	\begin{itemize}
@@ -413,207 +308,6 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 
 	\end{itemize}
 \end{frame}
-
-\section{\textcolor{PennBlue}{Background: Deep learning for functional equations}}
-
-\begin{frame}
-	\frametitle{Equilibrium conditions as functional equations}
-	Most theoretical models in economics with equilibrium conditions can be written as functional equations:
-	\begin{itemize}
-		\item Take some function(s) $\psi \in \varPsi$ where $\psi : \Xdom\to \Yrange$ (e.g. asset price, investment choice, best-response).\vspace{0.1in}
-		\item Domain $\Xdom$ could be state (e.g. dividends, capital, opponents state) or time if sequential.\vspace{0.1in}
-		\item The ``model'' is $\ell: \varPsi \times \Xdom \rightarrow \Resid$ (e.g., Euler and Bellman residuals, equilibrium FOCs).\vspace{0.1in}
-		\item The solution is the root of the model (residuals operator), i.e., $\mathbf{0} \in \Resid$, at each $x \in \Xdom$.\vspace{0.1in}
-	\end{itemize}
-	Then a \emphcolor{solution} is a $\psi^*\in \varPsi$ where $\ell(\psi^*,x) = 0$ for all $x \in \Xdom$.  How do we find an approximate solution?\vspace{0.1in}
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Classical solution method for functional equations}
-	
-	Quick \emphcolor{review} of collocation-like methods:
-	
-	\begin{enumerate}
-		\item \emphcolor{Pick} finite set of $D$ points $\Xtrain \subset \Xdom$ (e.g., a grid).
-		\smallskip
-		\item \emphcolor{Choose} approximation $\hat{\psi}(\cdot;\theta) \in \mathcal{H}(\Theta)$ with coefficients $\Theta \subseteq \R^M$ (e.g., Chebyshev polynomials).
-		\smallskip
-		\item \emphcolor{Fit} with nonlinear least-squares 
-		$$
-		\min_{\theta \in \Theta} \sum_{x \in \Xtrain} \ell(\hat{\psi}(\cdot;\theta),x)^2
-		$$
-		\smallskip
-		If $\theta \in \Theta$ is such that $\ell(\hat{\psi}(\cdot;\theta),x) = 0$ for all $x \in \Xtrain$ we say $\hat{\psi}(\cdot;\theta)$ \emphcolor{interpolates} $\Xtrain$.
-		\smallskip
-		\item The goal is to have good \emphcolor{generalization}:
-		\begin{itemize}\smallskip
-			\item The approximate function is close to the solution outside of $\Xtrain$.\smallskip
-		\end{itemize}
-	\end{enumerate}
-\end{frame}
-
-
-
-%\begin{frame}
-%	\frametitle{Interpolation solutions for solving functional equations}
-%	Classic approach: use class of functions with finite parameters and interpolate a finite number of points
-%	\begin{enumerate}
-%		\item \emphcolor{Pick} finite set of $N$ points $\Xtrain \subset \Xdom$ (e.g., a grid).
-%		      \smallskip
-%		\item \emphcolor{Choose} approximation $\hat{f}(\cdot;\theta) \in \mathcal{H}(\Theta)$ with parameters $\Theta \subseteq \R^M$ (e.g., polynomials, splines).
-%		      \smallskip
-%		\item \emphcolor{Fit} with nonlinear least-squares for a general $M \gtreqless N$
-%		      $$
-%			      \min_{\theta \in \Theta} \sum_{x \in \Xtrain} \ell(\hat{f}(\cdot;\theta),x)^2
-%		      $$
-%		      \begin{itemize}
-			      %   \item If $M = N$ and $\mathcal{H}(\Theta)$ functions span $\R^N$ can solve nonlinear system (e.g., Chebyshev collocation).
-%			      \item If $\theta \in \Theta$ is such that $\ell(\hat{f}(\cdot;\theta),x) = 0$ for all $x \in \Xtrain$ we say it \emphcolor{interpolates} $\Xtrain$.
-%		      \end{itemize}
-%		      \vspace{0.1in}
-%		\item \emphcolor{Verify} that $\hat{f}(x;\theta) \approx f^*(x)$ for $x \in \Xdom \setminus \Xtrain$.  i.e., has low \emphcolor{generalization error}
-%		      \begin{itemize}
-%			      \item For $M \geq N$ we usually interpolate exactly ( and hence $\hat{f}(x;\theta) \approx f^*(x)$ for $x \in \Xtrain$).
-			            %   \item In practice, we tinker with $\mathcal{H}, \Theta$ and $\Xtrain$ until error no longer seems to be an issue.
-			            %\item More generally, our goal is to minimize $\|\hat{f}(\cdot;\theta) - f^*\|_S$ for function norm $S$ on $\Xdom$
-%		      \end{itemize}
-%	\end{enumerate}\bigskip
-%	\emphcolor{Deep learning} here just enables ``pick, choose, fit, hope'' with more flexibility using \emphcolor{economic insights}.
-%\end{frame}
-
-%\begin{frame}{``Modern'' ML is massively overparameterized}
-
-%	\emphcolor{Deep learning} here is \emphcolor{highly-overparameterized} $\mathcal{H}$ (i.e. $M \gg N$) designed for good generalization:
-%	\begin{itemize}
-%		\item Choose $\mathcal{H}$ using economic insights (e.g. encode symmetry) given problem structure from $\ell$ and $\F$\bigskip
-		%\item Composing $\mathcal{H}$ from multiple functions (e.g., ``deep''er) tends to generalize better in practice.
-		 %     \bigskip
-%		\item For example, if $f : \R^Q \to \R$ could choose $\hat{f}(x;\theta) \equiv W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2$:\smallskip
-%		      \begin{itemize}
-%			      \item $\sigma(\cdot) = max(0, \cdot)$ element-wise (i.e. ReLU in CS literature) but many variations.\smallskip
-%			      \item $W_1 \in \mathbb{R}^{P\times Q}, b_1 \in \mathbb{R}^P, W_2 \in \mathbb{R}^P,$ and $b_2 \in \mathbb{R}$, and $\theta \in \Theta \equiv \{b_1, W_1, b_2, W_2\}$\smallskip
-
-			            %\item $\theta \in \Theta \equiv \{b_1, W_1, b_2, W_2\}$ and $M = P Q + P + P + 1$.
-%			      \item Try adding another ``layer'': $\hat{f}(x;\theta) \equiv W_3 \cdot \sigma(W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2)+b_3$ or more structure.
-			            %   \item Let's generically call these $NN(\theta)$ and explain structure when it matters.
-%		      \end{itemize}
-%		      \bigskip
-%		\item Software (e.g., PyTorch) makes it easy to experiment with different $\mathcal{H}$ (i.e., neural networks), manage the $\theta$, calculate $\nabla_{\theta}\ell(\hat{f}(\cdot;\theta),x)$ required for optimizers (i.e., auto-differentiation)
-		      %   \begin{itemize}
-		      % 	  \item But otherwise, the method and objective is the same as before, i.e. $\min\limits_{\theta \in \Theta} \sum_{x \in \Xtrain} \ell(\hat{f}(\cdot;\theta),x)^2$.					 
-		      %   \end{itemize}
-%	\end{itemize}
-%\end{frame}
-
-
-%\begin{frame}
-%	\frametitle{Deep learning optimizes in a space of functions}
-%	\begin{itemize}
-%		\item $\mathcal{H}(\Theta)$ is more general, but the objective hasn't changed i.e. $\min\limits_{\theta \in \Theta} \sum_{x \in \Xtrain} \ell(\hat{f}(\cdot;\theta),x)^2$.					 \bigskip
-%		\item Since $M \gg N$, massive multiplicity of $\theta$ where $\hat{f}(\cdot;\theta)$ interpolates, and objective value $\approx 0$\bigskip
-
-		      % \item Since $M \gg N$ has an enormous number of solutions for $\theta \in \Theta$ with zero loss\bigskip% (e.g., $\theta_1$ and $\theta_2$),
-		      %   \begin{enumerate}
-		      % 	  \item Agree only on ``data'': $\hat{f}(x;\theta_1) \approx \hat{f}(x;\theta_2)$ for $x \in \Xtrain$.\smallskip
-		      % 	  \item Agree everywhere: $\hat{f}(x;\theta_1) \approx \hat{f}(x;\theta_2)$ for $x \in \Xdom$.  Alternatively, $||\hat{f}(\cdot;\theta_1) - \hat{f}(\cdot;\theta_2)||_S\approx 0$.
-		      %   \end{enumerate}
-		      %   \medskip
-
-%		\item Since individual $\theta$ are irrelevant it is helpful to think of optimization directly within $\mathcal{H}$
-		      %\item Drop the $\theta$ notation to emphasize intuition of optimizing within a function space
-%		      \begin{empheq}[box=\tcbhighmath]{equation}
-%			      \min_{\hat{f} \in \mathcal{H}} \sum_{x \in \Xtrain} \ell(\hat{f},x)^2\label{eq:functional-optimization}
-%		      \end{empheq}
-%		      \medskip
-%	\end{itemize}
-%	\center{\Large Which $\hat{f}$?}
-%\end{frame}
-
-%\begin{frame}
-%	\frametitle{Deep learning optimizes in a space of functions}
-%	\begin{itemize}
-%		\item Since $M \gg N$ has an enormous number of solutions (e.g., $\theta_1$ and $\theta_2$)  they may
-%		      \begin{enumerate}
-%			      \item Agree only on ``data'': $\hat{f}(x;\theta_1) \approx \hat{f}(x;\theta_2)$ for $x \in \Xtrain$\smallskip
-%			      \item Agree everywhere: $\hat{f}(x;\theta_1) \approx \hat{f}(x;\theta_2)$ for $x \in \Xdom$.  Alternatively, $||\hat{f}(\cdot;\theta_1) - \hat{f}(\cdot;\theta_2)||_S\approx 0$.
-%		      \end{enumerate}
-%		      \medskip
-
-%		\item Since individual $\theta$ are irrelevant it is helpful to think of optimization directly within $\mathcal{H}$
-%\item Drop the $\theta$ notation to emphasize intuition of optimizing within a function space
-%		      \begin{empheq}[box=\tcbhighmath]{equation}
-%			      \min_{\hat{f} \in \mathcal{H}} \sum_{x \in \Xtrain} \ell(\hat{f},x)^2\label{eq:functional-optimization}
-%		      \end{empheq}
-%		      \medskip
-%		\item Suggests caution in using intuition from our difficulty fitting this objective when $M$ is small
-%		      \begin{itemize}
-%		\item Multiplicity isn't a problem if $\|\cdot\|_S$ agrees.  The parameters themselves are meaningless
-%			      \item Relevant convergence is on $\hat{f}(\cdot;\theta)$ and not on $\theta$ itself once you have enough parameters
-%			      \item While $\theta$ isn't unique, $\hat{f}$ may still be (approximately) unique with equivalence class for some notion of distance in the space of functions % it may not even converge
-%		      \end{itemize}\medskip
-%		\item Since $M \gg N$, $\hat{f}$ always interpolates and the objective value in \cref{eq:functional-optimization} will always be $\approx 0$
-
-%	\end{itemize}
-%\end{frame}
-
-%\begin{frame}[label = DL_Minnorm]
-%	\frametitle{Deep learning optimization interpolates with an ``inductive bias''}
-%	\begin{itemize}
-%		\item \emphcolor{Counterintuitively:} for $M$ large enough, optimizers \emphcolor{tend to} converge towards something \emphcolor{unique} $\hat{f}$ in equivalence class from some $\|\cdot\|_S$ define on $x \in \Xdom$ (i.e., not just at interpolated ``data'').
-		      % \begin{enumerate}
-		      % 	\item Interpolating solution (not surprising since $M \gg N$) with $\hat{f}(x) \approx f^*(x)$ for $x \in \Xtrain$
-		      % 	\item A unique $\hat{f}(x)$ for $x \in \Xdom$ (again, not unique $\theta$ of course) even from random $\Theta$ initial conditions% (i.e., not unique $\theta$, but within equivalence class of $||\hat{f}_1 - \hat{f}_2||_S\approx 0$)
-		      % \end{enumerate}
-%		      \medskip
-%		\item \emphcolor{Mental model:} chooses min-norm interpolating solution for a (usually) unknown functional norm $S$
-%		      \begin{empheq}[box=\tcbhighmath]{align*}
-%			      \min_{\hat{f}\in \mathcal{H}}\,\, &||\hat{f}||_S\\
-%			      \st \,\,& \ell(\hat{f},x)=0,\quad \text{ for } x \in \Xtrain
-%		      \end{empheq}
-%		      \vspace{-0.1in}
-
-%		      \begin{itemize}
-%			      \item CS literature refers to this as the \emphcolor{inductive bias}: optimization process biased towards particular $\hat{f}$\smallskip
-
-			            %\item Characterizing $S$ (e.g., Sobolev?) is an active research area in CS at the heart of deep learning theory.\smallskip
-
-%			      \item Intuition is that it may choose the interpolating solutions which are flattest and have smallest derivatives.
-%		      \end{itemize}\medskip
-%		\item Is $\|\hat{f} - f^*\|_S$ small (i.e., does the min-norm solution generalize well)?\smallskip
-%		      \begin{itemize}
-%			      \item ``No free lunch theorem'' in optimization/ML. Depends on $\ell,\mathcal{H}$ and $\Xtrain$.\medskip
-%		      \end{itemize}
-%	\end{itemize}
-
-%	\emphcolor{In this paper:} show how to design $\mathcal{H}$; and implement expectations in $\ell$ to solve high-dimensional equilibria with finite numbers of agents which generalize well on $\Xdom$ given $x_0$% from initial condition $x_0\in\Xdom$.%we describe how the $\min_{\hat{f}\in \mathcal{H}} ||\hat{f}||_S$ solutions are also the ones which  automatically fulfill transversality/etc. in dynamic models---and hence are disciplined by long run boundary conditions.
-%\end{frame}
-
-\begin{frame}{Deep Neural Networks}
-	\emphcolor{Deep learning} is \emphcolor{highly-overparameterized} $\mathcal{H}(\Theta)$ ($M\gg D$) designed for good generalization.
-	\begin{itemize}
-
-		\item Example: one layer neural network, $\hat{\psi} : \mathbb{R}^Q\rightarrow \mathbb{R}$:
-		\begin{equation*}
-			\hat{\psi}(x;\theta) = W_2 \cdot \sigma \left(W_1\cdot x+b_1\right)+b_2
-		\end{equation*}
-		\vspace{0.1in}
-		\item $W_1\in \mathbb{R}^{P\times Q}$, $b_1\in \mathbb{R}^{P\times 1}$, $W_2 \in \mathbb{R}^{1\times P}$, and $b_2 \in \mathbb{R}$.
-		\vspace{0.1in} 
-		\item $\sigma(\cdot)$ is a nonlinear function applied element-wise (e.g., $\max\{\cdot,0\}$).
-		\vspace{0.1in}
-		\item $\Theta \equiv \{b_1,W_1,b_2,W_2\}$ are the coefficients, in this example $M = PQ+P+P+1$.\vspace{0.1in}
-		\item Making it ``deeper" by adding another ``layer":
-			$\hat{\psi}(x;\theta)\equiv W_3\cdot\sigma(W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2)+b_3.$
-	\end{itemize}	
-\begin{itemize}
-	\item Very flexible to design $\mathcal{H}(\Theta)$ using economic insights (e.g., encode symmetry).\vspace{0.1in}
-	\item Composing $\mathcal{H}(\Theta)$ from multiple function (e.g., deeper) tend to \emphcolor{generalize better} better in practice.\vspace{0.1in}
-\end{itemize}
-\end{frame}
-
-
-
 
 %%%%%%%%%%%
 		\section{Application}
@@ -651,7 +345,9 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 			\end{enumerate}
 		\end{frame}
 	
-	\begin{frame}{Investment under uncertainty}
+		
+	
+\begin{frame}{Investment under uncertainty}
 		
 		\begin{itemize}
 			
@@ -668,7 +364,7 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 			
 			\item The firm does not consider the impact of its individual decisions on $p(X)$. \vspace{0.1in}
 			
-			\item Due to adjustment frictions, investing $u$ has a cost $\frac{\gamma}{2}u^2$.\vspace{0.1in}
+			\item Adjustment cost: investing $u$ has a cost $\frac{\gamma}{2}u^2$.\vspace{0.1in}
 			
 			\item Law of motion for capital $x' = (1-\delta)x + u + \sigma w + \eta \omega$ where $w \sim \mathcal{N}(0,1)$ an i.i.d. idiosyncratic shock,  and $\omega \sim \mathcal{N}(0,1)$ an i.i.d. aggregate shock, common to all firms.\vspace{0.1in}
 			
@@ -676,9 +372,10 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 			
 		\end{itemize}
 		
-	\end{frame}
-	
-	\begin{frame}{Recursive problem}
+\end{frame}
+
+
+\begin{frame}{Recursive problem}
 	
 	
 	The recursive problem of the firm taking the exogenous policy $\hat{u}(\cdot, X)$ for all other firms as given is:
@@ -686,7 +383,7 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 		v(x,X)       & =\max_{u}\left\{p(X)x -  \frac{\gamma}{2} u^2 + \beta \expec{v(x',X')}\right\}                      \\
 		\text{s.t. } & x' = (1-\delta)x + u + \sigma w + \eta \omega                                                       \\
 		& X'_i = (1-\delta)X_i + \hat{u}(X_i,X) + \sigma W_i + \eta \omega,\quad\text{for } i \in \{1,...,N\}\end{align*}
-	Take FOCs and equation using standard steps to write equilibrium as the LOM and Euler equation
+	First order conditions + \emphcolor{symmetric equilibrium}
 	\begin{empheq}[box=\tcbhighmath]{equation*}
 		\gamma u(x,X) = \beta \expec{p(X')+\gamma (1-\delta) u(x',X') }
 	\end{empheq}
@@ -695,7 +392,7 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 	\center{\Large Design $\mathcal{H}(\Theta)$ class for approximating $u(x,X)$?}
 
 \end{frame}
-	
+
 	
 	\begin{frame}{General class of problems: A ``big $X$, little $x$" dynamic programming}
 		\begin{empheq}[box=\tcbhighmath]{align*}
@@ -726,6 +423,7 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 		%\end{enumerate}
 	\end{frame}
 
+
 		
 \begin{frame}[label = permutationgroup]{Permutation Groups}
 	
@@ -748,6 +446,8 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 		\item (If you know about this): $\mathcal{S}_N$ is the \textcolor{blue}{\textit{symmetric group}} under matrix multiplication.\vspace{0.1in}
 	\end{itemize}
 \end{frame}
+
+
 
 \begin{frame}{Permutation-invariant dynamic programming}
 \begin{definition}
@@ -795,11 +495,8 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 		\begin{frame}{Curse of dimensionality in this example}
 			Recall there are three separate sources of the ``curse'' here as we increase the number of agents:
 			\begin{enumerate}
-				\item Can we approximate $u(x,X)$ for high dimensional $X\in \R^N$ without massive increases in the $\Xdom$ grid?
-					  \begin{itemize}
-						  \item Only if the approximation of $u(x,X)$ generalizes well from limited $\Xtrain$.\smallskip
-						  %\item With smart and economics informed $\mathcal{H}(\Theta)$  might generalize well for small $\Xtrain$.
-					  \end{itemize}\medskip
+				\item Can we approximate $u(x,X)$ for high dimensional $X\in \R^N$ without massive increases in the $\Xtrain$ grid?\medskip
+					
 		
 				\item Given intuition that individual $X_i \in X$ have limited effect on $u(x,X)$, how to calculate $\expec{u(x',X')}$?\smallskip
 					  \begin{itemize}
@@ -808,16 +505,12 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 					  \end{itemize}\medskip
 				\item What about the stationary solutions and transversality condition?\smallskip
 					  \begin{itemize}
-						  \item Euler equation have multiple solutions, some leading to non-stationary paths. See \textcolor{red}{Ebrahimi Kahou et al.\smallskip (2022)}.
-						  %\item Do we need to calculate the steady-state (ergodic distribution)?
-						  
-						  \smallskip
-						  \item If time permits: I will come back to this.
+						  \item Euler equation have multiple solutions, some leading to non-stationary paths (I will come back to this).  
 					  \end{itemize}
 			\end{enumerate}
 		\end{frame}
 		
-		\begin{frame}{Main result I: Representation of permutation-invariant functions }
+		\begin{frame}{Representation of permutation-invariant functions }
 		
 			\metroset{block=fill}
 			\begin{proposition}{ (based on Wagstaff et al., 2019)}
@@ -832,7 +525,6 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 				\vspace{-0.1in}
 			\end{proposition}
 		\end{frame}
-	
 	
 	\begin{frame}{Representation of permutation-invariant functions: Discussion and intuition}
 		
@@ -856,8 +548,33 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 	%		\item In this example, only sum (first moment matters), $\phi$ is the identity function, $f(X_1,\ldots,X_N) = \rho(\frac{1}{N}\sum_{i=1}^N X_i)$.
 	%	\end{itemize}
 	\end{frame}
-		
+
+\begin{frame}{Representation of permutation-invariant functions: Discussion and intuition}
+	\begin{itemize}
+			\item We have seen a \emphcolor{variation} of this in IO.\smallskip
+			\begin{itemize}
+				\item Exit/Entry problems, $X_i \in\{0,1\}$.\medskip
+			\end{itemize}
+			\item  Remember the example with $266$ states, binary values (zeros and ones)\smallskip
+			\begin{itemize}
+				\item  $f(x,X):2^{N+1} \rightarrow \mathbb{R}$.\smallskip
+				\item If permutation invariant: I only care about the \emphcolor{number of ones}.\smallskip
+				\item The dimensionality goes from $2^{N+1}$ to  $N+2$.\smallskip
+				\begin{align*}
+					f(x,X) = \hat{f}(x,\frac{1}{N} \sum_{i=1}^N X_i)
+				\end{align*}
+			\end{itemize} 
+		\begin{center}
+					\emphcolor{But in this paper $X_i$s are continuous variables.}
+		\end{center}
+
+	\end{itemize}
+
+\end{frame}
+
+
 \begin{frame}{Expected gradient bounded in $N$}
+	We need to focus on specific functions to deal with high-dimensional expectations:
 	\begin{definition}[Expected gradient bounded in $N$] Let $f:\mathbb{R}^N\rightarrow \mathbb{R}$ be a bounded function in $N$ and $z\sim \mathcal{N}(\mathbf{0}_N,\mathbf{I}_N)$ be a normalized Gaussian random vector. The function $f$ has its expected gradient bounded in $N$ if there exists a $C$ such that:
 		\begin{equation*}
 			\expec{\|\nabla f(z)\|^2} \leq \frac{C}{N},
@@ -866,13 +583,14 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 	\end{definition}	
 $$ \mathbb{E}_W \left[\|\nabla u(x',X')\|^2\right] \leq \frac{C}{N}$$
 \begin{itemize}
-	\item The policy to be well-behaved (non-explosive gradients).\vspace{0.1in}
-	\item Other agent's influence vanishes.
+	\item $W$: the idiosyncratic shocks of the rest of the agents in the economy.\smallskip
+	\item The policy to be well-behaved (non-explosive gradients).\smallskip
+	\item Other agent's influence vanishes as the economy grows.
 \end{itemize}
 \end{frame}
 		
 		
-		\begin{frame}[label=concentration]{Main result II: Concentration of measure}\label{Concentration}
+\begin{frame}[label=concentration]{Main result II: Concentration of measure}\label{Concentration}
 			\metroset{block=fill}
 			\begin{proposition}
 				Suppose $z \sim \mathcal{N}(\mathbf{0}_N,\Sigma)$, where the spectral radius of $\Sigma$, denoted by $\rho(\Sigma)$, is independent of $N$, $z^1$ a draw from $z$, and $f:\mathbb{R}^N \rightarrow \mathbb{R}$ is a function with expected gradient bounded in $N$. Then:
@@ -890,11 +608,11 @@ $$ \mathbb{E}_W \left[\|\nabla u(x',X')\|^2\right] \leq \frac{C}{N}$$
 			\begin{itemize}
 				\item $\mathbb{E}_W[u(x', X')|w, \omega]\approx u(x',X')|w,\omega$.\vspace{0.1in} 
 				\item Reducing an $N+1$-dimensional conditional expectation to a $2$-D one (with good approximation). 
-			\end{itemize}
+\end{itemize}
 %\hyperlink{Bounded}{\beamerskipbutton{Expected gradient bounded  in $N$}}		
 \end{frame}
 
-\begin{frame}{Summarizing results}
+\begin{frame}{Summarizing the results}
 	\begin{itemize}
 		\item The structure symmetry imposes on the functions leads to better \emphcolor{generalization}\vspace{0.1in}
 		\begin{itemize}
@@ -946,45 +664,23 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 		\item In all cases, $\rho$ is a highly over-parameterized neural network with four layers.\vspace{0.1in}
 		\item  The baseline $\phi(\text{Identity})$, $\phi(\text{Moments})$, and  $\phi(\text{ReLU})$ have $\mapvar{Identity_parameters}$, $\mapvar{Moments_parameters}$, and $\mapvar{ReLU_parameters}$ coefficients. %respectively.
 \end{itemize}
-			
-	\end{frame}
-	
-	
-	
-	% \begin{frame}{Architecture using summary statistics as moments for $\phi$}
-	
-	% 	\begin{figure}[h!]
-	% 	\begin{center}
-	% 	\includegraphics[width=\linewidth]{../figures/moments_euler_network.pdf}
-	% 	\end{center}
-	% 	\end{figure}
-	
-	% 	\end{frame}
-	
-	% 	\begin{frame}{Architecture using neural networks (e.g. ReLU) for $\phi$}
-	
-	% 	\begin{figure}[h!]
-	% 	\begin{center}
-	% 	\includegraphics[width=\linewidth]{../figures/deep_sets_net.pdf}
-	% 	\end{center}
-	% 	\end{figure}
-	% 	\end{frame}				
-	
-	\begin{frame}
-		\frametitle{Solution method follows ``interpolation'' methods}
-		\begin{enumerate}
-			\item \emphcolor{Pick}: $\Xtrain$ as simulated trajectories from $X_0$:\vspace{0.1in}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Solution method follows ``interpolation'' methods}
+	\begin{enumerate}
+		\item \emphcolor{Pick}: $\Xtrain$ as simulated trajectories from $X_0$:\vspace{0.1in}
 			\begin{itemize}
 				\item Only need $100$ to $1000$ points regardless of dimensionality of the state space $N$.\vspace{0.1in}
-				\item Because we use economic insight, i.e., symmetry which gives us good generalization. \vspace{0.1in}
+				\item Using economic insight (i.e., symmetry) gives us good generalization. \vspace{0.1in}
 			\end{itemize}
-			\item \emphcolor{Choose}:  Design the $\mathcal{H}(\Theta)$ with $\rho$ and $\phi$ as discussed:\vspace{0.1in}
+		\item \emphcolor{Choose}:  Design the $\mathcal{H}(\Theta)$ with $\rho$ and $\phi$ as discussed:\vspace{0.1in}
 			\begin{itemize}
 				\item $\phi(\text{Identity})$, $\phi(\text{Moments})$, and  $\phi(\text{ReLU})$.\vspace{0.1in}
 			\end{itemize}
    \end{enumerate}
-
-	Utilizing concentration of measures:\vspace{0.1in}
+	
+	Applying concentration of measures:\vspace{0.1in}
 	\begin{itemize}
 		\item\emphcolor{One} draw $\hat{W}= \{\hat{W}_1,\ldots,\hat{W}_N\}$ of the idiosyncratic shocks. For a given $u(\cdot;\theta)$, and aggregate shock $\omega$ calculate:
 		\begin{align*}
@@ -992,7 +688,8 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 		\end{align*}
 	\end{itemize}		 
 	\end{frame}
-	
+
+
 	\begin{frame}[label= algo]{Solution method follows ``interpolation'' methods}
 		\begin{itemize}
 			\item Approximate the Euler residuals
@@ -1006,7 +703,7 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 		  $$
 		  \min_{\theta \in \Theta} \sum_{X \in \Xtrain} \varepsilon\left(X;\hat{u}(\cdot;\theta)\right)^2
 		    $$ 
-	    \item  \emphcolor{How to Verify/Test}: Given the approximate solution simulate new paths from $X_0$ and check the Euler residuals ($\varepsilon$). 
+	    \item  \emphcolor{How to Verify/Test}: Given the \emphcolor{approximate} solution simulate \emphcolor{new paths} from $X_0$ and check the Euler residuals ($\varepsilon$). 
 	\end{enumerate}
 	\center{\large Study two cases: linear ($\nu = 1$) and nonlinear ($\nu>1$) demand functions}
 	\end{frame}
@@ -1049,19 +746,19 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 	% \end{frame}
 
 			
-			\begin{frame}{Case 1: Linear to verify algorithms and methods}
+\begin{frame}{Case 1: Linear to verify algorithms and methods}
 			
-			\begin{itemize}
+	\begin{itemize}
 			
-			\item With $\nu=1$, we have a linear demand function:  $p(X) = 1 -  \frac{1}{N}\sum_{i=1}^N X_i$.\vspace{0.1in}
+		\item With $\nu=1$, we have a linear demand function:  $p(X) = 1 -  \frac{1}{N}\sum_{i=1}^N X_i$.\vspace{0.1in}
 			
-			\item It generates a Linear-Quadratic (LQ) dynamic programming problem (only the mean of $X_i$ matters).\vspace{0.1in}
+		\item It generates a Linear-Quadratic (LQ) dynamic programming problem (only the mean of $X_i$ matters).\vspace{0.1in}
 			
-			\item We can find the exact $u(x, X)$, LQ has algebraic solutions.\vspace{0.1in}
+		\item We can find the exact $u(x, X)$, LQ has algebraic solutions.\vspace{0.1in}
 			
-			\item The LQ solution gives us a benchmark against which we can compare our deep learning solution.\vspace{0.1in}
+		\item The LQ solution gives us a benchmark against which we can compare our deep learning solution.\vspace{0.1in}
 			
-			\item The neural network figures out very quickly that the solution is $u(x, X) = H_0 +\frac{1}{N}H_1\sum_{i=1}^N X_i$ and finds a high-dimensional approximation which matches that for the training grid.\vspace{0.1in}
+		\item The neural network figures learns the true solution, $u(x,X)= H_0 +H_1 \frac{1}{N}\sum_{i=1}^N X_i$, very quickly. \vspace{0.1in}
 			
 			%\item We also compute a modified linear regulator solution with \textcolor{blue}{\textit{one}} Monte Carlo draw instead of setting the individual shocks to zero: illustrates how concentration of measure works.\vspace{0.1in}
 			
@@ -1069,24 +766,26 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 			
 			\end{itemize}
 			
-			\end{frame}
+\end{frame}
 			
-			
-			\begin{frame}{Euler residuals: Linear case}
+\begin{frame}{Euler residuals: Linear case}
 			
 			\begin{figure}[h!]
 			\centering
-			\includegraphics[height = 2.3in]{./figures/identity_moments_deep_sets_linear_relative}
-			\caption{The Euler residuals for $\nu = 1$ and $N=\mapvar{N}$ for $\phi(\text{Identity})$, $\phi(\text{Moments})$, and $\phi(\text{ReLU})$. The dark blue curve shows the average residuals along equilibrium paths for $\mapvar{test_trajectories}$ different trajectories. The shaded areas depict the $2.5$th and $97.5$th percentiles.}
-			\end{figure}
-			
+			\includegraphics[height = 2.0in]{./figures/identity_moments_deep_sets_linear_relative}
+			\caption{The absolute relative errors for $\nu = 1$ and $N=\mapvar{N}$ for $\phi(\text{Identity})$, $\phi(\text{Moments})$, and $\phi(\text{ReLU})$. The dark blue curve shows the median errors along equilibrium paths for \emphcolor{$\mapvar{num_seeds}$ seeds} and $\mapvar{test_trajectories}$ different trajectories.}
+			\end{figure} 
+		\begin{center}
+				$\varepsilon \equiv \big|\frac{u(X)- \hat{u}(X)}{u(X)} \big|$
+		\end{center}
+		
 			\end{frame}
 			
 			\begin{frame}{Equilibrium Paths: Linear case}
 			
 			\begin{figure}[h!]
 			\centering
-			\includegraphics[width=0.99\linewidth]{./figures/linear-baseline-theory-vs-predicted.pdf}
+			\includegraphics[height = 2.0in]{./figures/linear-baseline-theory-vs-predicted.pdf}
 			\caption{Comparison between baseline approximate solutions and the LQ solution for the case with $\nu= 1$ and $N=\mapvar{N}$.}
 			\end{figure}
 			
@@ -1096,8 +795,8 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 			
 			\begin{figure}[h!]
 			\centering
-			\includegraphics[width=\linewidth]{./figures/deep-sets-linear-profiling-var-n}
-			\caption{Performance of the $\phi(\text{ReLU})$ for different $N$ (median value of 21 trials).}
+			\includegraphics[height = 2.0in]{./figures/deep-sets-linear-profiling-var-n}
+			\caption{Performance of the $\phi(\text{ReLU})$ for different $N$ (median value of $\mapvar{num_seeds}$ trials).}
 			\end{figure}	
 			
 			\end{frame}
@@ -1125,8 +824,8 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 				
 				\begin{figure}[h!]
 				\centering
-				\includegraphics[width=0.65\linewidth]{./figures/moments-deep-sets-nonlinear-residual.pdf}
-				\caption{The Euler residuals for $\nu = \mapvar{nu_nonlinear_baseline}$ and $N=\mapvar{N}$ for $\phi(\text{Moments})$ and $\phi(\text{ReLU})$. The dark blue curve shows the average residuals along equilibrium paths for $\mapvar{test_trajectories}$ different trajectories. The shaded areas depict the $2.5$th and $97.5$th percentiles.}	
+				\includegraphics[height = 2.0in]{./figures/moments-deep-sets-nonlinear-residual.pdf}
+				\caption{The Euler residuals for $\nu = \mapvar{nu_nonlinear_baseline}$ and $N=\mapvar{N}$ for $\phi(\text{Moments})$ and $\phi(\text{ReLU})$. The dark blue curve shows the average residuals along equilibrium paths for \emphcolor{\mapvar{num_seeds}} seeds and $\mapvar{test_trajectories}$ different trajectories.}	
 				\end{figure}
 				
 				\end{frame}
@@ -1148,11 +847,24 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 		\item From statistical learning and numerical analysis we know:\vspace{0.1in}
 		\begin{itemize}
 			\item More coefficients in the family of parametric functions $\mathcal{H}(\Theta)$ leads to over-fitting and poor generalization (bias-variance trade-off).\vspace{0.1in}
-		  \item We have $70K$ parameters, and $<1K$ grid points.\vspace{0.1in}
+		  \item We have $\approx 200K$ parameters, and $<1K$ grid points.\vspace{0.1in}
 			\item The results indicate the opposite: More coefficients $\rightarrow$ better generalization.  \vspace{0.1in}
 		\end{itemize}
 	\end{itemize}
 How come we achieve great generalization?  
+\end{frame}
+
+\begin{frame}{Convergence results: Transversality condition and stationarity}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{table}[h!]
+		\caption{Simulating multiple seeds for different $\mathcal{H}(\Theta)$ with $\nu=1$}\vspace{-0.1in}
+		\begin{center}
+			\resizebox{\textwidth}{!}{\begin{tabular}{c}
+					\input{./figures/linear_baseline_convergence_table.tex}
+			\end{tabular}}
+		\end{center}
+	\end{table}
+	
 \end{frame}
 
 \begin{frame}{Some challenging questions: Multiplicity and transversality puzzle}
@@ -1169,71 +881,26 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 		%\item We can show $|H_1^-| < |H_1^+|$.\vspace{0.1in}
 		\item We have \emphcolor{no explicit} device in our algorithm to weed out the second solution. \vspace{0.1in}
 	\end{itemize}
-	How come we never observe the non-stationary solution in the results? 
+How come there is a strong bias towards the stationary solution
 	\vspace{0.1in}
 	
-	Understanding the \emphcolor{implicit bias} of deep neural networks answers both questions. The \textcolor{red}{Ebrahimi Kahou et al. (2022)} addresses these two challenging questions. 
+	Understanding the \emphcolor{implicit bias} of deep neural networks answers both questions. 
 \end{itemize}
 \end{frame}	
 				
 
-\section{Implicit bias, Generalization, and Stationarity.}
+\section{\textcolor{PennBlue}{Spooky Boundaries at a Distance: Exploring Transversality and Stability with Deep Learning}}
 
-\begin{frame}{Representation with  linear prices}
-	% We chose this model to nest the LQ solution.  If $\nu = 1$ and $\mu = 0$:
-	% \begin{block}{}
-	% \begin{align*}
-	% 	p(X) &= \alpha_0 - \alpha_1 \frac{1}{N}\sum_{\hat{x} \in X}\hat{x}\\
-	% 	u(X) &= \beta \expec{P(X')+\gamma (1-\delta) u(X')}\\
-	% 	X' &= \left\{(1-\delta)\hat{x} + u(X) + \sigma \hat{w} + \eta \omega, \text{ for }  (\hat{x}, \hat{w}) \in (X,W)\right\}
-	% 	\end{align*}
-	% \end{block}
-	Recall the representation,
-	\begin{equation*}
-		u(x, X) =\rho \left( x, \frac{1}{N}\sum_{i=1}^{N} \phi(X_i) \right).
-	\end{equation*}
-	For $\nu =1$ we can show that the following \emphcolor{exact solution} holds with our representation
-	\begin{itemize}
-		\item $\phi(X_n) = X_n$  identity, $L=1$. \vspace{0.1in}
-		\item $\rho(x, y) = \theta_1 + \theta_2 y$. \vspace{0.1in}
-		\item Doesn't matter how to generate $X$ since only need 2 points. \vspace{0.1in}
-		\item Let's do it with $3$ points.
-	\end{itemize}
 
-\end{frame}
-
-			\begin{frame}
-				\frametitle{Extreme example of generalizability of neural networks}
-				% \begin{figure}[htb]
-				% 	\centering
-				% 	\includegraphics[width=8cm]{../figures/overfit_loss.pdf}
-				% \end{figure}
-			
-				\begin{itemize}
-					\item \emphcolor{Extreme} case : Forget we know any closed form, and see if over-fitting hurts us.\vspace{0.1in}
-					\item Fit \emphcolor{three} grid points in $\mathbb{R}^{\mapvar{overfit_N}}$ (an economy with $N=512$ agents).
-					\vspace{0.1in}
-					% \item Relative error of \emphcolor{$4$\%} on the test data
-					% \smallskip
-					\item Flexible functional form with \mapvar{overfit_parameters} coefficients.
-					\medskip
-					\item Now, evaluate for a whole bunch of reasonable trajectories from the initial condition and check the policy error: \vspace{0.1in}
-					\begin{itemize}
-						\item $\mapvar{overfit_val_loss}$ MSE of Euler, approximately  \emphcolor{\mapvar{overfit_val_u_error}} relative error of $u(X)$.\vspace{0.1in}
-					\end{itemize}
-				\end{itemize}
-			This is related to a literature called \emphcolor{double descent}.	 
-			\end{frame}	
-		
 				
-\begin{frame}{The cure to over-fitting is to add more parameters}
-		\begin{figure}[h!]
-			\begin{center}
-				\includegraphics[height=2.0in]{./figures/doubledescent.pdf}
-			\end{center}
-		\end{figure}
-		\textcolor{red}{Belkin et al., 2019}: Traditional statistics/bias-variance trade-off stop around the interpolation threshold.		
-\end{frame}
+%\begin{frame}{The cure to over-fitting is to add more parameters}
+%		\begin{figure}[h!]
+%			\begin{center}
+%				\includegraphics[height=2.0in]{./figures/doubledescent.pdf}
+%			\end{center}
+%		\end{figure}
+%		\textcolor{red}{Belkin et al., 2019}: Traditional statistics/bias-variance trade-off stop around the interpolation threshold.		
+%\end{frame}
 	
 \begin{frame}
 	\frametitle{Deep learning optimizes in a space of functions}
@@ -1349,25 +1016,7 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 			
 			\end{frame}
 			
-			% \begin{frame}{Examples of models one can compute now}
-			
-			% \begin{enumerate}
-			
-			% \item Models with rich ex-ante heterogeneity and aggregate shocks (OLG, many different household types).\vspace{0.1in} 
-			
-			% \item Models of firm dynamics.\vspace{0.1in} 
-			
-			% \item Open economy models with many locations.\vspace{0.1in} 
-			
-			% \item Closed economy business cycle models with multisectors.\vspace{0.1in}
-			
-			% \item Network models.\vspace{0.1in} 
-			
-			% \item Search and matching models.\vspace{0.1in} 
-			
-			% \end{enumerate}
-			
-			% \end{frame}
+		
 			\begin{frame}
 				\frametitle{Summarizing our contribution}
 			\begin{itemize}

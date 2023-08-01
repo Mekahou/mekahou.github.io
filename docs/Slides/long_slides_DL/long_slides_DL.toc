@@ -1,7 +1,7 @@
 \beamer@sectionintoc {1}{\textcolor {PennBlue}{Background: Deep learning for functional equations}}{3}{0}{1}
-\beamer@sectionintoc {2}{\textcolor {PennBlue}{Background: Deep learning for functional equations}}{15}{0}{2}
-\beamer@sectionintoc {3}{Application}{19}{0}{3}
-\beamer@sectionintoc {4}{Solving the Model}{34}{0}{4}
-\beamer@sectionintoc {5}{Implicit bias, Generalization, and Stationarity.}{47}{0}{5}
-\beamer@sectionintoc {6}{Conclusions}{56}{0}{6}
-\beamer@sectionintoc {7}{Appendix}{59}{0}{7}
+\beamer@sectionintoc {2}{\textcolor {PennBlue}{Exploiting Symmetry in High-Dimensional Dynamic Programming}}{10}{0}{2}
+\beamer@sectionintoc {3}{Application}{15}{0}{3}
+\beamer@sectionintoc {4}{Solving the Model}{31}{0}{4}
+\beamer@sectionintoc {5}{\textcolor {PennBlue}{Spooky Boundaries at a Distance: Exploring Transversality and Stability with Deep Learning}}{45}{0}{5}
+\beamer@sectionintoc {6}{Conclusions}{51}{0}{6}
+\beamer@sectionintoc {7}{Appendix}{54}{0}{7}
