@@ -2,6 +2,8 @@
 \beamer@sectionintoc {2}{\textcolor {PennBlue}{Exploiting Symmetry in High-Dimensional Dynamic Programming}}{10}{0}{2}
 \beamer@sectionintoc {3}{Application}{15}{0}{3}
 \beamer@sectionintoc {4}{Solving the Model}{31}{0}{4}
-\beamer@sectionintoc {5}{\textcolor {PennBlue}{Spooky Boundaries at a Distance: Exploring Transversality and Stability with Deep Learning}}{45}{0}{5}
-\beamer@sectionintoc {6}{Conclusions}{51}{0}{6}
-\beamer@sectionintoc {7}{Appendix}{54}{0}{7}
+\beamer@sectionintoc {5}{\textcolor {PennBlue}{Spooky Boundaries at a Distance: Exploring Transversality and Stability with Deep Learning}}{46}{0}{5}
+\beamer@sectionintoc {6}{Linear asset pricing}{54}{0}{6}
+\beamer@sectionintoc {7}{Neoclassical growth in sequence space}{64}{0}{7}
+\beamer@sectionintoc {8}{The neoclassical growth model with multiple steady states}{74}{0}{8}
+\beamer@sectionintoc {9}{Appendix}{79}{0}{9}

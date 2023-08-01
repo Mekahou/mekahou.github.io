@@ -889,9 +889,78 @@ How come there is a strong bias towards the stationary solution
 \end{frame}	
 				
 
+\begin{frame}
+	\frametitle{Summarizing the contribution}
+	\begin{itemize}
+		%\item New tools to solve (previously) \emphcolor{intractable models} (e.g. finite \# of agents)\vspace{0.1in}
+		%\begin{itemize}
+		%	\item Global solution starting from an initial condition.\vspace{0.1in}
+		%\end{itemize}
+		
+		\item \emphcolor{Method} for solving \emphcolor{high-dimensional} dynamic programming problems and competitive equilibria with idiosyncratic and aggregate shocks relying\vspace{0.1in}
+		\begin{itemize}
+			\item Symmetry. \vspace{0.1in}
+			\item Concentration of measures: Dimensionality is a \emphcolor{blessing} not a curse.\vspace{0.1in}
+		\end{itemize}
+		
+		\item Using \emphcolor{economic theory} (i.e., exchangeability) and \emphcolor{deep learning} for function approximation with a huge \# of parameters ($\gg$ grid points)\vspace{0.1in}
+		\begin{itemize}
+			\item Achieve great generalization: key to alleviate the curse of dimensionality.\vspace{0.1in}
+		\end{itemize}
+		
+		\item Implementation\vspace{0.1in}
+		\begin{itemize}
+			\item Can deal with $10000+$ agents.\vspace{0.1in}
+			\smallskip
+			\item Can deal with $10000+$ dimensional expectations with one Monte-carlo draw.\vspace{0.1in}
+			\smallskip
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+
 \section{\textcolor{PennBlue}{Spooky Boundaries at a Distance: Exploring Transversality and Stability with Deep Learning}}
 
+\begin{frame}{Motivation}
+	
+	\begin{itemize}
+		\item Dynamic models usually require \emphcolor{economic conditions} eliminating explosive solutions (e.g., transversality or no-bubble).\vspace{0.1in}
+		\begin{itemize}
+			\item These are variations of ``boundary conditions'' in ODEs and PDEs on \emphcolor{forward-looking} behavior.\vspace{0.1in}
+			\item Deterministic, stochastic, sequential, recursive formulations all require conditions in some form.
+			%\item Without those economic conditions, problems are not well-posed and have multiplicity
+		\end{itemize}
+		\medskip
+		\item These forward-looking boundary conditions are the key limitation on increasing dimensionality:\vspace{0.1in}
+		\begin{itemize} 
+			\item Otherwise, in sequential setups, we can easily solve high-dimensional initial value problems.\vspace{0.1in}
+			\item In recursive models accurate solutions are required for arbitrary values of the state variables.\vspace{0.1in}
+		\end{itemize}
+		\medskip
+		\item \emphcolor{Question:} Can we avoid precisely calculating steady-state, BGP, and stationary distribution, which are never reached, and still have accurate short/medium-run dynamics disciplined by these boundary conditions?
+	\end{itemize}
+\end{frame}
 
+\begin{frame}{Contribution}
+	
+	\begin{itemize}
+		\item Show that \emphcolor{deep learning} solutions to many dynamic forward-looking models automatically fulfill the long-run boundary conditions we need (transversality and no-bubble).\smallskip
+		\begin{itemize}
+			\item We show how to design the approximation using economic insight.
+		\end{itemize}
+		\medskip
+		\item Solve classic models with known solutions (asset pricing and neoclassical growth) and show excellent short/medium term dynamics --even when \emphcolor{non-stationary} or with \emphcolor{steady state multiplicity}.
+		\medskip
+		\item Suggests these methods may solve high-dimensional problems while avoiding the key computational limitation. \smallskip
+		\begin{itemize}
+			\item We have to understand low-dimensional problems first. 
+		\end{itemize}
+		\item \emphcolor{Intuition}: DL has an ``implicit bias" toward smooth and simple functions. Explosive solutions are not smooth. 
+	\end{itemize}
+So what is this  \emphcolor{implicit bias}?
+	
+\end{frame}
 				
 %\begin{frame}{The cure to over-fitting is to add more parameters}
 %		\begin{figure}[h!]
@@ -928,7 +997,7 @@ How come there is a strong bias towards the stationary solution
 \end{frame}
 
 \begin{frame}
-	\frametitle{Deep learning and interpolation}
+	\frametitle{Deep learning and interpolation}\label{implicit}
 	\begin{itemize}
 		\item For $M$ large enough, optimizers \emphcolor{tend to} converge to \emphcolor{unique} \emphcolor{``simple"}  $\hat{\psi}$ (w.r.t to some norm $\|\cdot\|_S$). Unique both in $\Xtrain$ and $\Xdom$. There is a \emphcolor{bias} toward a specific class of solutions.
 		\medskip
@@ -943,9 +1012,10 @@ How come there is a strong bias towards the stationary solution
 			\item Comp Sci literature refers to this as the \emphcolor{inductive bias} or \emphcolor{implicit bias}: optimization process is biased toward particular $\hat{\psi}$.\smallskip
 			\item Small values of $\|\cdot\|_S$ corresponds to \emphcolor{flat} solutions with \emphcolor{small gradients} (w.r.t. input).
 			\smallskip
-			%\item Characterizing $\|\cdot\|_S$ (e.g., \hyperlink{sobolev}{\beamerskipbutton{Sobolev}}) is an active research area in CS at the heart of deep learning theory.
+			\item Characterizing $\|\cdot\|_S$  is an active research area in CS at the heart of deep learning theory.
 		\end{itemize}
 	\end{itemize}
+\hyperlink{sobolev}{\beamerskipbutton{Sobolev}}
 \end{frame}
 
 
@@ -958,93 +1028,476 @@ How come there is a strong bias towards the stationary solution
 
 \end{frame}
 
-\begin{frame}{Implicit bias: More details}
-	Let $\psi_1$ and $\psi_2$ be two differentiable function from a compact space $\mathcal{X}$ in $\mathbb{R}$ to $\mathbb{R}$ such that
-	\begin{align*}
-		\int_\mathcal{X}\left|\frac{d \psi_1}{dx}\right|^2 dx >   \int_\mathcal{X}\left|\frac{d \psi_2}{dx}\right|^2 dx
-	\end{align*}
-	then
-	\begin{align*}
-		\|\psi_1\|_S > \|\psi_2\|_S.
-	\end{align*}
-	%Moreover, since $\|\cdot\|_S$ is a semi-norm, it satisfies the triangle inequality
-	%\begin{align}
-	%	\|\psi_1+\psi_2\|_S \leq \|\psi_1\|_S + \|\psi_2\|_S.
-	%\end{align}
-	Recently shown the optimizers (first order e.g. SGD) regularize Sobolev semi-norms: \textcolor{red}{Ma, Ying (2021)}.
+\begin{frame}
+	\frametitle{Deep learning and interpolation in practice}
+	\emphcolor{Reminder}: in practice we solve
+	\begin{empheq}[box=\tcbhighmath]{equation*}
+		\min_{\theta \in \Theta} \sum_{x \in \Xtrain} \ell\left(\hat{\psi}(\cdot;\theta),x\right)^2
+	\end{empheq}
+	\begin{itemize}
+		\item The smooth interpolation is imposed \emphcolor{implicitly} through the optimization process.
+		\item No explicit norm minimization or penalization is required.
+		%\item  The optimization methods designed for over-parameterized approximation \emphcolor{implicitly} provides it.
+	\end{itemize}
+	\emphcolor{In this paper:} we describe how (and when) the $\min_{\hat{\psi}\in \mathcal{H}} ||\hat{\psi}||_S$ solutions are also the ones which  automatically fulfill transversality and no-bubble conditions.  
+	\begin{itemize}
+		\item They are disciplined by long-run boundary conditions. Therefore, we can obtain accurate short/medium-run dynamics. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Outline}
+	
+	To explore how we can have accurate short-run dynamics, we show deep learning solutions to
+	\begin{enumerate}
+		\item Classic linear-asset pricing model.\vspace{0.1in}
+		\item Sequential formulation of the neoclassical growth model.\vspace{0.1in}
+		\item Sequential neoclassical growth model with multiple steady states.\vspace{0.1in}
+		\item Recursive formulation of the neoclassical growth model.\vspace{0.1in}
+		\item  Non-stationarity, such as balanced growth path.\vspace{0.1in}
+		
+	\end{enumerate}
+	
+\end{frame}
+
+\section{Linear asset pricing}
+
+\begin{frame}{Sequential formulation}
+	\begin{itemize}
+		\item Dividends, $y(t)$, $y_0$ as given, and follows the process:
+		\begin{equation*}
+			y(t+1) = c + (1+g) y(t)
+		\end{equation*}
+		\item Writing as a linear state-space model with $x(t+1) = A x(t)$ and $y(t) = G x(t)$ and
+		\begin{align*}
+			x(t) \equiv \begin{bmatrix*}
+				1 & y(t)
+			\end{bmatrix*}^\top, A \equiv \begin{bmatrix*}
+				1 & 0   \\
+				c & 1+g
+			\end{bmatrix*}, G \equiv \begin{bmatrix*}
+				0 & 1
+			\end{bmatrix*}
+		\end{align*}
+		\item ``Fundamental'' price given $x(t)$ is PDV with $\beta \in (0,1)$ and $\beta(1+g) < 1$
+		\begin{empheq}[box=\tcbhighmath]{equation*}
+			p_f(t) \equiv \sum_{j=0}^\infty \beta^j y({t+j}) = G(I - \beta A)^{-1} x(t).
+		\end{empheq}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Recursive formulation}
+	With standard transformation, all solutions $p_f(t)$ fulfill the recursive equations
+	\begin{align}
+		\quad & p(t)  = G x(t) + \beta p(t+1)\label{eq:recursive-p-t}                            \\
+		\quad & x(t+1)  = A x(t) \label{eq:lom-x}                                               \\
+		\quad & 0    = \lim_{T \rightarrow \infty} \beta^T p(T) \label{eq:no-bubble-condition-T} \\
+		\quad & x_0      \text{ given}\vspace{0.1in}\label{eq:initial-x0}
+	\end{align}
+	That is, a system of two difference equations with one boundary and one initial condition.
+	\begin{itemize}
+		\item The boundary condition \cref{eq:no-bubble-condition-T} is an \emphcolor{condition} necessary for the problem to be well-posed and have a unique solution.
+		\item It ensures that $p(t) = p_f(t)$ by imposing long-run boundary condition.
+		\item But without this assumption there can be ``bubbles'' with $p(t) \neq p_f(t)$, only fulfilling \cref{eq:recursive-p-t,eq:lom-x}.
+		\item Intuition: system of $\{p(t), x(t)\}$ difference equations requires total of two boundaries or initial values to have a unique solution.
+	\end{itemize}
+	
 \end{frame}
 
 
-\begin{frame}{Answering the challenging questions}
+\begin{frame}{Solutions without no-bubble condition}
+	Without the no-bubble condition:
 	\begin{itemize}
-		\item Answering \emphcolor{generalization puzzle}: Flat  interpolation leads to good generalization:\vspace{0.1in}
-		\begin{itemize}
-			\item If the true underlying functions is flat between (and outside) the points.\vspace{0.1in}
-			\item The cure to over-fitting is to add more parameters.\vspace{0.1in}
-		\end{itemize}
-	 \item Answering \emphcolor{multiplicity puzzle}: In the linear set-up, the explosive solution has larger derivatives (less flat) than the non-explosive one i.e, $|H_1^+| > |H_1^-|$:\vspace{0.1in}
-	 \begin{itemize}
-	 	\item The deep-learning based solution \emphcolor{automatically} satisfies stationarity. \vspace{0.1in}
-	 \end{itemize}
-	\item \textcolor{red}{Ebrahimi Kahou et al. (2022)} explore this for many more dynamic models in macroeconomics (e.g., neoclassical growth and asset pricing) we show: \vspace{0.1in}
-	\begin{itemize}
-		\item We can have short- and medium-run accurate solutions without being worried about the long-run behavior.\vspace{0.1in}
-		\item  We dont need to calculate the steady-state (ergodic distribution).
-	\end{itemize} 	
+		\item Solutions in this deterministic asset pricing model are of the form:
+		\begin{empheq}[box=\tcbhighmath]{equation}
+			p(t) = p_f(t)+\zeta~ \beta^{-t}. \label{eq:sol-seq-with-bubble}
+		\end{empheq}
+		\item For any $\zeta \geq 0$.  The initial condition $x(0)$ determines  $p_f(t)$.
+		\item There are infinitely many solutions.  
+		\item The no-bubble condition chooses  $\zeta = 0$.
 	\end{itemize}
 	
-\end{frame}				
-		\section{Conclusions}
+	%Lets analyze this with a ``deep learning'' solution, first by imposing the no-bubble condition.
+	
+\end{frame}
 
-			\begin{frame}{Extensions}
-			
-			\begin{enumerate}
-			
-			\item Decreasing returns to scale: the policy becomes a function of $x$.\vspace{0.1in}
-			
-			\item Multiple productivity types (e.g., two different groups).\vspace{0.1in}
-			
-			\item Complex idiosyncratic states (e.g., a agent is described with more than one variable).\vspace{0.1in}
-			
-			%\item Global solutions with transitions and aggregate shocks.\vspace{0.1in}
-			
-			%\item ``Non-atomic'' agents (deal with atomic agents with our method and non-atomic with standard methods).\vspace{0.1in}
-			
-			%\item Many different network architectures.
-			
-			\end{enumerate}
-			
-			\end{frame}
-			
+\begin{frame}{Interpolation problem: without no-bubble condition}
+	\begin{itemize}
+		\item A set of points in time $\Xtrain = \{t_1,\ldots,t_{\text{max}}\}$.
+		\item A family of over-parameterized functions $p(\cdot;\theta) \in \mathcal{H}(\Theta)$.
+		\item Generate $x(t)$ using the law of motion and $x(0)$, equation \cref{eq:lom-x}.
 		
-			\begin{frame}
-				\frametitle{Summarizing our contribution}
-			\begin{itemize}
-				%\item New tools to solve (previously) \emphcolor{intractable models} (e.g. finite \# of agents)\vspace{0.1in}
-				%\begin{itemize}
-				%	\item Global solution starting from an initial condition.\vspace{0.1in}
-				%\end{itemize}
-				
-				\item \emphcolor{Method} for solving \emphcolor{high-dimensional} dynamic programming problems and competitive equilibria with idiosyncratic and aggregate shocks relying\vspace{0.1in}
-				\begin{itemize}
-					\item Symmetry. \vspace{0.1in}
-					\item Concentration of measures: Dimensionality is a \emphcolor{blessing} not a curse.\vspace{0.1in}
-				\end{itemize}
+		In practice we minimize the residuals of the recursive form for the price:
+		\begin{empheq}[box=\tcbhighmath]{align}
+			\min_{\theta \in \Theta} \frac{1}{|\Xtrain|}\sum_{t \in \Xtrain} \left[p(t;\theta)- G x(t)- \beta p(t+1;\theta)\right]^2
+		\end{empheq}
+		\item This minimization \emphcolor{does not contain}  no-bubble condition. It has infinitely many minima.
+		\item Does the implicit bias of over-parameterized interpolation weed out the bubbles? \emphcolor{Yes}.
+		\item  \emphcolor{Intuition}: bubble solutions are explosive, i.e., big functions with big derivatives.
+		\bigskip
+		
+		Let's analyze this more rigorously. 
+	\end{itemize}
+\end{frame}
 
-				\item Using \emphcolor{economic theory} (i.e., exchangeability) and \emphcolor{deep learning} for function approximation with a huge \# of parameters ($\gg$ grid points)\vspace{0.1in}
-			      \begin{itemize}
-				 	\item Achieve great generalization: key to alleviate the curse of dimensionality.\vspace{0.1in}
-				 \end{itemize}
-				
-				\item Implementation\vspace{0.1in}
-				\begin{itemize}
-					\item Can deal with $10000+$ agents.\vspace{0.1in}
-					\smallskip
-					\item Can deal with $10000+$ dimensional expectations with one Monte-carlo draw.\vspace{0.1in}
-					\smallskip
-				\end{itemize}
+\begin{frame}{Interpolation formulation: min-norm mental model}
+	The min-norm \emphcolor{interpretation} (mental model) is:
+	\begin{empheq}[box=\tcbhighmath]{align}
+		\min_{p \in \mathcal{H}} \quad & \|p\|_S\\
+		\st \quad & p(t)- G x(t)- \beta p(t+1) = 0 \quad \text{for } t  \in \Xtrain \label{eq:p-t-deep} \\
+		\quad & 0 = \lim_{T \rightarrow \infty} \beta^T p(T) \label{eq:no-bubble-condition-deep}
+	\end{empheq}
+	Where $x(t)$ for $t  \in \Xtrain$ is defined by $x(0)$ initial condition and recurrence $x(t+1) = A x(t)$ in \cref{eq:lom-x}
+	\begin{itemize}
+		%\item Recall: generalization comes from design of $\mathcal{H}$ and optimizer; not only model, i.e., \cref{eq:p-t-deep,eq:no-bubble-condition-deep}.\medskip
+		\item The minimization of norm $\|p\|_S$ is the ``inductive bias'' toward particular solutions for $t \in [0,\infty] \setminus \Xtrain$.\medskip
+		%\item What types of norms $\|p\|_S$ would $\mathcal{H}$ and optimization induce? CS theory suggests variations Sobolev.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Is the no-bubble condition still necessary?}
+	
+	\begin{itemize}
+		\item To analyze, drop the no-bubble condition and examine the class of solutions. 
+		\item In this case, we know the interpolating solutions to \cref{eq:p-t-deep} without imposing \cref{eq:no-bubble-condition-deep}
+		\begin{equation}
+			p(t) = p_f(t) + \zeta \beta^{-t}%= G (I-\beta A)^{-1}x_t + \zeta \beta^{-t}
+		\end{equation}
+		\item Applying the triangle inequality
+		\begin{empheq}[box=\tcbhighmath]{align}
+			\|p_f\|_S \leq \|p\|_S \leq \|p_f\|_S + \zeta~ \|\beta^{-t}\|_S\label{eq:asset-pricing-triangle}
+		\end{empheq}
+		\item Relative to classic methods the ``deep learning'' problem now has a new objective, minimizing $\|p\|_S$.\smallskip
+		\medskip
+		\item The new objective of minimizing the norm, makes the no-bubble condition \emphcolor{redundant}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[label = asset_seq]{Min-norm norm formulation: redundancy of no-bubble condition}
+	
+	Given the no-bubble condition is automatically fulfilled, could solve the following given some $\mathcal{H}$ and compare to $p_f(t)$
+	\begin{empheq}[box=\tcbhighmath]{align}
+		\min_{p \in \mathcal{H}} \quad & \|p\|_S\\
+		\st \quad & p(t)- G x(t)- \beta p(t+1) = 0 \quad \text{for } t  \in \Xtrain
+	\end{empheq}
+	A reminder: in practice, given the $\Xtrain$, we directly implement this as $p(\cdot;\theta) \in \mathcal{H}(\Theta)$ and fit with
+	\begin{empheq}[box=\tcbhighmath]{align}
+		\min_{\theta \in \Theta} \frac{1}{|\Xtrain|}\sum_{t \in \Xtrain} \left[p(t;\theta)- G x(t)- \beta p(t+1;\theta)\right]^2
+	\end{empheq}
+	Since law of motion is deterministic, given $x(0)$ we generate $x(t)$ with $x(t+1) = A x(t)$ for $t  \in \Xtrain$
+	\begin{itemize}
+		\item The $\Xtrain$ does not need to be contiguous and $|\Xtrain|$ may be relatively small.
+		\item Most important: no steady state calculated, nor large $T \in \Xtrain$ required.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Results}
+	\begin{figure}[htb]
+		\includegraphics[width=10cm]{./figures/asset_seq_g0.pdf}
+	\end{figure}
+	\begin{enumerate}
+		%\item Relative Error: $\frac{p(t)-p^f(t)}{p^f(t)}$.  Extrapolation is $t > 30 = \max_t \Xtrain$
+		\item \emphcolor{Pick} $\Xtrain =\{0,1,2,...,29\}$ and $t > 29$ is ``extrapolation'' where $c=0.01$, $g = -0.1$, and $y_0 = 0.8$.
+		\item \emphcolor{Choose} $p(t;\theta) = NN(t;\theta)$ where ``NN'' has $4$ hidden layers of $128$ nodes. $|\Theta| = 49.9 K$ coefficients.
+		\item \emphcolor{Fit} using L-BFGS and PyTorch in just a \emphcolor{few seconds}. Could use Adam/SGD/etc.
+		\item Low generalization errors, even without imposing no-bubble condition.
+		%\begin{itemize}
+		%   \item Relative error $\equiv  \frac{p(t)-p^f(t)}{p^f(t)}$ ranging from $0.07\%$ for $t=0$ to $0.25 \%$ when extrapolating.
+		%  \item These long run errors don't affect the short-run accuracy (still small, even after we are all dead)
+		%\end{itemize}
+	\end{enumerate}
+	\begin{center}
+			$\varepsilon_p(t)\equiv \frac{\hat{p}(t)-p(t)}{p(t)}$.
+	\end{center}
+\end{frame}
+
+\begin{frame}{Contiguous vs. sparse grid}
+	\begin{minipage}[t]{0.4\textwidth}
+		\raisebox{-\height+0.7\baselineskip}{\includegraphics[width= 8cm]{./figures/asset_pricing_seq_g0_grids.pdf}}
+		%\includegraphics[width=8cm]
+	\end{minipage}
+	\hfill%
+	\begin{minipage}[t]{0.5\textwidth}\raggedleft
+		\begin{itemize}
+			\item \emphcolor{Pick} $\Xtrain({\text{Grid 1}})  = \{0, 1, 2, 4, 6, 8, 12, 16, 20, 24, 29\}$ and $\Xtrain({\text{Grid 2}}) = \{0, 1, 4, 8, 12, 18, 24, 29\}$.
+			\smallskip
+			\item Contrary to popular belief, can use \emphcolor{less grid points} relative to alternatives. 
+			%\item The same neural network with $|\Theta| = 49.9 K$.
+			%\item Shaded regions: $10$th and $90$th percentiles over $100$ seeds:
+			\smallskip
+				\item Hypothesis verified, the solutions agree on the seen and \emphcolor{unseen} grid points. \smallskip
+		\end{itemize}
+	\end{minipage}
+\end{frame}
+
+
+\section{Neoclassical growth in sequence space}
+
+\begin{frame}{Sequential formulation}
+	\begin{align}
+		\max_{\{c(t),k(t+1)\}_{t=0}^\infty} \quad & \sum_{t=0}^\infty \beta^t u\left(c(t)\right) \\
+		\st\quad & k(t+1) = z(t)^{1-\alpha}f\left(k(t)\right) + (1-\delta)k(t) - c(t) \\
+		\quad & z(t+1)=(1+g)z(t)\label{eq:lom-z-sequential}\\
+		& k(t)\geq 0 \\
+		\quad & 0 = \lim_{T\rightarrow \infty} \beta^T u'\left(c(T)\right)k(T+1)\label{eq:transversality-rbc-sequential} \\
+		& k_0,z_0  \text{ given }
+	\end{align}
+	
+	\begin{itemize}
+		\item Preferences: $u(c) = \frac{c^{1-\sigma}-1}{1-\sigma}$, $\sigma > 0$, $\lim_{c\rightarrow 0} u'(c) = \infty$, and $\beta \in (0,1)$.
+		\item Cobb-Douglas production function: $f(k) = k^{\alpha}$, $\alpha \in (0,1)$ before scaling by TFP $z_t$.
+		\item Skip standard steps\ldots Euler equation: $u'(c(t)) = \beta u'(c(t+1)) \big[z(t+1)^{1-\alpha} f'(k(t+1)) + 1-\delta\big]$.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Interpolation problem: without transversality condition}
+	\begin{itemize}
+		\item A set of points in time $\Xtrain = \{t_1,\ldots,t_{\text{max}}\}$.
+		\item A family of over-parameterized functions $k(\cdot;\theta) \in \mathcal{H}(\Theta)$.
+		\item Generate $z(t)$ using the law of motion and $z(0)$, equations \cref{eq:lom-z-sequential}.
+		\item Use the feasibility condition and define $c(t;k)\equiv z(t)^{1-\alpha}f\big(k(t)\big) + (1-\delta)k(t)-k(t+1)$.\vspace{5mm}
+		
+		In practice we minimize the Euler and initial conditions residuals:
+		\begin{empheq}[box=\tcbhighmath]{align*}
+			\min_{\theta \in \Theta}  \bigg(\frac{1}{|\Xtrain|}\sum_{t \in \Xtrain} & \lambda_1 \bigg[ \underbrace{ \frac{u'\big(c(t;k(\cdot,\theta))\big)}{u'\big(c(t+1;k(\cdot;\theta))\big)} -\beta\big[z(t+1)^{1-\alpha} f'(k(t+1;\theta)) + 1-\delta\big] }_{\text{Euler residuals}}\bigg]^2 \\  + \lambda_2
+			&  \bigg[\underbrace{k(0;\theta)-k_0}_{\text{Initial condition residuals}}\bigg]^2\bigg)
+		\end{empheq}
+		\item $\lambda_1$ and $\lambda_2$ positive weights.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolation problem: without transversality condition}
+	\begin{itemize}
+		\item This minimization \emphcolor{does not contain } the transversality condition.			\smallskip
+		\begin{itemize}
+			\item Without the transversality condition it has infinitely many minima.
+		\end{itemize}
+		\bigskip
+		\item \emphcolor{No explicit} norm minimization.
+		\bigskip	
+		\item Does the implicit bias  weed out the solutions that violate the transversality condition? \emphcolor{Yes}. 
+		\bigskip 
+		\item \emphcolor{Intuition}: The solutions that violate the transversality condition are big functions with big derivatives.
+		\bigskip
+		
+		Let's analyze this more rigorously.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolation formulation: min-norm mental model}
+	\begin{empheq}[box=\tcbhighmath]{align}
+		\min_{k \in \mathcal{H}} \quad & \|k\|_S\\
+		\st \quad & u'(c(t;k)) = \beta u'(c(t+1;k)) \big[z(t+1)^{1-\alpha} f'(k(t+1)) + 1-\delta\big] \quad \text{for } t \in \Xtrain\label{eq:seqgrowtheuler} \\
+		\quad & k(0) = k_0 \label{eq:rbc-initial-condition}\\
+		\quad & 0 = \lim_{T\to\infty}\beta^T u'(c(T;k))k(T+1) \label{eq:rbc-transversality}
+	\end{empheq}
+	\begin{empheq}[box=\tcbhighmath]{align}
+		c(t;k) \equiv z(t)^{1-\alpha}f\big(k(t)\big) + (1-\delta)k(t)-k(t+1) \label{eq:seqgrowthlom}
+	\end{empheq}
+	Where $z(t)$ for $t  \in \Xtrain$ is defined by $z(0)$ initial condition and recurrence $z(t+1) = (1+g) z(t)$.
+\end{frame}
+
+
+\begin{frame}[label = NCG_Minnorm]{Is the transversality condition still necessary? Case of g = 0, z = 1 }
+	
+	Sketch of the proof:
+	\begin{itemize}
+		\item Let $\{k(t),c(t)\}$ be the sequence of optimal solution.
+		\item Let $\{\tilde{k}(t),\tilde{c}(t)\}$ be a sequence of solution that satisfy all the equations \emphcolor{except} transversality condition \cref{eq:rbc-transversality}.
+	\end{itemize}
+	
+	\begin{enumerate}
+		\item $\tilde{c}(t)$ approaches zero.
+		\item $\tilde{k}(t)$ approaches $\tilde{k}_{\text{max}}\equiv\delta^{\frac{1}{\alpha-1}}$, and $k(t)$ approaches $k^*\equiv \left(\frac{\beta^{-1}+\delta-1}{\alpha}\right)^{\frac{1}{\alpha-1}}$. 
+		\item Both $\tilde{k}(t)$ and $k(t)$ are monotone. $\tilde{k}_{\text{max}} \gg k^*$. Therefore,
+		\begin{align*}
+			0 \leq \|k\|_S \leq \|\tilde{k}\|_S.
+		\end{align*}
+	\end{enumerate}
+	
+	
+\end{frame}
+
+\begin{frame}[label =TVC_Examples]{Is the transversality condition still necessary? Case of g = 0, z = 1 }
+	
+	Example: the violation of the transversality condition.
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=11cm]{./figures/growth_sequential_violating_tvc_paths_below.pdf}
+	\end{figure}
+	
+	\begin{itemize}
+		\item The solution that violate the transversality are associated with \emphcolor{``big"} capital path.
+		\item The new objective of minimizing the norm, makes the transversality condition \emphcolor{redundant}.
+	\end{itemize}
+	
+
+\end{frame}
+
+\begin{frame}[label = ncg_seq]{Min-norm formulation: redundancy of transversality condition}
+	Given the transversality condition is automatically fulfilled, one could solve 
+	\begin{empheq}[box=\tcbhighmath]{align*}
+		\min_{k \in \mathcal{H}} \quad & \|k\|_S\\
+		\st \quad & u'(c(t;k)) = \beta u'(c(t+1;k)) \big[z(t+1)^{1-\alpha} f'(k(t+1)) + 1-\delta\big] \quad \text{for } t \in \Xtrain \\
+		\quad & k(0) = k_0
+	\end{empheq}
+	Reminder: in practice we solve
+	\begin{align*}
+		\min_{\theta \in \Theta}  \bigg(\frac{1}{|\Xtrain|}\sum_{t \in \Xtrain} & \lambda_1 \bigg[ \frac{u'\big(c(t;k(\cdot,\theta))\big)}{u'\big(c(t+1;k(\cdot;\theta))\big)} -\beta\big[z(t+1)^{1-\alpha} f'(k(t+1;\theta)) + 1-\delta\big]\bigg]^2 \\  + \lambda_2
+		&  \bigg[\underbrace{k(0;\theta)-k_0}_{\text{Initial condition residuals}}\bigg]^2\bigg)
+	\end{align*}
+	\begin{itemize}
+		\item $|\Xtrain|$ may be relatively small,  no steady state calculated, nor large $T \in \Xtrain$ required.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[label = res_seq_ncg]{Results}
+	
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=10cm]{./figures/growth_seq_g0_one_run.pdf}
+	\end{figure}
+	
+	\begin{enumerate}
+		%\item Relative Error: $\frac{p(t)-p^f(t)}{p^f(t)}$.  Extrapolation is $t > 30 = \max_t \Xtrain$
+		\item \emphcolor{Pick} $\Xtrain =\{0,1,...,30\}$ and $t > 30$ is ``extrapolation''  $\alpha=\frac{1}{3}$, $\sigma =1$, $\beta = 0.9$, $g = 0.0$, and $k_0 = 0.4$
+		\item \emphcolor{Choose} $k(t;\theta) = NN(t;\theta)$ where ``NN'' has $4$ hidden layers of $128$ nodes. $|\Theta| = 49.9 K$ coefficients.
+		\item \emphcolor{Fit} using L-BFGS in just a \emphcolor{few seconds}. Comparing with value function iteration solution.
+		\item Low generalization errors, even without imposing the transversality condition. 
+	\end{enumerate}
+	Relative errors defined as $\varepsilon_c(t)\equiv \frac{\hat{c}(t)-c(t)}{c(t)}$, $\varepsilon_k(t)\equiv \frac{\hat{k}(t)-k(t)}{k(t)}$.
+\end{frame}
+
+\begin{frame}[label = TFP_seq_ncg]{Growing TFP}
+	\begin{minipage}[t]{0.4\textwidth}
+		\raisebox{-\height+0.7\baselineskip}{\includegraphics[width= 8cm]{./figures/growth_seq_g_positive_ensemble.pdf}}
+		%\includegraphics[width=8cm]
+	\end{minipage}
+	\hfill%
+	\begin{minipage}[t]{0.5\textwidth}\raggedleft
+		\begin{itemize}
+			\item \emphcolor{Pick} same $\Xtrain$ but now $g = 0.02$.
+			\item \emphcolor{Choose} $k(t;\theta) = e^{\phi t} NN(t;\theta_{NN})$ where $\theta \equiv \{\phi,\theta_{NN}\}\in\Theta$ is the coefficient vector
+			\begin{itemize}
+				\item Here we used economic intuition of problem to design the $\mathcal{H}(\Theta)$ to generalize better.
 			\end{itemize}
-			\end{frame}
+			\item Non-stationary but can figure out the BGP.
+			\item  Learns the growth rate: $\phi \approx \ln(1+g)$ 
+			\item Economic insight leads to great extrapolation!
+		\end{itemize}
+	\end{minipage} 
+\end{frame}
+
+\section{The neoclassical growth model with multiple steady states}
+\begin{frame}{Sequential formulation}
+	
+	\begin{align*}
+		\max_{\{c_t,k_{t+1}\}_{t=0}^\infty} \quad & \sum_{t=0}^\infty \beta^t u(c_t)                      \\
+		\st\quad                                  & k_{t+1} = f(k_t) + (1-\delta)k_t - c_t                \\
+		& k_{t}\geq0                                            \\
+		\quad                                     & 0 = \lim_{T\rightarrow \infty} \beta^T u'(c_T)k_{T+1} \\
+		& k_0  \text{ given.}
+	\end{align*}
+	\begin{enumerate}
+		\item Preferences: $u(c) = \frac{c^{1-\sigma}-1}{1-\sigma}$, $\sigma > 0$, $\lim_{c\rightarrow 0} u'(c) = \infty$, and $\beta \in (0,1)$.			\smallskip
+		\item \emphcolor{``Butterfly production function"}: $f(k) = a \max\{k^\alpha, b_1 k^\alpha - b_2\}$, $\alpha \in (0,1)$:
+		\smallskip
+		\begin{itemize}
+			
+			\item There is a kink in the production function at $k^* \equiv \big(\frac{b_2}{b_1 -1}\big)^\frac{1}{\alpha} $.			\smallskip
+			
+			\item This problem has \emphcolor{two} steady states, $k_1^*$ and $k_2^*$ and their corresponding consumption levels $c_1^*$ and $c_2^*$.
+		\end{itemize}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=9cm]{./figures/growth_multiple_steady_states_four_initial_k_0.pdf}
+	\end{figure}
+	
+	\begin{enumerate}
+		%\item Relative Error: $\frac{p(t)-p^f(t)}{p^f(t)}$.  Extrapolation is $t > 30 = \max_t \Xtrain$
+		\item \emphcolor{Pick} $\Xtrain =\{0,\ldots,30\}$, $\alpha=\frac{1}{3}$, $\sigma =1$, $\beta = 0.9$, $g = 0.0$, $a= 0.5$, $b_1 = 3$, $b_2 = 2.5$ and $k_0 \in\{0.5,1.0,3.0,4.0\}$
+		\item \emphcolor{Choose} $k(t;\theta) = NN(t;\theta)$ where ``NN'' has $4$ hidden layers of $128$ nodes. $|\Theta| = 49.9 K$ coefficients.
+		\item \emphcolor{Fit} using Adam optimizer.
+	\end{enumerate}
+\end{frame}
+
+
+
+
+\begin{frame}[label = ncg_multi_results]{Results: different initial conditions}
+	
+	\begin{minipage}[t]{0.4\textwidth}
+		\raisebox{-\height+0.7\baselineskip}{\includegraphics[width= 8cm]{./figures/growth_multiple_steady_states_var_initial_k_0.pdf}}
+	\end{minipage}
+	\hfill%
+	\begin{minipage}[t]{0.5\textwidth}\raggedleft
+		\begin{itemize}
+			\item Different initial conditions in $k_0 \in [0.5,1.75]\cup[2.75,4]$.
+			\smallskip
+			\item In the vicinity of $k_1^*$ and $k_2^*$ the paths converge to the right steady-states.			\smallskip
+			\begin{itemize}
+				\item The implicit bias picks up the right path.
+			\end{itemize}
+			\smallskip
+			\item Low generalization errors, even without imposing the transversality condition.
+		\end{itemize}
+	\end{minipage}
+\end{frame}
+
+\begin{frame}{Conclusion}
+	
+	\begin{itemize}
+		\item Solving functional equations with deep learning is an extension of collocation/interpolation methods.\vspace{0.1in}
+		\item With \emphcolor{massive over-parameterization}, optimizers tend to choose those interpolating functions which are not explosive and with smaller gradients (i.e., \emphcolor{inductive bias}).\vspace{0.1in}
+		\item Over-parameterized solutions \emphcolor{automatically} fulfill \emphcolor{forward-looking} boundary conditions:			\smallskip
+		\begin{itemize}
+			\item Shedding light on the convergence of deep learning based solutions in dynamic problems in macroeconomics.	
+		\end{itemize}\vspace{0.1in}
+		
+		\item If we solve models with deep-learning without (directly) imposing long-run boundary conditions,			\smallskip
+		\begin{itemize}
+			\item Short/medium-run errors are small, and long-run errors after \emphcolor{``we are all dead''} are even manageable.\smallskip
+			\item Long-run errors do not affect transition dynamics even in the presence  of \emphcolor{non-stationarity} and \emphcolor{steady-state multiplicity}.			\smallskip
+			\item Gives hope for solving high-dimensional models still disciplined by forward-looking economic assumptions.
+		\end{itemize}\vspace{0.1in}
+		
+		% \begin{itemize}
+			%    \item Gives hope for solving high-dimensional models still disciplined by forward looking economic assumptions.\smallskip
+			%   \item With ML frameworks (e.g., PyTorch) these methods are robust \& easier to implement than alternatives.
+			%\end{itemize}
+		\end{itemize}
+		
+	\end{frame}
+
+
+
+%\begin{frame}{Answering the challenging questions}
+%	\begin{itemize}
+%		\item Answering \emphcolor{generalization puzzle}: Flat  interpolation leads to good generalization:\vspace{0.1in}
+%		\begin{itemize}
+%			\item If the true underlying functions is flat between (and outside) the points.\vspace{0.1in}
+%			\item The cure to over-fitting is to add more parameters.\vspace{0.1in}
+%		\end{itemize}
+%	 \item Answering \emphcolor{multiplicity puzzle}: In the linear set-up, the explosive solution has larger derivatives (less flat) than the non-explosive one i.e, $|H_1^+| > |H_1^-|$:\vspace{0.1in}
+%	 \begin{itemize}
+%	 	\item The deep-learning based solution \emphcolor{automatically} satisfies stationarity. \vspace{0.1in}
+%	 \end{itemize}
+%	\item \textcolor{red}{Ebrahimi Kahou et al. (2022)} explore this for many more dynamic models in macroeconomics (e.g., neoclassical growth and asset pricing) we show: \vspace{0.1in}
+%	\begin{itemize}
+%		\item We can have short- and medium-run accurate solutions without being worried about the long-run behavior.\vspace{0.1in}
+%		\item  We dont need to calculate the steady-state (ergodic distribution).
+%	\end{itemize} 	
+%	\end{itemize}
+	
+%\end{frame}				
+
+		
+
 
 
 
@@ -1103,6 +1556,24 @@ How come there is a strong bias towards the stationary solution
 	\begin{itemize}
 		\item $\gamma = 90$, $\beta = 0.95$, $\sigma = 0.005$, $\eta = 0.001$.
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Implicit bias: More details}
+	\label{sobolev}
+	Let $\psi_1$ and $\psi_2$ be two differentiable function from a compact space $\mathcal{X}$ in $\mathbb{R}$ to $\mathbb{R}$ such that
+	\begin{align*}
+		\int_\mathcal{X}\left|\frac{d \psi_1}{dx}\right|^2 dx >   \int_\mathcal{X}\left|\frac{d \psi_2}{dx}\right|^2 dx
+	\end{align*}
+	then
+	\begin{align*}
+		\|\psi_1\|_S > \|\psi_2\|_S.
+	\end{align*}
+	%Moreover, since $\|\cdot\|_S$ is a semi-norm, it satisfies the triangle inequality
+	%\begin{align}
+	%	\|\psi_1+\psi_2\|_S \leq \|\psi_1\|_S + \|\psi_2\|_S.
+	%\end{align}
+	Recently shown the optimizers (first order e.g. SGD) regularize Sobolev semi-norms: \textcolor{red}{Ma, Ying (2021)}.
+\hyperlink{implicit}{\beamerskipbutton{Back}}
 \end{frame}
 
 \end{document}
