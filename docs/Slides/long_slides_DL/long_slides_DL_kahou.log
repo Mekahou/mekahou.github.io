@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  1 AUG 2023 17:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  2 AUG 2023 13:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./long_slides_DL.tex
-(long_slides_DL.tex
+**./long_slides_DL_kahou.tex
+(long_slides_DL_kahou.tex
 LaTeX2e <2022-06-01> patch level 5
 L3 programming layer <2022-09-28>
 (C:\Users\mahdi\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamer.cls
@@ -1288,8 +1288,8 @@ tex.def
 File: l3backend-pdftex.def 2022-09-28 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count418
 \l__pdf_internal_box=\box101
-) (long_slides_DL.aux)
-\openout1 = `long_slides_DL.aux'.
+) (long_slides_DL_kahou.aux)
+\openout1 = `long_slides_DL_kahou.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
 LaTeX Font Info:    ... okay on input line 91.
@@ -1371,9 +1371,9 @@ fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package hyperref Info: Link coloring OFF on input line 91.
- (long_slides_DL.out) (long_slides_DL.out)
+ (long_slides_DL_kahou.out) (long_slides_DL_kahou.out)
 \@outlinefile=\write6
-\openout6 = `long_slides_DL.out'.
+\openout6 = `long_slides_DL_kahou.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 91.
@@ -1456,7 +1456,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
- (long_slides_DL.nav)
+ (long_slides_DL_kahou.nav)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
 (hyperref)                setting the option has no effect on input line 102.
@@ -1903,26 +1903,26 @@ d on input line 1549.
 
 ]
 \tf@nav=\write7
-\openout7 = `long_slides_DL.nav'.
+\openout7 = `long_slides_DL_kahou.nav'.
 
 \tf@toc=\write8
-\openout8 = `long_slides_DL.toc'.
+\openout8 = `long_slides_DL_kahou.toc'.
 
 \tf@snm=\write9
-\openout9 = `long_slides_DL.snm'.
+\openout9 = `long_slides_DL_kahou.snm'.
 
- (long_slides_DL.aux)
-Package rerunfilecheck Info: File `long_slides_DL.out' has not changed.
+ (long_slides_DL_kahou.aux)
+Package rerunfilecheck Info: File `long_slides_DL_kahou.out' has not changed.
 (rerunfilecheck)             Checksum: 161E31506F882E66EC2FC045AE4626CC;2240.
  ) 
 Here is how much of TeX's memory you used:
  37308 strings out of 475385
- 788415 string characters out of 2776906
- 1125936 words of memory out of 3000000
+ 788547 string characters out of 2776906
+ 1125960 words of memory out of 3000000
  57753 multiletter control sequences out of 15000+600000
  486607 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,24n,122p,1918b,855s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 128i,24n,122p,1924b,855s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-ts1.enc}<C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmex10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -1960,7 +1960,7 @@ amsfonts/cm/cmsy9.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/amsfonts/symbols/msbm10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/cm-super/sfss0900.pfb><C:/Users/mahdi/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/cm-super/sfss1000.pfb>
-Output written on long_slides_DL.pdf (84 pages, 1123063 bytes).
+Output written on long_slides_DL_kahou.pdf (84 pages, 1123063 bytes).
 PDF statistics:
  1008 PDF objects out of 1200 (max. 8388607)
  218 named destinations out of 1000 (max. 500000)
