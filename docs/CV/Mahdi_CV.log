@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  9 JUN 2023 11:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  3 SEP 2023 23:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -345,50 +345,66 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 244.
 
-Overfull \hbox (5.27547pt too wide) in paragraph at lines 324--327
+Underfull \hbox (badness 10000) in paragraph at lines 308--314
+
+ []
+
+
+Overfull \hbox (5.27547pt too wide) in paragraph at lines 331--334
 [][][]\OT1/cmr/m/n/10 ``Exploiting Sym-me-try in High-Dimensional Dy-namic Pro-
 gram-ming"[][], NBER Work-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--335
+Underfull \hbox (badness 10000) in paragraph at lines 340--342
 
  []
 
 [1
 
 {C:/Users/mahdi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Overfull \hbox (0.27635pt too wide) in paragraph at lines 366--367
+Overfull \hbox (0.27635pt too wide) in paragraph at lines 373--374
 []\OT1/cmr/m/n/10 Institute for Quan-tum Sci-ence and Tech-nol-ogy ``Top-Up Stu
 -dents Award"(University
  []
 
 
-Overfull \hbox (14.9431pt too wide) in paragraph at lines 375--376
-\OT1/cmr/m/n/10 (Sched-uled), Uni-ver-sity of Toronto, Uni-ver-sity of Cal-gary
- (Haskayne School of Busi-ness),
+Overfull \hbox (11.19307pt too wide) in paragraph at lines 382--383
+[]\OT1/cmr/m/n/10 2023: TeIAS, Econo-met-ric So-ci-ety Sum-mer School in Dy-nam
+ic Struc-tural Econo-met-rics
  []
 
 
-Overfull \hbox (5.13756pt too wide) in paragraph at lines 376--377
+Overfull \hbox (1.33199pt too wide) in paragraph at lines 382--383
+\OT1/cmr/m/n/10 (in-vited), Uni-ver-sity of Toronto, Uni-ver-sity of Cal-gary (
+Haskayne School of Busi-ness),
+ []
+
+
+Overfull \hbox (5.13756pt too wide) in paragraph at lines 383--384
 []\OT1/cmr/m/n/10 2022: So-ci-ety For Eco-nomic Dy-nam-ics (Madi-son), Uni-ver-
 sity of Min-nesota, Uni-ver-sity
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 431--435
+
  []
 
 [2] 
 AED: lastpage setting LastPage
 [3] (Mahdi_CV.aux)
 Package rerunfilecheck Info: File `Mahdi_CV.out' has not changed.
-(rerunfilecheck)             Checksum: F271ECCF20B27789D86948DF2B8ABC3E;1433.
+(rerunfilecheck)             Checksum: A5EA48CB1B07F1CD627BB8651E736F3D;1529.
  ) 
 Here is how much of TeX's memory you used:
- 9090 strings out of 475385
- 146780 string characters out of 2776906
- 510899 words of memory out of 3000000
- 30374 multiletter control sequences out of 15000+600000
+ 9092 strings out of 475385
+ 146804 string characters out of 2776906
+ 509899 words of memory out of 3000000
+ 30375 multiletter control sequences out of 15000+600000
  471116 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,13n,77p,1077b,575s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,14n,77p,1077b,578s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-ts1.enc}<C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -396,9 +412,9 @@ ublic/amsfonts/cm/cmbx5.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/mahdi/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/mahdi/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Mahdi_CV.pdf (3 pages, 87947 bytes).
+Output written on Mahdi_CV.pdf (3 pages, 87998 bytes).
 PDF statistics:
  117 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
- 89 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 named destinations out of 1000 (max. 500000)
+ 97 words of extra memory for PDF output out of 10000 (max. 10000000)
 
