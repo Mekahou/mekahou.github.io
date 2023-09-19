@@ -8,6 +8,12 @@ subtitle:
 > which somebody has invented a happy situation for me where I don't have to teach. Never.
 ><div style="text-align: right"> Richard Feynman </div>
 
+## Bowdoin College
+-------------
+Econ 1102: Principles of Macroeconomics
+
+Econ 2556: Macroeconomics
+
 
 ## University of British Columbia (TA) 
 -------------
