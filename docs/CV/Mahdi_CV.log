@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  3 SEP 2023 23:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  25 SEP 2023 13:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -369,29 +369,29 @@ Overfull \hbox (0.27635pt too wide) in paragraph at lines 373--374
  []
 
 
-Overfull \hbox (11.19307pt too wide) in paragraph at lines 382--383
+Overfull \hbox (11.19307pt too wide) in paragraph at lines 383--384
 []\OT1/cmr/m/n/10 2023: TeIAS, Econo-met-ric So-ci-ety Sum-mer School in Dy-nam
 ic Struc-tural Econo-met-rics
  []
 
 
-Overfull \hbox (1.33199pt too wide) in paragraph at lines 382--383
+Overfull \hbox (1.33199pt too wide) in paragraph at lines 383--384
 \OT1/cmr/m/n/10 (in-vited), Uni-ver-sity of Toronto, Uni-ver-sity of Cal-gary (
 Haskayne School of Busi-ness),
  []
 
 
-Overfull \hbox (5.13756pt too wide) in paragraph at lines 383--384
+Overfull \hbox (5.13756pt too wide) in paragraph at lines 384--385
 []\OT1/cmr/m/n/10 2022: So-ci-ety For Eco-nomic Dy-nam-ics (Madi-son), Uni-ver-
 sity of Min-nesota, Uni-ver-sity
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 431--435
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 432--436
 
  []
 
-[2] 
+
 AED: lastpage setting LastPage
 [3] (Mahdi_CV.aux)
 Package rerunfilecheck Info: File `Mahdi_CV.out' has not changed.
@@ -404,7 +404,7 @@ Here is how much of TeX's memory you used:
  30375 multiletter control sequences out of 15000+600000
  471116 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,14n,77p,1077b,578s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,14n,77p,1077b,548s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-ts1.enc}<C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -412,7 +412,7 @@ ublic/amsfonts/cm/cmbx5.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/mahdi/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/mahdi/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Mahdi_CV.pdf (3 pages, 87998 bytes).
+Output written on Mahdi_CV.pdf (3 pages, 88034 bytes).
 PDF statistics:
  117 PDF objects out of 1000 (max. 8388607)
  16 named destinations out of 1000 (max. 500000)
