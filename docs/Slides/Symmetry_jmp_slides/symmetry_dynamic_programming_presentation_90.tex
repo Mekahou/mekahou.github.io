@@ -588,19 +588,38 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{1} \and Arnav S
 	\begin{empheq}[box=\tcbhighmath]{equation*}
 		\gamma u(x,X) = \beta \expec{p(X')+\gamma (1-\delta) u(x',X') }
 	\end{empheq}
-	\emphcolor{Goal}: Using economic theory to
+	%\emphcolor{Goal}: Using economic theory to
 	
-	\center{\Large Design $\mathcal{H}(\Theta)$ class for approximating $u(x,X)$?}
+	%\center{\Large Design $\mathcal{H}(\Theta)$ class for approximating $u(x,X)$?}
 
 \end{frame}
+
+
+\begin{frame}{Curse of dimensionality: a closer look }
+	\begin{empheq}[box=\tcbhighmath]{equation*}
+		\gamma u(x,X) = \beta \expec{p(X')+\gamma (1-\delta) u(x',X') }
+	\end{empheq}
+Let's say there are \emphcolor{$1000$ agents}:
+\begin{enumerate}
+	\item The domain of the unknown functions of interest $u(\cdot,\cdot)$ is \emphcolor{$1000$-dimensional}.\vspace{0.1in}
+	\item The expectation operator $\expec{\cdot}$  is a \emphcolor{$1001$-dimensional} integral.\vspace{0.1in}
+	\begin{itemize}
+		\item $1000$ idiosyncratic shocks + $1$ aggregate shock.\vspace{0.1in}
+	\end{itemize}
+	\item What about the stationarity of the solution and the \emphcolor{transversality condition}?\vspace{0.1in}
+	\begin{itemize}
+		\item I will come back to this.
+	\end{itemize}
+\end{enumerate}
 	
+\end{frame}
 	
-	\begin{frame}{General class of problems: A ``big $X$, little $x$" dynamic programming}
-		\begin{empheq}[box=\tcbhighmath]{align*}
-			v(x,X)       & =\max_{u}\left\{r\big(x,u,X\big) + \beta \expec{v(x',X')}\right\} \\
-			\text{s.t. } & x' = g(x,u) + \sigma w + \eta \omega                              \\
-			& X' = G(X) + \Omega W + \eta \omega \mathbf{1}_N
-		\end{empheq}
+\begin{frame}{General class of problems: A ``big $X$, little $x$" dynamic programming}
+	\begin{empheq}[box=\tcbhighmath]{align*}
+		v(x,X)       & =\max_{u}\left\{r\big(x,u,X\big) + \beta \expec{v(x',X')}\right\} \\
+		\text{s.t. } & x' = g(x,u) + \sigma w + \eta \omega                              \\
+					& X' = G(X) + \Omega W + \eta \omega \mathbf{1}_N
+	\end{empheq}
 	\begin{enumerate}
 		\item $x$ is the individual state of the agent.
 		\vspace{0.1in}
@@ -622,7 +641,7 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{1} \and Arnav S
 		%	\item  $W\sim \mathcal{N}(\mathbf{0}_N,\mathbf{1}_N)$: A vector containing the idiosyncratic shocks of the other $N$ agents, w.l.o.g $w = W_1$ \vspace{0.1in}
 		%	\item $\omega \sim \mathcal{N}(0,1)$:  
 		%\end{enumerate}
-	\end{frame}
+\end{frame}
 
 		
 \begin{frame}[label = permutationgroup]{Permutation Groups}
@@ -667,7 +686,7 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{1} \and Arnav S
 \end{frame}
 
 
-\begin{frame}{Main results I: Permutation invariance of the optimal solution}
+\begin{frame}{Permutation invariance of the optimal solution}
 	
 	\metroset{block=fill}
 	\begin{proposition}
@@ -690,32 +709,31 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{1} \and Arnav S
 
 		
 		
-		\begin{frame}{Curse of dimensionality in this example}
-			Recall there are three separate sources of the ``curse'' here as we increase the number of agents:
-			\begin{enumerate}
-				\item Can we approximate $u(x,X)$ for high dimensional $X\in \R^N$ without massive increases in the $\Xdom$ grid?
-					  \begin{itemize}
-						  \item Only if the approximation of $u(x,X)$ generalizes well from limited $\Xtrain$.\smallskip
-						  %\item With smart and economics informed $\mathcal{H}(\Theta)$  might generalize well for small $\Xtrain$.
-					  \end{itemize}\medskip
-		
-				\item Given intuition that individual $X_i \in X$ have limited effect on $u(x,X)$, how to calculate $\expec{u(x',X')}$?\smallskip
-					  \begin{itemize}
-						  \item  Look at $\mathbb{E}_W[u(x', X')|w, \omega]$ to condition on firm's idiosyncratic $w$ aggregate shock $\omega$.\smallskip
-						  \item Why conditioning on these two? They matter a lot. Now, can something similar to the law of large numbers happen?
-					  \end{itemize}\medskip
-				\item What about the stationary solutions and transversality condition?\smallskip
-					  \begin{itemize}
-						  %\item Euler equation have multiple solutions, some leading to non-stationary paths. See \textcolor{red}{Ebrahimi Kahou et al.\smallskip (2022)}.
+%\begin{frame}{Curse of dimensionality in this example}
+%	Recall there are three separate sources of the ``curse'' here as we increase the number of agents:
+%	\begin{enumerate}
+%		\item Can we approximate $u(x,X)$ for high dimensional $X\in \R^N$ without massive increases in the $\Xdom$ grid?
+%		 \begin{itemize}
+%		  \item Only if the approximation of $u(x,X)$ generalizes well from limited $\Xtrain$.\smallskip
+			  %\item With smart and economics informed $\mathcal{H}(\Theta)$  might generalize well for small $\Xtrain$.
+%			  \end{itemize}\medskip
+%				\item Given intuition that individual $X_i \in X$ have limited effect on $u(x,X)$, how to calculate $\expec{u(x',X')}$?\smallskip
+%					  \begin{itemize}
+%						  \item  Look at $\mathbb{E}_W[u(x', X')|w, \omega]$ to condition on firm's idiosyncratic $w$ aggregate shock $\omega$.\smallskip
+%						  \item Why conditioning on these two? They matter a lot. Now, can something similar to the law of large numbers happen?
+%					  \end{itemize}\medskip
+%			\item What about the stationary solutions and transversality condition?\smallskip
+%			  \begin{itemize}
+				  %\item Euler equation have multiple solutions, some leading to non-stationary paths. See \textcolor{red}{Ebrahimi Kahou et al.\smallskip (2022)}.
 						  %\item Do we need to calculate the steady-state (ergodic distribution)?
 						  
-						  \smallskip
-						  \item If time permits: I will come back to this.
-					  \end{itemize}
-			\end{enumerate}
-		\end{frame}
+%			  \smallskip
+%			  \item If time permits: I will come back to this.
+%			  \end{itemize}
+%	\end{enumerate}
+%\end{frame}
 		
-		\begin{frame}{Main result I: Representation of permutation-invariant functions }
+\begin{frame}{Representation of permutation-invariant functions }
 		
 			\metroset{block=fill}
 			\begin{proposition}{ (based on Wagstaff et al., 2019)}
@@ -754,6 +772,14 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{1} \and Arnav S
 	%		\item In this example, only sum (first moment matters), $\phi$ is the identity function, $f(X_1,\ldots,X_N) = \rho(\frac{1}{N}\sum_{i=1}^N X_i)$.
 	%	\end{itemize}
 	\end{frame}
+	
+\begin{frame}{High-dimensional expectation}
+	\begin{itemize}
+		\item 
+	\end{itemize}
+\end{frame}	
+		
+		
 		
 \begin{frame}{Expected gradient bounded in $N$}
 	\begin{definition}[Expected gradient bounded in $N$] Let $f:\mathbb{R}^N\rightarrow \mathbb{R}$ be a bounded function in $N$ and $z\sim \mathcal{N}(\mathbf{0}_N,\mathbf{I}_N)$ be a normalized Gaussian random vector. The function $f$ has its expected gradient bounded in $N$ if there exists a $C$ such that:

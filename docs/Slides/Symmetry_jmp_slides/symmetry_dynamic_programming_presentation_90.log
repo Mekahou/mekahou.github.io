@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  15 MAR 2024 12:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  15 MAR 2024 13:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1547,36 +1547,36 @@ Overfull \vbox (24.26022pt too high) detected at line 577
 
 [15
 
-]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 595.
+] [16
 
- [16
+] [17
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 625.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 644.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 625.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 644.
 
 
-Overfull \vbox (16.35356pt too high) detected at line 625
+Overfull \vbox (16.35356pt too high) detected at line 644
  []
 
-[17
+[18
 
-] [18
+] [19
 
 ]
-Overfull \vbox (43.25142pt too high) detected at line 667
+Overfull \vbox (43.25142pt too high) detected at line 686
  []
 
-[19
+[20
 
-] [20
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 704.
 
-] [21
+ [21
 
 ] [22
 
@@ -1584,147 +1584,147 @@ Overfull \vbox (43.25142pt too high) detected at line 667
 
 ] [24
 
+] [25
+
 ]
-Overfull \vbox (3.86784pt too high) detected at line 793
+Overfull \vbox (3.86784pt too high) detected at line 819
  []
 
-[25
-
-] [26
+[26
 
 ] [27
 
+] [28
+
 ]
-Overfull \vbox (15.56673pt too high) detected at line 848
+Overfull \vbox (15.56673pt too high) detected at line 874
  []
 
-[28
-
-] [29
+[29
 
 ] [30
 
 ] [31
 
+] [32
+
 ]
-<./figures/identity-moments-deep-sets-linear-residual.pdf, id=233, 578.16pt x 2
+<./figures/identity-moments-deep-sets-linear-residual.pdf, id=237, 578.16pt x 2
 52.945pt>
 File: ./figures/identity-moments-deep-sets-linear-residual.pdf Graphic file (ty
 pe pdf)
 <use ./figures/identity-moments-deep-sets-linear-residual.pdf>
 Package pdftex.def Info: ./figures/identity-moments-deep-sets-linear-residual.p
-df  used on input line 981.
+df  used on input line 1007.
 (pdftex.def)             Requested size: 379.93706pt x 166.2212pt.
 
-Overfull \vbox (26.47871pt too high) detected at line 981
+Overfull \vbox (26.47871pt too high) detected at line 1007
  []
 
-[32
+[33
 
  <./figures/identity-moments-deep-sets-linear-residual.pdf>]
-<./figures/linear-baseline-theory-vs-predicted_new.pdf, id=276, 722.7pt x 252.9
+<./figures/linear-baseline-theory-vs-predicted_new.pdf, id=280, 722.7pt x 252.9
 45pt>
 File: ./figures/linear-baseline-theory-vs-predicted_new.pdf Graphic file (type 
 pdf)
 <use ./figures/linear-baseline-theory-vs-predicted_new.pdf>
 Package pdftex.def Info: ./figures/linear-baseline-theory-vs-predicted_new.pdf 
- used on input line 991.
+ used on input line 1017.
 (pdftex.def)             Requested size: 439.80408pt x 153.93341pt.
 
-Overfull \vbox (1.54099pt too high) detected at line 991
- []
-
-[33
-
- <./figures/linear-baseline-theory-vs-predicted_new.pdf>]
-<./figures/deep-sets-linear-profiling-var-n.pdf, id=310, 578.16pt x 252.945pt>
-File: ./figures/deep-sets-linear-profiling-var-n.pdf Graphic file (type pdf)
-<use ./figures/deep-sets-linear-profiling-var-n.pdf>
-Package pdftex.def Info: ./figures/deep-sets-linear-profiling-var-n.pdf  used o
-n input line 1001.
-(pdftex.def)             Requested size: 444.24408pt x 194.35527pt.
-
-Overfull \vbox (29.31291pt too high) detected at line 1001
+Overfull \vbox (1.54099pt too high) detected at line 1017
  []
 
 [34
 
- <./figures/deep-sets-linear-profiling-var-n.pdf>] [35
+ <./figures/linear-baseline-theory-vs-predicted_new.pdf>]
+<./figures/deep-sets-linear-profiling-var-n.pdf, id=314, 578.16pt x 252.945pt>
+File: ./figures/deep-sets-linear-profiling-var-n.pdf Graphic file (type pdf)
+<use ./figures/deep-sets-linear-profiling-var-n.pdf>
+Package pdftex.def Info: ./figures/deep-sets-linear-profiling-var-n.pdf  used o
+n input line 1027.
+(pdftex.def)             Requested size: 444.24408pt x 194.35527pt.
+
+Overfull \vbox (29.31291pt too high) detected at line 1027
+ []
+
+[35
+
+ <./figures/deep-sets-linear-profiling-var-n.pdf>] [36
 
 ]
-<./figures/moments-deep-sets-nonlinear-residual.pdf, id=340, 433.62pt x 252.945
+<./figures/moments-deep-sets-nonlinear-residual.pdf, id=344, 433.62pt x 252.945
 pt>
 File: ./figures/moments-deep-sets-nonlinear-residual.pdf Graphic file (type pdf
 )
 <use ./figures/moments-deep-sets-nonlinear-residual.pdf>
 Package pdftex.def Info: ./figures/moments-deep-sets-nonlinear-residual.pdf  us
-ed on input line 1030.
+ed on input line 1056.
 (pdftex.def)             Requested size: 288.75594pt x 168.44946pt.
 
-Overfull \vbox (28.70697pt too high) detected at line 1030
- []
-
-[36
-
- <./figures/moments-deep-sets-nonlinear-residual.pdf>]
-<./figures/deep-sets-nonlinear-var-nu.pdf, id=369, 433.62pt x 252.945pt>
-File: ./figures/deep-sets-nonlinear-var-nu.pdf Graphic file (type pdf)
-<use ./figures/deep-sets-nonlinear-var-nu.pdf>
-Package pdftex.def Info: ./figures/deep-sets-nonlinear-var-nu.pdf  used on inpu
-t line 1039.
-(pdftex.def)             Requested size: 310.9695pt x 181.40622pt.
-
-Overfull \vbox (29.0138pt too high) detected at line 1039
+Overfull \vbox (28.70697pt too high) detected at line 1056
  []
 
 [37
 
- <./figures/deep-sets-nonlinear-var-nu.pdf>] [38
+ <./figures/moments-deep-sets-nonlinear-residual.pdf>]
+<./figures/deep-sets-nonlinear-var-nu.pdf, id=374, 433.62pt x 252.945pt>
+File: ./figures/deep-sets-nonlinear-var-nu.pdf Graphic file (type pdf)
+<use ./figures/deep-sets-nonlinear-var-nu.pdf>
+Package pdftex.def Info: ./figures/deep-sets-nonlinear-var-nu.pdf  used on inpu
+t line 1065.
+(pdftex.def)             Requested size: 310.9695pt x 181.40622pt.
 
-]
-Overfull \vbox (10.59486pt too high) detected at line 1075
+Overfull \vbox (29.0138pt too high) detected at line 1065
  []
 
-[39
+[38
 
-] [40
+ <./figures/deep-sets-nonlinear-var-nu.pdf>] [39
+
+]
+Overfull \vbox (10.59486pt too high) detected at line 1101
+ []
+
+[40
 
 ] [41
 
 ] [42
 
+] [43
+
 ]
-<./figures/doubledescent.pdf, id=416, 203.12387pt x 75.23106pt>
+<./figures/doubledescent.pdf, id=422, 203.12387pt x 75.23106pt>
 File: ./figures/doubledescent.pdf Graphic file (type pdf)
 <use ./figures/doubledescent.pdf>
-Package pdftex.def Info: ./figures/doubledescent.pdf  used on input line 1134.
+Package pdftex.def Info: ./figures/doubledescent.pdf  used on input line 1160.
 (pdftex.def)             Requested size: 390.31883pt x 144.54pt.
- [43
+ [44
 
  <./figures/doubledescent.pdf>]
-Overfull \vbox (24.21034pt too high) detected at line 1159
+Overfull \vbox (24.21034pt too high) detected at line 1185
  []
 
-[44
+[45
 
-] [45
+] [46
 
 ]
-<./figures/fourplots_example_reg.pdf, id=459, 462.52798pt x 346.89601pt>
+<./figures/fourplots_example_reg.pdf, id=464, 462.52798pt x 346.89601pt>
 File: ./figures/fourplots_example_reg.pdf Graphic file (type pdf)
 <use ./figures/fourplots_example_reg.pdf>
 Package pdftex.def Info: ./figures/fourplots_example_reg.pdf  used on input lin
-e 1190.
+e 1216.
 (pdftex.def)             Requested size: 260.17134pt x 195.12877pt.
 
-Overfull \vbox (3.4365pt too high) detected at line 1190
+Overfull \vbox (3.4365pt too high) detected at line 1216
  []
 
-[46
+[47
 
- <./figures/fourplots_example_reg.pdf>] [47
-
-] [48
+ <./figures/fourplots_example_reg.pdf>] [48
 
 ] [49
 
@@ -1734,29 +1734,31 @@ Overfull \vbox (3.4365pt too high) detected at line 1190
 
 ] [52
 
-]
-[53
-
-] [54
+] [53
 
 ]
-<./figures/concentration_euler_residual_linear.pdf, id=533, 578.16pt x 252.945p
+[54
+
+] [55
+
+]
+<./figures/concentration_euler_residual_linear.pdf, id=539, 578.16pt x 252.945p
 t>
 File: ./figures/concentration_euler_residual_linear.pdf Graphic file (type pdf)
 
 <use ./figures/concentration_euler_residual_linear.pdf>
 Package pdftex.def Info: ./figures/concentration_euler_residual_linear.pdf  use
-d on input line 1345.
+d on input line 1371.
 (pdftex.def)             Requested size: 346.89867pt x 151.76744pt.
- [55
+ [56
 
  <./figures/concentration_euler_residual_linear.pdf>]
-(figures/linear_performance_table.tex) [56
+(figures/linear_performance_table.tex) [57
 
 ]
-(figures/full_nonlinear_performance_table.tex) [57
+(figures/full_nonlinear_performance_table.tex) [58
 
-] [58
+] [59
 
 ]
 \tf@nav=\write7
@@ -1775,10 +1777,10 @@ Package rerunfilecheck Info: File `symmetry_dynamic_programming_presentation_90
 (rerunfilecheck)             Checksum: EAF6E79DB32D04F8441B3971EDFBE603;1016.
  ) 
 Here is how much of TeX's memory you used:
- 36993 strings out of 475385
- 782670 string characters out of 2776906
+ 36997 strings out of 475385
+ 782705 string characters out of 2776906
  1127232 words of memory out of 3000000
- 57525 multiletter control sequences out of 15000+600000
+ 57527 multiletter control sequences out of 15000+600000
  486947 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,26n,122p,1948b,849s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -1817,10 +1819,10 @@ m10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-sup
 er/sfss0800.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/cm-super/sfss0900.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/typ
 e1/public/cm-super/sfss1000.pfb>
-Output written on symmetry_dynamic_programming_presentation_90.pdf (58 pages, 8
-96482 bytes).
+Output written on symmetry_dynamic_programming_presentation_90.pdf (59 pages, 8
+96238 bytes).
 PDF statistics:
- 701 PDF objects out of 1000 (max. 8388607)
- 133 named destinations out of 1000 (max. 500000)
+ 706 PDF objects out of 1000 (max. 8388607)
+ 135 named destinations out of 1000 (max. 500000)
  131 words of extra memory for PDF output out of 10000 (max. 10000000)
 
