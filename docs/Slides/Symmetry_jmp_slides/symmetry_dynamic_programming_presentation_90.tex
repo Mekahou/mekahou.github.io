@@ -234,27 +234,34 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{1} \and Arnav S
 		      \end{enumerate}
 \end{frame}
 
-\begin{frame}{Contribution}
+\begin{frame}{Contribution I}
 	Inspired by economic theory, providing novel method for \emphcolor{globally} solving high-dimensional heterogeneous agent models with \emphcolor{aggregate shocks} which relies on:\vspace{0.1in}
-	\begin{enumerate}
+	\begin{itemize}
 		\item A \emphcolor{symmetry} present in many heterogeneous agent models, i.e., \emphcolor{exchangeability} of agents.\vspace{0.1in}
 		\begin{itemize}
 			\item Example: In general equilibrium models the \emphcolor{Walrasian} auctioneer removes indices.\vspace{0.1in}
+			\item The solution (function) must be faithful to this symmetry caused by this exchangeability of agents.
 		\end{itemize}
-		%\begin{itemize}
-		%	\item Maps the problem to a different space (possibly) much lower dimensionality.\vspace{0.1in}
-		%	\item The example: decision depends only on the first moment, $2^{266} \rightarrow 267$.\vspace{0.1in}  
-		%\end{itemize}
-		\item \emphcolor{Concentration of measures}, something that resembles the law of large numbers to deal with conditional expectations (very fast).\vspace{0.1in}
-		\begin{itemize}
-			\item More agents makes it easier to forecast the evolution of distributions. \vspace{0.1in}  
-		\end{itemize}	 
-
-		\item We show how to implement the symmetry when using \emphcolor{deep neural networks}. \vspace{0.1in} 
+	\end{itemize}
 		
-	\end{enumerate}
-With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and even more) agents which was \emphcolor{not possible} before.
 \end{frame}
+
+
+\begin{frame}{Contribution II}
+	\begin{itemize}
+	\item \emphcolor{Concentration of measures}, something that resembles the law of large numbers to deal with conditional expectations (very fast).\vspace{0.1in}
+	\begin{itemize}
+		\item More agents makes it easier to forecast the evolution of distributions. \vspace{0.1in}  
+		\item Conditional on the aggregate shock, we can use something similar law of large numbers to calculate expectations.  \vspace{0.1in}    
+	\end{itemize}	 
+	
+	
+	\item We show how to implement the symmetry when using \emphcolor{deep neural networks}. \vspace{0.1in} 
+	
+	\end{itemize}
+	With these we \emphcolor{globally} solve a model with \emphcolor{10,000} agents which was \emphcolor{not possible} before.
+\end{frame}
+
 
 
 %\begin{frame}{Why am I presenting this?}
@@ -497,11 +504,12 @@ With these we \emphcolor{globally} solve a model with \emphcolor{10,000} (and ev
 			\item Figuring out this property is a very active field in computer science and optimization theory.\vspace{0.1in}
 			\item Converges to \emphcolor{``simple"} (flat) interpolating functions. \vspace{0.1in}
 			\begin{itemize}
-				\item They have a built-in \emphcolor{Occam's razor}.
+				\item They have a built-in \emphcolor{Occam's razor}.\vspace{0.1in}
 			\end{itemize}
 		\end{itemize}
+	\item Modern ML, uses high-dimensional \emphcolor{non-convex} optimizations. Does the initialization of the coefficients matter? 
 	\end{itemize}		 
-If time permits: I will discuss it in details, and the implications in our problem, see the \textcolor{red}{Ebrahimi Kahou et al. (2022)}.
+
 \end{frame}	
 
 
@@ -698,7 +706,7 @@ If time permits: I will discuss it in details, and the implications in our probl
 					  \end{itemize}\medskip
 				\item What about the stationary solutions and transversality condition?\smallskip
 					  \begin{itemize}
-						  \item Euler equation have multiple solutions, some leading to non-stationary paths. See \textcolor{red}{Ebrahimi Kahou et al.\smallskip (2022)}.
+						  %\item Euler equation have multiple solutions, some leading to non-stationary paths. See \textcolor{red}{Ebrahimi Kahou et al.\smallskip (2022)}.
 						  %\item Do we need to calculate the steady-state (ergodic distribution)?
 						  
 						  \smallskip

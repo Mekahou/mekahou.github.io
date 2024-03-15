@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  23 MAR 2023 22:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.12.28)  15 MAR 2024 12:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1504,34 +1504,34 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 
 ] [6
 
+] [7
+
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 304.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 311.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 304.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 311.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 304.
-
- [7
-
-]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 329.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 329.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 311.
 
  [8
 
 ]
-Overfull \vbox (5.17159pt too high) detected at line 488
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 336.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 336.
+
+ [9
+
+]
+Overfull \vbox (5.17159pt too high) detected at line 495
  []
 
-[9
-
-] [10
+[10
 
 ] [11
 
@@ -1539,40 +1539,40 @@ Overfull \vbox (5.17159pt too high) detected at line 488
 
 ] [13
 
+] [14
+
 ]
-Overfull \vbox (24.26022pt too high) detected at line 569
+Overfull \vbox (24.26022pt too high) detected at line 577
  []
 
-[14
+[15
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 587.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 595.
 
- [15
+ [16
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 617.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 625.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 617.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 625.
 
 
-Overfull \vbox (16.35356pt too high) detected at line 617
+Overfull \vbox (16.35356pt too high) detected at line 625
  []
 
-[16
+[17
 
-] [17
+] [18
 
 ]
-Overfull \vbox (43.25142pt too high) detected at line 659
+Overfull \vbox (43.25142pt too high) detected at line 667
  []
 
-[18
-
-] [19
+[19
 
 ] [20
 
@@ -1582,147 +1582,147 @@ Overfull \vbox (43.25142pt too high) detected at line 659
 
 ] [23
 
+] [24
+
 ]
-Overfull \vbox (3.86784pt too high) detected at line 785
+Overfull \vbox (3.86784pt too high) detected at line 793
  []
 
-[24
-
-] [25
+[25
 
 ] [26
 
+] [27
+
 ]
-Overfull \vbox (15.56673pt too high) detected at line 840
+Overfull \vbox (15.56673pt too high) detected at line 848
  []
 
-[27
-
-] [28
+[28
 
 ] [29
 
 ] [30
 
+] [31
+
 ]
-<./figures/identity-moments-deep-sets-linear-residual.pdf, id=227, 578.16pt x 2
+<./figures/identity-moments-deep-sets-linear-residual.pdf, id=233, 578.16pt x 2
 52.945pt>
 File: ./figures/identity-moments-deep-sets-linear-residual.pdf Graphic file (ty
 pe pdf)
 <use ./figures/identity-moments-deep-sets-linear-residual.pdf>
 Package pdftex.def Info: ./figures/identity-moments-deep-sets-linear-residual.p
-df  used on input line 973.
+df  used on input line 981.
 (pdftex.def)             Requested size: 379.93706pt x 166.2212pt.
 
-Overfull \vbox (26.47871pt too high) detected at line 973
+Overfull \vbox (26.47871pt too high) detected at line 981
  []
 
-[31
+[32
 
  <./figures/identity-moments-deep-sets-linear-residual.pdf>]
-<./figures/linear-baseline-theory-vs-predicted_new.pdf, id=271, 722.7pt x 252.9
+<./figures/linear-baseline-theory-vs-predicted_new.pdf, id=276, 722.7pt x 252.9
 45pt>
 File: ./figures/linear-baseline-theory-vs-predicted_new.pdf Graphic file (type 
 pdf)
 <use ./figures/linear-baseline-theory-vs-predicted_new.pdf>
 Package pdftex.def Info: ./figures/linear-baseline-theory-vs-predicted_new.pdf 
- used on input line 983.
+ used on input line 991.
 (pdftex.def)             Requested size: 439.80408pt x 153.93341pt.
 
-Overfull \vbox (1.54099pt too high) detected at line 983
- []
-
-[32
-
- <./figures/linear-baseline-theory-vs-predicted_new.pdf>]
-<./figures/deep-sets-linear-profiling-var-n.pdf, id=305, 578.16pt x 252.945pt>
-File: ./figures/deep-sets-linear-profiling-var-n.pdf Graphic file (type pdf)
-<use ./figures/deep-sets-linear-profiling-var-n.pdf>
-Package pdftex.def Info: ./figures/deep-sets-linear-profiling-var-n.pdf  used o
-n input line 993.
-(pdftex.def)             Requested size: 444.24408pt x 194.35527pt.
-
-Overfull \vbox (29.31291pt too high) detected at line 993
+Overfull \vbox (1.54099pt too high) detected at line 991
  []
 
 [33
 
- <./figures/deep-sets-linear-profiling-var-n.pdf>] [34
+ <./figures/linear-baseline-theory-vs-predicted_new.pdf>]
+<./figures/deep-sets-linear-profiling-var-n.pdf, id=310, 578.16pt x 252.945pt>
+File: ./figures/deep-sets-linear-profiling-var-n.pdf Graphic file (type pdf)
+<use ./figures/deep-sets-linear-profiling-var-n.pdf>
+Package pdftex.def Info: ./figures/deep-sets-linear-profiling-var-n.pdf  used o
+n input line 1001.
+(pdftex.def)             Requested size: 444.24408pt x 194.35527pt.
+
+Overfull \vbox (29.31291pt too high) detected at line 1001
+ []
+
+[34
+
+ <./figures/deep-sets-linear-profiling-var-n.pdf>] [35
 
 ]
-<./figures/moments-deep-sets-nonlinear-residual.pdf, id=335, 433.62pt x 252.945
+<./figures/moments-deep-sets-nonlinear-residual.pdf, id=340, 433.62pt x 252.945
 pt>
 File: ./figures/moments-deep-sets-nonlinear-residual.pdf Graphic file (type pdf
 )
 <use ./figures/moments-deep-sets-nonlinear-residual.pdf>
 Package pdftex.def Info: ./figures/moments-deep-sets-nonlinear-residual.pdf  us
-ed on input line 1022.
+ed on input line 1030.
 (pdftex.def)             Requested size: 288.75594pt x 168.44946pt.
 
-Overfull \vbox (28.70697pt too high) detected at line 1022
- []
-
-[35
-
- <./figures/moments-deep-sets-nonlinear-residual.pdf>]
-<./figures/deep-sets-nonlinear-var-nu.pdf, id=364, 433.62pt x 252.945pt>
-File: ./figures/deep-sets-nonlinear-var-nu.pdf Graphic file (type pdf)
-<use ./figures/deep-sets-nonlinear-var-nu.pdf>
-Package pdftex.def Info: ./figures/deep-sets-nonlinear-var-nu.pdf  used on inpu
-t line 1031.
-(pdftex.def)             Requested size: 310.9695pt x 181.40622pt.
-
-Overfull \vbox (29.0138pt too high) detected at line 1031
+Overfull \vbox (28.70697pt too high) detected at line 1030
  []
 
 [36
 
- <./figures/deep-sets-nonlinear-var-nu.pdf>] [37
+ <./figures/moments-deep-sets-nonlinear-residual.pdf>]
+<./figures/deep-sets-nonlinear-var-nu.pdf, id=369, 433.62pt x 252.945pt>
+File: ./figures/deep-sets-nonlinear-var-nu.pdf Graphic file (type pdf)
+<use ./figures/deep-sets-nonlinear-var-nu.pdf>
+Package pdftex.def Info: ./figures/deep-sets-nonlinear-var-nu.pdf  used on inpu
+t line 1039.
+(pdftex.def)             Requested size: 310.9695pt x 181.40622pt.
 
-]
-Overfull \vbox (10.59486pt too high) detected at line 1067
+Overfull \vbox (29.0138pt too high) detected at line 1039
  []
 
-[38
+[37
 
-] [39
+ <./figures/deep-sets-nonlinear-var-nu.pdf>] [38
+
+]
+Overfull \vbox (10.59486pt too high) detected at line 1075
+ []
+
+[39
 
 ] [40
 
 ] [41
 
+] [42
+
 ]
-<./figures/doubledescent.pdf, id=411, 203.12387pt x 75.23106pt>
+<./figures/doubledescent.pdf, id=416, 203.12387pt x 75.23106pt>
 File: ./figures/doubledescent.pdf Graphic file (type pdf)
 <use ./figures/doubledescent.pdf>
-Package pdftex.def Info: ./figures/doubledescent.pdf  used on input line 1126.
+Package pdftex.def Info: ./figures/doubledescent.pdf  used on input line 1134.
 (pdftex.def)             Requested size: 390.31883pt x 144.54pt.
- [42
+ [43
 
  <./figures/doubledescent.pdf>]
-Overfull \vbox (24.21034pt too high) detected at line 1151
+Overfull \vbox (24.21034pt too high) detected at line 1159
  []
 
-[43
+[44
 
-] [44
+] [45
 
 ]
-<./figures/fourplots_example_reg.pdf, id=454, 462.52798pt x 346.89601pt>
+<./figures/fourplots_example_reg.pdf, id=459, 462.52798pt x 346.89601pt>
 File: ./figures/fourplots_example_reg.pdf Graphic file (type pdf)
 <use ./figures/fourplots_example_reg.pdf>
 Package pdftex.def Info: ./figures/fourplots_example_reg.pdf  used on input lin
-e 1182.
+e 1190.
 (pdftex.def)             Requested size: 260.17134pt x 195.12877pt.
 
-Overfull \vbox (3.4365pt too high) detected at line 1182
+Overfull \vbox (3.4365pt too high) detected at line 1190
  []
 
-[45
+[46
 
- <./figures/fourplots_example_reg.pdf>] [46
-
-] [47
+ <./figures/fourplots_example_reg.pdf>] [47
 
 ] [48
 
@@ -1732,29 +1732,31 @@ Overfull \vbox (3.4365pt too high) detected at line 1182
 
 ] [51
 
-]
-[52
-
-] [53
+] [52
 
 ]
-<./figures/concentration_euler_residual_linear.pdf, id=528, 578.16pt x 252.945p
+[53
+
+] [54
+
+]
+<./figures/concentration_euler_residual_linear.pdf, id=533, 578.16pt x 252.945p
 t>
 File: ./figures/concentration_euler_residual_linear.pdf Graphic file (type pdf)
 
 <use ./figures/concentration_euler_residual_linear.pdf>
 Package pdftex.def Info: ./figures/concentration_euler_residual_linear.pdf  use
-d on input line 1337.
+d on input line 1345.
 (pdftex.def)             Requested size: 346.89867pt x 151.76744pt.
- [54
+ [55
 
  <./figures/concentration_euler_residual_linear.pdf>]
-(figures/linear_performance_table.tex) [55
+(figures/linear_performance_table.tex) [56
 
 ]
-(figures/full_nonlinear_performance_table.tex) [56
+(figures/full_nonlinear_performance_table.tex) [57
 
-] [57
+] [58
 
 ]
 \tf@nav=\write7
@@ -1773,10 +1775,10 @@ Package rerunfilecheck Info: File `symmetry_dynamic_programming_presentation_90
 (rerunfilecheck)             Checksum: EAF6E79DB32D04F8441B3971EDFBE603;1016.
  ) 
 Here is how much of TeX's memory you used:
- 36989 strings out of 475385
- 782633 string characters out of 2776906
+ 36993 strings out of 475385
+ 782670 string characters out of 2776906
  1127232 words of memory out of 3000000
- 57523 multiletter control sequences out of 15000+600000
+ 57525 multiletter control sequences out of 15000+600000
  486947 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,26n,122p,1948b,849s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -1815,10 +1817,10 @@ m10.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-sup
 er/sfss0800.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/cm-super/sfss0900.pfb><C:/Users/mahdi/AppData/Local/Programs/MiKTeX/fonts/typ
 e1/public/cm-super/sfss1000.pfb>
-Output written on symmetry_dynamic_programming_presentation_90.pdf (57 pages, 8
-95106 bytes).
+Output written on symmetry_dynamic_programming_presentation_90.pdf (58 pages, 8
+96482 bytes).
 PDF statistics:
- 695 PDF objects out of 1000 (max. 8388607)
- 131 named destinations out of 1000 (max. 500000)
+ 701 PDF objects out of 1000 (max. 8388607)
+ 133 named destinations out of 1000 (max. 500000)
  131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

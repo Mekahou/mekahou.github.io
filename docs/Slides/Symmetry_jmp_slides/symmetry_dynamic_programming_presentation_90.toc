@@ -1,6 +1,6 @@
-\beamer@sectionintoc {1}{\textcolor {PennBlue}{Background: Deep learning for functional equations}}{6}{0}{1}
-\beamer@sectionintoc {2}{Application}{11}{0}{2}
-\beamer@sectionintoc {3}{Solving the Model}{26}{0}{3}
-\beamer@sectionintoc {4}{Implicit bias, Generalization, and Stationarity.}{39}{0}{4}
-\beamer@sectionintoc {5}{Conclusions}{48}{0}{5}
-\beamer@sectionintoc {6}{Appendix}{51}{0}{6}
+\beamer@sectionintoc {1}{\textcolor {PennBlue}{Background: Deep learning for functional equations}}{7}{0}{1}
+\beamer@sectionintoc {2}{Application}{12}{0}{2}
+\beamer@sectionintoc {3}{Solving the Model}{27}{0}{3}
+\beamer@sectionintoc {4}{Implicit bias, Generalization, and Stationarity.}{40}{0}{4}
+\beamer@sectionintoc {5}{Conclusions}{49}{0}{5}
+\beamer@sectionintoc {6}{Appendix}{52}{0}{6}
