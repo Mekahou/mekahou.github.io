@@ -100,10 +100,11 @@
 	
 \title{{\vspace{0.4in}\hspace{0.2in}\textcolor{PennBlue}{Exploiting Symmetry in\\\hspace{0.2in}High-Dimensional Dynamic Programming}}}
 \author{\hspace{0.2in}Mahdi Ebrahimi Kahou\inst{1}\and
-Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{1} \and Arnav Sood\inst{3}}
-\institute{\inst{\hspace{0.2in}1}University of British Columbia,  Vancouver School of Economics\and
-	\inst{\hspace{0.2in}2}University of Pennsylvania\and
-	\inst{\hspace{0.2in}3} Carnegie Mellon University}
+Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{2} \and Arnav Sood\inst{3}}
+\institute{\inst{\hspace{0.2in}1} Bowdoin College\and
+	\inst{\hspace{0.2in}3}University of Pennsylvania\and
+	\inst{\hspace{0.2in}3}University of British Columbia,  Vancouver School of Economics\and
+	\inst{\hspace{0.2in}4} Carnegie Mellon University}
 \date{\hspace{0.2in}\today }
 \maketitle
 
@@ -586,7 +587,7 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{1} \and Arnav S
 		& X'_i = (1-\delta)X_i + \hat{u}(X_i,X) + \sigma W_i + \eta \omega,\quad\text{for } i \in \{1,...,N\}\end{align*}
 	Take FOCs and equation using standard steps to write equilibrium as the LOM and Euler equation
 	\begin{empheq}[box=\tcbhighmath]{equation*}
-		\gamma u(x,X) = \beta \expec{p(X')+\gamma (1-\delta) u(x',X') }
+		\gamma u(X) = \beta \expec{p(X')+\gamma (1-\delta) u(X') }
 	\end{empheq}
 	%\emphcolor{Goal}: Using economic theory to
 	
@@ -597,7 +598,7 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{1} \and Arnav S
 
 \begin{frame}{Curse of dimensionality: a closer look }
 	\begin{empheq}[box=\tcbhighmath]{equation*}
-		\gamma u(x,X) = \beta \expec{p(X')+\gamma (1-\delta) u(x',X') }
+		\gamma u(X) = \beta \expec{p(X')+\gamma (1-\delta) u(X') }
 	\end{empheq}
 Let's say there are \emphcolor{$1000$ agents}:
 \begin{enumerate}
@@ -662,7 +663,7 @@ Let's say there are \emphcolor{$1000$ agents}:
 		\item Multiplying vector $v \in \R^N$ by $\pi \in S_N$ reorders elements of $v$\vspace{0.1in}
 		
 		
-		\item (If you know about this): $\mathcal{S}_N$ is the \textcolor{blue}{\textit{symmetric group}} under matrix multiplication.\vspace{0.1in}
+		%\item (If you know about this): $\mathcal{S}_N$ is the \textcolor{blue}{\textit{symmetric group}} under matrix multiplication.\vspace{0.1in}
 	\end{itemize}
 \end{frame}
 
@@ -750,7 +751,7 @@ Let's say there are \emphcolor{$1000$ agents}:
 		\end{frame}
 	
 	
-	\begin{frame}{Representation of permutation-invariant functions: Discussion and intuition}
+	\begin{frame}[label = symmetry]{Representation of permutation-invariant functions: Discussion and intuition}
 		
 		
 		$$u(x,X) = \rho\left(x,\frac{1}{N} \sum_{i=1}^N\phi(X_i)\right)$$
@@ -763,19 +764,27 @@ Let's say there are \emphcolor{$1000$ agents}:
 				\begin{itemize}
 					\item Imposing structure on $\mathcal{H}(\Theta)$, functions that know a lot about the economic problem.\vspace{0.1 in}
 				\end{itemize}
-				\item In practice: $L\ll N$  generalizes very well.
+				\item In practice: $L\ll N$  generalizes very well. \hyperlink{Reg-example}{\beamerskipbutton{Regression Example}}
 			\end{itemize}
-	%  \emphcolor{Intuitive Example}: Remember the example with $266$ states, binary values (zeros and ones)  
-	%	\begin{itemize}
-	%		\item $f:2^N \rightarrow \mathbb{R}$, if permutation invariant I care about the number of ones. \smallskip
-	%		\item $2^N \rightarrow N+1$.\smallskip
-	%		\item In this example, only sum (first moment matters), $\phi$ is the identity function, $f(X_1,\ldots,X_N) = \rho(\frac{1}{N}\sum_{i=1}^N X_i)$.
-	%	\end{itemize}
+	
 	\end{frame}
 	
 \begin{frame}{High-dimensional expectation}
+	Euler's equation:
+	\begin{equation*}
+		\beta \expec{p(X')+\gamma (1-\delta) u(X') }
+	\end{equation*}
 	\begin{itemize}
-		\item 
+		\item Linear example: $p(X') = 1-\frac{1}{N} \sum_{i=1}^N X'_i$.
+		\item Conditioned on the aggregate shock $\omega$, \emphcolor{law of large numbers}:
+		\begin{align*}
+		 \condexpec{p(X')}{\omega} \approx 	p(X')|\omega,  ~~\text{for large $N$}.
+		\end{align*} 
+		\item Can we say the same thing about $u(X')$? 
+		\begin{align*}
+			\condexpec{u(X')}{\omega} \approx 	u(X')|\omega,  ~~\text{for large $N$}?
+		\end{align*} 
+		\item \emphcolor{Yes}, but $u(\cdot)$ has to satisfy some properties.
 	\end{itemize}
 \end{frame}	
 		
@@ -788,7 +797,7 @@ Let's say there are \emphcolor{$1000$ agents}:
 		\end{equation*}
 		where $C$ does not depend on $N$.
 	\end{definition}	
-$$ \mathbb{E}_W \left[\|\nabla u(x',X')\|^2\right] \leq \frac{C}{N}$$
+$$ \mathbb{E}_W \left[\|\nabla u(X')\|^2\right] \leq \frac{C}{N}$$
 \begin{itemize}
 	\item The policy to be well-behaved (non-explosive gradients).\vspace{0.1in}
 	\item Other agent's influence vanishes.
@@ -810,10 +819,10 @@ $$ \mathbb{E}_W \left[\|\nabla u(x',X')\|^2\right] \leq \frac{C}{N}$$
 				\item With concentration of measure, dimensionality is not a curse; it is a blessing.\vspace{0.1in}
 					  % \item If a single firm has ``too much'' impact, condition on it and use quadrature
 			\end{itemize}
-			\emphcolor{Implication}: We can calculate $\mathbb{E}_{W}[u(x', X')|w, \omega]$ with a \textit{single draw} of idiosyncratic shocks $W$:
+			\emphcolor{Implication}: We can calculate $\mathbb{E}_{W}[u(X')| \omega]$ with a \textit{single draw} of idiosyncratic shocks $W$:
 			\begin{itemize}
-				\item $\mathbb{E}_W[u(x', X')|w, \omega]\approx u(x',X')|w,\omega$.\vspace{0.1in} 
-				\item Reducing an $N+1$-dimensional conditional expectation to a $2$-D one (with good approximation). 
+				\item $\mathbb{E}_W[u(X')|\omega]\approx u(x',X')|\omega$.\vspace{0.1in} 
+				\item Reducing an $N+1$-dimensional conditional expectation to a $1$-D one (with good approximation). 
 			\end{itemize}
 %\hyperlink{Bounded}{\beamerskipbutton{Expected gradient bounded  in $N$}}		
 \end{frame}
@@ -996,25 +1005,28 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 			\end{frame}
 			
 			
-			\begin{frame}{Euler residuals: Linear case}
-			
-			\begin{figure}[h!]
-			\centering
-			\includegraphics[height = 2.3in]{./figures/identity-moments-deep-sets-linear-residual}
-			\caption{The Euler residuals for $\nu = 1$ and $N=\mapvar{N}$ for $\phi(\text{Identity})$, $\phi(\text{Moments})$, and $\phi(\text{ReLU})$. The dark blue curve shows the average residuals along equilibrium paths for $\mapvar{test_trajectories}$ different trajectories. The shaded areas depict the $2.5$th and $97.5$th percentiles.}
-			\end{figure}
-			
-			\end{frame}
-			
 			\begin{frame}{Equilibrium Paths: Linear case}
+				
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[width=0.7\linewidth]{./figures/linear-baseline-theory-vs-predicted.pdf}
+					\caption{Comparison between baseline approximate solutions and the LQ solution for the case with $\nu= 1$ and $N=\mapvar{N}$.}
+				\end{figure}
+				
+			\end{frame}
+			
+			
+			\begin{frame}{Accuracy of Solutions: Linear case}
 			
 			\begin{figure}[h!]
 			\centering
-			\includegraphics[width=0.99\linewidth]{./figures/linear-baseline-theory-vs-predicted_new.pdf}
-			\caption{Comparison between baseline approximate solutions and the LQ solution for the case with $\nu= 1$ and $N=\mapvar{N}$.}
+			\includegraphics[height = 2.1in]{./figures/identity_moments_deep_sets_linear_relative}
+			\caption{The relative errors for $\nu = 1$ and $N=\mapvar{N}$ for $\phi(\text{Identity})$, $\phi(\text{Moments})$, and $\phi(\text{ReLU})$. The dark blue curve shows the average residuals along equilibrium paths for $\mapvar{test_trajectories}$ different trajectories.}
 			\end{figure}
 			
 			\end{frame}
+			
+			
 			
 			\begin{frame}{Computation time: Linear case}
 			
@@ -1040,7 +1052,9 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 				\item Since the LQ solution no longer holds, we do not have an exact solution to use as a benchmark, but can check residuals.\vspace{0.1in}
 				
 				\item Same model and method.  Computation time by $N$ nearly the same to linear case
-			
+			\begin{itemize}
+				\item \href{https://github.com/HighDimensionalEconLab/symmetry_dynamic_programming/blob/main/demo_notebooks/investment_euler_demo.ipynb}{Link to the code}
+			\end{itemize}
 				\end{itemize}
 				
 				\end{frame}
@@ -1049,7 +1063,7 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 				
 				\begin{figure}[h!]
 				\centering
-				\includegraphics[width=0.65\linewidth]{./figures/moments-deep-sets-nonlinear-residual.pdf}
+				\includegraphics[width=0.8\linewidth]{./figures/moments-deep-sets-nonlinear-residual.pdf}
 				\caption{The Euler residuals for $\nu = \mapvar{nu_nonlinear_baseline}$ and $N=\mapvar{N}$ for $\phi(\text{Moments})$ and $\phi(\text{ReLU})$. The dark blue curve shows the average residuals along equilibrium paths for $\mapvar{test_trajectories}$ different trajectories. The shaded areas depict the $2.5$th and $97.5$th percentiles.}	
 				\end{figure}
 				
@@ -1063,6 +1077,8 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 				\caption{The optimal policy $u$ along the equilibrium paths for $\nu = [1.0,1.05,1.1,1.5]$ and $N = \mapvar{N}$. Each path shows the optimal policy for a single trajectory.}
 				\end{figure}
 \end{frame}
+
+
 
 
 
@@ -1326,6 +1342,35 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 \section{Appendix}
 
 
+\begin{frame}[label = Reg-example]{Example: Symmetry in a regression problem}
+Data generating process:
+\begin{align*}
+	y = f(X) = \left(\frac{1}{N}\sum_{i=1}^N x_i^{\zeta}\right)^{\frac{1}{\zeta}}
+\end{align*}	
+\begin{itemize}
+	\item Pick  $a\sim \mathcal{U}(a_{\text{min}},a_{\text{max}})$
+	\item Draw $X = (x_1,\cdots,x_N) \sim \mathcal{N}(a,\sigma^2)$ : $M$ data points
+	\item $\zeta = 1.5$, $a_{\text{min}} = 1$, $a_{\text{max}} = 2$, $\sigma = 0.2$, $M = 10 $
+	\item Generate a set of new data and look at the mean of the relative errors
+	\begin{align*}
+		\big|\frac{\hat{f}(X)-f(X)}{f(X)}\big|
+	\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results: Symmetry in a regression problem}
+		\renewcommand{\arraystretch}{0.5}
+	\begin{table}[h!]
+		\caption{Results for the regression problem}\vspace{-0.1in}
+		\begin{center}
+			\resizebox{\textwidth}{!}{\begin{tabular}{c}
+					\input{./figures/table_p_1_5_M10.tex}
+			\end{tabular}}
+		\end{center}
+	\end{table}
+	\renewcommand{\arraystretch}{1.0}
+	\hyperlink{symmetry}{\beamerskipbutton{back}}
+\end{frame}
 
 \begin{frame}
 	\begin{definition}[Bounded functions in $N$]

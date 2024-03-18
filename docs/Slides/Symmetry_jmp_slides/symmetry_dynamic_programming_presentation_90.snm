@@ -1,10 +1,14 @@
 \beamer@slide {permutationgroup<1>}{19}
 \beamer@slide {permutationgroup}{19}
+\beamer@slide {symmetry<1>}{23}
+\beamer@slide {symmetry}{23}
 \beamer@slide {concentration<1>}{26}
 \beamer@slide {concentration}{26}
 \beamer@slide {Concentration}{26}
 \beamer@slide {algo<1>}{31}
 \beamer@slide {algo}{31}
 \beamer@slide {eq:functional-optimization}{45}
-\beamer@slide {errors<1>}{55}
-\beamer@slide {errors}{55}
+\beamer@slide {Reg-example<1>}{54}
+\beamer@slide {Reg-example}{54}
+\beamer@slide {errors<1>}{57}
+\beamer@slide {errors}{57}
