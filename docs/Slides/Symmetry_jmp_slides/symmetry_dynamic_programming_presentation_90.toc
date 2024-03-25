@@ -2,5 +2,5 @@
 \beamer@sectionintoc {2}{Application}{12}{0}{2}
 \beamer@sectionintoc {3}{Solving the Model}{28}{0}{3}
 \beamer@sectionintoc {4}{Implicit bias, Generalization, and Stationarity.}{41}{0}{4}
-\beamer@sectionintoc {5}{Conclusions}{50}{0}{5}
-\beamer@sectionintoc {6}{Appendix}{53}{0}{6}
+\beamer@sectionintoc {5}{Conclusions}{51}{0}{5}
+\beamer@sectionintoc {6}{Appendix}{54}{0}{6}

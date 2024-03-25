@@ -122,7 +122,6 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{2} \and Arnav S
 	\item However, many models of interest in macro (IO and trade) deal with \emphcolor{finite} (but large) number of agents and idiosyncratic/aggregate uncertainty:\vspace{0.1in}
 		\begin{itemize}
 		\item Industry dynamics with many firms, agents and industries,  even models with networks.\vspace{0.1in}
-		\item Heterogeneous agent labor models (e.g., overlapping generations, different types).\vspace{0.1in}
 		
 	\end{itemize}
 	\item These models are becoming increasingly popular, \emphcolor{but}:\vspace{0.1in}
@@ -602,7 +601,7 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{2} \and Arnav S
 	\end{empheq}
 Let's say there are \emphcolor{$1000$ agents}:
 \begin{enumerate}
-	\item The domain of the unknown functions of interest $u(\cdot,\cdot)$ is \emphcolor{$1000$-dimensional}.\vspace{0.1in}
+	\item The domain of the unknown functions of interest $u(\cdot)$ is \emphcolor{$1000$-dimensional}.\vspace{0.1in}
 	\item The expectation operator $\expec{\cdot}$  is a \emphcolor{$1001$-dimensional} integral.\vspace{0.1in}
 	\begin{itemize}
 		\item $1000$ idiosyncratic shocks + $1$ aggregate shock.\vspace{0.1in}
@@ -1164,6 +1163,22 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 				\end{itemize}
 			This is related to a literature called \emphcolor{double descent}.	 
 			\end{frame}	
+
+
+\begin{frame}{Classical bias-variance trade-off}
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[height=2.0in]{./figures/bias-variance}
+		\end{center}
+	\end{figure}
+	\begin{itemize}
+		\item Complexity of $\mathcal{H}$: think of
+		\begin{itemize}
+			\item Degree of Chebyshev polynomials, polynomials, ...
+			\item Coefficients of the neural networks (weights and biases)
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 		
 				
 \begin{frame}{The cure to over-fitting is to add more parameters}
@@ -1259,7 +1274,7 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 	 \begin{itemize}
 	 	\item The deep-learning based solution \emphcolor{automatically} satisfies stationarity. \vspace{0.1in}
 	 \end{itemize}
-	\item \textcolor{red}{Ebrahimi Kahou et al. (2022,2024)} explore this for many more dynamic models in macroeconomics (e.g., neoclassical growth and asset pricing) we show: \vspace{0.1in}
+	\item \textcolor{red}{Ebrahimi Kahou et al. (2022,~2024)} explore this for many more dynamic models in macroeconomics (e.g., neoclassical growth and asset pricing) we show: \vspace{0.1in}
 	\begin{itemize}
 		\item We can have short- and medium-run accurate solutions without being worried about the long-run behavior.\vspace{0.1in}
 		\item  We dont need to calculate the steady-state (ergodic distribution).
