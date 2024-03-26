@@ -1082,7 +1082,7 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 
 
 \begin{frame}{Some challenging question: Generalization puzzle}
-	\emphcolor{Question I}: Generalization 
+	\emphcolor{Question I: Generalization and overfitting}
 	\begin{itemize}
 		\item From statistical learning and numerical analysis we know:\vspace{0.1in}
 		\begin{itemize}
@@ -1095,7 +1095,7 @@ How come we achieve great generalization?
 \end{frame}
 
 \begin{frame}{Some challenging questions: Multiplicity and transversality puzzle}
-\emphcolor{Question II}: Multiplicity and transversality 
+\emphcolor{Question II: Multiplicity and transversality} 
 	\begin{empheq}[box=\tcbhighmath]{align*}
 		&\gamma u(X) = \beta \expec{p(X')+\gamma (1-\delta) u(X') }\\
 		  X'_i & = (1-\delta)X_i + u(X) + \sigma W_i + \eta \omega,\quad\text{for } i \in \{1,...,N\}
@@ -1149,7 +1149,7 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 				% \end{figure}
 			
 				\begin{itemize}
-					\item \emphcolor{Extreme} case : Forget we know any closed form, and see if over-fitting hurts us.\vspace{0.1in}
+					\item \emphcolor{Extreme} case : forget we know any closed form, and see if over-fitting hurts us.\vspace{0.1in}
 					\item Fit \emphcolor{three} grid points in $\mathbb{R}^{\mapvar{overfit_N}}$ (an economy with $N=512$ agents).
 					\vspace{0.1in}
 					% \item Relative error of \emphcolor{$4$\%} on the test data
@@ -1237,7 +1237,7 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 \end{frame}
 
 
-\begin{frame}{Flat and smooth interpolation:  Illustration}
+\begin{frame}{Flat and smooth interpolation:  illustration}
 	\begin{figure}[h!]
 		\begin{center}
 			\includegraphics[height=2.7in]{./figures/fourplots_example_reg.pdf}
@@ -1276,7 +1276,7 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 	 \end{itemize}
 	\item \textcolor{red}{Ebrahimi Kahou et al. (2022,~2024)} explore this for many more dynamic models in macroeconomics (e.g., neoclassical growth and asset pricing) we show: \vspace{0.1in}
 	\begin{itemize}
-		\item We can have short- and medium-run accurate solutions without being worried about the long-run behavior.\vspace{0.1in}
+		\item We can have short- and medium-run accurate solutions (even in non-stationary cases) .\vspace{0.1in}
 		\item  We dont need to calculate the steady-state (ergodic distribution).
 	\end{itemize} 	
 	\end{itemize}
