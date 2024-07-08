@@ -261,6 +261,7 @@ We also solve the ridgeless kernel regression
 \end{align*}
 \begin{itemize}
 	\item Targeting Sobolev semi-norm.
+	% minimizing the norm of the derivative
 	\vspace{0.1in}
 	\item This choice is very natural: it solves the instability issues of the classical algorithm.
 	%because of the saddle path-nature of the problems divergent and explosive functions have large derivatives therefore we kick out those
@@ -270,6 +271,7 @@ We also solve the ridgeless kernel regression
 \section{Applications}
 
 \begin{frame}{Linear asset pricing}
+	%why this probelm? Not because this problem is hard. But that is the first model that is the simplest model that incorporates bubbles in economics
 \begin{align}
 	\dot{\mathbf{x}}(t) &= c + g \mathbf{x}(t) \label{eq:asset-pricing-x-dot}\\%:= \mathbf{F}(\mathbf{x}(t), \mathbf{y}(t))
 	\dot{\mathbf{y}}(t) &= r \mathbf{y}(t) - \mathbf{x}(t)  \label{eq:asset-pricing-y-dot}\\%:= \mathbf{G}(\mathbf{x}(t), \mathbf{y}(t))
@@ -288,6 +290,7 @@ We also solve the ridgeless kernel regression
 \end{frame}
 
 \begin{frame}{Why do we need the boundary condition?}
+	%Imagine if I didnt have the boundary condition, what would happen?
 	\begin{align*}
 		\dot{\mathbf{x}}(t) &= c + g \mathbf{x}(t) \\
 		\dot{\mathbf{y}}(t) &= r \mathbf{y}(t) - \mathbf{x}(t)
@@ -303,6 +306,7 @@ We also solve the ridgeless kernel regression
 		%doesnt correspond to any economic variable
 		\vspace{0.1in} 
 		\item Triangle inequality: $\Vert \mathbf{y}_f\Vert < \Vert \mathbf{y}\Vert$.
+		%go with any norm, because of the positivity and addtive structure 
 		\vspace{0.1in}
 		\item The price based on the fundamentals has the \emphcolor{lowest norm}.
 	\end{itemize}
@@ -321,6 +325,7 @@ We also solve the ridgeless kernel regression
 		\item Very accurate approximations, both in the short- and medium-run.
 		\vspace{0.1in}
 		\item Learns the steady-state.
+		% By learning I mean, the function stays on a flat line, outside of the training data
 	\end{itemize}
 \end{frame}
 
@@ -330,7 +335,10 @@ We also solve the ridgeless kernel regression
 		& \text{s.t.} \quad \dot{\mathbf{x}}(t) = f(\mathbf{x}(t)) - \mathbf{y}(t)-\delta \mathbf{x}(t)
 	\end{align*}
 for a given $\mathbf{x}_0$.
-
+\begin{itemize}
+	\item $\mathbf{x}(t)\in \mathbb{R}$: capital, $\mathbf{y}(t)\in \mathbb{R}$: consumption, and a concave production function $f(x) = x^a$.
+	\vspace{0.1in}
+\end{itemize}
 
 Constructing the Hamiltonian ...
 	\begin{align}
@@ -340,8 +348,6 @@ Constructing the Hamiltonian ...
 		\label{eq:tvc}
 	\end{align}
 	\begin{itemize}
-		\item $\mathbf{x}(t)\in \mathbb{R}$: capital, $\mathbf{y}(t)\in \mathbb{R}$: consumption, and a concave production function $f(x) = x^a$.
-		\vspace{0.1in}
 		\item Equation \cref{eq:tvc} : transversality condition (TVC)
 	\end{itemize}
 \end{frame}
@@ -381,6 +387,7 @@ Constructing the Hamiltonian ...
 
 \begin{frame}{Short-run planning: ``In the long run, we are all dead" }
 	\begin{figure}[t!]
+		% previously we chose a long horizon for time in the training data, what happens we focus on a very short time planning? 
 		\centering
 		\includegraphics[width=\textwidth]{figs/neoclassical_growth_short_planning.pdf}
 		\caption*{$\mathcal{D} = \{0,1,\cdots,10\}$}
@@ -401,7 +408,7 @@ Constructing the Hamiltonian ...
 		\vspace{0.1in}
 		\item What if we have \emphcolor{two} saddle steady states, very close to each other (equilibrium multiplicity)?
 		\vspace{0.1in}
-		\item Neoclassical Growth Model with a concave-convex production function:
+		\item Neoclassical growth model with a concave-convex production function:
 		\begin{align*}
 			f(x) = A \max\{x^a, b_1x^a - b_2\}
 		\end{align*}
