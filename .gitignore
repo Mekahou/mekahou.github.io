@@ -13,3 +13,13 @@ ehthumbs.db
 Gemfile.lock
 
 beautiful-jekyll-theme-*.gem
+
+#bibtex stuff
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.gz
+*.toc
+\CV.log
