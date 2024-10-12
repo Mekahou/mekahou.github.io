@@ -294,7 +294,7 @@
 	\end{enumerate}
 \end{frame}
 
-\section{\textcolor{PennBlue}{Linear asset pricing and he no-bubble condition}}
+\section{\textcolor{PennBlue}{Linear asset pricing and the no-bubble condition}}
 
 \begin{frame}{Linear asset pricing: setup }
 	\begin{itemize}
@@ -306,9 +306,9 @@
 	\item $\beta<1$, and $y(t)$ is exogenous, $y(0)$ given.
 	\item  This is a two dimensional dynamical system with unknown initial condition  $p(0)$. This problem is \emphcolor{ill-posed}.
 	\item A family solutions
-	 \begin{align*}
+	 \begin{empheq}[box=\tcbhighmath]{align*}
 	 	p(t) = \underbrace{p_f(t)}_{\text{fundamentals}} +  \underbrace{\zeta (\frac{1}{\beta})^t}_{\text{explosive bubble}}
-	 \end{align*}
+	 \end{empheq}
 	 \item $p_f(t) \equiv \sum_{\tau =0}^\infty \beta^\tau u(t+\tau)$. Each solution corresponds to a different $\zeta>0$.
 	\end{itemize}
 \end{frame}
@@ -390,20 +390,41 @@
 
 \begin{frame}{neoclassical growth model: setup }
 	\begin{itemize}
-		\item Total factor productivity $z(t)$ 
+		\item Total factor productivity $z(t)$ exogenously given, capital $k(t)$ with given $k(0)$, consumption $c(t)$, production function $f(\cdot)$, depreciation rate $\delta<1$, discount factor $\beta$  :
 		\begin{align*}
-			p(t) = y(t) + \beta p(t+1), \quad \text{for}~ t=0,1,\cdots
+			&\underbrace{k(t+1) = z(t)^{1-\alpha} f\left(k(t)\right)+ (1-\delta)k(t)-c(t)}_{\text{feasibility constraint}}, \\ 
+			&\underbrace{c(t+1) = \beta c(t) \left[z(t+1)^{1-\alpha}f'\big(k(t+1)\big)+1-\delta\right]}_{\text{Euler equation}}.
 		\end{align*}
-		\item $\beta<1$, and $y(t)$ is exogenous, $y(0)$ given.
-		\item  This is a two dimensional dynamical system with unknown initial condition  $p(0)$. This problem is \emphcolor{ill-posed}.
-		\item A family solutions
-		\begin{align*}
-			p(t) = \underbrace{p_f(t)}_{\text{fundamentals}} +  \underbrace{\zeta (\frac{1}{\beta})^t}_{\text{explosive bubble}}
-		\end{align*}
-		\item $p_f(t) \equiv \sum_{\tau =0}^\infty \beta^\tau u(t+\tau)$. Each solution corresponds to a different $\zeta>0$.
-	\end{itemize}
+	\item This is a three dimensional dynamical system with unknown initial condition  $c(0)$. This problem is \emphcolor{ill-posed}.
+	\vspace{0.05in}
+	\item A family of solutions, each solution corresponds to a different $c(0)$.
+	\end{itemize}	
 \end{frame}
 
+\begin{frame}{Linear asset pricing: the long-run boundary condition}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			% Content for the left column
+			\begin{itemize}
+				\item To rule out sub-optimal solutions, transversality condition
+				\begin{align*}
+					\lim_{t\rightarrow \infty}\beta^t \frac{k(t+1)}{c(t)} = 0
+				\end{align*}
+				\vspace{0.1in}
+				\item Any norm with positivity preservation in norms (think of $L_p$ or Sobolev (semi-)norms), the optimal \emph{capital path} has the lowest norm.
+				\vspace{0.1in}
+				\item Therefore, using a deep neural network and ignoring the no-bubble condition should give us $p_f(t)$
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[t!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{figs/TVC_violation.pdf}
+				\vspace{-7mm}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
 
 \begin{frame}{Conclusion}
 	\begin{itemize}
