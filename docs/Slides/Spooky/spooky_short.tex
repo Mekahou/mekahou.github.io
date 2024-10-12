@@ -200,9 +200,9 @@
 		\end{itemize}
 		\vspace{0.025in}
 		\item To find an approximation for $f$ solve:
-		\begin{align}
+		\begin{align*}
 			\min_{\theta } \frac{1}{N}\sum_{x \in \mathcal{D}} \|\ell(x,f_\theta)\|_2^2
-		\end{align}
+		\end{align*}
 		\begin{itemize}
 			\item Deep neural networks are highly over-parameterized.
 			\item Formally, $|\theta|\gg N$ 
@@ -235,24 +235,26 @@
 
 \begin{frame}{Smooth interpolation}
 	\begin{itemize}
-		
 		\item Intuition: biased toward solutions which are flattest and have smallest derivatives
 	\end{itemize}
-	
+		\begin{figure}[t!]
+		\centering
+		\includegraphics[width=0.65\textwidth]{figs/smooth_interpolation.pdf}
+	\end{figure}
 \end{frame}
 
-\begin{frame}{Intuition}
+\begin{frame}{Intuition of the paper}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			% Content for the left column
 			\begin{itemize}
 				\item \emphcolor{Minimum-norm implicit bias}: 
 				\begin{itemize}
-					\item Over-parameterized models (e.g., large neural networks) have more parameters than data points and potentially interpolate the data.
+					\item Over-parameterized models (e.g., large neural networks) interpolate the train data.
 					%therefore they are many possible solutions
 					\vspace{0.05in}
-					\item They are biased towards interpolating functions with smallest norm. 
-					% so they dont doesnt like explosive functions 
+					\item They are biased towards interpolating functions with smaller norms. 
+					\item So they dont like explosive functions.
 				\end{itemize}
 				\vspace{0.1in}
 				\item \emphcolor{Violation of economic boundary conditions}:
@@ -278,74 +280,48 @@
 	\end{columns}
 \end{frame}
 
-\section{The Problem}
+\section{Outline}
 
-\begin{frame}{The class of problems}
-A differential-algebraic system of equations, coming from an economic optimization problem:	
-	\begin{align}
-		\dot{\mathbf{x}}(t) &= \mathbf{F}(\mathbf{x}(t), \mathbf{y}(t))\\ %i.e. law of motions for states, like capital
-		\dot{\mathbf{y}}(t) &= \mathbf{G}(\mathbf{x}(t), \mathbf{y}(t))\\
-		% coming from the optimizing behaviour, like Euler equations
-		\mathbf{0} &= \mathbf{H}(\mathbf{x}(t), \mathbf{y}(t))
-		% Usually comes from economics consideratios, like market clearing, no-arbitrage conditions. This can be thought of as what sets us aprat from ususal optimal control theory
-	\end{align}
-$\mathbf{x}\in \mathbb{R}^{N_x}$: state variables, $\mathbf{y}\in\mathbb{R}^{N_y}$: jump variables.
-Initial value $\mathbf{x}(0) = \mathbf{x}_0$ and boundary conditions (at infinity)
-	\begin{align}
-		\mathbf{0} &= \lim_{t\rightarrow\infty} \mathbf{B}(t,\mathbf{x}(t), \mathbf{y}(t))
-	\end{align}
-\emphcolor{Goal}: finding an approximation for $\mathbf{x}(t)$ and $\mathbf{y}(t)$.\\
-	\vspace{0.1in}
-\emphcolor{What is the problem?} 
-\begin{itemize}
-	\item $\mathbf{y}_0$ is unknown. 
-	% if y_0 was known I could have solved it a s initial value problem. So, I should solve it for many y_0 and pick the one that doesnt violate 4
-	\vspace{0.1in}
-	\item The optimal solutions is a \emphcolor{saddle-path}: unstable nature
-	% because of the saddle path nature of these problems, classic algorithms are very unstable
-	\vspace{0.1in}
-\end{itemize}
+\begin{frame}{Outline of the Talk}
+	
+	To explore how we can ignore events after ``we are all dead'', we show deep learning solutions to
+	\begin{enumerate}
+		\item Classic linear-asset pricing model.\vspace{0.1in}
+		\item Sequential formulation of the neoclassical growth model.\vspace{0.1in}
+		\item Sequential formulation of the neoclassical growth model with non-concave production function.\vspace{0.1in}
+		\item Equivalent for a recursive formulation of the neoclassical growth model.\vspace{0.1in}
+		
+	\end{enumerate}
 \end{frame}
 
-\section{Method}
+\section{\textcolor{PennBlue}{Linear asset pricing and he no-bubble condition}}
 
-\begin{frame}{Method}
+\begin{frame}{Linear asset pricing: setup }
 	\begin{itemize}
-		\item Pick a set of points $\mathcal{D}\equiv \{t_1,\cdots,t_N\}$ for some fixed interval $[0,T]$
-		\vspace{0.1in}
-		\item Large machine learning models to learn $\hat{\mathbf{x}}(t)$ and $\hat{\mathbf{y}}(t)$
+	\item The risk-neutral price, $p(t)$, of a claim to a stream of dividends, $y(t)$, is given by
+	the recursive equation:
 	\begin{align*}
-		\min_{\hat{\mathbf{x}}, \hat{\mathbf{y}}} \sum_{t_i \in \mathcal{D}} &\left[\eta_1  \underbrace{\left\Vert\hat{\dot{\mathbf{x}}}(t_i) 
-		- \mathbf{F}(\hat{\mathbf{x}}(t_i), \hat{\mathbf{y}}(t_i)(t_i))\right\Vert_2^2}_{\text{Residuals$^2$: state variables}}  + \eta_2  \underbrace{\left\Vert\hat{\dot{\mathbf{y}}}(t_i) -  \mathbf{G}(\hat{\mathbf{x}}(t_i), \hat{\mathbf{y}}(t_i))\right\Vert_2^2}_{\text{Residuals$^2$: jump variables}} \right.\nonumber\\
-		&\left.+ \eta_3  \underbrace{\left\Vert\mathbf{H}(\hat{\mathbf{x}}(t_i), \hat{\mathbf{y}}(t_i))\right\Vert_2^2}_{\text{Residuals$^2$: algebraic constraint}} \right]  + \eta_4  \underbrace{\left\Vert\hat{\mathbf{x}}(0) - \mathbf{x}_0\right\Vert_2^2}_{\text{Residuals$^2$: initial conditions}} .
+		p(t) = y(t) + \beta p(t+1), \quad \text{for}~ t=0,1,\cdots
 	\end{align*}
-	
-	% Essentially I turn the problem inot an empirical risk minimization style problem 
-	\item This optimization \emphcolor{ignores} the boundary conditions.
-	 \vspace{0.1in}
-	\item The implicit bias automatically satisfy the boundary conditions.
-	\vspace{0.1in}
-	\item Recent works suggest the implicit bias is toward smallest Sobolev semi-norms.
-	%Explain, means functions with the least derivatives
-		\end{itemize}
+	\item $\beta<1$, and $y(t)$ is exogenous.
+	\item  This is a one dimensional dynamical system with unknown initial condition  $p(0)$. This problem is \emphcolor{ill-posed}.
+	\item A family solutions
+	 \begin{align*}
+	 	p(t) = \underbrace{p_f(t)}_{\text{fundamentals}} +  \underbrace{\zeta (\frac{1}{\beta})^t}_{\text{explosive bubble}}
+	 \end{align*}
+	 \item $p_f(t) \equiv \sum_{\tau =0}^\infty \beta^\tau u(t+\tau)$. Each solution corresponds to a different $\zeta>0$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Linear asset pricing: the long-run boundary condition}
+	We need a condition that rule out the explosive bubbles and chooses $\zeta =0$
+	\begin{align*}
+		\lim_{t\rightarrow \infty} \beta^t p(t) = 0
+	\end{align*}
 \end{frame}
 
 \begin{frame}{Ridgeless kernel regression}
-\begin{align*}
-	\hat{\dot{\mathbf{x}}}(t) = \sum_{j=1}^{N} \boldsymbol{\alpha}^x_j K(t,t_j), &\quad \hat{\dot{\mathbf{y}}}(t) = \sum_{j=1}^{N} \boldsymbol{\alpha}^y_jK(t,t_j)\\
-	\hat{\mathbf{x}}(t) = \mathbf{x}_0+ \int_0^t \hat{\dot{\mathbf{x}}}(\tau) d\tau, &\quad \hat{\mathbf{y}}(t) = \hat{\mathbf{y}}_0+ \int_0^t \ \hat{\dot{\mathbf{y}}}(\tau) d\tau 
-\end{align*}
-\begin{itemize}
-	\item  $\mathbf{x}_0$ is given.
-	\vspace{0.1in}
-	\item $\hat{\mathbf{y}}_0$, $\boldsymbol{\alpha}^x_j$, and $\boldsymbol{\alpha}^y_j$ are learnable parameters. 
-	%\vspace{0.1in}
-	%\item $\hat{\mathbf{y}}_0$ is what we are looking for. If we learn it correctly then we are good to go 
-	\vspace{0.1in}
-	\item $K(\cdot,\cdot):$ Matérn Kernel, with smoothness parameter $\nu$ and length scale $\ell$.
-\end{itemize}
 \end{frame}
-
 \begin{frame}{Ridgeless kernel regression: minimum Sobolev seminorm solutions}
 We also solve the ridgeless kernel regression 
 \begin{align*}
