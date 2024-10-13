@@ -504,6 +504,60 @@
 
 \begin{frame}{But seriously, ``in the long run, we are all dead"}
 
+	\begin{columns}
+	\begin{column}{0.5\textwidth}
+		% Content for the left column
+		\begin{itemize}
+			\item So far, we have used long time-horizon $\mathcal{D} = \{0,1,\cdots,29\}$.
+			\vspace{0.05in}
+			\item In other methods, choosing the time-horizon $T$ is a challenge:
+			\begin{itemize}
+					\item Too large $\rightarrow$ accumulation of errors, and numerical instability. We don't have that problem.
+				\item Too small $\rightarrow$ convergence to the steady state too quickly.
+			\end{itemize}
+			 \vspace{0.05in}
+			\item An accurate short-run solution, even for a medium-sized $T$.
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.5\textwidth}
+		\begin{figure}[t!]
+			\centering
+			\includegraphics[width=\textwidth]{figs/growth_sequential_g0_t_max_9_ensemble.pdf}
+			\vspace{-7mm}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Neoclassical growth model: multiple steady-states and hysteresis}
+	\begin{itemize}
+	\item When there are multiple (saddle-path) steady states, each with its domain of attraction:
+	\vspace{0.05in}
+		\begin{itemize}
+			\item Can the inductive bias detect there are multiple basins of attraction?
+			\item How does the inductive
+		bias move us toward the correct steady state for a given initial condition?
+		\end{itemize}
+	\vspace{0.05in}
+	\item Consider a non-concave production function:
+	\begin{align*}
+		f(k) \equiv a \max\{k^\alpha, b_1k^\alpha-b_2\}
+	\end{align*}
+	\item Two steady-states $k_1^*$ and $k_2^*$.
+	\vspace{0.05in}
+	\item The same numerical procedure, different production function.
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{Neoclassical growth model with non-concave production function: results}
+	\begin{figure}[t!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{figs/growth_sequential_multiple_steady_states_var_initial_k_0.pdf}
+	\end{figure}
+	\begin{itemize}
+		\item 
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Conclusion}
