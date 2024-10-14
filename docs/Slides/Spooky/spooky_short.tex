@@ -151,7 +151,8 @@
 		\item In this paper focusing on \emph{deep neural networks}
 		\vspace{0.025in} 
 	\end{itemize} 
-	\item We argue how inductive bias can serve as a micro-foundation for modeling forward-looking behavioral agents.
+	\item We argue the inductive bias provides a foundation for modeling forward-looking behavioral
+	agents with self-consistent expectations.
 	\vspace{0.025in}
 	\begin{itemize}
 		\item Easy to compute. 
@@ -307,7 +308,7 @@
 	\item  This is a two dimensional dynamical system with unknown initial condition  $p(0)$. This problem is \emphcolor{ill-posed}.
 	\item A family solutions
 	 \begin{empheq}[box=\tcbhighmath]{align*}
-	 	p(t) = \underbrace{p_f(t)}_{\text{fundamentals}} +  \underbrace{\zeta (\frac{1}{\beta})^t}_{\text{explosive bubble}}
+	 	p(t) = \underbrace{p_f(t)}_{\text{fundamentals}} +  \underbrace{\zeta \left(\frac{1}{\beta}\right)^t}_{\text{explosive bubble}}
 	 \end{empheq}
 	 \item $p_f(t) \equiv \sum_{\tau =0}^\infty \beta^\tau u(t+\tau)$. Each solution corresponds to a different $\zeta>0$.
 	\end{itemize}
@@ -324,9 +325,9 @@
 					\lim_{t\rightarrow \infty} \beta^t p(t) = 0
 				\end{align*}
 				\vspace{0.1in}
-				\item Any norm with positivity preservation in norms (think of $L_p$ or Sobolev (semi-)norms)
+				\item Any norm that preserve monotonicity, like $L_p$ and Sobolev (semi-)norms 
 				\begin{align*}
-					\min_{\zeta\geq0} \|p(t)\|_\psi = \|p_f\|_\psi
+					\min_{\zeta\geq 0} \|p\|_\psi = \|p_f\|_\psi
 				\end{align*}
 				\item Ignoring the no-bubble condition and using a deep neural network provides an accurate approximation for $p_f(t)$.
 			\end{itemize}
@@ -385,10 +386,10 @@
 	\end{columns}
 \end{frame}
 
-\section{\textcolor{PennBlue}{Sequential neoclassical growth model and transversality condition}}
 
 
-\begin{frame}{neoclassical growth model: setup }
+
+\begin{frame}{Neoclassical growth model: setup }
 	\begin{itemize}
 		\item Total factor productivity $z(t)$ exogenously given, capital $k(t)$ with given $k(0)$, consumption $c(t)$, production function $f(\cdot)$, depreciation rate $\delta<1$, discount factor $\beta$  :
 		\begin{align*}
@@ -401,7 +402,7 @@
 	\end{itemize}	
 \end{frame}
 
-\begin{frame}{Linear asset pricing: the long-run boundary condition}
+\begin{frame}{Neoclassical growth model: the long-run boundary condition}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			% Content for the left column
@@ -410,8 +411,6 @@
 				\begin{align*}
 					\lim_{t\rightarrow \infty}\beta^t \frac{k(t+1)}{c(t)} = 0
 				\end{align*}
-				\vspace{0.1in}
-				\item Any norm with positivity preservation in norms (think of $L_p$ or Sobolev (semi-)norms), the optimal \emph{capital path} has the lowest norm.
 				\vspace{0.1in}
 				\item  using a deep neural network and ignoring the transversality condition provides a an accurate approximation for the optimal capital path.
 			\end{itemize}
@@ -502,7 +501,7 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{But seriously, ``in the long run, we are all dead"}
+\begin{frame}{But, ``in the long run, we are all dead"}
 
 	\begin{columns}
 	\begin{column}{0.5\textwidth}
@@ -553,26 +552,121 @@
 \begin{frame}{Neoclassical growth model with non-concave production function: results}
 	\begin{figure}[t!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figs/growth_sequential_multiple_steady_states_var_initial_k_0.pdf}
+		\includegraphics[width=0.75\textwidth]{figs/growth_sequential_multiple_steady_states_var_initial_k_0.pdf}
 	\end{figure}
 	\begin{itemize}
-		\item 
+		\item Different initial conditions in $k_0 \in [0.5,1.75]\cup[2.75,4]$.
+		\smallskip
+		\item In the vicinity of $k_1^*$ and $k_2^*$ the paths converge to the right steady-states.
 	\end{itemize}
 \end{frame}
+
+
+\begin{frame}{Deep learning is not the only option: kernels}
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		% Content for the left column
+			\begin{itemize}
+			\item Deep learning might be too ``spooky".
+			\smallskip
+			\item We can use kernels, $K(\cdot,\cdot)$, instead of neural networks and control the RKHS norms. For instance:
+			\begin{align*}
+				\dot{k}(t) = \sum_{i=1}^N \alpha^k_i K(t,t_i), \quad \dot{c}(t) = \sum_{i=1}^N \alpha^c_i K(t,t_i)
+			\end{align*}
+			\item The same results, theoretical guarantees, very fast and robust.
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.5\textwidth}
+		\begin{figure}[t!]
+			\centering
+			\includegraphics[width=0.9\textwidth]{figs/Kernel}
+			\vspace{-7mm}
+		\end{figure}
+	\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Extensions in the paper}
+	\begin{itemize}
+		\item Sequential models:
+		\begin{itemize}
+			\item Shorter time-horizons.
+			\smallskip
+			\item Misspecification of growth.\\
+			\smallskip
+		\end{itemize}
+		\smallskip
+		\item Recursive neoclassical growth model
+		\begin{itemize}
+			\item Accurate short- and medium-run dynamics.
+			\smallskip
+			\item Accurate solutions even with TFP growth.
+			\smallskip
+			\item Deep learning solutions can go very wrong
+			\begin{itemize}
+				\smallskip
+				\item We should use the information in the transversality condition to know what to approximate.
+			\end{itemize} 
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Deep learning solutions can be misleading: approximating capital vs. consumption}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			% Content for the left column
+			\begin{itemize}
+			\item Capital $k$ is the state variable.
+			\smallskip
+			\item Two options: approximating capital policy $k'_\theta(k)$ or $c_\theta(k)$
+			\item left panels: results for $k'_\theta(k)$ approximation.
+			\smallskip
+			\item Right panels: results for $c_\theta(k)$ approximation.
+			\smallskip
+			\item Only the left panel results are correct. 
+			$k'_\theta(k)$ has a fixed point at the right steady state.
+			\smallskip
+			\item However, the wrong solution leads to lower Euler residuals.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.75\textwidth}
+			\begin{figure}[t!]
+				\centering
+				\includegraphics[width=0.7\textwidth]{figs/growth_recursive_g0_euler_residuals_grid.pdf}
+				\hspace{32mm}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\end{frame}
+	
+
 
 \begin{frame}{Conclusion}
 	\begin{itemize}
-		\item Long-run (\emphcolor{global}) conditions can be replaced with appropriate regularization (\emphcolor{local}) to achieve the optimal solutions.
+		\item Long-run (\emphcolor{global}) conditions can be replaced with appropriate regularization (\emphcolor{local}) to achieve optimal solutions, hence the title of the paper.
 		\vspace{0.1in}
-		\item The minimum-norm implicit bias of large ML models aligns with optimality in economic dynamic models.
-		\vspace{0.1in}
-		\item Both kernel and neural network approximations accurately learn the right steady state(s).
-		\vspace{0.1in}
-		\item Proceeding with \emphcolor{caution}: can regularization be thought of as an equilibrium selection device?
-		%if we are about to translate economic dynamic models into an ERM, can regularization act as an equilibrium device? Think about it, ERM in statistical learning or machine learning is about two things: uniform of law of large numbers and capacity control (so what are going to do about this capacity control regularization)
+		\item Inductive bias provides a foundation for modeling forward-looking behavioral agents with self-consistent expectations.
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Discussion: where to go from here?}
+	\begin{itemize}
+		\item Can inductive bias/regularization be thought of as an equilibrium selection device?
+		\begin{itemize}
+			\item In this paper it is used to select solutions.
+		\end{itemize}
+		\smallskip
+		\item This method (mostly the kernel method) can be used for sampling high-dimensional state spaces when there is stochasticity. 
+		\begin{itemize}
+		\item Solve the deterministic in short-run and use the points as sample of the state-space.
+		\smallskip
+		\item Then solve the stochastic problem.
+		\end{itemize}
+		%if we are about to translate economic dynamic models into an ERM, can regularization act as an equilibrium device? Think about it, ERM in statistical learning or machine learning is about two things: uniform of law of large numbers and capacity control (so what are going to do about this capacity control regularization)
+	\end{itemize}
+\end{frame}
 \section{Appendix}
 
 
