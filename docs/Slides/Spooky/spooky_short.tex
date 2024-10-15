@@ -8,6 +8,7 @@
 \usepackage{ulem}
 \usepackage{subfig}
 \usepackage{graphicx}
+\usepackage{xcolor}
 \usepackage{multirow}
 \usepackage[capitalise,noabbrev]{cleveref} 
 \usepackage{datatool}
@@ -100,7 +101,7 @@
 		\item Numerical solutions to dynamical systems are central to many quantitative fields in economics.
 		% such as macroeconomics, empirical Industrial organization, urban economics, and spatial economics
 		\vspace{0.1in}
-		\item Dynamical systems in economics are \emphcolor{boundary value} problems:
+		\item Many dynamical systems in economics are \emphcolor{boundary value} problems:
 		%unlike mnay problems natural sciences and engineering :
 		\vspace{0.1in}
 		\begin{enumerate}
@@ -115,7 +116,7 @@
 		\item Examples include the \emph{{\it transversality}} and the \emph{\it  no-bubble} condition.
 		% No ponzi scheme
 		\vspace{0.1in}
-		\item Without them, the problems are \emph{ill-posed} and have infinitely many solutions: 
+		\item Without them, the problems are \emphcolor{ill-posed} and have infinitely many solutions: 
 		\vspace{0.1in}
 		\begin{itemize}
 			\item The problems are ill-posed in the Hadamard sense, meaning the solutions are not unique.
@@ -144,7 +145,7 @@
 	long-run boundary conditions \emphcolor{without} strictly enforcing them as a constraint on the model’s dynamics.
 	\vspace{0.05in}
 	\begin{itemize}
-		\item We show how using Machine Learning (ML) methods achieve this method.
+		\item We show how using Machine Learning (ML) methods achieve this.
 		\vspace{0.025in}
 		\item This is due to the \emphcolor{inductive bias} of ML methods.
 		\vspace{0.025in} 
@@ -172,7 +173,7 @@
 	\frametitle{Economic Models: functional equations}
 	Many theoretical models can be written as functional equations:
 	\begin{itemize}
-		\item Economic object of interest: $f $ where $f : \Xdom\to \mathcal{R}\subseteq \mathbb{R}^N$ 
+		\item Economic object of interest: $f $, where $f : \Xdom\to \mathcal{R}\subseteq \mathbb{R}^N$ 
 		\begin{itemize}
 			\item e.g., asset price, investment choice, best-response, etc.
 		\end{itemize}
@@ -202,7 +203,7 @@
 		\vspace{0.025in}
 		\item To find an approximation for $f$ solve:
 		\begin{align*}
-			\min_{\theta } \frac{1}{N}\sum_{x \in \mathcal{D}} \|\ell(x,f_\theta)\|_2^2
+			\min_{\theta } \frac{1}{N}\sum_{x \in \mathcal{D}} \|\underbrace{\ell(x,f_\theta)}_{\text{Econ model error}}\|_2^2
 		\end{align*}
 		\begin{itemize}
 			\item Deep neural networks are highly over-parameterized.
@@ -217,20 +218,20 @@
 		\item Since individual $\theta$ are irrelevant it is helpful to think of optimization directly within $\mathcal{H}$
 		\vspace{-0.025in}
 		\begin{empheq}[box=\tcbhighmath]{equation*}
-			\min_{f_{\theta} \in \mathcal{H}} \sum_{x \in \mathcal{D}} \|\ell(x,f_{\theta})\|_2^2\label{eq:functional-optimization}
+			\min_{f_{\theta} \in \mathcal{H}} \frac{1}{N}\sum_{x \in \mathcal{D}} \|\ell(x,f_{\theta})\|_2^2\label{eq:functional-optimization}
 		\end{empheq}
 		\vspace{-0.025in}
 	\item But which $f_{\theta}$?
 	\item \emphcolor{Mental model:} chooses min-norm interpolating solution for a (usually) unknown functional norm $\psi$
 			\vspace{-0.025in}
 	\begin{empheq}[box=\tcbhighmath]{align*}
-		\min_{\hat{f}\in \mathcal{H}} &||f_\theta||_\psi\\
+		\min_{f_\theta\in \mathcal{H}} &||f_\theta||_\psi\\
 		\st & \ell(x,f_\theta)=0,\quad \text{ for all } x \in \mathcal{D}
 	\end{empheq}
 	\vspace{-0.025in}
 	\item That is what we mean by \emphcolor{inductive bias} (see Belkin, 2021 and Ma and Yang, 2021).
 	
-	\item  Characterizing $S$ (e.g., sobolev norms or semi-norms?) is an active research area in ML.
+	\item  Characterizing $S$ (e.g., Sobolev norms or semi-norms?) is an active research area in ML.
 	\end{itemize}
 \end{frame}
 
@@ -249,7 +250,7 @@
 		\begin{column}{0.5\textwidth}
 			% Content for the left column
 			\begin{itemize}
-				\item \emphcolor{Minimum-norm implicit bias}: 
+				\item \emphcolor{Minimum-norm inductive bias}: 
 				\begin{itemize}
 					\item Over-parameterized models (e.g., large neural networks) interpolate the train data.
 					%therefore they are many possible solutions
@@ -263,11 +264,13 @@
 					\item Sub-optimal solutions diverge (explode) over time.
 					% As you can see in the plot optimal solution goe to the steady-state, the black dot, and any othe trajectory globaly or locally diveges. That is the signature of economic models
 					\vspace{0.05in}
-					\item They have large or explosive norms.
+					%\item They have large or explosive norms.
 					% Given that they are divergent, then they are large functions with large norms
 					\vspace{0.05in}
 					\item This is due to the \emphcolor{saddle-path} nature of econ problems.
 					% many economic models have this saddle path nature
+					\vspace{0.05in}
+					\item ``{\it Knife-edge stability is a common property of dynamic monetary models ...}" \textcolor{red}{Obstfeld and Rogoff (1983)} 
 				\end{itemize}
 			\end{itemize}
 		\end{column}
@@ -446,7 +449,7 @@
 
 \begin{frame}{Neoclassical growth model, no TFP growth: results}
 	\begin{columns}
-		\begin{column}{0.4\textwidth}
+		\begin{column}{0.5\textwidth}
 			% Content for the left column
 			\begin{itemize}
 				\item $g=0$, $z(0)=1$.
@@ -455,19 +458,16 @@
 				\vspace{0.05in}
 				\item Benchmark solution: value function iteration.
 				\vspace{0.05in}
-				\item Results for $100$ different seeds (initialization of the parameters):
-				\begin{itemize}
-					\item important for non-convex optimizations.
-				\end{itemize} 
+				\item Results for $100$ different seeds (initialization of the parameters)
 				\vspace{0.05in}
 				\item Very accurate short- and medium-run approximation.
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.7\textwidth}
+		\begin{column}{0.65\textwidth}
 			\begin{figure}[t!]
 				\centering
-				\includegraphics[width=0.56\textwidth]{figs/growth_sequential_g0.pdf}
-				\vspace{-7mm}
+				\includegraphics[width=0.6\textwidth]{figs/growth_sequential_g0.pdf}
+				\hspace{25mm}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -483,10 +483,7 @@
 				\item $k_\theta(t) = e^{\phi t}
 				NN_\theta(t)$, $\phi$ is "learnable".
 				\vspace{0.05in}
-				\item Results for $100$ different seeds (initialization of the parameters):
-				\begin{itemize}
-					\item important for non-convex optimizations.
-				\end{itemize} 
+				\item Results for $100$ different seeds (initialization of the parameters).
 				\vspace{0.05in}
 				\item Very accurate short- and medium-run approximation.
 			\end{itemize}
@@ -571,7 +568,7 @@
 			\smallskip
 			\item We can use kernels, $K(\cdot,\cdot)$, instead of neural networks and control the RKHS norms. For instance:
 			\begin{align*}
-				\dot{k}(t) = \sum_{i=1}^N \alpha^k_i K(t,t_i), \quad \dot{c}(t) = \sum_{i=1}^N \alpha^c_i K(t,t_i)
+				\frac{dk}{dt} = \sum_{i=1}^N \alpha^k_i K(t,t_i), \quad \frac{dc}{dt} = \sum_{i=1}^N \alpha^c_i K(t,t_i)
 			\end{align*}
 			\item The same results, theoretical guarantees, very fast and robust.
 		\end{itemize}
