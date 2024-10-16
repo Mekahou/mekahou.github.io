@@ -309,11 +309,11 @@
 	\end{align*}
 	\item $\beta<1$, and $y(t)$ is exogenous, $y(0)$ given.
 	\item  This is a two dimensional dynamical system with unknown initial condition  $p(0)$. This problem is \emphcolor{ill-posed}.
-	\item A family solutions
+	\item A family of solutions
 	 \begin{empheq}[box=\tcbhighmath]{align*}
 	 	p(t) = \underbrace{p_f(t)}_{\text{fundamentals}} +  \underbrace{\zeta \left(\frac{1}{\beta}\right)^t}_{\text{explosive bubble}}
 	 \end{empheq}
-	 \item $p_f(t) \equiv \sum_{\tau =0}^\infty \beta^\tau u(t+\tau)$. Each solution corresponds to a different $\zeta>0$.
+	 \item $p_f(t) \equiv \sum_{\tau =0}^\infty \beta^\tau y(t+\tau)$. Each solution corresponds to a different $\zeta>0$.
 	\end{itemize}
 \end{frame}
 
@@ -325,7 +325,7 @@
 			\begin{itemize}
 				\item Long-run boundary condition that rule out the explosive bubbles and chooses $\zeta =0$
 				\begin{align*}
-					\lim_{t\rightarrow \infty} \beta^t p(t) = 0
+					\lim_{t\rightarrow \infty} \beta^t p(t) = 0.
 				\end{align*}
 				\vspace{0.1in}
 				\item Any norm that preserve monotonicity, like $L_p$ and Sobolev (semi-)norms 
