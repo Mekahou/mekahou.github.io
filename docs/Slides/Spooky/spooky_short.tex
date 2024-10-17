@@ -183,13 +183,13 @@
 			\item e.g. space of dividends, capital, opponents state or time in sequential models.
 		\end{itemize}
 			\vspace{0.1in}
-		\item The ``model'' error:  $\ell \big(x,f\big) = \mathbf{0}$,  for all $x\in \Xdom$  
+		\item The ``Economics model'' error:  $\ell \big(x,f\big) = \mathbf{0}$,  for all $x\in \Xdom$  
 		\begin{itemize}
 			\item e.g., Euler and Bellman residuals, equilibrium FOCs.
 		\end{itemize}
 		\vspace{0.1in}
 	\end{itemize}
-	Then a \emphcolor{solution} is an $f^*\in \F$ where $\ell(x,f^*) = \mathbf{0}$ for all $x \in \Xdom$.\vspace{0.1in}
+	Then a \emphcolor{solution} is $f^*\in \F$ where $\ell(x,f^*) = \mathbf{0}$ for all $x \in \Xdom$.\vspace{0.1in}
 \end{frame}
 
 \begin{frame}{Approximate solution: deep neural networks }
@@ -214,7 +214,7 @@
 
 \begin{frame}{Over-parameterized interpolation}
 	\begin{itemize}
-		\item Over-parameterized ($|\theta|\gg N$), the optimization problem can have many solutions.
+		\item Being over-parameterized ($|\theta|\gg N$), the optimization problem can have many solutions.
 		\item Since individual $\theta$ are irrelevant it is helpful to think of optimization directly within $\mathcal{H}$
 		\vspace{-0.025in}
 		\begin{empheq}[box=\tcbhighmath]{equation*}
@@ -235,9 +235,9 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Smooth interpolation}
+\begin{frame}{Over-parameterization and smooth interpolation}
 	\begin{itemize}
-		\item Intuition: biased toward solutions which are flattest and have smallest derivatives
+		\item Intuition: biased toward solutions which are flatter and have smaller derivatives
 	\end{itemize}
 		\begin{figure}[t!]
 		\centering
@@ -270,7 +270,9 @@
 					\item This is due to the \emphcolor{saddle-path} nature of econ problems.
 					% many economic models have this saddle path nature
 					\vspace{0.05in}
-					\item ``{\it Knife-edge stability is a common property of dynamic monetary models ...}" \textcolor{red}{Obstfeld and Rogoff (1983)} 
+					\begin{itemize}
+					\item ``{\it Knife-edge stability is a common property of dynamic monetary models ...}" \textcolor{red}{Obstfeld and Rogoff (1983)}.
+					\end{itemize} 
 				\end{itemize}
 			\end{itemize}
 		\end{column}
@@ -286,9 +288,9 @@
 
 \section{Outline}
 
-\begin{frame}{Outline of the Talk}
+\begin{frame}{Outline of the talk}
 	
-	To explore how we can ignore events after ``we are all dead'', we show deep learning solutions to
+	To explore how we can ignore the long-run boundary conditions after, we show deep learning solutions to
 	\begin{enumerate}
 		\item Classic linear-asset pricing model.\vspace{0.1in}
 		\item Sequential formulation of the neoclassical growth model.\vspace{0.1in}
@@ -631,7 +633,7 @@
 		\begin{column}{0.75\textwidth}
 			\begin{figure}[t!]
 				\centering
-				\includegraphics[width=0.7\textwidth]{figs/growth_recursive_g0_euler_residuals_grid.pdf}
+				\includegraphics[width=0.65\textwidth]{figs/growth_recursive_g0_euler_residuals_grid.pdf}
 				\hspace{32mm}
 			\end{figure}
 		\end{column}
