@@ -541,12 +541,16 @@
 	\vspace{0.05in}
 	\item Consider a non-concave production function:
 	\begin{align*}
-		f(k) \equiv a \max\{k^\alpha, b_1k^\alpha-b_2\}
+		\hspace{-70mm}f(k) \equiv a \max\{k^\alpha, b_1k^\alpha-b_2\}
 	\end{align*}
 	\item Two steady-states $k_1^*$ and $k_2^*$.
 	\vspace{0.05in}
-	\item The same numerical procedure, different production function.
+	\item The same numerical procedure.
 		\end{itemize}
+		
+	\vspace{-2cm} % Adjust this spacing as needed
+	\hfill
+	\includegraphics[width=0.55\textwidth]{figs/non_concave_prod_func}
 \end{frame}
 
 \begin{frame}{Neoclassical growth model with non-concave production function: results}
@@ -628,7 +632,7 @@
 			\item Only the left panel results are correct. 
 			$k'_\theta(k)$ has a fixed point at the right steady state.
 			\smallskip
-			\item However, the wrong solution leads to lower Euler residuals.
+			\item However, the wrong solution has lower Euler residuals.
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.75\textwidth}
@@ -645,6 +649,8 @@
 
 \begin{frame}{Conclusion}
 	\begin{itemize}
+		\item Short- and medium-run accurate solutions can be obtained \emphcolor{without} strictly enforcing the long-run boundary  conditions on the model’s dynamics.
+		\vspace{0.1in}
 		\item Long-run (\emphcolor{global}) conditions can be replaced with appropriate regularization (\emphcolor{local}) to achieve optimal solutions, hence the title of the paper.
 		\vspace{0.1in}
 		\item Inductive bias provides a foundation for modeling forward-looking behavioral agents with self-consistent expectations.
