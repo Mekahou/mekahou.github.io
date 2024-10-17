@@ -352,8 +352,8 @@
 \begin{frame}{Linear asset pricing: numerical method}
 	\begin{itemize}
 		\item Sample for time:  $\mathcal{D} = \{t_1,\cdots,t_N\}$.
-		\item Dividend process: $y(t+1) = c+(1+g)y(t)$, given $y(0)$.
-		\item A over-parameterized neural network $p_\theta(t)$, \emphcolor{ignore} the non-bubble condition and solve 
+		\item Generating the dividend process: $y(t+1) = c+(1+g)y(t)$, given $y(0)$.
+		\item An over-parameterized neural network $p_\theta(t)$, \emphcolor{ignore} the non-bubble condition and solve 
 				\begin{empheq}[box=\tcbhighmath]{align*}
 				\min_{\theta} \frac{1}{N}\sum_{t \in \mathcal{D}} \left[p_\theta(t)- y(t)- \beta p_\theta(t+1)\right]^2
 			\end{empheq}
@@ -371,7 +371,7 @@
 				\item Relative errors: $\varepsilon_p(t)\equiv \frac{p_\theta(t)-p_f(t)}{p_f(t)}$.
 				\vspace{0.05in}
 				\item for $g>0$: $p_\theta(t) = e^{\phi t}
-			 NN_\theta(t)$, $\phi$ is "learnable".
+			 NN_\theta(t)$, $\phi$ is ``learnable".
 			 	\vspace{0.05in}
 				\item Results for $100$ different seeds (initialization of the parameters):
 				\begin{itemize}
@@ -392,6 +392,7 @@
 \end{frame}
 
 
+\section{\textcolor{PennBlue}{Sequential neoclassical growth model and the transversality condition }}
 
 
 \begin{frame}{Neoclassical growth model: setup }
@@ -403,7 +404,7 @@
 		\end{align*}
 	\item This is a three dimensional dynamical system with unknown initial condition  $c(0)$. This problem is \emphcolor{ill-posed}.
 	\vspace{0.05in}
-	\item A family of solutions, each solution corresponds to a different $c(0)$.
+	\item A family of solutions, each solution corresponds to a different $c(0)$. Only one of them is the optimal solution.
 	\end{itemize}	
 \end{frame}
 
@@ -414,10 +415,10 @@
 			\begin{itemize}
 				\item To rule out sub-optimal solutions, transversality condition
 				\begin{align*}
-					\lim_{t\rightarrow \infty}\beta^t \frac{k(t+1)}{c(t)} = 0
+					\lim_{t\rightarrow \infty}\beta^t \frac{k(t+1)}{c(t)} = 0.
 				\end{align*}
 				\vspace{0.1in}
-				\item  using a deep neural network and ignoring the transversality condition provides a an accurate approximation for the optimal capital path.
+				\item  Using a deep neural network and ignoring the transversality condition provides a an accurate approximation for the optimal capital path.
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth}
@@ -434,7 +435,7 @@
 	\begin{itemize}
 		\item Sample for time:  $\mathcal{D} = \{t_1,\cdots,t_N\}$.
 		\vspace{0.05in}
-		\item TFP process: $z(t+1) = (1+g)z(t)$, given $z(0)$.
+		\item Generating the TFP process: $z(t+1) = (1+g)z(t)$, given $z(0)$.
 		\item A over-parameterized neural network $k_\theta(t)$,
 		\vspace{0.05in}
 		\item Given $k_\theta(t)$, define the consumption function $c(t;k_{\theta}) = z(t)^{1-\alpha}f(k_{\theta}(t)) +(1-\delta)k_{\theta}(t)-k_{\theta}(t+1)
@@ -460,7 +461,7 @@
 				\vspace{0.05in}
 				\item Benchmark solution: value function iteration.
 				\vspace{0.05in}
-				\item Results for $100$ different seeds (initialization of the parameters)
+				\item Results for $100$ different seeds.
 				\vspace{0.05in}
 				\item Very accurate short- and medium-run approximation.
 			\end{itemize}
@@ -485,7 +486,7 @@
 				\item $k_\theta(t) = e^{\phi t}
 				NN_\theta(t)$, $\phi$ is "learnable".
 				\vspace{0.05in}
-				\item Results for $100$ different seeds (initialization of the parameters).
+				\item Results for $100$ different seeds.
 				\vspace{0.05in}
 				\item Very accurate short- and medium-run approximation.
 			\end{itemize}
@@ -500,7 +501,7 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{But, ``in the long run, we are all dead"}
+\begin{frame}{But, seriously ``in the long run, we are all dead"}
 
 	\begin{columns}
 	\begin{column}{0.5\textwidth}
@@ -530,7 +531,7 @@
 
 \begin{frame}{Neoclassical growth model: multiple steady-states and hysteresis}
 	\begin{itemize}
-	\item When there are multiple (saddle-path) steady states, each with its domain of attraction:
+	\item When there are multiple steady states with saddle-path stability, each with its domain of attraction:
 	\vspace{0.05in}
 		\begin{itemize}
 			\item Can the inductive bias detect there are multiple basins of attraction?
