@@ -119,7 +119,6 @@
 		\item Without them, the problems are \emphcolor{ill-posed} and have infinitely many solutions: 
 		\vspace{0.1in}
 		\begin{itemize}
-			\item The problems are ill-posed in the Hadamard sense, meaning the solutions are not unique.
 			\item These forward-looking boundary conditions are a key limitation on increasing dimensionality.
 		\end{itemize}
 			% what do I mean by that, if it wasnt a boundary condition at infinity, I could easily solve a 1000 dimensional initial value problem 
@@ -132,7 +131,7 @@
 	\hspace{200mm}
 	
 	\begin{quote}
-			Can we (economists and agents) \emphcolor{ignore} these long-run boundary conditions and still have accurate short/medium-run dynamics disciplined by these long-run conditions?
+			Can we (economists and agents) \emphcolor{ignore} these long-run boundary conditions and still have accurate short/medium-run dynamics disciplined by the long-run conditions?
 	\end{quote}
 \end{frame}
 
@@ -160,7 +159,6 @@
 		\vspace{0.025in}
 		\item Provides short-run accuracy.
 		\vspace{0.025in}
-		\item Satisfies the necessary long-run constraints.
 	\end{itemize}
 \end{enumerate}
 
@@ -183,7 +181,7 @@
 			\item e.g. space of dividends, capital, opponents state or time in sequential models.
 		\end{itemize}
 			\vspace{0.1in}
-		\item The ``Economics model'' error:  $\ell \big(x,f\big) = \mathbf{0}$,  for all $x\in \Xdom$  
+		\item The ``Economics model'' error:  $\ell \big(x,f\big)$,  for all $x\in \Xdom$  
 		\begin{itemize}
 			\item e.g., Euler and Bellman residuals, equilibrium FOCs.
 		\end{itemize}
@@ -231,7 +229,7 @@
 	\vspace{-0.025in}
 	\item That is what we mean by \emphcolor{inductive bias} (see Belkin, 2021 and Ma and Yang, 2021).
 	
-	\item  Characterizing $S$ (e.g., Sobolev norms or semi-norms?) is an active research area in ML.
+	\item  Characterizing $\psi$ (e.g., Sobolev norms or semi-norms?) is an active research area in ML.
 	\end{itemize}
 \end{frame}
 
@@ -247,7 +245,7 @@
 
 \begin{frame}{Intuition of the paper}
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.6\textwidth}
 			% Content for the left column
 			\begin{itemize}
 				\item \emphcolor{Minimum-norm inductive bias}: 
@@ -264,19 +262,19 @@
 					\item Sub-optimal solutions diverge (explode) over time.
 					% As you can see in the plot optimal solution goe to the steady-state, the black dot, and any othe trajectory globaly or locally diveges. That is the signature of economic models
 					\vspace{0.05in}
-					%\item They have large or explosive norms.
-					% Given that they are divergent, then they are large functions with large norms
-					\vspace{0.05in}
+					% Given that they are divergent, then they are large functions with large norm
 					\item This is due to the \emphcolor{saddle-path} nature of econ problems.
 					% many economic models have this saddle path nature
 					\vspace{0.05in}
-					\begin{itemize}
-					\item ``{\it Knife-edge stability is a common property of dynamic monetary models ...}" \textcolor{red}{Obstfeld and Rogoff (1983)}.
-					\end{itemize} 
+					%\begin{itemize}
+					%\item ``{\it Knife-edge stability is a common property of dynamic monetary models ...}" (Obstfeld and Rogoff, 1983).
+					%\vspace{0.05in}
+					%\end{itemize} 
+					\item The long-run boundary conditions rule out the explosive solutions.
 				\end{itemize}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.4\textwidth}
 		\begin{figure}[t!]
 			\centering
 			\includegraphics[width=\textwidth]{figs/saddle_path.pdf}
@@ -290,7 +288,7 @@
 
 \begin{frame}{Outline of the talk}
 	
-	To explore how we can ignore the long-run boundary conditions after, we show deep learning solutions to
+	To explore how we can ignore the long-run boundary conditions, we show deep learning solutions to
 	\begin{enumerate}
 		\item Classic linear-asset pricing model.\vspace{0.1in}
 		\item Sequential formulation of the neoclassical growth model.\vspace{0.1in}
