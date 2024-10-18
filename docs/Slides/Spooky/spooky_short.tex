@@ -181,7 +181,7 @@
 			\item e.g. space of dividends, capital, opponents state or time in sequential models.
 		\end{itemize}
 			\vspace{0.1in}
-		\item The ``Economics model'' error:  $\ell \big(x,f\big)$,  for all $x\in \Xdom$  
+		\item The ``Economics model'' error:  $\ell \big(x,f\big)$  
 		\begin{itemize}
 			\item e.g., Euler and Bellman residuals, equilibrium FOCs.
 		\end{itemize}
@@ -439,8 +439,10 @@
 		\item Given $k_\theta(t)$, define the consumption function $c(t;k_{\theta}) = z(t)^{1-\alpha}f(k_{\theta}(t)) +(1-\delta)k_{\theta}(t)-k_{\theta}(t+1)
 		$
 		\vspace{0.05in}
-		 \item \emphcolor{Ignore} the transversality condition and solve 
+		 \item \emphcolor{Ignore} the transversality condition and solve
+			\hspace*{-5mm}
 		\begin{empheq}[box=\tcbhighmath]{align*}
+			\hspace*{-4mm}
 			\min_{\theta \in \Theta}\Bigg[ \frac{1}{N} \sum_{t \in \mathcal{D}}  \left(\underbrace{\frac{c(t+1;k_{\theta})}{c(t;k_{\theta})} -\beta \big[z(t+1)^{1-\alpha}f'\big(k_{\theta}(t+1)\big)+(1-\delta)\big]}_{\text{Euler residuals}}\right)^2 + \left(\underbrace{k_{\theta}(0)- k_0}_{\text{Initial condition residual}}\right)^2\Bigg]
 		\end{empheq}
 		\item This minimization should provide an accurate short- and medium-run approximation for the optimal capital and consumption path.
