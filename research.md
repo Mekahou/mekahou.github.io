@@ -8,7 +8,8 @@ subtitle:
 ### Working Papers
 -----
 - Mahdi Ebrahimi Kahou, Jesús Fernández-Villaverde, Jesse Perla, Arnav Sood, <a href="../docs/Papers/symmetry_dynamic_programming.pdf" target="_blank">"Exploiting Symmetry in High-Dimensional Dynamic Programming"</a>
--  Mahdi Ebrahimi Kahou, Jesús Fernández-Villaverde, Sebastian Gomez-Cardona, Jesse Perla, Jan Rosa,<a href="../docs/Papers/SpookyBoundary.pdf" target="_blank"> "Spooky Boundaries at a Distance:Exploring Transversality and Stationarity with Deep Learning"</a>
+-  Mahdi Ebrahimi Kahou, Jesús Fernández-Villaverde, Sebastian Gomez-Cardona, Jesse Perla, Jan Rosa,<a href="../docs/Papers/SpookyBoundary.pdf" target="_blank"> "Spooky Boundaries at a Distance: Inductive Bias, Dynamic Models, and Behavioral Macro"</a>
+- Mahdi Ebrahimi Kahou, James Yu, Jesse Perla, Geoff Pleiss <a href="https://arxiv.org/abs/2406.01898" target="_blank">"How Inductive Bias in Machine Learning Aligns with Optimality in Economic Dynamics"</a>
 - Mahdi Ebrahimi Kahou, <a href="./docs/Papers/input_output.pdf" target="_blank">"Optimal entry decision with correlated variable cost and output price"</a>
 
 ### Publications
