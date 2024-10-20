@@ -7,7 +7,7 @@ subtitle:
 
 ### Working Papers
 -----
--<a href="../docs/Papers/symmetry_dynamic_programming.pdf" target="_blank">"Exploiting Symmetry in High-Dimensional Dynamic Programming"</a> 
+- <a href="../docs/Papers/symmetry_dynamic_programming.pdf" target="_blank">"Exploiting Symmetry in High-Dimensional Dynamic Programming"</a> 
 <br>
 <small>Mahdi ebrahimi kahou, Jesús fernández-villaverde, Jesse perla, Arnav sood</small>
 
