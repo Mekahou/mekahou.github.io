@@ -9,7 +9,7 @@ subtitle:
 -----
 - <a href="../docs/Papers/symmetry_dynamic_programming.pdf" target="_blank">"Exploiting Symmetry in High-Dimensional Dynamic Programming"</a> 
 <br>
-<small>Mahdi ebrahimi kahou, Jesús fernández-villaverde, Jesse perla, Arnav sood</small>
+<small>Mahdi ebrahimi kahou, Jesús Fernández-Villaverde, Jesse Perla, Arnav Sood</small>
 
 <!--- Mahdi Ebrahimi Kahou, Jesús Fernández-Villaverde, Jesse Perla, Arnav Sood, <a href="../docs/Papers/symmetry_dynamic_programming.pdf" target="_blank">"Exploiting Symmetry in High-Dimensional Dynamic Programming"</a> -->
 -  Mahdi Ebrahimi Kahou, Jesús Fernández-Villaverde, Sebastian Gomez-Cardona, Jesse Perla, Jan Rosa,<a href="../docs/Papers/SpookyBoundary.pdf" target="_blank"> "Spooky Boundaries at a Distance: Inductive Bias, Dynamic Models, and Behavioral Macro"</a>
