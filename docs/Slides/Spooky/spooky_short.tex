@@ -265,6 +265,8 @@
 
 
 \begin{frame}{Deep Learning: random initialization and non-convex optimization  }
+	\label{non_convex}
+\vspace*{-1mm}
 
 	\begin{figure}[t!]
 		\centering
@@ -272,6 +274,7 @@
 	\end{figure}
 	%The parameters are irrelevant
 	% RelU, 3 layers, Adam optimizer
+	\hyperlink{dif_dist}{\beamerskipbutton{Different initialization}}
 \end{frame}
 
 \begin{frame}{Intuition of the paper}
@@ -706,6 +709,18 @@
 	\end{itemize}
 \end{frame}
 
+\section{Appendix}
 
+\begin{frame}{Deep Learning: random initialization and non-convex optimization  }
+\label{dif_dist}
+	
+	\begin{figure}[t!]
+		\centering
+		\includegraphics[width=0.75\textwidth]{figs/smooth_interpolation_100_seeds_uniform_init.pdf}
+	\end{figure}
+	%The parameters are irrelevant
+	% RelU, 3 layers, Adam optimizer
+	\hyperlink{non_convex}{\beamerskipbutton{Back}}
+\end{frame}
 
 \end{document}
