@@ -23,3 +23,6 @@ beautiful-jekyll-theme-*.gem
 *.gz
 *.toc
 \CV.log
+
+#Specific latex stuff
+.\docs\Slides\Symmetry_jmp_slides\symmetry_dynamic_programming_presentation_90.log

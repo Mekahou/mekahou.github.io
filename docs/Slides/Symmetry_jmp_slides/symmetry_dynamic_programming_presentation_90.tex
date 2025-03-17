@@ -613,8 +613,9 @@ Let's say there are \emphcolor{$1000$ agents}:
 \end{enumerate}
 	
 \end{frame}
-	
-\begin{frame}{General class of problems: A ``big $X$, little $x$" dynamic programming}
+\section{\textcolor{PennBlue}{Symmetry and Permutation Invariant}}
+
+\begin{frame}{General class of problems: A ``big $\color{white}X$, little $\color{white}x$" dynamic programming}
 	\begin{empheq}[box=\tcbhighmath]{align*}
 		v(x,X)       & =\max_{u}\left\{r\big(x,u,X\big) + \beta \expec{v(x',X')}\right\} \\
 		\text{s.t. } & x' = g(x,u) + \sigma w + \eta \omega                              \\
@@ -737,13 +738,13 @@ Let's say there are \emphcolor{$1000$ agents}:
 		
 			\metroset{block=fill}
 			\begin{proposition}{ (based on Wagstaff et al., 2019)}
-				Let  $f:\mathbb{R}^{N+1} \rightarrow \mathbb{R}$ be a continuous permutation-invariant function under $\mathcal{S}_N$, i.e., for all $(x,X) \in \mathbb{R}^{N+1}$ and all $\pi \in \mathcal{S}_N$:
+				Let  $u:\mathbb{R}^{N+1} \rightarrow \mathbb{R}$ be a continuous permutation-invariant function under $\mathcal{S}_N$, i.e., for all $(x,X) \in \mathbb{R}^{N+1}$ and all $\pi \in \mathcal{S}_N$:
 				\begin{align*}
-					f(x, \pi X) = f(x,X)
+					u(x, \pi X) = u(x,X)
 				\end{align*}
 				Then, there exist a latent dimension $L\leq N$ and continuous functions $\rho : \mathbb{R}^{L+1}\rightarrow \mathbb{R}$ and $\phi: \mathbb{R} \rightarrow \mathbb{R}^L$ such that:
 				\begin{equation*}
-					f(x,X) = \rho \left(x,\frac{1}{N}\sum_{i=1}^N\phi(X_i)\right)
+					u(x,X) = \rho \left(x,\frac{1}{N}\sum_{i=1}^N\phi(X_i)\right)
 				\end{equation*}
 				\vspace{-0.1in}
 			\end{proposition}
@@ -767,7 +768,9 @@ Let's say there are \emphcolor{$1000$ agents}:
 			\end{itemize}
 	
 	\end{frame}
-	
+
+\section{\textcolor{PennBlue}{High-dimensional expectation: concentration of measures}}
+
 \begin{frame}{High-dimensional expectation}
 	Euler's equation:
 	\begin{equation*}
@@ -839,7 +842,7 @@ $$ \mathbb{E}_W \left[\|\nabla u(X')\|^2\right] \leq \frac{C}{N}$$
 	\item \emphcolor{No non-heuristic} algorithm exists to solve this problem.
 	\end{itemize}
 \end{frame}
-		\section{Solving the Model}
+\section{Solving the Model}
 	% \begin{frame}{Solving the model}
 	
 	% \begin{itemize}
@@ -862,26 +865,39 @@ $$ \mathbb{E}_W \left[\|\nabla u(X')\|^2\right] \leq \frac{C}{N}$$
 	
 	% \end{frame}
 
-	\begin{frame}{Design of $\mathcal{H}(\Theta)$: Deep learning architectures}
-\begin{empheq}[box=\tcbhighmath]{align*}
-	 u(x,X) = \rho \left(x,\frac{1}{N}\sum_{i=1}^N \phi(X_i)\right)
-\end{empheq}
-Three cases for $\phi$:\vspace{0.1in}
-\begin{enumerate}
+	\begin{frame}{Design of $\color{white}\mathcal{H}(\Theta)$: Deep learning architectures}
+	\begin{empheq}[box=\tcbhighmath]{align*}
+	 	u(x,X) = \rho \left(x,\frac{1}{N}\sum_{i=1}^N \phi(X_i)\right)
+	\end{empheq}
+	Three cases for $\phi$:\vspace{0.1in}
+	\begin{itemize}
 	\item Identity function: One moment $\rightarrow$ $\phi(\text{Identity})$.\vspace{0.1in}
-	\item Up to degree four polynomials: $4$ moments $\rightarrow$ $\phi(\text{Moments})$. \vspace{0.1in}
-	\item A deep neural network for $\phi$, with $L=4$ $\rightarrow$ $\phi(\text{ReLU})$.\vspace{0.1in}
-\end{enumerate}
-If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in a fully nonlinear way as in \textcolor{red}{Fern\'andez-Villaverde et al. (2022)}. \vspace{0.1in}
-		
-\begin{itemize}
+	\begin{align*}
+		u(x,X) = \rho\left(x,\frac{1}{N}\sum_{i=1}^N X_i\right)
+	\end{align*}
+	\item Up to degree four polynomials: $4$ moments $\rightarrow$ $\phi(\text{Moments})$.
+	\begin{align*}
+		u(x,X) = \rho\left(x,\frac{1}{N}\sum_{i=1}^N X_i,\cdots  ,\frac{1}{N}\sum_{i=1}^N X^4_i\right)
+	\end{align*}
+	\end{itemize}
+	
+\end{frame}
+	
+\begin{frame}{Design of $\color{white}\mathcal{H}(\Theta)$: Deep learning architectures}
+	\begin{itemize}
+		\item A deep neural network for $\phi$, with $L=4$ $\rightarrow$ $\phi(\text{ReLU})$.\vspace{0.1in}
+		\begin{align*}
+			u(x,X) = \rho\left(x,\frac{1}{N}\sum_{i=1}^N \phi_1(X_i),\cdots  ,\frac{1}{N}\sum_{i=1}^N \phi_4(X_i)\right)
+		\end{align*}
+	\end{itemize}
+	
+	If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in a fully nonlinear way as in \textcolor{red}{Fern\'andez-Villaverde et al. (2022)}. \vspace{0.1in}
+	
+	\begin{itemize}
 		\item In all cases, $\rho$ is a highly over-parameterized neural network with four layers.\vspace{0.1in}
 		\item  The baseline $\phi(\text{Identity})$, $\phi(\text{Moments})$, and  $\phi(\text{ReLU})$ have $\mapvar{Identity_parameters}$, $\mapvar{Moments_parameters}$, and $\mapvar{ReLU_parameters}$ coefficients. %respectively.
-\end{itemize}
-			
-	\end{frame}
-	
-	
+	\end{itemize}
+\end{frame}
 	
 	% \begin{frame}{Architecture using summary statistics as moments for $\phi$}
 	
@@ -916,9 +932,9 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 			\end{itemize}
    \end{enumerate}
 
-	Utilizing concentration of measures:\vspace{0.1in}
+	Using concentration of measures:\vspace{0.1in}
 	\begin{itemize}
-		\item\emphcolor{One} draw $\hat{W}= \{\hat{W}_1,\ldots,\hat{W}_N\}$ of the idiosyncratic shocks. For a given $u(\cdot;\theta)$, and aggregate shock $\omega$ calculate:
+		\item\emphcolor{One draw} $\hat{W}= \{\hat{W}_1,\ldots,\hat{W}_N\}$ of the idiosyncratic shocks. For a given $u(\cdot;\theta)$, and aggregate shock $\omega$ calculate:
 		\begin{align*}
 			X'_i = (1-\delta)X_i + u(X) + \sigma \hat{W_i} + \eta \omega,\quad\text{for } i \in \{1,...,N\}.
 		\end{align*}
@@ -930,7 +946,7 @@ If polynomials for $\phi$: A finite set of moments \`a la Krusell-Smith. %but in
 			\item Approximate the Euler residuals
 			$$\varepsilon\left(X;u(\cdot;\theta)\right) \equiv \gamma u(X;\theta) - \beta \mathbb{E}\left[P(X') +\gamma (1-\delta) u(X';\theta)\right]$$
 			\vspace{-0.1in}
-			 using concentration of measures (one draw of $W$ in $X'$). \hyperlink{errors}{\beamerskipbutton{error analysis in $N$}}
+			 and a quadrature method for aggregate shocks. \hyperlink{errors}{\beamerskipbutton{error analysis in $N$}}
 		\end{itemize}
 	\begin{enumerate}
 		  \setcounter{enumi}{2}
@@ -1111,7 +1127,7 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 	How come we never observe the non-stationary solution in the results? 
 	\vspace{0.1in}
 	
-	Understanding the \emphcolor{implicit bias} of deep neural networks answers both questions.  \textcolor{red}{Ebrahimi Kahou et al. (2022,2024)} address these two challenging questions. 
+	Understanding the \emphcolor{implicit bias} of deep neural networks answers both questions.  \textcolor{red}{Ebrahimi Kahou et al. 2024, I\&II} address these two challenging questions. 
 \end{itemize}
 \end{frame}	
 				
@@ -1240,27 +1256,27 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 \begin{frame}{Flat and smooth interpolation:  illustration}
 	\begin{figure}[h!]
 		\begin{center}
-			\includegraphics[height=2.7in]{./figures/fourplots_example_reg.pdf}
+			\includegraphics[height=2.7in]{./figures/smooth_interpolation.pdf}
 		\end{center}
 	\end{figure}
 
 \end{frame}
 
-\begin{frame}{Implicit bias: More details}
-	Let $\psi_1$ and $\psi_2$ be two differentiable function from a compact space $\mathcal{X}$ in $\mathbb{R}$ to $\mathbb{R}$ such that
-	\begin{align*}
-		\int_\mathcal{X}\left|\frac{d \psi_1}{dx}\right|^2 dx >   \int_\mathcal{X}\left|\frac{d \psi_2}{dx}\right|^2 dx
-	\end{align*}
-	then
-	\begin{align*}
-		\|\psi_1\|_S > \|\psi_2\|_S.
-	\end{align*}
+%\begin{frame}{Implicit bias: More details}
+%	Let $\psi_1$ and $\psi_2$ be two differentiable function from a compact space $\mathcal{X}$ in $\mathbb{R}$ to $\mathbb{R}$ such that
+%	\begin{align*}
+%		\int_\mathcal{X}\left|\frac{d \psi_1}{dx}\right|^2 dx >   \int_\mathcal{X}\left|\frac{d \psi_2}{dx}\right|^2 dx
+%	\end{align*}
+%	then
+%	\begin{align*}
+%		\|\psi_1\|_S > \|\psi_2\|_S.
+%	\end{align*}
 	%Moreover, since $\|\cdot\|_S$ is a semi-norm, it satisfies the triangle inequality
 	%\begin{align}
 	%	\|\psi_1+\psi_2\|_S \leq \|\psi_1\|_S + \|\psi_2\|_S.
 	%\end{align}
-	Recently shown the optimizers (first order e.g. SGD) regularize Sobolev semi-norms: \textcolor{red}{Ma, Ying (2021)}.
-\end{frame}
+%	Recently shown the optimizers (first order e.g. SGD) regularize Sobolev semi-norms: \textcolor{red}{Ma, Ying (2021)}.
+%\end{frame}
 
 
 \begin{frame}{Answering the challenging questions}
@@ -1274,7 +1290,7 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 	 \begin{itemize}
 	 	\item The deep-learning based solution \emphcolor{automatically} satisfies stationarity. \vspace{0.1in}
 	 \end{itemize}
-	\item \textcolor{red}{Ebrahimi Kahou et al. (2022,~2024)} explore this for many more dynamic models in macroeconomics (e.g., neoclassical growth and asset pricing) we show: \vspace{0.1in}
+	\item \textcolor{red}{Ebrahimi Kahou et al. 2024, I\& II} explore this for many more dynamic models in macroeconomics (e.g., neoclassical growth and asset pricing) we show: \vspace{0.1in}
 	\begin{itemize}
 		\item We can have short- and medium-run accurate solutions (even in non-stationary cases) .\vspace{0.1in}
 		\item  We dont need to calculate the steady-state (ergodic distribution).
