@@ -119,7 +119,8 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{2} \and Arnav S
 		\item Representative agent or few agents.\vspace{0.1in}
 		\item A continuum of agents.\vspace{0.1in}
 		\end{itemize} 
-	\item However, many models of interest in macro (IO and trade) deal with \emphcolor{finite} (but large) number of agents and idiosyncratic/aggregate uncertainty:\vspace{0.1in}
+	\item However, many models of interest in macro (IO and trade) deal with \emphcolor{finite} (but large) number of agents
+	% and idiosyncratic/aggregate uncertainty:\vspace{0.1in}
 		\begin{itemize}
 		\item Industry dynamics with many firms, agents and industries,  even models with networks.\vspace{0.1in}
 		
@@ -131,28 +132,6 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{2} \and Arnav S
 		\end{itemize}	
 	\end{itemize}	
 	
-		%\item Solve heterogenous agent models defined with standard recursive equilibria we know (and love!)\vspace{0.1in}
-
-		%\item  Many  dynamic models in macro (also IO and trade) have a finite number of agents:\vspace{0.1in}
-
-		      %\begin{itemize}
-				%  \item Industry dynamics with many firms, agents and industries.\vspace{0.1in}
-				
-			     % \item Many locations (countries, regions, metropolitan areas, industries).\vspace{0.1in}
-				%\item Models of networks.\vspace{0.1in}
-			      %\item Even bread-and-butter heterogeneous agent labor models (e.g., overlapping generations, different types)\vspace{0.1in}
-		      %\end{itemize}\medskip
-
-		
-		%\item We can use ``continuum'' approximations, but have difficulty with aggregate shocks.%, and perturbation solutions have very particular properties (i.e. local to distributional steady states)
-		 %     \vspace{0.1in}
-		%\item \emphcolor{No (non-heuristic) algorithm exists} for global heterogeneous agent models with aggregate shocks\medskip
-		 %     \begin{itemize}
-		%	      \item Krusell-Smith solves related but different problem with behavioral approximations.\medskip
-			      %\item ``Reinforcement learning'' also solves a behavioral variation. %(e.g., $\approx$ adaptive expectations)\medskip
-			      %\item We solve \emphcolor{exact model} with finite number of agents.  %Will not claim convergence towards continuum.
-		%      \end{itemize}
-	%\end{itemize}
 \end{frame}
 
 % \begin{frame}{Limitations of existing methods}
@@ -240,7 +219,7 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{2} \and Arnav S
 		\item A \emphcolor{symmetry} present in many heterogeneous agent models, i.e., \emphcolor{exchangeability} of agents.\vspace{0.1in}
 		\begin{itemize}
 			\item Example: In general equilibrium models the \emphcolor{Walrasian} auctioneer removes indices.\vspace{0.1in}
-			\item The solution (function) must be faithful to this symmetry caused by this exchangeability of agents.
+			\item The solution must be faithful to this symmetry caused by this exchangeability of agents.
 		\end{itemize}
 	\end{itemize}
 		
@@ -249,7 +228,7 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{2} \and Arnav S
 
 \begin{frame}{Contribution II}
 	\begin{itemize}
-	\item \emphcolor{Concentration of measures}, something that resembles the law of large numbers to deal with conditional expectations (very fast).\vspace{0.1in}
+	\item \emphcolor{Concentration of measures}, something that resembles the law of large numbers to deal with conditional expectations.\vspace{0.1in}
 	\begin{itemize}
 		\item More agents makes it easier to forecast the evolution of distributions. \vspace{0.1in}  
 		\item Conditional on the aggregate shock, we can use something similar law of large numbers to calculate expectations.  \vspace{0.1in}    
@@ -542,7 +521,7 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{2} \and Arnav S
 		
 				\item Under one parameterization, the model has a known Linear-Quadratic (LQ) solution, which gives us an exact benchmark.\vspace{0.1in}
 		
-				\item By changing one parameter, the model is nonlinear, with no known solution. Our method handles the nonlinear case as easily as the LQ case  with high accuracy.
+				\item By changing one parameter, the model is nonlinear, with \emphcolor{no known} solution. Our method handles the nonlinear case as easily as the LQ case  with high accuracy.
 		
 			\end{enumerate}
 		\end{frame}
@@ -599,7 +578,7 @@ Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Jesse Perla\inst{2} \and Arnav S
 	\end{empheq}
 Let's say there are \emphcolor{$1000$ agents}:
 \begin{enumerate}
-	\item The domain of the unknown functions of interest $u(\cdot)$ is \emphcolor{$1000$-dimensional}.\vspace{0.1in}
+	\item The domain of the functions of interest $u(\cdot)$ is \emphcolor{$1000$-dimensional}.\vspace{0.1in}
 	\item The expectation operator $\expec{\cdot}$  is a \emphcolor{$1001$-dimensional} integral.\vspace{0.1in}
 	\begin{itemize}
 		\item $1000$ idiosyncratic shocks + $1$ aggregate shock.\vspace{0.1in}
@@ -755,7 +734,7 @@ Let's say there are \emphcolor{$1000$ agents}:
 		$$u(x,X) = \rho\left(x,\frac{1}{N} \sum_{i=1}^N\phi(X_i)\right)$$
 			\begin{itemize}
 				\item This proposition should remind you of Krusell-Smith (1998), $L =1$, $\phi(X_i) = X_i$. \vspace{0.1 in}
-				\item Key benefit for approximation is the \emphcolor{representation} $(\rho,\phi)$,\vspace{0.1 in} \emphcolor{not explicit} dimensionality reduction.
+				\item Key benefit for approximation is the \emphcolor{representation} $(\rho,\phi)$.
 				\smallskip
 				\item Fitting a $\rho$ and $\phi$ rather than $f$ directly leads to \emphcolor{far better generalization} on $\Xdom$. Why?:\vspace{0.1 in}
 				\smallskip
@@ -780,7 +759,7 @@ Let's say there are \emphcolor{$1000$ agents}:
 		\begin{align*}
 		 \condexpec{p(X')}{\omega} \approx 	p(X')|\omega,  ~~\text{for large $N$}.
 		\end{align*} 
-		\item Can we say the same thing about $u(X')$? 
+		\item In general, can we say the same thing about $u(X')$? 
 		\begin{align*}
 			\condexpec{u(X')}{\omega} \approx 	u(X')|\omega,  ~~\text{for large $N$}?
 		\end{align*} 
@@ -790,7 +769,7 @@ Let's say there are \emphcolor{$1000$ agents}:
 		
 		
 		
-\begin{frame}{Expected gradient bounded in $N$}
+\begin{frame}{Expected gradient bounded in $\color{white}N$}
 	\begin{definition}[Expected gradient bounded in $N$] Let $f:\mathbb{R}^N\rightarrow \mathbb{R}$ be a bounded function in $N$ and $z\sim \mathcal{N}(\mathbf{0}_N,\mathbf{I}_N)$ be a normalized Gaussian random vector. The function $f$ has its expected gradient bounded in $N$ if there exists a $C$ such that:
 		\begin{equation*}
 			\expec{\|\nabla f(z)\|^2} \leq \frac{C}{N},
@@ -821,7 +800,7 @@ $$ \mathbb{E}_W \left[\|\nabla u(X')\|^2\right] \leq \frac{C}{N}$$
 			\end{itemize}
 			\emphcolor{Implication}: We can calculate $\mathbb{E}_{W}[u(X')| \omega]$ with a \textit{single draw} of idiosyncratic shocks $W$:
 			\begin{itemize}
-				\item $\mathbb{E}_W[u(X')|\omega]\approx u(x',X')|\omega$.\vspace{0.1in} 
+				\item $\mathbb{E}_W[u(X')|\omega]\approx u(X')|\omega$.\vspace{0.1in} 
 				\item Reducing an $N+1$-dimensional conditional expectation to a $1$-D one (with good approximation). 
 			\end{itemize}
 %\hyperlink{Bounded}{\beamerskipbutton{Expected gradient bounded  in $N$}}		
@@ -837,7 +816,7 @@ $$ \mathbb{E}_W \left[\|\nabla u(X')\|^2\right] \leq \frac{C}{N}$$
 		\begin{itemize}
 			\item Calculate with \emphcolor{one draw} of the idiosyncratic shocks (conditional on the aggregate shock).\vspace{0.1in}
 		\end{itemize} 
-	\item \emphcolor{No non-heuristic} algorithm exists to solve this problem.
+	%\item \emphcolor{No non-heuristic} algorithm exists to solve this problem.
 	\end{itemize}
 \end{frame}
 \section{Solving the Model}
@@ -1056,13 +1035,13 @@ $$ \mathbb{E}_W \left[\|\nabla u(X')\|^2\right] \leq \frac{C}{N}$$
 				
 				\item With $\nu>1$, we have a nonlinear demand function:  $p(X) = 1 -  \frac{1}{N}\sum_{i=1}^N X_i^{\nu}$.\vspace{0.1in}
 				
-				\item Notice how, now, the whole distribution  of $X_i$ matters.\vspace{0.1in}
+				\item Now, the whole distribution  of $X_i$ matters.\vspace{0.1in}
 				
 				\item But we can still find the solution to this nonlinear case using exactly the same functional approximation and algorithm as before.\vspace{0.1in}    
 				
 				\item We do not need change anything in the code except the value of $\nu$.\vspace{0.1in}   
 				
-				\item Since the LQ solution no longer holds, we do not have an exact solution to use as a benchmark, but can check residuals.\vspace{0.1in}
+				\item We do not have an exact solution to use as a benchmark, but can check residuals.\vspace{0.1in}
 				
 				\item Same model and method.  Computation time by $N$ nearly the same to linear case
 			\begin{itemize}
@@ -1163,12 +1142,10 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 				% \end{figure}
 			
 				\begin{itemize}
-					\item \emphcolor{Extreme} case : forget we know any closed form, and see if over-fitting hurts us.\vspace{0.1in}
+					\item  Forget we know any closed form, and see if over-fitting hurts us.\vspace{0.1in}
 					\item Fit \emphcolor{three} grid points in $\mathbb{R}^{\mapvar{overfit_N}}$ (an economy with $N=512$ agents).
 					\vspace{0.1in}
-					% \item Relative error of \emphcolor{$4$\%} on the test data
-					% \smallskip
-					\item Flexible functional form with \mapvar{overfit_parameters} coefficients.
+					\item Flexible functional form with \emphcolor{\mapvar{overfit_parameters}} coefficients.
 					\medskip
 					\item Now, evaluate for a whole bunch of reasonable trajectories from the initial condition and check the policy error: \vspace{0.1in}
 					\begin{itemize}
@@ -1366,7 +1343,15 @@ with linear prices. Guess and verify with $u(X) \equiv H_0 + \frac{1}{N} H_1 \su
 			\end{itemize}
 			\end{frame}
 
-
+\begin{frame}{Future challenges ahead}
+	\begin{itemize}
+		\item The role of sampling in high-dimensional spaces. 
+		\smallskip
+		\item Equilibrium selection, in case of  multiplicity.
+		\smallskip 
+		\item Guaranteed stable solutions.
+	\end{itemize}
+\end{frame}
 
 \section{Appendix}
 
