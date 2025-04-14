@@ -635,7 +635,7 @@
 			\item What if 
 			\begin{itemize}
 				\item $\mathcal{D}(\text{Grid 1}) = \{0, 1, 2, 4, 6, 8, 12, 16, 20, 24, 29\}$
-				\item $\mathcal{D}(\text{Grid 1}) = \{0, 1, 4, 8, 12, 18, 24, 29\}$
+				\item $\mathcal{D}(\text{Grid 2}) = \{0, 1, 4, 8, 12, 18, 24, 29\}$
 			\end{itemize}
 			\vspace{0.05in}
 			\item An accurate short-run solution, even for a sparse grid.
@@ -677,7 +677,7 @@
 	\includegraphics[width=0.55\textwidth]{figs/non_concave_prod_func}
 \end{frame}
 
-\section{Deep learning is not the only option}
+
 \begin{frame}{Neoclassical growth model with non-concave production function: results}
 	\begin{figure}[t!]
 		\centering
@@ -690,6 +690,7 @@
 	\end{itemize}
 \end{frame}
 
+\section{Deep learning is not the only option}
 
 \begin{frame}{Deep learning is not the only option: kernels}
 \begin{columns}
@@ -698,10 +699,8 @@
 			\begin{itemize}
 			\item Deep learning might be too ``spooky".
 			\smallskip
-			\item We can use kernels, $K(\cdot,\cdot)$, instead of neural networks and control the RKHS norms. For instance:
-			\begin{align*}
-				\frac{dk}{dt} = \sum_{i=1}^N \alpha^k_i K(t,t_i), \quad \frac{dc}{dt} = \sum_{i=1}^N \alpha^c_i K(t,t_i)
-			\end{align*}
+			\item We can use kernels methods, $K(\cdot,\cdot)$, instead of neural networks and control the RKHS norms.
+			\item Focusing on continuous time equivalent of these problems.  
 			\item The same results, theoretical guarantees, very fast and robust.
 		\end{itemize}
 	\end{column}
@@ -716,6 +715,45 @@
 
 \end{frame}
 
+\begin{frame}{Optimal control framework}
+	Consider the following optimal control problem
+	
+	\begin{align*}
+		&\dot{\boldsymbol{x}} = \boldsymbol{F}\left(\boldsymbol{x}(t),\boldsymbol{y}(t)\right)\\
+		&\dot{\boldsymbol{\mu}} = r\boldsymbol{\mu}(t)-\boldsymbol{\mu}(t)\odot \boldsymbol{G}\left(\boldsymbol{x}(t),\boldsymbol{\mu}(t),\boldsymbol{y}(t)\right)\\
+		&\boldsymbol{0}= \boldsymbol{H}\left(\boldsymbol{x}(t),\boldsymbol{\mu}(t),\boldsymbol{y}(t)\right)\\
+		&\boldsymbol{x}(0) = \boldsymbol{x}_0
+	\end{align*}
+	\begin{itemize}
+		\item \emph{State variables} $\boldsymbol{x}(t)\in\R^{M}$, initial condition $\boldsymbol{x}_0$; \emph{co-state variables} $\boldsymbol{\mu}(t)\in\R^{M}$; \emph{jump variables} $\boldsymbol{y}(t)\in\R^{P}$
+		\item This problem is \emphcolor{ill-posed} and can have infinitely many solutions.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Transversality condition: an asymptotic boundary condition}
+	\begin{align*}
+		\lim_{t\rightarrow \infty} e^{-rt} \boldsymbol{x}(t)\odot\boldsymbol{\mu}(t) = \boldsymbol{0}
+	\end{align*}
+	\begin{itemize}
+	\item The transversality condition is an asymptotic boundary condition.
+	\item We typically assume a finite time horizon \( T \) and shoot for the \emph{finite} steady state \( \boldsymbol{x}^* \), \( \boldsymbol{\mu}^* \), and \( \boldsymbol{y}^* \).
+	\item This approach is straightforward in low dimensions but becomes significantly more challenging in high-dimensional settings.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Optimal control framework: an example, Ramsey–Cass–Koopmans model}
+\begin{itemize}
+	\item Classic Ramsey–Cass–Koopmans
+	\begin{align*}
+		\dot{k}(t) &= f\left(k(t)\right) - c(t) - \delta k(t)\\
+		\dot{\mu}(t) &= r \mu(t) - \mu(t) \left[f'(k(t)) - \delta \right] \\
+		0 &= c(t)\mu(t) - 1\\
+		k(0)& = k_0\\
+		0 &= \lim_{t\rightarrow \infty} e^{-r t}k(t)\mu(t)
+	\end{align*}
+\item $f(\cdot)$ is the production function, $r$ discount rate, and $\delta$ is the depreciation.
+\end{itemize}
+\end{frame}
 
 \begin{frame}{Extensions in the paper}
 	\begin{itemize}
