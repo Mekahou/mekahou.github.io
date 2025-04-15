@@ -716,7 +716,7 @@
 \end{frame}
 
 \begin{frame}{Optimal control framework}
-	Consider the following optimal control problem
+	Consider the following problem arising in optimal control:
 	
 	\begin{align*}
 		&\dot{\boldsymbol{x}} = \boldsymbol{F}\left(\boldsymbol{x}(t),\boldsymbol{y}(t)\right)\\
@@ -752,6 +752,87 @@
 		0 &= \lim_{t\rightarrow \infty} e^{-r t}k(t)\mu(t)
 	\end{align*}
 \item $f(\cdot)$ is the production function, $r$ discount rate, and $\delta$ is the depreciation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What does the violation of the transversality condition look like?}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			% Content for the left column
+			\begin{itemize}
+				\item All paths solve the ordinarily differential equations ans the algebraic equation.
+				\vspace{0.05in}
+				\item The solutions that violate the transversality condition $\lim_{t\rightarrow \infty}{\dot{\mu}} = \infty $ and $\lim_{t\rightarrow \infty}{\mu} = \infty $
+				\begin{itemize}
+					\item Diverges faster than $e^{rt}$.
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[t!]
+				\centering
+				\includegraphics[width=\textwidth]{figs/phase_diagram_mu_k.pdf}
+				\vspace{-7mm}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Kernel approximation}
+Approximating the derivatives with a kernel:
+	\begin{align*}
+		\hat{\boldsymbol{x}}(t) = \boldsymbol{x}_0 + \int_0^t \hat{\dot{\boldsymbol{x}}}(\tau) d\tau, \qquad
+		\hat{\boldsymbol{\mu}}(t) = \hat{\boldsymbol{\mu}}_0 + \int_0^t \hat{\dot{\boldsymbol{\mu}}}(\tau) d\tau, \qquad
+		\hat{\boldsymbol{y}}(t) = \hat{\boldsymbol{y}}_0 + \int_0^t \hat{\dot{\boldsymbol{y}}}(\tau) d\tau,\\
+		\hat{\dot{\boldsymbol{x}}}(t)  = \sum_{j=1}^N \boldsymbol{\alpha}^x_j K(t, t_j), \qquad
+		\hat{\dot{\boldsymbol{\mu}}}(t)  = \sum_{j=1}^N \boldsymbol{\alpha}^\mu_j K(t, t_j), \qquad
+		\hat{\dot{\boldsymbol{y}}}(t)  = \sum_{j=1}^N \boldsymbol{\alpha}^y_j K(t, t_j)
+	\end{align*}
+\begin{itemize}
+	\item $\boldsymbol{x}_0$ is given.
+	\item $\hat{\boldsymbol{\mu}}_0$, $\hat{\boldsymbol{y}}_0$, $\boldsymbol{\alpha}^x$,
+	$\boldsymbol{\alpha}^\mu$, and $\boldsymbol{\alpha}^y$ are learnable parameters.
+	\item $K(\cdot,\cdot)$ is the kernel.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Approximate solution: Algorithm}
+	\begin{align*}
+		\min_{\substack{
+			\hat{\boldsymbol{x}}(t)	\in \mathcal{H}^{M}, \hat{\boldsymbol{\mu}}(t) \in \mathcal{H}^{M}, \\\hat{\boldsymbol{y}}(t) \in \mathcal{H}^{P} 
+		}}\, & \left(
+	\sum_{m=1}^{M}\,  \Vert \hat{\dot{x}}^{(m)}  \Vert^2_{\mathcal{H}}  + \sum_{m=1}^{M}\, \Vert \hat{\dot{\mu}}^{(m)}  \Vert^2_{\mathcal{H}}  \right) \\
+	\text{s.t.}\, &\hat{\dot{\boldsymbol{x}}} = \boldsymbol{F}\left(\hat{\boldsymbol{x}}(t),\hat{\boldsymbol{y}}(t)\right)\\
+	&\hat{\dot{\boldsymbol{\mu}}} = r\hat{\boldsymbol{\mu}}(t)-\hat{\boldsymbol{\mu}}(t)\odot \boldsymbol{G}\left(\hat{\boldsymbol{x}}(t),\hat{\boldsymbol{\mu}}(t),\hat{\boldsymbol{y}}(t)\right)\\
+	&\boldsymbol{0}= \boldsymbol{H}\left(\hat{\boldsymbol{x}}(t),\hat{\boldsymbol{\mu}}(t),\hat{\boldsymbol{y}}(t)\right)
+	\end{align*}
+
+\begin{itemize}
+	\item The objective function penalizes explosive paths.
+	\item Constraints solve the "first order conditions".
+\end{itemize}	
+	
+\end{frame}
+
+
+\begin{frame}{Application: Growth with human and physical capital, a mid-size problem}
+
+\begin{align*}
+	\dot{k}(t) & = i_{k}(t)-\delta_k k(t),\\
+	\dot{h}(t) & = i_{h}(t)-\delta_h h(t), \\
+	\dot{\mu}_k(t) &= r\mu_k(t)- \mu_k(t) \left[ f_k\left(k(t),h(t)\right) -\delta_k \right],\\
+	\dot{\mu}_h(t) &= r\mu_h(t)- \mu_h(t) \left[ f_h\left(k(t),h(t)\right) -\delta_h \right],\\
+	0 & = \mu_{k}(t)c(t) -1\\
+	0 & = \mu_{k}(t)-\mu_h(t)\\
+	0 & =   f\left(k(t),h(t)\right) - c(t) -  i_{k}(t) -  i_{h}(t), 
+\end{align*}
+for given initial conditions $k(0) = k_0$, $h(0) = h_0 $, and two transversality conditions 
+\begin{align*}
+	0 & = \lim_{t\rightarrow \infty} e^{-r t}k(t)\mu_k(t),\\
+	0 & = \lim_{t\rightarrow \infty} e^{-r t}h(t)\mu_h(t).
+\end{align*}
+\begin{itemize}
+	\item d
 \end{itemize}
 \end{frame}
 
