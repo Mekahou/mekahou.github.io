@@ -854,6 +854,39 @@ for given initial conditions $k(0) = k_0$, $h(0) = h_0 $, and two transversality
 
 \section{\textcolor{PennBlue}{Back to deep learning: Recursive neoclassical growth model and the transversality condition }}
 
+\begin{frame}{Recursive formulation (with a possible BGP)}
+	
+	Skipping the Bellman formulation and going to the first order conditions in the state space , i.e., $(k,z)$
+	\begin{align*}
+		\quad & u'(c(k,z)) = \beta  u'(c(k'(k,z),z'))\big[z'^{1-\alpha}f'(k'(k,z))+ 1 -\delta\big]                                          \\
+		\quad & k'(k,z) = z^{1-\alpha}f(k) + (1-\delta)k - c(k,z)                                                                          \\
+		\quad & z' = (1+g)z                                                                                                                \\
+		& k'\geq0                                                                                       \\
+		\quad & 0 = \lim_{T\rightarrow \infty} \beta^T  u'(c_T)k_{T+1}\label{eq:transversality-req-rbc-sequential} \quad \forall (k_0,z_0)\in \Xdom
+	\end{align*}
+	\begin{itemize}
+		\item Preferences: $u(c) = \frac{c^{1-\sigma}-1}{1-\sigma}$, $\sigma > 0$, $\lim_{c\rightarrow 0} u'(c) = \infty$, and $\beta \in (0,1)$.			\smallskip
+		\item Cobb-Douglas production function: $f(k) = k^{\alpha}$, $\alpha \in (0,1)$ before scaling by TFP $z$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolation problem: the optimization problem}
+	\begin{itemize}
+		\item A set of points $\mathcal{D} = \{k_1,\ldots,k_{N_k}\}\times \{z_1,\ldots,z_{N_z}\}$.
+		\item A family of over-parameterized  functions $k'(\cdot,\cdot;\theta) \in \mathcal{H}(\Theta)$.
+		\item Use the feasibility condition and define $c(k,z;k') \equiv z^{1-\alpha} f(k)+(1-\delta)k-k'(k,z)$.
+	\end{itemize}
+	
+	
+	In practice we minimize the Euler residuals: 
+	\begin{empheq}[box=\tcbhighmath]{align*}
+		\min_{\theta \in \Theta} \frac{1}{|\mathcal{D}|}\sum_{(k,z) \in \mathcal{D}} \left[\underbrace{ \frac{u'\bigg(c\big(k,z;k'(.;\theta)\big)\bigg)}{u'\bigg(c\big(k'(k,z;\theta),(1+g)z;k'(.;\theta)\big)\bigg)} -  \beta 
+			\left[\left((1+g)z\right)^{1-\alpha} f'\left(k'(k,z;\theta)\right) + 1-\delta\right]}_{\text{Euler residual}} \right]^2
+	\end{empheq}
+\end{frame}
+
+
+
 \begin{frame}{Extensions in the paper}
 	\begin{itemize}
 		\item Sequential models:
