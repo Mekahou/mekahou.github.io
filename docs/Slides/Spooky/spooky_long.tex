@@ -818,23 +818,41 @@ Approximating the derivatives with a kernel:
 \begin{frame}{Application: Growth with human and physical capital, a mid-size problem}
 
 \begin{align*}
-	\dot{k}(t) & = i_{k}(t)-\delta_k k(t),\\
-	\dot{h}(t) & = i_{h}(t)-\delta_h h(t), \\
-	\dot{\mu}_k(t) &= r\mu_k(t)- \mu_k(t) \left[ f_k\left(k(t),h(t)\right) -\delta_k \right],\\
-	\dot{\mu}_h(t) &= r\mu_h(t)- \mu_h(t) \left[ f_h\left(k(t),h(t)\right) -\delta_h \right],\\
-	0 & = \mu_{k}(t)c(t) -1\\
-	0 & = \mu_{k}(t)-\mu_h(t)\\
-	0 & =   f\left(k(t),h(t)\right) - c(t) -  i_{k}(t) -  i_{h}(t), 
+	\dot{k}(t)  = i_{k}(t)-\delta_k k(t), &\qquad \dot{h}(t)  = i_{h}(t)-\delta_h h(t),\\
+	\dot{\mu}_k(t) = r\mu_k(t)- \mu_k(t) \left[ f_k\left(k(t),h(t)\right) -\delta_k \right], & \qquad 	\dot{\mu}_h(t) = r\mu_h(t)- \mu_h(t) \left[ f_h\left(k(t),h(t)\right) -\delta_h \right]\\
+	0  = \mu_{k}(t)c(t) -1, &\qquad 0  = \mu_{k}(t)-\mu_h(t)\\
+	0  =   f\left(k(t),h(t)\right) - c(t) -  i_{k}(t) -  i_{h}(t)&, 
 \end{align*}
 for given initial conditions $k(0) = k_0$, $h(0) = h_0 $, and two transversality conditions 
 \begin{align*}
-	0 & = \lim_{t\rightarrow \infty} e^{-r t}k(t)\mu_k(t),\\
-	0 & = \lim_{t\rightarrow \infty} e^{-r t}h(t)\mu_h(t).
+	0 & = \lim_{t\rightarrow \infty} e^{-r t}k(t)\mu_k(t), &\qquad 	0 & = \lim_{t\rightarrow \infty} e^{-r t}h(t)\mu_h(t).
 \end{align*}
 \begin{itemize}
-	\item d
+	\item $\boldsymbol{x}(t) = \left[k(t),h(t)\right]^T$, $\boldsymbol{\mu}(t) = \left[\mu_k(t),\mu_h(t)\right]^T$, $\boldsymbol{y}(t) = \left[i_k(t),i_h(t),c(t)\right]^T$ 
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Results}
+			\begin{columns}
+			\begin{column}{0.5\textwidth}
+				% Content for the left column
+				\begin{itemize}
+					\item Accurate short- and medium-run solution.
+					\vspace{0.05in}
+					\item The solution ``learns" the steady state.
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.42\textwidth}
+				\begin{figure}[t!]
+					\centering
+					\includegraphics[width=\textwidth]{figs/neoclassical_human_capital.pdf}
+					\vspace{-7mm}
+				\end{figure}
+			\end{column}
+		\end{columns}
+\end{frame}
+
+\section{\textcolor{PennBlue}{Back to deep learning: Recursive neoclassical growth model and the transversality condition }}
 
 \begin{frame}{Extensions in the paper}
 	\begin{itemize}
