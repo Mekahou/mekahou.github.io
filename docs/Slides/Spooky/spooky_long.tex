@@ -886,60 +886,169 @@ for given initial conditions $k(0) = k_0$, $h(0) = h_0 $, and two transversality
 \end{frame}
 
 
-
-\begin{frame}{Extensions in the paper}
+\begin{frame}{Interpolation problem: without the transversality condition}
 	\begin{itemize}
-		\item Sequential models:
-		\begin{itemize}
-			\item Shorter time-horizons.
-			\smallskip
-			\item Misspecification of growth.\\
-			\smallskip
-		\end{itemize}
+		\item This minimization \emphcolor{does not contain} the transversality condition.
 		\smallskip
-		\item Recursive neoclassical growth model
 		\begin{itemize}
-			\item Accurate short- and medium-run dynamics.
-			\smallskip
-			\item Accurate solutions even with TFP growth.
-			\smallskip
-			\item Deep learning solutions can go very wrong
-			\begin{itemize}
-				\smallskip
-				\item We should use the information in the transversality condition to know what to approximate.
-			\end{itemize} 
+			\item Without the transversality condition it has more than one minima.
 		\end{itemize}
+		\bigskip
+		\item \emphcolor{No explicit} norm regularization.
+		\bigskip
+		\item Does the implicit bias weed out the solutions that violate the transversality condition? 
+		\bigskip
+		Let's analyze this more rigorously.
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Deep learning solutions can be misleading: approximating capital vs. consumption}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			% Content for the left column
+
+\begin{frame}{Is the transversality condition necessary? Case of g = 0, z = 1}
+	\begin{figure}[htb]
+		\includegraphics[width=8cm]{figs/growth_recursive_analytic_solutions.pdf}
+	\end{figure}
+	\begin{itemize}
+		\item The solutions that violate the transversality condition are above the one that do not.
+		\item They have bigger derivatives. Therefore, they have bigger norms:
+		\begin{align}
+			0\leq \|k'\|_S < \|\tilde{k}'\|_S.
+		\end{align}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[label = res-rec]
+	\frametitle{Results: one initial condition}
+	\begin{minipage}[t]{0.4\textwidth}
+		\raisebox{-\height+0.7\baselineskip}{\includegraphics[width= 8cm]{figs/growth_recursive_g0_ensemble.pdf}}
+		%\includegraphics[width=8cm]
+	\end{minipage}
+	\hfill%
+	\begin{minipage}[t]{0.5\textwidth}\raggedleft
+		\begin{itemize}
+			\item Picking $\mathcal{D} =[0.8,2.5]\times \{1\}$ and $k_0= 0.4 \not\in \mathcal{D}$ is ``extrapolation''  $\alpha=\frac{1}{3}$, $\sigma =1$, $\beta = 0.9$, and $g = 0$.
+			\smallskip.
+			\item Low generalization errors, even without imposing transversality condition.
+			\item Results for $100$ different seeds (initialization of the parameters)
+		\end{itemize}
+		\hyperlink{rec-all-over-space}{\beamerskipbutton{For all $k\in \mathcal{D}$}}		
+	\end{minipage}
+\end{frame}
+
+\begin{frame}{Far from the steady state}
+	\begin{minipage}[t]{0.4\textwidth}
+		\raisebox{-\height+0.7\baselineskip}{\includegraphics[width= 8cm]{figs/growth_recursive_g0_far_from_steady_state_ensemble.pdf}}
+		%\includegraphics[width=8cm]
+	\end{minipage}
+	\hfill%
+	\begin{minipage}[t]{0.5\textwidth}\raggedleft
+		\begin{itemize}
+			\item Picking $\mathcal{D}= [0.8,1.5]$ , $k^*\notin [0.8,1.5]$.
+			\smallskip 
+			\item A local grid around the $k_0$ is enough.   
 			\begin{itemize}
-			\item Capital $k$ is the state variable.
-			\smallskip
-			\item Two options: approximating capital policy $k'_\theta(k)$ or $c_\theta(k)$
-			\item left panels: results for $k'_\theta(k)$ approximation.
-			\smallskip
-			\item Right panels: results for $c_\theta(k)$ approximation.
-			\smallskip
-			\item Only the left panel results are correct. 
-			$k'_\theta(k)$ has a fixed point at the right steady state.
-			\smallskip
-			\item However, the wrong solution has lower Euler residuals.
+				\item Accurate solutions in the interpolation region.
 			\end{itemize}
-		\end{column}
-		\begin{column}{0.75\textwidth}
-			\begin{figure}[t!]
-				\centering
-				\includegraphics[width=0.65\textwidth]{figs/growth_recursive_g0_euler_residuals_grid.pdf}
-				\hspace{32mm}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\end{frame}
+			\smallskip 
+			\item Generalization errors are not bad.
+			\smallskip
+			\item Results for $100$ different seeds (initialization of the parameters)
+		\end{itemize}
+	\end{minipage} 
+\end{frame}
+
+\begin{frame}[label = ncg_reg_growth_res]{Growing TFP}
+	\begin{minipage}[t]{0.4\textwidth}
+		\raisebox{-\height+0.7\baselineskip}{\includegraphics[width= 8cm]{figs/growth_recursive_g_positive_ensemble.pdf}}
+		%\includegraphics[width=8cm]
+	\end{minipage}
+	\hfill%
+	\begin{minipage}[t]{0.5\textwidth}\raggedleft
+		\begin{itemize}
+			\item Picking $\mathcal{D} = [0.8,3.5]\times[0.8,1.8]$ but now $g = 0.02$.
+			\smallskip
+			\item Choosing $k'(k,z;\theta) = z NN(\frac{k}{z},z;\theta)$.
+			\begin{itemize}
+				\item Here we used economic intuition to design the $\mathcal{H}(\Theta)$.
+			\end{itemize}
+			\smallskip
+			\item Relative errors are very small inside the grid.
+			\smallskip	
+			\item  Small generalization errors.
+		\end{itemize}
+	\end{minipage}
+\end{frame}
+
+\section{Are Euler and Bellman residuals enough?}
+
+
+\begin{frame}{Euler residuals are not enough}
+	\begin{itemize}
+		\item We picked a grid $\mathcal{D}$ and approximated $k'(k)$ with an over-parameterized function.			\smallskip
+		\begin{itemize}
+			\item The approximate solutions do not violate the transversality condition. 
+		\end{itemize} 
+		\smallskip
+		\item What happens if we approximate the consumption functions $c(k)$ with an over-parameterized function.			\smallskip
+		\begin{itemize}
+			\item We get an interpolating solution, i.e, very small Euler residuals.			\smallskip
+			\item However, the solutions \emphcolor{violate} the transversality condition. 			\smallskip
+		\end{itemize}
+	\end{itemize}
 	
+	\emphcolor{Intuition:}  consumption functions with low derivatives leads to optimal policies for capital with big derivatives.
+\end{frame}
+
+
+\begin{frame}{Small Euler residuals can be misleading}
+	\begin{minipage}[t]{0.4\textwidth}
+		\raisebox{-\height+0.7\baselineskip}{\includegraphics[width= 8cm]{figs/growth_recursive_g0_euler_residuals_grid.pdf}}
+	\end{minipage}
+	\hfill%
+	\begin{minipage}[t]{0.5\textwidth}\raggedleft
+		\begin{itemize}
+			\item Left panels: approximating $k'(k)$ with a deep neural network.			\smallskip
+			\begin{itemize}
+				\item The solutions do not violate the TVC.			\smallskip
+				\item $k'(k)$ intersects with $45^{\circ}$ line at $k^*\approx 2$.			\smallskip
+			\end{itemize}
+			\smallskip
+			\item Right panels: approximating $c(k)$ with a deep neural network.
+			\begin{itemize}
+				\item The solutions \emphcolor{violate} the TVC.			\smallskip
+				\item $k'(k)$ intersects with $45^{\circ}$ line at $\tilde{k}_{\text{max}}\approx 30$.			\smallskip
+				\item Euler residuals are systematically lower. 
+			\end{itemize}
+			
+		\end{itemize}
+	\end{minipage}
+\end{frame}
+
+
+\begin{frame}{Small Euler residuals can be misleading}
+	\begin{minipage}[t]{0.4\textwidth}
+		\raisebox{-\height+0.7\baselineskip}{\includegraphics[width= 8cm]{figs/growth_recursive_g0_euler_residuals_grid_reg.pdf}}
+	\end{minipage}
+	\hfill%
+	\begin{minipage}[t]{0.5\textwidth}\raggedleft
+		\begin{itemize}
+			\item Left panels: approximating $c(k)$ with a deep neural network without explicit regularization.			\smallskip
+			\item What does happen with $L_2$ regularization?
+			\smallskip
+			\begin{itemize}
+				\item Penalizing $\sum_{\theta_i \in \Theta} \theta_i^2$.
+			\end{itemize}
+			\item Right panels: approximating $c(k)$ with a deep neural network \emphcolor{with} explicit regularization.\smallskip
+			\item Using deep learning requires understanding the \emphcolor{inductive bias} and \emphcolor{economic theory}.
+		\end{itemize}
+	\end{minipage}
+\end{frame}
+
+
+\begin{frame}{Can regularization fix this problem?}
+	
+\end{frame}
+
+
 
 
 \begin{frame}{Conclusion}
@@ -982,5 +1091,23 @@ for given initial conditions $k(0) = k_0$, $h(0) = h_0 $, and two transversality
 	% RelU, 3 layers, Adam optimizer
 	\hyperlink{non_convex}{\beamerskipbutton{Back}}
 \end{frame}
+
+
+\begin{frame}[label = rec-all-over-space]
+	\frametitle{Results: initial conditions over the state space}
+	\begin{figure}[t!]
+		\hspace*{-15mm}
+		\centering
+		\includegraphics[width=0.7\textwidth]{figs/growth_recursive_g0_var_initial_k_0_one_run}
+	\end{figure}
+		\begin{itemize}
+			\item The solution has to satisfy the transversality condition for all points in $\Xdom$ 			\smallskip
+			 $\lim_{T\to\infty}\beta^T u'(c(T))k(T+1) =0 \quad \forall ~ k_0 \in \Xdom$
+			 \item Three different initial condition for capital, all outside of $\Xdom$.
+		\end{itemize}
+		\hyperlink{res-rec}{\beamerskipbutton{back}}
+\end{frame}
+
+
 
 \end{document}
