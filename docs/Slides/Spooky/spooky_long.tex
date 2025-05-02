@@ -190,33 +190,33 @@
 	Then a \emphcolor{solution} is $f^*\in \F$ where $\ell(x,f^*) = \mathbf{0}$ for all $x \in \Xdom$.\vspace{0.1in}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Example: one formulation of neoclassical growth}
-	An example of a recursive case:
-	\begin{itemize}
-		\item Domain: $x = \begin{bmatrix*}
-			k
-		\end{bmatrix*}
-		$ and $\Xdom = \R_+$.\vspace{0.1in}
-		\item Solve for the optimal policy $k'(\cdot)$ and consumption function $c(\cdot)$: So $\psi : \R \to \R^2$ and $\Yrange = \R^2_+$.\vspace{0.1in}
-		\item  Residuals are the Euler equation and feasibility condition, so $\Resid = \R^2$:
-		\begin{align*}
-			\ell(\underbrace{\begin{bmatrix*}k'(\cdot) & c(\cdot)\end{bmatrix*}}_{\equiv f}, \underbrace{k}_{\equiv x}) =
-			\underbrace{\begin{bmatrix*}
-					u'(c(k)) - \beta u'(c(k'(k)))\left(f'(k'(k)) + 1-\delta\right) \\
-					f(k) - c(k) - k'(k) + (1-\delta)k
-			\end{bmatrix*}}_{\text{model}}
-		\end{align*}
-		\item Finally,  $f^* = \left[k'(\cdot),c(\cdot)\right]$ is a solution if it has zero residuals on domain $\Xdom$.
-	\end{itemize}
-\end{frame}
+%\begin{frame}
+%	\frametitle{Example: one formulation of neoclassical growth}
+%	An example of a recursive case:
+%	\begin{itemize}
+%		\item Domain: $x = \begin{bmatrix*}
+%			k
+%		\end{bmatrix*}
+%		$ and $\Xdom = \R_+$.\vspace{0.1in}
+%		\item Solve for the optimal policy $k'(\cdot)$ and consumption function $c(\cdot)$: So $\psi : \R \to \R^2$ and $\Yrange = \R^2_+$.\vspace{0.1in}
+%		\item  Residuals are the Euler equation and feasibility condition, so $\Resid = \R^2$:
+%		\begin{align*}
+%			\ell(\underbrace{\begin{bmatrix*}k'(\cdot) & c(\cdot)\end{bmatrix*}}_{\equiv f}, \underbrace{k}_{\equiv x}) =
+%			\underbrace{\begin{bmatrix*}
+%					u'(c(k)) - \beta u'(c(k'(k)))\left(f'(k'(k)) + 1-\delta\right) \\
+%					f(k) - c(k) - k'(k) + (1-\delta)k
+%			\end{bmatrix*}}_{\text{model}}
+%		\end{align*}
+%		\item Finally,  $f^* = \left[k'(\cdot),c(\cdot)\right]$ is a solution if it has zero residuals on domain $\Xdom$.
+%	\end{itemize}
+%\end{frame}
 
 
 \begin{frame}{Approximate solution: deep neural networks }
 	\begin{enumerate}
 		\item Sample $\mathcal{X}$: $\mathcal{D} = \{x_1,\cdots,x_N\}$
 		\vspace{0.025in}
-		\item Pick a deep neural network $f_\theta(\cdot) \in \mathcal{H}(\theta)$:
+		\item Pick a family of parametric functions (e.g., deep neural networks) $f_\theta(\cdot) \in \mathcal{H}(\theta)$:
 		\begin{itemize}
 			\item $\theta$: parameters for optimization (i.e., weights and biases).  
 		\end{itemize}
@@ -226,8 +226,7 @@
 			\min_{\theta } \frac{1}{N}\sum_{x \in \mathcal{D}} \|\underbrace{\ell(x,f_\theta)}_{\text{Econ model error}}\|_2^2
 		\end{align*}
 		\begin{itemize}
-			\item Deep neural networks are highly over-parameterized.
-			\item Formally, $|\theta|\gg N$ 
+			\item Deep neural networks are highly over-parameterized: formally, $|\theta|\gg N$ 
 		\end{itemize}
 	\end{enumerate}
 \end{frame}
@@ -390,7 +389,7 @@
 		p(t) = y(t) + \beta p(t+1), \quad \text{for}~ t=0,1,\cdots
 	\end{align*}
 	\item $\beta<1$, and $y(t)$ is exogenous, $y(0)$ given.
-	\item  This is a two dimensional dynamical system with unknown initial condition  $p(0)$. This problem is \emphcolor{ill-posed}.
+	\item A two dimensional dynamical system with unknown initial condition  $p(0)$. This problem is \emphcolor{ill-posed}.
 	\item A family of solutions
 	 \begin{empheq}[box=\tcbhighmath]{align*}
 	 	p(t) = \underbrace{p_f(t)}_{\text{fundamentals}} +  \underbrace{\zeta \left(\frac{1}{\beta}\right)^t}_{\text{explosive bubble}}
@@ -455,7 +454,7 @@
 			 	\vspace{0.05in}
 				\item Results for $100$ different seeds (initialization of the parameters):
 				\begin{itemize}
-					\item important for non-convex optimizations.
+					\item important for \emphcolor{non-convex} optimizations.
 				\end{itemize} 
 				\vspace{0.05in}
 				\item Very accurate short- and medium-run approximation.
@@ -498,7 +497,7 @@
 			&\underbrace{k(t+1) = z(t)^{1-\alpha} f\left(k(t)\right)+ (1-\delta)k(t)-c(t)}_{\text{feasibility constraint}}, \\ 
 			&\underbrace{c(t+1) = \beta c(t) \left[z(t+1)^{1-\alpha}f'\big(k(t+1)\big)+1-\delta\right]}_{\text{Euler equation}}.
 		\end{align*}
-	\item This is a three dimensional dynamical system with unknown initial condition  $c(0)$. This problem is \emphcolor{ill-posed}.
+	\item A three dimensional dynamical system with unknown initial condition  $c(0)$. This problem is \emphcolor{ill-posed}.
 	\vspace{0.05in}
 	\item A family of solutions, each solution corresponds to a different $c(0)$. Only one of them is the optimal solution.
 	\end{itemize}	
@@ -506,7 +505,7 @@
 
 \begin{frame}{Neoclassical growth model: the long-run boundary condition}
 	\begin{columns}
-		\begin{column}{0.4\textwidth}
+		\begin{column}{0.35\textwidth}
 			% Content for the left column
 			\begin{itemize}
 				\item To rule out sub-optimal solutions, transversality condition
@@ -521,7 +520,7 @@
 			\vspace{-10mm}
 			\begin{figure}[t!]
 				\centering
-				\includegraphics[width=0.55\textwidth]{figs/TVC_violation.pdf}
+				\includegraphics[width=0.65\textwidth]{figs/TVC_violation.pdf}
 				\vspace{-7mm}
 			\end{figure}
 		\end{column}
@@ -532,7 +531,7 @@
 	\begin{itemize}
 		\item Sample for time:  $\mathcal{D} = \{t_1,\cdots,t_N\}$.
 		\vspace{0.05in}
-		\item Generating the TFP process: $z(t+1) = (1+g)z(t)$, given $z(0)$.
+		\item TFP process: $z(t+1) = (1+g)z(t)$, given $z(0)$.
 		\item A over-parameterized neural network $k_\theta(t)$,
 		\vspace{0.05in}
 		\item Given $k_\theta(t)$, define the consumption function $c(t;k_{\theta}) = z(t)^{1-\alpha}f(k_{\theta}(t)) +(1-\delta)k_{\theta}(t)-k_{\theta}(t+1)
@@ -706,6 +705,7 @@
 			\item We can use kernels methods, $K(\cdot,\cdot)$, instead of neural networks and control the RKHS norms.
 			\item Focusing on continuous time equivalent of these problems.  
 			\item The same results, theoretical guarantees, very fast and robust.
+			\item With J Perla, R Childers, and G Pleiss.
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.5\textwidth}
