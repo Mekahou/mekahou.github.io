@@ -310,7 +310,30 @@ Problems with numerical methods in economics
 \end{frame}
 
 \begin{frame}{Dynamic Models in Economics}
-	content...
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+		Dynamic models in Physics
+			\begin{align*}
+				x(t+1) &= f\left(x(t),y(t)\right)\\
+				Y(t+1) &= g\left(x(t),y(t)\right)\\
+				x(0)~&\text{is given}\\
+				y(0)~&\text{is given}
+			\end{align*}
+			
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			Dynamic models in Economics
+			\begin{align*}
+				&x(t+1) = f\left(x(t),y(t)\right)\\
+				&y(t+1) = g\left(x(t),y(t)\right)\\
+				&x(0)~\text{is given}\\
+				&\lim_{t\rightarrow\infty}h\left(x(t),y(t)\right) = 0
+			\end{align*}
+		\end{column}
+	\end{columns}
+	\begin{itemize}
+		\item $\lim_{t\rightarrow\infty}h\left(x(t),y(t)\right) = 0$ is a \emphcolor{long-run} boundary condition.
+	\end{itemize}
 \end{frame}
 	
 \section{\textcolor{PennBlue}{Background: Economic Models, Deep learning and inductive bias}}
