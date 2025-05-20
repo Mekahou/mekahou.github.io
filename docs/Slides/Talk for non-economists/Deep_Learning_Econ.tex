@@ -315,9 +315,9 @@ Problems with numerical methods in economics
 		Dynamic models in Physics
 			\begin{align*}
 				x(t+1) &= f\left(x(t),y(t)\right)\\
-				Y(t+1) &= g\left(x(t),y(t)\right)\\
-				x(0)~&\text{is given}\\
-				y(0)~&\text{is given}
+				y(t+1) &= g\left(x(t),y(t)\right)\\
+				x(0)=x_0~&\text{is given}\\
+				y(0)=y_0~&\text{is given}
 			\end{align*}
 			
 		\end{column}
@@ -326,7 +326,7 @@ Problems with numerical methods in economics
 			\begin{align*}
 				&x(t+1) = f\left(x(t),y(t)\right)\\
 				&y(t+1) = g\left(x(t),y(t)\right)\\
-				&x(0)~\text{is given}\\
+				&x(0)=x_0~\text{is given}\\
 				&\lim_{t\rightarrow\infty}h\left(x(t),y(t)\right) = 0
 			\end{align*}
 		\end{column}
@@ -336,31 +336,82 @@ Problems with numerical methods in economics
 	\end{itemize}
 \end{frame}
 	
-\section{\textcolor{PennBlue}{Background: Economic Models, Deep learning and inductive bias}}
+\begin{frame}{Dynamic Models in Economics}
+	Why are dynamic models in economics hard?
+	\begin{itemize}
+		\item There is \emphcolor{only one} initial condition $y(0)$ that generates a path $y(t)$ satisfying
+		\begin{align*}
+			\lim_{t \rightarrow \infty} h\left(x(t), y(t)\right) = 0
+		\end{align*}
+		\vspace{0.025in}
+		\item Other $y(0)$ values lead to explosive $x(t)$ or $y(t)$. 
+				\vspace{0.025in}
+		\begin{itemize}
+			\item Economic problems have a \emphcolor{saddle-path} nature.
+		\end{itemize}
+		\vspace{0.025in}
+		\item How can we find it?
+		\vspace{0.025in}
+		\item \emphcolor{Search} for it: try different values of $y(0)$ and simulate forward to a large $T$, then see which one satisfies
+		\begin{align*}
+			h\left(x(T), y(T)\right) \approx 0
+		\end{align*}
+	\end{itemize}
+	\begin{quote}
+		\textcolor{red}{In high dimensions, this becomes a complicated search problem.}
+	\end{quote}
+\end{frame}
+
+\begin{frame}{Question}
+	\emphcolor{Question}:
+	\hspace{200mm}
+	
+	\begin{quote}
+		Can we (economists and agents) \emphcolor{ignore} these long-run boundary conditions and still have accurate short/medium-run dynamics disciplined by the long-run conditions?
+	\end{quote}
+\end{frame}
+
+\begin{frame}{Answer}
+	\emphcolor{Answer}:
+	\hspace{200mm}
+	
+	\begin{quote}
+	 \emphcolor{Yes}, modern machine learning methods can achieve this due to their \emphcolor{Inductive bias}. 
+	\end{quote}
+\end{frame}
+
+\section{\textcolor{PennBlue}{What is inductive Bias? Economic Models, Deep learning and inductive bias}}
 
 
 \begin{frame}
 	\frametitle{Economic Models: functional equations}
-	Many theoretical models can be written as functional equations:
+	A dynamic model can be explained as
 	\begin{itemize}
-		\item Economic object of interest: $f $, where $f : \Xdom\to \mathcal{R}\subseteq \mathbb{R}^N$ 
+		\item Economic object of interest: $y(t) $ 
 		\begin{itemize}
 			\item e.g., asset price, investment choice, best-response, etc.
 		\end{itemize}
-			\vspace{0.1in}
-		\item Domain of $f$: $\Xdom$  
+		\vspace{0.1in}
+		\item The ``Economics model'' error:  $\ell \big(t,x(\cdot),y(\cdot)\big)$  
 		\begin{itemize}
-			\item e.g. space of dividends, capital, opponents state or time in sequential models.
+			\item e.g., equilibrium FOCs.
 		\end{itemize}
-			\vspace{0.1in}
-		\item The ``Economics model'' error:  $\ell \big(x,f\big)$  
-		\begin{itemize}
-			\item e.g., Euler and Bellman residuals, equilibrium FOCs.
-		\end{itemize}
+		Example of  $\ell \big(t,x,y\big)$ 
+		\begin{align*}
+			\ell \big(t,x(\cdot),y(\cdot)\big) \equiv 
+			\begin{pmatrix}
+				x(t+1) - f\left(x(t),y(t)\right)\\
+				y(t+1) - g\left(x(t),y(t)\right)\\
+				x(0)-x_0\\
+				\lim_{t\rightarrow\infty}h\left(x(t),y(t)\right) - 0
+			\end{pmatrix}
+		\end{align*}
+		
 		\vspace{0.1in}
 	\end{itemize}
-	Then a \emphcolor{solution} is $f^*\in \F$ where $\ell(x,f^*) = \mathbf{0}$ for all $x \in \Xdom$.\vspace{0.1in}
+	Then a \emphcolor{solution} is $y^*(t)$ where $\ell(t,x,y^*) = \mathbf{0}$ for all $t$.\vspace{0.1in}
 \end{frame}
+
 
 %\begin{frame}
 %	\frametitle{Example: one formulation of neoclassical growth}
@@ -386,16 +437,16 @@ Problems with numerical methods in economics
 
 \begin{frame}{Approximate solution: deep neural networks }
 	\begin{enumerate}
-		\item Sample $\mathcal{X}$: $\mathcal{D} = \{x_1,\cdots,x_N\}$
+		\item Sample time $\mathcal{D} = \{t_1,\cdots,t_N\}$
 		\vspace{0.025in}
-		\item Pick a family of parametric functions (e.g., deep neural networks) $f_\theta(\cdot) \in \mathcal{H}(\theta)$:
+		\item Pick a family of parametric functions (e.g., deep neural networks) $y_\theta(\cdot) \in \mathcal{H}(\theta)$:
 		\begin{itemize}
 			\item $\theta$: parameters for optimization (i.e., weights and biases).  
 		\end{itemize}
 		\vspace{0.025in}
-		\item To find an approximation for $f$ solve:
+		\item To find an approximation for $y(t)$ solve:
 		\begin{align*}
-			\min_{\theta } \frac{1}{N}\sum_{x \in \mathcal{D}} \|\underbrace{\ell(x,f_\theta)}_{\text{Econ model error}}\|_2^2
+			\min_{\theta } \frac{1}{N}\sum_{x \in \mathcal{D}} \|\underbrace{\ell(t,x,y_\theta)}_{\text{Econ model error}}\|_2^2
 		\end{align*}
 		\begin{itemize}
 			\item Deep neural networks are highly over-parameterized: formally, $|\theta|\gg N$ 
@@ -409,19 +460,19 @@ Problems with numerical methods in economics
 	\emphcolor{Deep learning} is \emphcolor{highly-overparameterized} $\mathcal{H}(\Theta)$ ($M\gg D$) class of functions.
 	\begin{itemize}
 		
-		\item Example: one layer neural network, $f_{\theta} : \mathbb{R}^Q\rightarrow \mathbb{R}$:
+		\item Example: one layer neural network, $y_{\theta} : \mathbb{R}\rightarrow \mathbb{R}$:
 		\begin{equation*}
-			f_{\theta}(x) = W_2 \cdot \sigma \left(W_1\cdot x+b_1\right)+b_2
+			y_{\theta}(t) = W_2 \cdot \sigma \left(W_1\cdot t+b_1\right)+b_2
 		\end{equation*}
 		\vspace{0.1in}
-		\item $W_1\in \mathbb{R}^{P\times Q}$, $b_1\in \mathbb{R}^{P\times 1}$, $W_2 \in \mathbb{R}^{1\times P}$, and $b_2 \in \mathbb{R}$.
+		\item $W_1\in \mathbb{R}^{P\times 1}$, $b_1\in \mathbb{R}^{P\times 1}$, $W_2 \in \mathbb{R}^{1\times P}$, and $b_2 \in \mathbb{R}$.
 		\vspace{0.1in} 
-		\item $\theta \equiv \{b_1,W_1,b_2,W_2\}$ are the coefficients, in this example $M = PQ+P+P+1$.
+		\item $\theta \equiv \{b_1,W_1,b_2,W_2\}$ are the coefficients, in this example $M = P+P+P+1$.
 		\vspace{0.1in} 
 		\item $\sigma(\cdot)$ is a nonlinear function applied element-wise (e.g., $\max\{\cdot,0\}$).
 		\vspace{0.1in}
 		\item Making it ``deeper" by adding another ``layer":
-		$f_{\theta}(x)\equiv W_3\cdot\sigma(W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2)+b_3.$
+		$y_{\theta}(t)\equiv W_3\cdot\sigma(W_2 \cdot \sigma(W_1 \cdot t + b_1) + b_2)+b_3.$
 	\end{itemize}	
 \end{frame}
 
@@ -432,21 +483,43 @@ Problems with numerical methods in economics
 		\item Since individual $\theta$ are irrelevant it is helpful to think of optimization directly within $\mathcal{H}$
 		\vspace{-0.025in}
 		\begin{empheq}[box=\tcbhighmath]{equation*}
-			\min_{f_{\theta} \in \mathcal{H}} \frac{1}{N}\sum_{x \in \mathcal{D}} \|\ell(x,f_{\theta})\|_2^2\label{eq:functional-optimization}
+			\min_{y_{\theta} \in \mathcal{H}} \frac{1}{N}\sum_{x \in \mathcal{D}} \|\ell(t,x,y_{\theta})\|_2^2\label{eq:functional-optimization}
 		\end{empheq}
 		\vspace{-0.025in}
-	\item But which $f_{\theta}$?
+	\item But which $y_{\theta}$?
 	\item \emphcolor{Mental model:} chooses min-norm interpolating solution for a (usually) unknown functional norm $\psi$
 			\vspace{-0.025in}
 	\begin{empheq}[box=\tcbhighmath]{align*}
-		\min_{f_\theta\in \mathcal{H}} &||f_\theta||_\psi\\
-		\st & \ell(x,f_\theta)=0,\quad \text{ for all } x \in \mathcal{D}
+		\min_{y_\theta\in \mathcal{H}} &||y_\theta||_\psi\\
+		\st & \ell(t,x,f_\theta)=0,\quad \text{ for all } t \in \mathcal{D}
 	\end{empheq}
 	\vspace{-0.025in}
 	\item That is what we mean by \emphcolor{inductive bias} (see Belkin, 2021 and Ma and Yang, 2021).
 	
 	\item  Characterizing $\psi$ (e.g., Sobolev norms or semi-norms?) is an active research area in ML.
 	\end{itemize}
+\end{frame}
+
+\section{Inductive Bias: Regression Problems}
+
+
+\begin{frame}{Regression Problem}
+Consider the data 
+\begin{align*}
+	\{x_i,y_i\}_{i=1}^N
+\end{align*}
+using a neural network 
+
+\begin{equation*}
+	f_{\theta}(x) = W_2 \cdot \sigma \left(W_1\cdot x+b_1\right)+b_2
+\end{equation*}
+
+to solve 
+
+\begin{equation*}
+	\min_{\theta}\frac{1}{N} \sum_{i=1}^{N}\left[y_i-f_{\theta}(x)\right]^2
+\end{equation*}
+
 \end{frame}
 
 \begin{frame}{Over-parameterization and smooth interpolation}
@@ -456,6 +529,15 @@ Problems with numerical methods in economics
 		\begin{figure}[t!]
 		\centering
 		\includegraphics[width=0.65\textwidth]{figs/smooth_interpolation.pdf}
+	\end{figure}
+	%This is a one layer neural network
+\end{frame}
+
+
+\begin{frame}{Different Parameters, Same Function}
+	\begin{figure}[t!]
+		\centering
+		\includegraphics[width=0.65\textwidth]{figs/smooth_interpolation_weights_biases_study.pdf}
 	\end{figure}
 	%This is a one layer neural network
 \end{frame}
@@ -497,7 +579,7 @@ Problems with numerical methods in economics
 	%Four layer neural networks, with ReLU activation, 128 nodes
 \end{frame}
 
-\begin{frame}{Intuition of the paper}
+\begin{frame}{Intuition of the idea}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
 			% Content for the left column
