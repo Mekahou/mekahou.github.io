@@ -277,9 +277,9 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Over-parameterization and smooth interpolation}
+\begin{frame}{Over-parameterization and smooth interpolation}	\label{4-plots}
 	\begin{itemize}
-		\item Intuition: biased toward solutions which are flatter and have smaller derivatives
+		\item Intuition: biased toward solutions which are flatter and have smaller derivatives 	\hyperlink{w_b_dist}{\beamerskipbutton{Weights and Biases Dist}}
 	\end{itemize}
 		\begin{figure}[t!]
 		\centering
@@ -1095,6 +1095,17 @@ for given initial conditions $k(0) = k_0$, $h(0) = h_0 $, and two transversality
 	%Four layer neural networks, with ReLU activation, 128 nodes
 	%init.uniform_(self.y[0].weight, a=-0.25, b=0.25)  
 	%init.uniform_(self.y[0].bias, a=-0.25, b=0.25)    
+\end{frame}
+
+\begin{frame}{Deep Learning: two different initialization, and the distribution of the weights and biases. 	\hyperlink{4-plots}{\beamerskipbutton{Back}}}
+\label{w_b_dist}
+	\begin{figure}[t!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{figs/smooth_interpolation_weights_biases_study.pdf}
+	\end{figure}
+	%The parameters are irrelevant
+	% RelU, 1 hidden layers, Adam optimizer
+
 \end{frame}
 
 
