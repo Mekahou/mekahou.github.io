@@ -30,7 +30,8 @@
 % This is a helpful package that puts math inside length specifications
 \usepackage{calc}
 \usepackage{comment}
-
+\usepackage{hyperref}
+\usepackage{graphicx}
 % Simpler bibsection for CV sections
 % (thanks to natbib for inspiration)
 \makeatletter
@@ -228,7 +229,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\makeheading{{\Large Curriculum Vitae}\vspace{2 mm} \\Mahdi Ebrahimi Kahou \hfill {\small Last Update: Aug 2025}} \\
+\makeheading{{\Large Curriculum Vitae}\vspace{2 mm} \\Mahdi Ebrahimi Kahou \hfill {\small Last Update: September 2025}} \\
 \vspace{5 mm}
 
 \section{Personal Information}\vspace{3 mm}
@@ -242,11 +243,12 @@
 \newlength{\rcollength}\setlength{\rcollength}{1.4in}%
 %
 \begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
-
-  
  Citizenship:  Canadian  \\ 
  Contact Info: \href{m.ebrahimikahou@bowdoin.edu}{\email{m.ebrahimikahou@bowdoin.edu}}, \href{https://sites.google.com/site/mahdiebrahimikahou/} {personal website}.
-                      
+ \href{https://scholar.google.ca/citations?user=-NdRCI4AAAAJ&hl=en}{%
+ 	\includegraphics[height=1em]{gs.jpg} Google Scholar},\href{https://github.com/Mekahou}{%
+ 	\includegraphics[height=1em]{gh.png} GitHub}
+               
 \end{tabular}
 
 %\section{Objective}
@@ -258,12 +260,12 @@
 
 \section{Research Interests}\vspace{3 mm}
 \makeheading{}\vspace{2 mm}
-Macroeconomics, Machine Learning, Econometrics, and Computational Economics.
+Macroeconomics, Machine Learning, Computational Economics, and Econometrics.
 
 \section{Employment}
 \makeheading{}\vspace{2 mm}
 \begin{outerlist}
-	\item Assistant Professor of Economics, Bowdoin College \hfill2023-
+	\item Assistant Professor of Economics, Bowdoin College, Maine. \hfill2023-
 \end{outerlist}
 \section{Education}\vspace{0 mm}
 \makeheading{}\vspace{2 mm}
@@ -328,10 +330,10 @@ Macroeconomics, Machine Learning, Econometrics, and Computational Economics.
 \makeheading{}\vspace{2 mm}
 \begin{innerlist}
 
-\item \href{https://mekahou.github.io/docs/Papers/SpookyBoundary.pdf}{``Spooky Boundaries at a Distance: Inductive Bias, Dynamic Models, and Behavioral Macro"}, {R\&R} {\bf  Journal of Monetary Economics}. \\
+\item \href{https://mekahou.github.io/docs/Papers/SpookyBoundary.pdf}{``Spooky Boundaries at a Distance: Inductive Bias, Dynamic Models, and Behavioral Macro"}, \\{R\&R} {\bf  Journal of Monetary Economics}. \\
 \href{https://cepr.org/voxeu/columns/spooky-boundaries-distance-inductive-bias-dynamic-models-and-behavioural-macro}{VoxEU Column}\\
 {\small With Jesús Fernández-Villaverde, Sebastian Gomez Cardona, Jesse Perla, and Jan Rosa.}
-
+\halfblankline
 \item  \href{https://www.nber.org/papers/w28981}{``Exploiting Symmetry in High-Dimensional Dynamic Programming"}, NBER Working Paper, 2021.   \\
 {\small With Jesús Fernández-Villaverde, Jesse Perla, and Arnav Sood.}
 %``We propose a new method for solving high-dimensional dynamic programming problems and recursive competitive equilibria with a large (but finite) number of heterogeneous agents using deep learning. We avoid the curse of dimensionality thanks to three complementary techniques: (1) exploiting symmetry in the  law of motion and the value function; (2) constructing a concentration of measure to calculate high-dimensional expectations using a single Monte Carlo draw from the distribution of idiosyncratic shocks; and (3) designing and training deep learning architectures that exploit symmetry and concentration of measure. As an application, we find a global solution of a multi-firm version of the classic Lucas and Prescott (1971) model of investment under uncertainty. First, we compare the solution against a linear-quadratic Gaussian version for validation and benchmarking. Next, we solve the nonlinear version where no accurate or closed-form solution exists. Finally, we describe how our approach applies to a large class of models in economics. "\\
@@ -339,23 +341,16 @@ Macroeconomics, Machine Learning, Econometrics, and Computational Economics.
 	
 
 %``In the long run, we are all dead. Nonetheless, even when investigating short-run dynamics, models require boundary conditions on long-run, forward-looking behavior (e.g., transversality and no-bubble conditions). In this paper, we show how deep learning approximations can automatically fulfill these conditions despite not directly calculating the steady state, balanced growth path, or ergodic distribution. The main implication is that we can solve for transition dynamics with forward-looking agents, confident that long-run boundary conditions will implicitly discipline the short-run decisions, even converging towards the correct equilibria in cases with steady-state multiplicity. While this paper analyzes benchmarks such as the neoclassical growth model, the results suggest deep learning may let us calculate accurate transition dynamics with high-dimensional state spaces, and without directly solving for long-run behavior."\\
-
-\item 	\href{https://arxiv.org/abs/2406.01898}{``How Inductive Bias in Machine Learning Aligns with Optimality in Economic Dynamics"}\\
-%{\small With Rachel Childers, Jesse Perla, and Geoff Pleiss}
-
+\halfblankline 
+\item 	\href{https://arxiv.org/abs/2406.01898}{``Solving Models of Economic Dynamics with Ridgeless Kernel Regressions"}\\
+{\small With Jesse Perla and Geoff Pleiss}
+\vspace{2mm} 
 \item \href{https://mekahou.github.io/docs/Papers/input_output.pdf}{``Optimal Entry Decision with Correlated Variable Cost and Output Price"}. \\
 %``In models with irrecoverable investment and uncertainty in the output price it is a well-established result that uncertainty increases the output price that a firm starts investment. This paper studies a model of irrecoverable investment (entry) where the variable cost and output price are characterized by two correlated geometric Brownian motions. The numerical results indicate that in the presence of high levels of correlation the impact of uncertainty in output price is ambiguous and depends on the level of variable cost. Specifically, increasing uncertainty in output prices increases the entry output price for low levels of variable cost and the reverse happens for high levels of variable cost. Therefore, in the presence of high levels of correlation the conventional result does not hold anymore. Moreover, this study establishes that increasing the correlation level decreases the entry output price." 
 \end{innerlist}
 
-%\section{Work in progress}\vspace{3 mm}
-%\makeheading{}\vspace{2 mm}
-%\begin{innerlist}
-%\item ``Solving Equilibrium Economic Models with Deep Learning". \\
-%{\small With Jesús Fernández-Villaverde and Jesse Perla.}
-%``The success of deep learning in a variety of applications is leading economists to explore its potential for orders of magnitude increase in the size of the state-space and the complexity of models we can solve. In this paper, we provide a clear mental picture of what deep learning is, how it relates to existing solution methods, how to encode economic insights and domain knowledge, and where the methods are likely to be revolutionary. In answering those questions, we demystify these methods, explain the core concepts with simple, however, insightful examples, and debunk some “folk wisdom” commonly held, while elaborating on places where we should proceed with caution."
-%\item ``Solving Under-determined Functional Equations with Kernel Methods: Applications to Infinite-Horizon Optimal Control Problems".\\
-%With Jesse Perla, Geoff Pleiss, James Yu.
-%\end{innerlist}
+
+
 \section{Publications}\vspace{0 mm}
 \makeheading{}\vspace{2 mm}
 \begin{innerlist}
@@ -446,19 +441,19 @@ Macroeconomics, Machine Learning, Econometrics, and Computational Economics.
 \section{References}\vspace{0 mm}
 \makeheading{}\vspace{2 mm}
 \begin{innerlist}
-	\item Dr. Jesse Perla \\ 
-	Associate Professor of Economics \hfill{Phone: +1 604 822-5721}  \\ 
-	University of British Columbia \hfill{E-mail: \email{jesse.perla@ubc.ca}}.\\
-	6000 Iona Drive, Vancouver, BC Canada V6T 1L4. 
-	
-\end{innerlist}
-\halfblankline
-\begin{innerlist}
 	\item Dr.  Jesús Fernández-Villaverde\\
 	Professor of Economics \hfill{Phone: +1 215 573-1504} \\ 
 	University of Pennsylvania 	\hfill{E-mail: \email{jesusfv@econ.upenn.edu}}\\
 	The Ronald O. Perelman Center for Political Science and Economics\\
 	133 South 36th Street, Philadelphia, PA 19104. 
+\end{innerlist}
+\halfblankline
+\begin{innerlist}
+	\item Dr. Jesse Perla \\ 
+	Associate Professor of Economics \hfill{Phone: +1 604 822-5721}  \\ 
+	University of British Columbia \hfill{E-mail: \email{jesse.perla@ubc.ca}}.\\
+	6000 Iona Drive, Vancouver, BC Canada V6T 1L4. 
+	
 \end{innerlist}
 \halfblankline
 \begin{innerlist}
