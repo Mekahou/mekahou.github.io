@@ -72,7 +72,15 @@
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\Resid}{\mathcal{R}}
 \newcommand{\st}{\textrm{s.t.}\,}
+\usepackage{bm}
 
+%bold letters
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
 \begin{document}
 \title{{\vspace{0.4in}\hspace{0.2in}\textcolor{PennBlue}{Solving Models of Economic Dynamics with \\\quad Ridgeless Kernel Regressions}}}
 \author{\hspace{0.2in}Mahdi Ebrahimi Kahou\inst{1}  \and Jesse Perla\inst{2} \and Geoff Pleiss\inst{3,}\inst{4}}
@@ -118,21 +126,19 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Setup}
-
-\end{frame}
 
 \begin{frame}{Contribution}
-	
+ Using kernel method to solve a broad class of infinite-horizon, deterministic, continuous-time model 
 \begin{enumerate}
-	\item \emphcolor{Inductive bias alignment}:
+
+	\item \emphcolor{Minimum-norm alignment}:
 	\begin{itemize}
-		\item The minimum-norm implicit bias of modern ML models automatically satisfies economic boundary conditions at infinity.
+		\item The minimum-norm kernel method aligns with asymptotic boundary conditions.
 	\end{itemize}
 	\vspace{0.1in}
 	\item \emphcolor{Learning the right set of steady-states}:
 	\begin{itemize}
-		\item Deep neural networks and kernel machines learn the boundary values, thereby extrapolating very accurately.
+		\item Kernel machines learn the boundary values, thereby extrapolating outside the training data.
 	\end{itemize}
 	\vspace{0.1in}
 	\item \emphcolor{Robustness and speed}:
@@ -153,32 +159,33 @@
 		\begin{column}{0.5\textwidth}
 			% Content for the left column
 			\begin{itemize}
-				\item \emphcolor{Minimum-norm implicit bias}: 
+				\item \emphcolor{Violation of the boundary conditions}:
 				\begin{itemize}
-					\item Over-parameterized models (e.g., large neural networks) have more parameters than data points and potentially interpolate the data.
+					\item Sub-optimal solutions  explode over time.
+					% As you can see in the plot optimal solution goes to the steady-state, the black dot, and any othe trajectory globaly or locally diveges. That is the signature of economic models
+					\vspace{0.05in}
+					\item They have large derivatives.
+					% Given that they are divergent, then they are large functions with large norms
+					\vspace{0.05in}
+					\item This behavior is due to the \emphcolor{saddle-path} nature of the problem.
+					% many economic models have this saddle path nature
+				\end{itemize}
+				\item \emphcolor{Minimum-norm solution }: 
+				\begin{itemize}
+					\item Penalizing large derivatives rules out explosive paths.
 					%therefore they are many possible solutions
 					\vspace{0.05in}
-					\item They are biased towards interpolating functions with smallest norm. 
+					\item The remaining solution is the optimal solution. 
 					% so they dont doesnt like explosive functions 
 				\end{itemize}
 				\vspace{0.1in}
-				\item \emphcolor{Violation of economic boundary conditions}:
-				\begin{itemize}
-					\item Sub-optimal solutions diverge (explode) over time.
-					% As you can see in the plot optimal solution goe to the steady-state, the black dot, and any othe trajectory globaly or locally diveges. That is the signature of economic models
-					\vspace{0.05in}
-					\item They have large or explosive norms.
-					% Given that they are divergent, then they are large functions with large norms
-					\vspace{0.05in}
-					\item This is due to the \emphcolor{saddle-path} nature of econ problems.
-					% many economic models have this saddle path nature
-				\end{itemize}
+				
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth}
 		\begin{figure}[t!]
 			\centering
-			\includegraphics[width=\textwidth]{figs/saddle_path.pdf}
+			\includegraphics[width=\textwidth]{figs/saddle_path_mu_k.pdf}
 			\vspace{-7mm}
 		\end{figure}
 		\end{column}
@@ -190,28 +197,40 @@
 \begin{frame}{The class of problems}
 A differential-algebraic system of equations, coming from an economic optimization problem:	
 	\begin{align}
-		\dot{\mathbf{x}}(t) &= \mathbf{F}(\mathbf{x}(t), \mathbf{y}(t))\\ %i.e. law of motions for states, like capital
-		\dot{\mathbf{y}}(t) &= \mathbf{G}(\mathbf{x}(t), \mathbf{y}(t))\\
+		\dot{\bx}(t) &= \bF(\bx(t),\bmu(t)
+		,\by(t))\\ %i.e. law of motions for states, like capital
+		\dot{\bmu}(t) &= r \bmu(t)
+		- \bmu(t)
+		\odot \bG(\bx(t), \bmu(t)
+		, \by(t))\\
 		% coming from the optimizing behaviour, like Euler equations
-		\mathbf{0} &= \mathbf{H}(\mathbf{x}(t), \mathbf{y}(t))
+		\mathbf{0} &= \bH(\bx(t), \bmu(t), \by(t)),
 		% Usually comes from economics consideratios, like market clearing, no-arbitrage conditions. This can be thought of as what sets us aprat from ususal optimal control theory
 	\end{align}
-$\mathbf{x}\in \mathbb{R}^{N_x}$: state variables, $\mathbf{y}\in\mathbb{R}^{N_y}$: jump variables.
-Initial value $\mathbf{x}(0) = \mathbf{x}_0$ and boundary conditions (at infinity)
+	boundary conditions (at infinity)
 	\begin{align}
-		\mathbf{0} &= \lim_{t\rightarrow\infty} \mathbf{B}(t,\mathbf{x}(t), \mathbf{y}(t))
+		\mathbf{0} = \lim_{t\rightarrow\infty} e^{-rt} \bx(t)\odot\bmu(t),
 	\end{align}
-\emphcolor{Goal}: finding an approximation for $\mathbf{x}(t)$ and $\mathbf{y}(t)$.\\
+	initial value $\bx(0) = \bx_0$.
+	\begin{itemize}
+		\item $\bx\in \mathbb{R}^{M}$: state variables.
+		\item $\bmu \in \mathbb{R}^M$: co-state variables.
+		\item $\mathbf{y}\in\mathbb{R}^{P}$: jump variables.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\emphcolor{Goal}: finding an approximation for $\mathbf{x}(t)$ and $\mathbf{y}(t)$.\\
 	\vspace{0.1in}
-\emphcolor{What is the problem?} 
-\begin{itemize}
-	\item $\mathbf{y}_0$ is unknown. 
-	% if y_0 was known I could have solved it a s initial value problem. So, I should solve it for many y_0 and pick the one that doesnt violate 4
-	\vspace{0.1in}
-	\item The optimal solutions is a \emphcolor{saddle-path}: unstable nature
-	% because of the saddle path nature of these problems, classic algorithms are very unstable
-	\vspace{0.1in}
-\end{itemize}
+	\emphcolor{What is the problem?} 
+	\begin{itemize}
+		\item $\mathbf{y}_0$ is unknown. 
+		% if y_0 was known I could have solved it a s initial value problem. So, I should solve it for many y_0 and pick the one that doesnt violate 4
+		\vspace{0.1in}
+		\item The optimal solutions is a \emphcolor{saddle-path}: unstable nature
+		% because of the saddle path nature of these problems, classic algorithms are very unstable
+		\vspace{0.1in}
+	\end{itemize}
 \end{frame}
 
 \section{Method}
