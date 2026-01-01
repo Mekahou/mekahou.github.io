@@ -329,11 +329,12 @@ for a given $x_0$.
 Constructing the Hamiltonian ...
 	\[
 	\begin{aligned}
-		\dot{x}(t) &= f(x(t)) - \delta x(t) - y(t)\\
-		\dot{\mu}(t) &= r \mu(t) - \mu(t) \\
-		0 &= \mu(t)y(t) - 1 \\
+		\dot{x}(t) &= f(x(t)) - \delta x(t) - y(t),\\
+		\dot{\mu}(t) &= r \mu(t)  - \mu(t)
+		\big(f'(x(t)) - \delta\big), \\
+		0 &= \mu(t)y(t) - 1, \\
 		x(0) &= x_0, \qquad
-		\lim_{t \to \infty} e^{-rt} \mu(t) x(t) = 0
+		\lim_{t \to \infty} e^{-rt} \mu(t) x(t) = 0.
 	\end{aligned}
 	\]
 	\begin{itemize}
@@ -345,9 +346,10 @@ Constructing the Hamiltonian ...
 	Ignoring the transversality condition:
 \[
 \begin{aligned}
-	\dot{x}(t) &= f(x(t)) - \delta x(t) - y(t)\\
-	\dot{\mu}(t) &= r \mu(t) - \mu(t) \\
-	0 &= \mu(t)y(t) - 1 \\
+	\dot{x}(t) &= f(x(t)) - \delta x(t) - y(t),\\
+	\dot{\mu}(t) &= r \mu(t)  - \mu(t)
+	\big(f'(x(t)) - \delta\big), \\
+	0 &= \mu(t)y(t) - 1, \\
 	x(0) &= x_0.
 \end{aligned}
 \]
@@ -359,15 +361,35 @@ Constructing the Hamiltonian ...
 	\end{figure}
 \end{frame}
 
+\begin{frame}{Neoclassical Growth Model: algorithm}
+\[
+\begin{aligned}
+	\min_{\substack{
+			\hat{\dot{x}}, \hat{\dot{\mu}},\hat{\dot{y}}
+	}}\, & \left(
+	 \Vert \hat{\dot{x}} \Vert^2_{\mathcal{H}} +
+	 \Vert \hat{\dot{\mu}} \Vert^2_{\mathcal{H}}\right)\\
+	\text{s.t.}~\,
+	& \hat{\dot{x}}(t_i) = f(\hat{x}(t_i))- \delta \hat{x}(t_i) - \hat{y}(t_i) ,\quad\text{for all } t_i \in \mathcal{D}\\
+	& \hat{\dot{\mu}}(t_i) = r\hat{\mu}(t_i)- \hat{\mu}(t_i)\big(f'(\hat{x}(t_i)-\delta)\big),\quad\text{for all } t_i \in \mathcal{D}\\
+	& 0 = \hat{\mu}(t_i)\hat{y}(t_i) -1 ,\quad\text{for all } t_i \in \mathcal{D}.
+\end{aligned}
+\]
+\begin{itemize}
+	\item  $\Vert \hat{\dot{x}} \Vert^2_{\mathcal{H}} = \textstyle\sum\limits_{i=1}^N \textstyle\sum\limits_{j=1}^N \alpha^{x}_i \, \alpha^{x}_j \, k(t_i, t_j)$ and $\Vert \hat{\dot{\mu}} \Vert^2_{\mathcal{H}} = \textstyle\sum\limits_{i=1}^N \textstyle\sum\limits_{j=1}^N \alpha^{\mu}_i \, \alpha^{\mu}_j \, k(t_i, t_j)$
+	\item TVC is \emphcolor{not imposed}.
+\end{itemize}
+\end{frame}
 
 
 \begin{frame}{Neoclassical growth model: results}
-	\label{ncg-results}
+	\label{ncg-results} 
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			% Content for the left column
 				\begin{itemize}
 					\item $\mathcal{D} = \{0,1,\cdots,40\}$.
+					\hyperlink{sparse-sampling}{\beamerskipbutton{sparse grids}}
 					\vspace{0.1in}
 					\item $f(x) = x^{\tfrac{1}{3}}$, $\delta = \tfrac{1}{3}$, and $r = 0.11$.
 					\vspace{0.1in}
@@ -375,7 +397,7 @@ Constructing the Hamiltonian ...
 					\vspace{0.1in}
 					\item Very accurate approximations, both in the short- and medium-run.
 					\vspace{0.1in}
-					\item Learns the  \emphcolor{right steady-state}. \hyperlink{errors}{\beamerskipbutton{Relative errors}}
+					\item Learns the  \emphcolor{correct steady state}. \hyperlink{errors}{\beamerskipbutton{Relative errors}}
 				\end{itemize}
 		\end{column}
 		\begin{column}{0.37\textwidth}
@@ -389,10 +411,68 @@ Constructing the Hamiltonian ...
 \end{frame}
 
 \begin{frame}{Neoclassical growth model: learning the steady state}
+	
+	Why does it learn the \emphcolor{correct steady state}?
+	
 	\begin{itemize}
-		content...
-	\end{itemize}
+		\item A straight line is the ``smoothest'' solution: it has zero derivatives.
+		
+		\item The kernels we use are zero-reverting:
+		\[
+		\lim_{t \rightarrow \infty} k(t,t_j) = 0.
+		\]
+		
+		\item We approximate the derivatives using kernels:
+		\[
+		\lim_{t \rightarrow \infty} \hat{\dot{x}}(t)
+		= \hat{\dot{\mu}}(t)
+		= \hat{\dot{y}}(t)
+		= 0.
+		\]
+		
+		\item This behavior is mainly driven by choosing a large $t_N$ (e.g., $t_N = 40$) in $\mathcal{D}$.
+		\vspace{0.1in}
+		
+		\item \emphcolor{Question}: How accurate are the short-run dynamics when $t_N$ is small?
+	\end{itemize}	
 \end{frame}
+
+\begin{frame}{Neoclassical growth model: short-run results}
+	\label{ncg-short-run-results}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item $\mathcal{D} = \{0,1,\cdots,10\}$.
+				\vspace{0.1in}
+				
+				\item $f(x) = x^{\tfrac{1}{3}}$, $\delta = \tfrac{1}{3}$, and $r = 0.11$.
+				\vspace{0.1in}
+				
+				\item Very accurate short-run dynamics.
+				\vspace{0.1in}
+				\hyperlink{errors-short-run}{\beamerskipbutton{Relative errors}}
+				
+				\vspace{0.1in}
+				\emphcolor{Conclusion}
+				\begin{itemize}
+					\item For short-run accuracy, we do not need to know the steady state (global condition).
+					\vspace{0.1in}
+					
+					\item It suffices that sub-optimal paths diverge fast enough from the optimal path (local condition).
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+		
+		\begin{column}{0.37\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\textwidth]{figs/neoclassical_growth_model_short_run.pdf}
+				\vspace{-7mm}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 
 
 
@@ -417,7 +497,7 @@ Constructing the Hamiltonian ...
 	\begin{itemize}
 		\item So far we have had a \emphcolor{unique} saddle-path converging to a unique \emphcolor{saddle} steady state.
 		\vspace{0.1in}
-		\item What if we have \emphcolor{two} saddle steady states, very close to each other (equilibrium multiplicity)?
+		\item What if we have \emphcolor{two} saddle steady states, very close to each other (steady-state multiplicity)?
 		\vspace{0.1in}
 		\item Neoclassical growth model with a non-concave production function (threshold externalities):
 		\begin{align*}
@@ -560,6 +640,32 @@ Constructing the Hamiltonian ...
 		\vspace{-4mm}
 	\end{figure}
 			\hyperlink{ncg-results}{\beamerskipbutton{Back}}
+\end{frame}
+
+\begin{frame}{Neoclassical growth: short-run relative errors}
+	\label{errors-short-run}
+	\begin{figure}[t!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{figs/neoclassical_growth_model_short_run_full.pdf}
+		\vspace{-4mm}
+	\end{figure}
+	\hyperlink{ncg-short-run-results}{\beamerskipbutton{Back}}
+\end{frame}
+
+
+\begin{frame}{Neoclassical growth: sparse sampling}
+	\label{sparse-sampling}
+	\begin{figure}[t!]
+		\centering
+		\includegraphics[width=0.6\textwidth]{figs/neoclassical_growth_model_sparse.pdf}
+		\vspace{-4mm}
+	\end{figure}
+	\[
+	\begin{aligned}
+		\mathcal{D} = \{0, 1, 3, 5, 10, 15, 20, 25, 30, 35, 38, 40\}
+	\end{aligned}
+	\]
+	\hyperlink{ncg-results}{\beamerskipbutton{Back}}
 \end{frame}
 
 \begin{frame}{Human capital and growth}
