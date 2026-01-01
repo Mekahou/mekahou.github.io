@@ -81,6 +81,7 @@
 \newcommand{\bF}{\mathbf{F}}
 \newcommand{\bG}{\mathbf{G}}
 \newcommand{\bH}{\mathbf{H}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
 \begin{document}
 \title{{\vspace{0.4in}\hspace{0.2in}\textcolor{PennBlue}{Solving Models of Economic Dynamics with \\\quad Ridgeless Kernel Regressions}}}
 \author{\hspace{0.2in}Mahdi Ebrahimi Kahou\inst{1}  \and Jesse Perla\inst{2} \and Geoff Pleiss\inst{3,}\inst{4}}
@@ -195,7 +196,7 @@
 \section{The Problem}
 
 \begin{frame}{The class of problems}
-A differential-algebraic system of equations, coming from an economic optimization problem:	
+A differential-algebraic system of equations, coming from an optimization problem:	
 	\begin{align}
 		\dot{\bx}(t) &= \bF(\bx(t),\bmu(t)
 		,\by(t))\\ %i.e. law of motions for states, like capital
@@ -219,166 +220,137 @@ A differential-algebraic system of equations, coming from an economic optimizati
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
-	\emphcolor{Goal}: finding an approximation for $\mathbf{x}(t)$ and $\mathbf{y}(t)$.\\
+\begin{frame}{Challenges}
+	\emphcolor{Goal}: Find an approximation to $\bx(t)$, $\bmu(t)$, and $\by(t)$.\\
 	\vspace{0.1in}
-	\emphcolor{What is the problem?} 
+	
+	\emphcolor{What is the problem?}
 	\begin{itemize}
-		\item $\mathbf{y}_0$ is unknown. 
-		% if y_0 was known I could have solved it a s initial value problem. So, I should solve it for many y_0 and pick the one that doesnt violate 4
+		\item Initial conditions $\by_0$ and $\bmu_0$ are unknown.
 		\vspace{0.1in}
-		\item The optimal solutions is a \emphcolor{saddle-path}: unstable nature
-		% because of the saddle path nature of these problems, classic algorithms are very unstable
+		
+		\item The optimal solution follows a \emphcolor{saddle path}.
 		\vspace{0.1in}
+		\begin{itemize}
+			\item If $T$ is small, solutions are inaccurate due to premature enforcement of the steady state.
+			\vspace{0.1in}
+			\item If $T$ is large, the algorithms become increasingly numerically unstable.
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
+
+\begin{frame}{Example: Neoclassical Growth Model}
+	\[
+	\begin{aligned}
+		\dot{x}(t) &= f(x(t)) - \delta x(t) - y(t)
+		:= F(x(t), \mu(t), y(t)) \\[4pt]
+		\dot{\mu}(t) &= r \mu(t) - \mu(t)
+		\underbrace{\big(f'(x(t)) - \delta\big)}_{:= G(x(t), \mu(t), y(t))} \\[4pt]
+		0 &= \mu(t)y(t) - 1
+		:= H(x(t), \mu(t), y(t)) \\[6pt]
+		x(0) &= x_0, \qquad
+		\lim_{t \to \infty} e^{-rt} \mu(t) x(t) = 0
+	\end{aligned}
+	\]
+	capital $x(t)$, consumption $y(t)$, utility $\log(y)$, present-value co-state variable $\mu(t)$, discount rate $r > 0$, depreciation rate $0 < \delta < 1$, and production function
+	$f(x)$.
+\end{frame}
+
+
 \section{Method}
 
-\begin{frame}{Method}
+\begin{frame}{Method: approximation}
+	\label{kernel-approax}
 	\begin{itemize}
 		\item Pick a set of points $\mathcal{D}\equiv \{t_1,\cdots,t_N\}$ for some fixed interval $[0,T]$
 		\vspace{0.1in}
-		\item Large machine learning models to learn $\hat{\mathbf{x}}(t)$ and $\hat{\mathbf{y}}(t)$
-	\begin{align*}
-		\min_{\hat{\mathbf{x}}, \hat{\mathbf{y}}} \sum_{t_i \in \mathcal{D}} &\left[\eta_1  \underbrace{\left\Vert\hat{\dot{\mathbf{x}}}(t_i) 
-		- \mathbf{F}(\hat{\mathbf{x}}(t_i), \hat{\mathbf{y}}(t_i)(t_i))\right\Vert_2^2}_{\text{Residuals$^2$: state variables}}  + \eta_2  \underbrace{\left\Vert\hat{\dot{\mathbf{y}}}(t_i) -  \mathbf{G}(\hat{\mathbf{x}}(t_i), \hat{\mathbf{y}}(t_i))\right\Vert_2^2}_{\text{Residuals$^2$: jump variables}} \right.\nonumber\\
-		&\left.+ \eta_3  \underbrace{\left\Vert\mathbf{H}(\hat{\mathbf{x}}(t_i), \hat{\mathbf{y}}(t_i))\right\Vert_2^2}_{\text{Residuals$^2$: algebraic constraint}} \right]  + \eta_4  \underbrace{\left\Vert\hat{\mathbf{x}}(0) - \mathbf{x}_0\right\Vert_2^2}_{\text{Residuals$^2$: initial conditions}} .
-	\end{align*}
-	
+		\[
+		\begin{aligned}
+			\hat{\dot{\bx}}(t) &= \sum_{j=1}^N \balpha^x_j\, k(t,t_j), \qquad
+			\hat{\dot{\bmu}}(t) = \sum_{j=1}^N \balpha^\mu_j\, k(t,t_j), \qquad
+			\hat{\dot{\by}}(t) = \sum_{j=1}^N \balpha^y_j\, k(t,t_j), \\[6pt]
+			\hat{\bx}(t) &= \bx_0 + \int_0^t \hat{\dot{\bx}}(\tau)\, d\tau, \qquad
+			\hat{\bmu}(t) = \bmu_0 + \int_0^t \hat{\dot{\bmu}}(\tau)\, d\tau, \qquad
+			\hat{\by}(t) = \by_0 + \int_0^t \hat{\dot{\by}}(\tau)\, d\tau.
+		\end{aligned}
+		\]
 	% Essentially I turn the problem inot an empirical risk minimization style problem 
-	\item This optimization \emphcolor{ignores} the boundary conditions.
+	\item $\balpha^x_j$, $\balpha^\mu_j$, $\balpha^y_j$, $\bmu_0$, and $\by_0$ are parameters to be found.
 	 \vspace{0.1in}
-	\item The implicit bias automatically satisfy the boundary conditions.
+	\item $k(t,t_j)$ is a kernel that measures  		``similarity" between $t$ and $t_j$.
 	\vspace{0.1in}
-	\item Recent works suggest the implicit bias is toward smallest Sobolev semi-norms.
-	%Explain, means functions with the least derivatives
-		\end{itemize}
+	\item We use a Matérn kernel with smoothness $\nu$ and length $\ell$. \\ \hyperlink{Maten-def}{\beamerskipbutton{Matérn kernel}}
+	\vspace{0.1in}
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{Ridgeless kernel regression}
-\begin{align*}
-	\hat{\dot{\mathbf{x}}}(t) = \sum_{j=1}^{N} \boldsymbol{\alpha}^x_j K(t,t_j), &\quad \hat{\dot{\mathbf{y}}}(t) = \sum_{j=1}^{N} \boldsymbol{\alpha}^y_jK(t,t_j)\\
-	\hat{\mathbf{x}}(t) = \mathbf{x}_0+ \int_0^t \hat{\dot{\mathbf{x}}}(\tau) d\tau, &\quad \hat{\mathbf{y}}(t) = \hat{\mathbf{y}}_0+ \int_0^t \ \hat{\dot{\mathbf{y}}}(\tau) d\tau 
-\end{align*}
+\begin{frame}{Method: Ridgeless kernel regression}
+We solve 
+\[
+\begin{aligned}
+	\min_{\substack{
+			\hat{\dot{\bx}}, \hat{\dot{\bmu}},\hat{\dot{\by}}
+	}}\, & \left(
+	\sum_{m=1}^{M}\, \Vert \hat{\dot{\bx}}^{(m)} \Vert^2_{\mathcal{H}} +
+	\sum_{m=1}^{M}\, \Vert \hat{\dot{\bmu}}^{(m)} \Vert^2_{\mathcal{H}}\right)\\
+	\text{s.t.}~\,
+	& \hat{\dot{\bx}}(t_i) = \bF(\hat{\bx}(t_i), \hat{\bmu}(t_i), \hat{\by}(t_i)),\quad\text{for all } t_i \in \mathcal{D}\\
+	& \hat{\dot{\bmu}}(t_i) = r\hat{\bmu}(t_i)- \hat{\bmu}(t_i)\odot\bG(\hat{\bx}(t_i), \hat{\bmu}(t_i), \hat{\by}(t_i)),\quad\text{for all } t_i \in \mathcal{D}\\
+	& \mathbf{0} = \bH(\hat{\bx}(t_i), \hat{\bmu}(t_i), \hat{\by}(t_i)),\quad\text{for all } t_i \in \mathcal{D}.
+	\end{aligned}
+\]
 \begin{itemize}
-	\item  $\mathbf{x}_0$ is given.
+	\item $\Vert \hat{\dot{\bx}}^{(m)} \Vert^2_{\mathcal{H}} = \textstyle\sum\limits_{i=1}^N \textstyle\sum\limits_{j=1}^N \alpha^{x^{(m)}}_i \, \alpha^{x^{(m)}}_j \, k(t_i, t_j)$ and $\Vert \hat{\dot{\bmu}}^{(m)} \Vert^2_{\mathcal{H}} = \textstyle\sum\limits_{i=1}^N \textstyle\sum\limits_{j=1}^N \alpha^{\mu^{(m)}}_i \, \alpha^{\mu^{(m)}}_j \, k(t_i, t_j)$
 	\vspace{0.1in}
-	\item $\hat{\mathbf{y}}_0$, $\boldsymbol{\alpha}^x_j$, and $\boldsymbol{\alpha}^y_j$ are learnable parameters. 
-	%\vspace{0.1in}
-	%\item $\hat{\mathbf{y}}_0$ is what we are looking for. If we learn it correctly then we are good to go 
+	\item TVC is \emphcolor{not imposed}.
+		\vspace{0.1in}
+	\item The penalization is used to control the smoothness of the approximating functions.
 	\vspace{0.1in}
-	\item $K(\cdot,\cdot):$ Matérn Kernel, with smoothness parameter $\nu$ and length scale $\ell$.
+	\item For Matérn kernels, it also controls the smoothness of derivatives. 
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Ridgeless kernel regression: minimum Sobolev seminorm solutions}
-We also solve the ridgeless kernel regression 
-\begin{align*}
-	\lim_{\lambda\rightarrow 0} \min_{\hat{\mathbf{x}}, \hat{\mathbf{y}}} \sum_{t_i \in \mathcal{D}} &\left[\eta_1 \left\Vert \hat{\dot{\mathbf{x}}}(t_i) 
-	- \mathbf{F}(\hat{\mathbf{x}}(t_i), \hat{\mathbf{y}}(t_i)(t_i)) \right\Vert_2^2 + \eta_2 \left\Vert \hat{\dot{\mathbf{y}}}(t_i) -  \mathbf{G}(\hat{\mathbf{x}}(t_i), \hat{\mathbf{y}}(t_i)) \right\Vert_2^2\right.\nonumber\\
-	&\left.+ \eta_3 \left\Vert \mathbf{H}(\hat{\mathbf{x}}(t_i), \hat{\mathbf{y}}(t_i)) \right\Vert_2^2 \right] + \eta_4 \left\Vert \hat{\mathbf{x}}(0) - \hat{\mathbf{x}}_0 \right\Vert_2^2 + \lambda \underbrace{\left[\sum_{m=1}^{N_x}\Vert \hat{\dot{\mathbf{x}}}^{(m)}\Vert^2_{\mathcal{H}}+ \sum_{m=1}^{N_y}\Vert \hat{\dot{\mathbf{y}}}^{(m)}\Vert^2_{\mathcal{H}}\right]}_{\text{The Sobolev semi-norm}}
-\end{align*}
-\begin{itemize}
-	\item Targeting Sobolev semi-norm.
-	% minimizing the norm of the derivative
-	\vspace{0.1in}
-	\item This choice is very natural: it solves the instability issues of the classical algorithm.
-	%because of the saddle path-nature of the problems divergent and explosive functions have large derivatives therefore we kick out those
-\end{itemize} 
 \end{frame}
 
 \section{Applications}
 
-\begin{frame}{Linear asset pricing}
-	%why this probelm? Not because this problem is hard. But that is the first model that is the simplest model that incorporates bubbles in economics
-\begin{align}
-	\dot{\mathbf{x}}(t) &= c + g \mathbf{x}(t) \label{eq:asset-pricing-x-dot}\\%:= \mathbf{F}(\mathbf{x}(t), \mathbf{y}(t))
-	\dot{\mathbf{y}}(t) &= r \mathbf{y}(t) - \mathbf{x}(t)  \label{eq:asset-pricing-y-dot}\\%:= \mathbf{G}(\mathbf{x}(t), \mathbf{y}(t))
-	0 &= \lim_{t\rightarrow \infty} e^{-r t}\mathbf{y}(t) \label{eq:asset-pricing-no-bubble}%:= \mathbf{B}(\mathbf{x}(t), \mathbf{y}(t))
-\end{align}
-
+\begin{frame}{Neoclassical growth model}
+	\[
+	\begin{aligned}
+		\max_{y(t)} &\int_0^\infty e^{-rt}\ln(y(t))dt\\
+		& \text{s.t.} \quad \dot{x}(t) = f(x(t)) - y(t)-\delta x(t)
+	\end{aligned}
+	\]
+for a given $x_0$.
 \begin{itemize}
-	\item $\mathbf{x}(t)\in \mathbb{R}$: dividends, $\mathbf{y}(t)\in \mathbb{R}$: prices, and $\mathbf{x}_0$ given. 
-	\vspace{0.1in}
-	\item Equation \cref{eq:asset-pricing-x-dot}: how the dividends evolve in time.
-	\vspace{0.1in}
-	\item  Equation \cref{eq:asset-pricing-y-dot}: how the prices evolve in time.
-	\vspace{0.1in}
-	\item Equation \cref{eq:asset-pricing-no-bubble}: ``no-bubble" condition, the boundary condition at infinity. 
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Why do we need the boundary condition?}
-	%Imagine if I didnt have the boundary condition, what would happen?
-	\begin{align*}
-		\dot{\mathbf{x}}(t) &= c + g \mathbf{x}(t) \\
-		\dot{\mathbf{y}}(t) &= r \mathbf{y}(t) - \mathbf{x}(t)
-	\end{align*}
-	\begin{itemize}
-		\item The solutions: 
-		\begin{align*}
-			\mathbf{y}(t) = \mathbf{y}_f(t) + \zeta e^{rt}
-		\end{align*}
-		\item $\mathbf{y}_f(t) = \int_0^\infty e^{-r\tau} \mathbf{x}(t+s)ds$: price based on the fundamentals.
-		\vspace{0.1in}
-		\item $\zeta e^{rt}$: explosive bubble terms, it has to be \emphcolor{ruled out} by the boundary condition.
-		%doesnt correspond to any economic variable
-		\vspace{0.1in} 
-		\item Triangle inequality: $\Vert \mathbf{y}_f\Vert < \Vert \mathbf{y}\Vert$.
-		%go with any norm, because of the positivity and addtive structure 
-		\vspace{0.1in}
-		\item The price based on the fundamentals has the \emphcolor{lowest norm}.
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Results}
-	\begin{figure}[t!]
-		\centering
-		\includegraphics[width=0.8\textwidth]{figs/asset_pricing_contiguous.pdf}
-		\caption*{$\mathcal{D} = \{0,1,\cdots,30\}$}
-		\vspace{-4mm}
-	\end{figure}
-	\begin{itemize}
-		\item The explosive solutions are ruled out without directly imposing the boundary condition.
-		\vspace{0.1in}
-		\item Very accurate approximations, both in the short- and medium-run.
-		\vspace{0.1in}
-		\item Learns the steady-state.
-		% By learning I mean, the function stays on a flat line, outside of the training data
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Neoclassical growth model: the agent's problem}
-	\begin{align*}
-		\max_{\mathbf{y}(t)} &\int_0^\infty e^{-rt}\ln(\mathbf{y}(t))dt\\
-		& \text{s.t.} \quad \dot{\mathbf{x}}(t) = f(\mathbf{x}(t)) - \mathbf{y}(t)-\delta \mathbf{x}(t)
-	\end{align*}
-for a given $\mathbf{x}_0$.
-\begin{itemize}
-	\item $\mathbf{x}(t)\in \mathbb{R}$: capital, $\mathbf{y}(t)\in \mathbb{R}$: consumption, and a concave production function $f(x) = x^a$.
+	\item $x(t)\in \mathbb{R}$: capital, $y(t)\in \mathbb{R}$: consumption, and a concave production function $f(x) = x^a$.
 	\vspace{0.1in}
 \end{itemize}
 
 Constructing the Hamiltonian ...
-	\begin{align}
-		&\dot{\mathbf{x}}(t) = f(\mathbf{x}(t)) - \mathbf{y}(t)-\delta \mathbf{x}(t)\\
-		&\dot{\mathbf{y}}(t) = \mathbf{y}(t)\big[f'(\mathbf{x}(t)) -\delta -r\big]\\
-		& 0 = \lim_{t\rightarrow \infty} e^{-rt}\frac{\mathbf{x}(t)}{\mathbf{y}(t)}
-		\label{eq:tvc}
-	\end{align}
+	\[
+	\begin{aligned}
+		\dot{x}(t) &= f(x(t)) - \delta x(t) - y(t)\\
+		\dot{\mu}(t) &= r \mu(t) - \mu(t) \\
+		0 &= \mu(t)y(t) - 1 \\
+		x(0) &= x_0, \qquad
+		\lim_{t \to \infty} e^{-rt} \mu(t) x(t) = 0
+	\end{aligned}
+	\]
 	\begin{itemize}
-		\item Equation \cref{eq:tvc} : transversality condition (TVC)
+		\item Last Equation : transversality condition (TVC)
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Why do we need the boundary condition?}
 	Ignoring the transversality condition:
-\begin{align*}
-	&\dot{\mathbf{x}}(t) = f(\mathbf{x}(t)) - \mathbf{y}(t)-\delta \mathbf{x}(t)\\
-	&\dot{\mathbf{y}}(t) = \mathbf{y}(t)\big[f'(\mathbf{x}(t)) -\delta -r\big]\\
-	& \mathbf{x}(0) = \mathbf{x}_0 ~ \text{given}. 
-\end{align*}
+\[
+\begin{aligned}
+	\dot{x}(t) &= f(x(t)) - \delta x(t) - y(t)\\
+	\dot{\mu}(t) &= r \mu(t) - \mu(t) \\
+	0 &= \mu(t)y(t) - 1 \\
+	x(0) &= x_0.
+\end{aligned}
+\]
 	\begin{figure}[t!]
 		\centering
 		\vspace{-4mm}
@@ -388,38 +360,54 @@ Constructing the Hamiltonian ...
 \end{frame}
 
 
-\begin{frame}{Results}
-	\label{ncg:results}
-		\begin{figure}[t!]
-		\centering
-		\includegraphics[width=0.9\textwidth]{figs/neoclassical_growth_model_2_by_1.pdf}
-		\caption*{$\mathcal{D} = \{0,1,\cdots,30\}$}
-		\vspace{-4mm}
-	\end{figure}
-	\begin{itemize}
-		\item The explosive solutions are ruled out without directly imposing the boundary condition.
-		\vspace{0.1in}
-		\item Very accurate approximations, both in the short- and medium-run.
-		\vspace{0.1in}
-		\item Learns the  \emphcolor{right steady-state}. \hyperlink{errors}{\beamerskipbutton{Relative errors}}
-	\end{itemize}
-		
+
+\begin{frame}{Neoclassical growth model: results}
+	\label{ncg-results}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			% Content for the left column
+				\begin{itemize}
+					\item $\mathcal{D} = \{0,1,\cdots,40\}$.
+					\vspace{0.1in}
+					\item $f(x) = x^{\tfrac{1}{3}}$, $\delta = \tfrac{1}{3}$, and $r = 0.11$.
+					\vspace{0.1in}
+					\item The explosive solutions are ruled out without directly imposing the boundary condition.
+					\vspace{0.1in}
+					\item Very accurate approximations, both in the short- and medium-run.
+					\vspace{0.1in}
+					\item Learns the  \emphcolor{right steady-state}. \hyperlink{errors}{\beamerskipbutton{Relative errors}}
+				\end{itemize}
+		\end{column}
+		\begin{column}{0.37\textwidth}
+			\begin{figure}[t!]
+				\centering
+				\includegraphics[width=\textwidth]{figs/neoclassical_growth_model_baseline.pdf}
+				\vspace{-7mm}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Short-run planning: ``In the long run, we are all dead" }
-	\begin{figure}[t!]
-		% previously we chose a long horizon for time in the training data, what happens we focus on a very short time planning? 
-		\centering
-		\includegraphics[width=\textwidth]{figs/neoclassical_growth_short_planning.pdf}
-		\caption*{$\mathcal{D} = \{0,1,\cdots,10\}$}
-		\vspace{-4mm}
-	\end{figure}
-	\begin{itemize}
-		\item The explosive solutions are ruled out without directly imposing the boundary condition.
-		\vspace{0.1in}
-		\item Provides a very accurate approximation in the short-run.
-	\end{itemize}
+\begin{frame}{Neoclassical growth model: learning the steady state}
+	content...
 \end{frame}
+
+
+
+
+%\begin{frame}{Short-run planning: ``In the long run, we are all dead" }
+%	\begin{figure}[t!]
+		% previously we chose a long horizon for time in the training data, what happens we focus on a very short time planning? 
+%		\centering
+%		\includegraphics[width=\textwidth]{figs/neoclassical_growth_short_planning.pdf}
+%		\caption*{$\mathcal{D} = \{0,1,\cdots,10\}$}
+%		\vspace{-4mm}
+%	\end{figure}
+%	\begin{itemize}
+%		\item The explosive solutions are ruled out without %		\vspace{0.1in}
+%		\item Provides a very accurate approximation in the short-run.
+%	\end{itemize}
+%\end{frame}
 
 \section{Extensions}
 
@@ -472,6 +460,67 @@ Constructing the Hamiltonian ...
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Linear asset pricing}
+	%why this probelm? Not because this problem is hard. But that is the first model that is the simplest model that incorporates bubbles in economics
+	Linear asset pricing model
+	\[ 
+	\begin{aligned}
+		\dot{x}(t) &= c + g x(t)\\
+		\dot{\mu}(t) &= r \mu(t) - x(t) := r \mu(t) - \mu(t) \frac{x(t)}{\mu(t)}\\
+		0 &= \lim_{t\rightarrow \infty} e^{-r t}\mu(t)x(t).
+	\end{aligned}
+	\]
+	\begin{itemize}
+		\item $x(t)\in \mathbb{R}$: flow payoffs from a claim to an asset. 
+		\vspace{0.1in}
+		\item $\mu(t) \in \R$ be the price of a claim to that asset.
+		\vspace{0.1in}
+		\item $x_0$ given. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Why do we need the boundary condition?}
+	%Imagine if I didnt have the boundary condition, what would happen?
+	\begin{align*}
+		\dot{\mathbf{x}}(t) &= c + g \mathbf{x}(t) \\
+		\dot{\mathbf{y}}(t) &= r \mathbf{y}(t) - \mathbf{x}(t)
+	\end{align*}
+	\begin{itemize}
+		\item The solutions: 
+		\begin{align*}
+			\mathbf{y}(t) = \mathbf{y}_f(t) + \zeta e^{rt}
+		\end{align*}
+		\item $\mathbf{y}_f(t) = \int_0^\infty e^{-r\tau} \mathbf{x}(t+s)ds$: price based on the fundamentals.
+		\vspace{0.1in}
+		\item $\zeta e^{rt}$: explosive bubble terms, it has to be \emphcolor{ruled out} by the boundary condition.
+		%doesnt correspond to any economic variable
+		\vspace{0.1in} 
+		\item Triangle inequality: $\Vert \mathbf{y}_f\Vert < \Vert \mathbf{y}\Vert$.
+		%go with any norm, because of the positivity and addtive structure 
+		\vspace{0.1in}
+		\item The price based on the fundamentals has the \emphcolor{lowest norm}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{figure}[t!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{figs/asset_pricing_contiguous.pdf}
+		\caption*{$\mathcal{D} = \{0,1,\cdots,30\}$}
+		\vspace{-4mm}
+	\end{figure}
+	\begin{itemize}
+		\item The explosive solutions are ruled out without directly imposing the boundary condition.
+		\vspace{0.1in}
+		\item Very accurate approximations, both in the short- and medium-run.
+		\vspace{0.1in}
+		\item Learns the steady-state.
+		% By learning I mean, the function stays on a flat line, outside of the training data
+	\end{itemize}
+\end{frame}
+
+
+
 \begin{frame}{Conclusion}
 	\begin{itemize}
 		\item Long-run (\emphcolor{global}) conditions can be replaced with appropriate regularization (\emphcolor{local}) to achieve the optimal solutions.
@@ -487,14 +536,28 @@ Constructing the Hamiltonian ...
 
 \section{Appendix}
 
+\begin{frame}{Matérn kernel}
+	\label{Maten-def}
+		\begin{align*}
+		K(t, t_j) = C_{\frac{1}{2}}(t,t_j) = \sigma^2 \exp\left(-\frac{|t - t_j|}{\ell}\right),
+	\end{align*}
+	\begin{align*}
+		K(t, t_j) = C_{\frac{3}{2}}(t,t_j) = \sigma^2 \left(1 + \frac{\sqrt{3} |t - t_j|}{\ell}\right) \exp\left(-\frac{\sqrt{3} |t - t_j|}{\ell}\right),
+	\end{align*}
+	\begin{align*}
+		K(t, t_j) =  C_{\frac{5}{2}}(t,t_j) =  \sigma^2 \left(1 + \frac{\sqrt{5} |t - t_j|}{\ell} + \frac{5 |t - t_j|^2}{3 \ell^2}\right) \exp\left(-\frac{\sqrt{5} |t - t_j|}{\ell}\right).
+	\end{align*}
+	\hyperlink{kernel-approax}{\beamerskipbutton{Back}}
+\end{frame}
+
 \begin{frame}{Neoclassical growth: relative errors}
 	\label{errors}
 	\begin{figure}[t!]
 		\centering
-		\includegraphics[width=0.7\textwidth]{figs/neoclassical_growth_model_baseline.pdf}
+		\includegraphics[width=0.7\textwidth]{figs/neoclassical_growth_model_baseline_rel_err.pdf}
 		\vspace{-4mm}
 	\end{figure}
-			\hyperlink{ncg:results}{\beamerskipbutton{Back}}
+			\hyperlink{ncg-results}{\beamerskipbutton{Back}}
 \end{frame}
 
 \begin{frame}{Human capital and growth}
