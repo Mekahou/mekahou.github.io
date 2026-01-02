@@ -449,8 +449,6 @@ Constructing the Hamiltonian ...
 				\vspace{0.1in}
 				
 				\item Very accurate short-run dynamics.
-				\vspace{0.1in}
-				\hyperlink{errors-short-run}{\beamerskipbutton{Relative errors}}
 				
 				\vspace{0.1in}
 				\emphcolor{Conclusion}
@@ -461,6 +459,7 @@ Constructing the Hamiltonian ...
 					\item It suffices that sub-optimal paths diverge fast enough from the optimal path (local condition).
 				\end{itemize}
 			\end{itemize}
+			\hyperlink{errors-short-run}{\beamerskipbutton{Relative errors}}
 		\end{column}
 		
 		\begin{column}{0.37\textwidth}
@@ -491,7 +490,7 @@ Constructing the Hamiltonian ...
 %	\end{itemize}
 %\end{frame}
 
-\section{Extensions}
+
 
 \begin{frame}{Neoclassical Growth Model: Non-Concave Production Function}
 	\begin{itemize}
@@ -503,17 +502,29 @@ Constructing the Hamiltonian ...
 		\begin{align*}
 			f(x) = A \max\{x^a, b_1x^a - b_2\}
 		\end{align*}
+		\vspace{0.1in}
+		\item The production function has a kink.	
 	\end{itemize}
+
 \end{frame}
 
 \begin{frame}{Non-concave production function: vector field}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
-			\begin{align*}
-				&\dot{\mathbf{x}}(t) = f(\mathbf{x}(t)) - \mathbf{y}(t)-\delta \mathbf{x}(t)\\
-				&\dot{\mathbf{y}}(t) = \mathbf{y}(t)\big[f'(\mathbf{x}(t)) -\delta -r\big]\\
-				& \mathbf{x}(0) = \mathbf{x}_0 ~ \text{given}.
-			\end{align*}
+			\[
+			\begin{aligned}
+				\dot{x}(t) &= f(x(t)) - \delta x(t) - y(t),\\
+				\dot{\mu}(t) &= r \mu(t)  - \mu(t)
+				\big(f'(x(t)) - \delta\big), \\
+				0 &= \mu(t)y(t) - 1, \\
+				x(0) &= x_0.
+			\end{aligned}
+			\]
+			\begin{itemize}
+				\item The model is identical to the concave case, except that $f(\cdot)$ is now non-concave.
+				\item \item This problem is very challenging for traditional methods such as shooting.
+				
+			\end{itemize}
 		\end{column}
 		\begin{column}{0.5\textwidth}
 			\begin{figure}[t!]
@@ -529,7 +540,7 @@ Constructing the Hamiltonian ...
 	\label{butterfly}
 	\begin{figure}[t!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figs/neoclassical_growth_model_concave_convex_threshold.pdf}
+		\includegraphics[width=0.6\textwidth]{figs/neoclassical_growth_model_concave_convex_threshold.pdf}
 		\vspace{-4mm}
 	\end{figure}
 	\begin{itemize}
@@ -538,9 +549,10 @@ Constructing the Hamiltonian ...
 		\item The transversality conditions are satisfied without being directly imposed.
 		\vspace{0.1in}
 		\item The steady states are learned. 
-		\hyperlink{DAE}{\beamerskipbutton{Full DAE}}
 	\end{itemize}
 \end{frame}
+
+\section{Extensions}
 
 \begin{frame}{Linear asset pricing}
 	%why this probelm? Not because this problem is hard. But that is the first model that is the simplest model that incorporates bubbles in economics
@@ -561,33 +573,30 @@ Constructing the Hamiltonian ...
 	\end{itemize}
 \end{frame}
 
+
+
 \begin{frame}{Why do we need the boundary condition?}
 	%Imagine if I didnt have the boundary condition, what would happen?
 	\begin{align*}
-		\dot{\mathbf{x}}(t) &= c + g \mathbf{x}(t) \\
-		\dot{\mathbf{y}}(t) &= r \mathbf{y}(t) - \mathbf{x}(t)
+		\dot{x}(t) &= c + g x(t) \\
+		\dot{\mu}(t) &= r \mu(t) - x(t)
 	\end{align*}
 	\begin{itemize}
 		\item The solutions: 
 		\begin{align*}
-			\mathbf{y}(t) = \mathbf{y}_f(t) + \zeta e^{rt}
+			\mu(t) = \mu_f(t) + \zeta e^{rt}
 		\end{align*}
-		\item $\mathbf{y}_f(t) = \int_0^\infty e^{-r\tau} \mathbf{x}(t+s)ds$: price based on the fundamentals.
+		\item $\mu_f(t) = \int_0^\infty e^{-r\tau} x(t+\tau)d\tau$: price based on the fundamentals.
 		\vspace{0.1in}
 		\item $\zeta e^{rt}$: explosive bubble terms, it has to be \emphcolor{ruled out} by the boundary condition.
-		%doesnt correspond to any economic variable
-		\vspace{0.1in} 
-		\item Triangle inequality: $\Vert \mathbf{y}_f\Vert < \Vert \mathbf{y}\Vert$.
-		%go with any norm, because of the positivity and addtive structure 
-		\vspace{0.1in}
-		\item The price based on the fundamentals has the \emphcolor{lowest norm}.
+		\item The price based on the fundamentals is the \emphcolor{``smoothest"}.
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Results}
 	\begin{figure}[t!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figs/asset_pricing_contiguous.pdf}
+		\includegraphics[width=0.6\textwidth]{figs/asset_pricing_contiguous.pdf}
 		\caption*{$\mathcal{D} = \{0,1,\cdots,30\}$}
 		\vspace{-4mm}
 	\end{figure}
@@ -596,7 +605,7 @@ Constructing the Hamiltonian ...
 		\vspace{0.1in}
 		\item Very accurate approximations, both in the short- and medium-run.
 		\vspace{0.1in}
-		\item Learns the steady-state.
+		\item Learns the steady state.
 		% By learning I mean, the function stays on a flat line, outside of the training data
 	\end{itemize}
 \end{frame}
@@ -607,14 +616,29 @@ Constructing the Hamiltonian ...
 	\begin{itemize}
 		\item Long-run (\emphcolor{global}) conditions can be replaced with appropriate regularization (\emphcolor{local}) to achieve the optimal solutions.
 		\vspace{0.1in}
-		\item The minimum-norm implicit bias of large ML models aligns with optimality in economic dynamic models.
+		\item The minimum-norm kernels aligns with optimality in economic dynamic models.
 		\vspace{0.1in}
-		\item Both kernel and neural network approximations accurately learn the right steady state(s).
+		\item The minimum-norm kernels accurately learn the correct steady state(s).
 		\vspace{0.1in}
-		\item Proceeding with \emphcolor{caution}: can regularization be thought of as an equilibrium selection device?
 		%if we are about to translate economic dynamic models into an ERM, can regularization act as an equilibrium device? Think about it, ERM in statistical learning or machine learning is about two things: uniform of law of large numbers and capacity control (so what are going to do about this capacity control regularization)
 	\end{itemize}
 \end{frame}
+\begin{frame}{Conclusion: explicit and implicit Regularization}
+	Machine learning methods:
+	\[
+	\begin{aligned}
+		\underbrace{\frac{1}{N}\sum_{i=1}^N \mathcal{L}\big(y_i,f_\theta(x_i)\big)}_{\text{loss}}
+		\;+\;
+		\underbrace{\lambda \,\Omega(f_\theta)}_{\text{regularization term}}
+	\end{aligned}
+	\]
+	\begin{itemize}
+		\item $f_\theta(\cdot)$: parametric function (kernel methods, neural networks, etc.).
+		\item In this paper, regularization is used to rule out sub-optimal solutions and enforce stability.
+		\item What other roles can regularization play in solving economic models with modern ML methods?
+	\end{itemize}
+\end{frame}
+
 
 \section{Appendix}
 
@@ -669,22 +693,24 @@ Constructing the Hamiltonian ...
 \end{frame}
 
 \begin{frame}{Human capital and growth}
-	\label{DAE}
-\begin{align*}
-	\dot{\mathbf{x}}_k(t) & = \mathbf{y}_{k}(t)-\delta_k \mathbf{x}_k(t),\\
-	\dot{\mathbf{x}}_h(t) & = \mathbf{y}_{h}(t)-\delta_k \mathbf{x}_h(t)\\
-	\dot{\mathbf{y}}_c(t) &= \mathbf{y}_c(t) \left[ f_1\left(\mathbf{x}_k(t),\mathbf{x}_h(t)\right) -\delta_k - r \right],\\
-	0 & =   f\left(\mathbf{x}_k(t),\mathbf{x}_h(t)\right) - \mathbf{y}_c(t) -  \mathbf{y}_{k}(t) -  \mathbf{y}_{h}(t), \label{eq:human-capital-feasibility-condition}\\
-	0 & = f_2\left(\mathbf{x}_k(t),\mathbf{x}_h(t)\right) - f_1\left(\mathbf{x}_k(t),\mathbf{x}_h(t)\right) + \delta_k-\delta_h.\\
-		0 & = \lim_{t\rightarrow \infty} e^{-r t}\frac{\mathbf{x}_k(t)}{\mathbf{y}_c(t)}, ~
-	0 = \lim_{t\rightarrow \infty} e^{-r t}\frac{\mathbf{x}_h(t)}{\mathbf{y}_c(t)}.
-\end{align*}
-
+	\label{human-capital}
+	\[
+\begin{aligned}
+	\dot{x}_k(t) &= y_k(t) - \delta_k x_k(t),\\
+	\dot{x}_h(t) &= y_h(t) - \delta_h x_h(t),\\
+	\dot{\mu}_k(t) &= r \mu_k(t) - \mu_k(t) \bigl[ f_1(x_k(t),\,x_h(t)) - \delta_k \bigr],\\
+	\dot{\mu}_h(t) &= r \mu_h(t) - \mu_h(t) \bigl[ f_2(x_k(t),\,x_h(t)) - \delta_h \bigr],\\
+	0 &= \mu_k(t) y_c(t) - 1,\\
+	0 &= \mu_k(t) - \mu_h(t),\\
+	0 &= f(x_k(t),\,x_h(t)) - y_c(t) - y_k(t) - y_h(t),\\
+	0 &= \lim_{t\rightarrow \infty} e^{-rt} x_k(t) \mu_k(t),\\
+	0 &= \lim_{t\rightarrow \infty} e^{-rt} x_h(t) \mu_h(t),
+\end{aligned}
+\]
+for given initial conditions $x_k(0) = x_{k_0}$, $x_h(0) = x_{h_0}$.
 
 \begin{itemize}
-	\item $\mathbf{x}_k$: physical capital,  $\mathbf{x}_h:$ human capital, $\mathbf{y}_c$: consumption, $\mathbf{y}_k$: investment in physical capital, $\mathbf{y}_h$: investment in human capital 
-	\vspace{0.1in}
-	\item $f\left(x_k, x_h\right) = x_k^{a_k}x_h^{a_h}$
+	\item Human capital is $x_h(t)$, physical capital $x_k(t)$, consumption $y_c(t)$, investment in human capital $y_{h}(t)$, and investment in physical capital $y_{k}(t)$,  $\mu_k(t)$ and $\mu_{h}(t)$ are the co-state variables.
 \end{itemize}
 \hyperlink{butterfly}{\beamerskipbutton{Back}}
 \end{frame}
@@ -692,7 +718,7 @@ Constructing the Hamiltonian ...
 \begin{frame}{Results}
 		\begin{figure}[t!]
 		\centering
-		\includegraphics[width=0.5\textwidth]{figs/human_capital.pdf}
+		\includegraphics[width=0.4\textwidth]{figs/human_capital.pdf}
 		\vspace{-4mm}
 	\end{figure}
 \end{frame}
