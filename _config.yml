@@ -20,6 +20,8 @@ navbar-links:
 
   Teaching: "teaching"
 
+  Notes: "notes"
+
   Blog Posts : "blogposts"
   #Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
