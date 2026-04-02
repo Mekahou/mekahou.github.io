@@ -8,7 +8,7 @@ subtitle:
 -----
 
 **"Spooky Boundaries at a Distance: Inductive Bias, Dynamic Models, and Behavioral Macro"**  
-Accept subject to Major Revisions, **Journal of Monetary Economics**
+<small>Accept subject to Major Revisions, **Journal of Monetary Economics**</small>
 
 <details>
 <summary>Details</summary>
@@ -20,7 +20,7 @@ Accept subject to Major Revisions, **Journal of Monetary Economics**
 ---
 
 **"Solving Models of Economic Dynamics with Ridgeless Kernel Regressions"**  
-Revise and Resubmit, **Quantitative Economics**
+<small>Revise and Resubmit, **Quantitative Economics**</small>
 
 <details>
 <summary>Details</summary>
@@ -68,7 +68,7 @@ Revise and Resubmit, **Quantitative Economics**
 -----
 
 **["Modelling the 'S Curve': Transition Dynamics in EV Adoption"](https://iopscience.iop.org/article/10.1088/2515-7620/ae2cf1/pdf)**  
-**Environmental Research Communications** (2025)
+<small>**Environmental Research Communications** (2025)</small>
 
 <details>
 <summary>Details</summary>
@@ -78,7 +78,7 @@ Revise and Resubmit, **Quantitative Economics**
 ---
 
 **["Macroprudential Policy: A Review"](https://www.sciencedirect.com/science/article/abs/pii/S1572308916302297)**  
-**Journal of Financial Stability** (2017)
+<small>**Journal of Financial Stability** (2017)</small>
 
 <details>
 <summary>Details</summary>
@@ -88,7 +88,7 @@ Revise and Resubmit, **Quantitative Economics**
 ---
 
 **["Quantum Search with Interacting Bose-Einstein Condensates"](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.88.032310)**  
-**Physical Review A** (2013)
+<small>**Physical Review A** (2013)</small>
 
 <details>
 <summary>Details</summary>
