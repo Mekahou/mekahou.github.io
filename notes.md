@@ -28,7 +28,7 @@ These are my notes on computational economics and modern machine learning method
 
 **3. Learning Non-Smooth Functions**  
 *Application: McCall Search Model*  
-<a href="https://github.com/Mekahou/Notes/blob/main/deep_learning/McCall_DL.ipynb" target="_blank">Notebook</a> &nbsp;|&nbsp; <a href="/docs/Slides/mccall_slides.html" target="_blank">Slides</a>
+<a href="https://github.com/Mekahou/Notes/blob/main/deep_learning/McCall_DL.ipynb" target="_blank">Notebook</a>
 
 <video src="https://github.com/user-attachments/assets/2ed81470-66bc-4d11-b694-e7f28d2e939d" controls width="100%"></video>
 
