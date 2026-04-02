@@ -20,27 +20,38 @@
 \usetheme[progressbar=frametitle,block=fill]{metropolis}
 
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
-\definecolor{emphcolorval}{rgb}{0.23,0.4,0.7}
+\usefonttheme{professionalfonts}
+\definecolor{KahouBlack}{RGB}{31, 28, 26}
+\definecolor{KahouGold}{RGB}{201, 168, 76}
+\definecolor{KahouLightGold}{RGB}{240, 225, 180}
+\definecolor{emphcolorval}{RGB}{128, 0, 32}
 \definecolor{highlightcolorval}{rgb}{1,0,0}
-% Penn colors
-\definecolor{PennRed}{RGB}{149, 0, 26}
-\definecolor{PennBlue}{RGB}{1, 37, 110}
+\definecolor{Terracotta}{RGB}{180, 90, 60}
+\definecolor{TerracottaLight}{RGB}{242, 236, 220}
+\definecolor{Sienna}{RGB}{120, 55, 25}
+\definecolor{SlideBackground}{RGB}{252, 249, 240}
+\tcbset{lossbox/.style={
+  enhanced, colback=TerracottaLight, colframe=Terracotta,
+  boxrule=1pt, arc=3pt, left=4pt, right=4pt, top=2pt, bottom=2pt,
+  before={}, after={}, before upper={\vspace{-2pt}}
+}}
+\tcbset{highlight math style={
+  enhanced, colback=TerracottaLight, colframe=Terracotta,
+  boxrule=1pt, arc=3pt, left=4pt, right=4pt, top=2pt, bottom=2pt
+}}
+\setbeamercolor{frametitle}{bg=KahouLightGold, fg=KahouBlack}
+\setbeamercolor{progress bar}{fg=KahouBlack}
+\setbeamercolor{math text}{fg=Sienna}
+\setbeamercolor{block title}{fg=white, bg=Terracotta}
+\setbeamercolor{block body}{fg=KahouBlack, bg=TerracottaLight}
+\setbeamercolor{background canvas}{bg=SlideBackground}
+\setbeamercolor{button}{fg=KahouBlack, bg=KahouGold}
 
-\setbeamercolor{frametitle}{bg=PennBlue}
-\setbeamercolor{progress bar}{fg=PennBlue}
-\setbeamercolor{math text}{fg=PennRed}
 
-\setbeamercolor{block title}{fg=PennBlue}
-\setbeamercolor{block body}{fg=PennBlue}
 
-\setbeamercolor{block title example}{fg=PennBlue}
-\setbeamercolor{block body example}{fg=PennBlue, bg=yellow}
 
 \setbeamersize{text margin left=5.5pt, text margin right=5.5pt}
 
-\definecolor{cosmiclatte}{rgb}{1.0, 0.99, 0.95}
-\setbeamercolor{background canvas}{bg=cosmiclatte}
-%\titlegraphic{\hfill\includegraphics[height=0.8cm]{/Users/jesusfv/dropbox/Templates_Slides/penn_fulllogo.pdf}}
 \newcommand{\emphcolor}[1]{\textbf{\textcolor{emphcolorval}{#1}}}
 %\newcommand{\mathcolor}[1]{{\mathbf{\color{emphcolorval}{#1}}}}
 \newcommand{\highlightcolor}[1]{{\textbf{\color{highlightcolorval}{#1}}}}
@@ -75,7 +86,7 @@
 \newcommand{\st}{\textrm{s.t.}\,}
 
 \begin{document}
-\title{{\vspace{0.4in}\hspace{0.2in}\textcolor{PennBlue}{Spooky Boundaries at a Distance: \\ \hspace*{5 mm}Inductive Bias, Dynamic Models, and Behavioral Macro}}}
+\title{{\vspace{0.4in}\hspace{0.2in}\textcolor{KahouBlack}{Spooky Boundaries at a Distance: \\ \hspace*{5 mm}Inductive Bias, Dynamic Models, and Behavioral Macro}}}
 \author{\hspace*{4 mm} Mahdi Ebrahimi Kahou\inst{1}\and
 	Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2} \and Sebasti\'an G\'omez-Cardona\inst{3} \\ \hspace*{4 mm}  Jesse Perla\inst{4} \and Jan Rosa\inst{4}}
 
@@ -90,7 +101,7 @@
 
 \maketitle
 
-\section{\textcolor{PennBlue}{Motivation, Question, and Contribution}}
+\section{\textcolor{KahouBlack}{Motivation, Question, and Contribution}}
 
 \begin{frame}{Motivation}
 	\begin{center}
@@ -164,7 +175,7 @@
 
 \end{frame}
 
-\section{\textcolor{PennBlue}{Background: Economic Models, Deep learning and inductive bias}}
+\section{\textcolor{KahouBlack}{Background: Economic Models, Deep learning and inductive bias}}
 
 
 \begin{frame}
@@ -380,7 +391,7 @@
 	\end{enumerate}
 \end{frame}
 
-\section{\textcolor{PennBlue}{Linear asset pricing and the no-bubble condition}}
+\section{\textcolor{KahouBlack}{Linear asset pricing and the no-bubble condition}}
 
 \begin{frame}{Linear asset pricing: setup }
 	\begin{itemize}
@@ -488,7 +499,7 @@
 \end{frame}
 
 
-\section{\textcolor{PennBlue}{Sequential neoclassical growth model and the transversality condition }}
+\section{\textcolor{KahouBlack}{Sequential neoclassical growth model and the transversality condition }}
 
 
 \begin{frame}{Neoclassical growth model: setup }
@@ -541,7 +552,6 @@
 		 \item \emphcolor{Ignore} the transversality condition and solve
 			\hspace*{-5mm}
 		\begin{empheq}[box=\tcbhighmath]{align*}
-			\hspace*{-4mm}
 			\min_{\theta \in \Theta}\Bigg[ \frac{1}{N} \sum_{t \in \mathcal{D}}  \left(\underbrace{\frac{c(t+1;k_{\theta})}{c(t;k_{\theta})} -\beta \big[z(t+1)^{1-\alpha}f'\big(k_{\theta}(t+1)\big)+(1-\delta)\big]}_{\text{Euler residuals}}\right)^2 + \left(\underbrace{k_{\theta}(0)- k_0}_{\text{Initial condition residual}}\right)^2\Bigg]
 		\end{empheq}
 		\item This minimization should provide an accurate short- and medium-run approximation for the optimal capital and consumption path.
@@ -857,7 +867,7 @@ for given initial conditions $k(0) = k_0$, $h(0) = h_0 $, and two transversality
 		\end{columns}
 \end{frame}
 
-\section{\textcolor{PennBlue}{Back to deep learning: Recursive neoclassical growth model and the transversality condition }}
+\section{\textcolor{KahouBlack}{Back to deep learning: Recursive neoclassical growth model and the transversality condition }}
 
 \begin{frame}{Recursive formulation (with a possible BGP)}
 	
