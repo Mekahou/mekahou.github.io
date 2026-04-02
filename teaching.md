@@ -14,7 +14,7 @@ Econ 1102: Principles of Macroeconomics
 
 Econ 2556: Macroeconomics
 
-Econ 3550: Mathematical Economics
+Econ 3350: Mathematical Economics
 
 
 ## University of British Columbia (TA) 
