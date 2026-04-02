@@ -14,8 +14,6 @@ author: Mahdi Ebrahimi Kahou
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  About Me: "aboutme"
-
   Research: "research"
 
   Teaching: "teaching"
