@@ -4,7 +4,7 @@ title: Notes
 subtitle: Idiosyncratic notes on computational economics and machine learning
 ---
 
-These are my notes on computational economics and modern machine learning methods. The goal is to eventually turn them into a graduate-level course on ML and computational economics. All code and notebooks are available on <a href="https://github.com/Mekahou/Notes" target="_blank">GitHub</a> (⭐ 72 stars).
+These are my notes on computational economics and modern machine learning methods. The goal is to eventually turn them into a graduate-level course on ML and computational economics. All code and notebooks are available on <a href="https://github.com/Mekahou/Notes" target="_blank">GitHub</a>.
 
 ---
 
