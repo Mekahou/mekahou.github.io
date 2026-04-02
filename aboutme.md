@@ -16,7 +16,7 @@ I am an assistant professor of economics at <a href="https://www.bowdoin.edu/eco
 
 <ul style="font-size: 0.8em;">
   <li><strong>June 2026</strong> — Scheduled talk at the <strong>International Symposium on Nonparametric Statistics</strong> (June 22–26).</li>
-  <li><strong>January 2026</strong> — Presented at <a href="https://www.aeaweb.org/conference/2025/program/1648?q=eNqrVipOLS7OzM8LqSxIVbKqhnGVrJQMlWp1lJITS1LT84sqgXwlHaXE4uL8ZAizJLUoF8JKSYTKlmTmpkJYZZmp5SDDigoKgAKmBiCTChLTQbJGSrVcMFneXCJh" target="_blank"><strong>ASSA</strong></a>.</li>
+  <li><strong>January 2026</strong> — Presented at <a href="https://www.aeaweb.org/conference/2026/program/2209?q=eNqrVipOLS7OzM8LqSxIVbKqhnGVrJQMlWp1lJITS1LT84sqgXwlHaXE4uL8ZAizJLUoF8JKSYTKlmTmpkJYZZmp5SDDigoKgAKmBiCTChLTUyGmAlwwWdtcImA," target="_blank"><strong>ASSA</strong></a>.</li>
   <li><strong>January 2026</strong> — New note: <a href="https://github.com/Mekahou/Notes/blob/main/deep_learning/Runge_phenomenon_DL.ipynb" target="_blank">Deep Learning and Smooth Interpolation — Runge's Phenomenon</a></li>
   <li><strong>December 2025</strong> — New note: <a href="https://github.com/Mekahou/Notes/blob/main/deep_learning/Linear_Quadratic.ipynb" target="_blank">Linear-Quadratic Dynamic Programming</a></li>
   <li><strong>December 2025</strong> — New note: <a href="https://github.com/Mekahou/Notes/blob/main/deep_learning/McCall_DL.ipynb" target="_blank">Learning Non-Smooth Functions — McCall Search Model</a></li>
