@@ -4,6 +4,8 @@ title: Updates
 subtitle: 
 ---
 
+- **2026** — Presentations: "Solving Models of Economic Dynamics with Ridgeless Kernel Regressions" at **ASSA**; "The Blessings of Overparameterization" at the **International Symposium on Nonparametric Statistics**.
+
 - **January 2026** — New note posted: [Deep Learning and Smooth Interpolation — Runge's Phenomenon](https://github.com/Mekahou/Notes/blob/main/deep_learning/Runge_phenomenon_DL.ipynb){:target="_blank"}
 
 - **December 2025** — New note posted: [Linear-Quadratic Dynamic Programming](https://github.com/Mekahou/Notes/blob/main/deep_learning/Linear_Quadratic.ipynb){:target="_blank"}
