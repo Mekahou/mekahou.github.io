@@ -20,6 +20,6 @@ I am an assistant professor of economics at <a href="https://www.bowdoin.edu/eco
 - **December 2025** — New note: [Linear-Quadratic Dynamic Programming](https://github.com/Mekahou/Notes/blob/main/deep_learning/Linear_Quadratic.ipynb){:target="_blank"}
 - **December 2025** — "Spooky Boundaries at a Distance" accepted subject to Major Revisions at the **Journal of Monetary Economics**.
 - **November 2025** — New note: [Stability of Gradient Descent and the Learning Rate](https://github.com/Mekahou/Notes/blob/main/optimization/on_learning_rate.ipynb){:target="_blank"}
-- **2025** — "Modelling the S Curve" published in **Environmental Research Communications**.
+- **December 2025** — "Modelling the S Curve" published in **Environmental Research Communications**.
 
 </small>

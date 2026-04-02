@@ -12,4 +12,4 @@ subtitle:
 
 - **November 2025** — New note posted: [Stability of Gradient Descent and the Learning Rate](https://github.com/Mekahou/Notes/blob/main/optimization/on_learning_rate.ipynb){:target="_blank"}
 
-- **2025** — "Modelling the S Curve: Transition Dynamics in EV Adoption" published in **Environmental Research Communications**.
+- **December 2025** — "Modelling the S Curve: Transition Dynamics in EV Adoption" published in **Environmental Research Communications**.
