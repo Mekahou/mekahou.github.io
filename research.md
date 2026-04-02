@@ -8,7 +8,7 @@ subtitle:
 -----
 
 **"Spooky Boundaries at a Distance: Inductive Bias, Dynamic Models, and Behavioral Macro"**  
-**_Accept subject to Major Revisions, Journal of Monetary Economics_**
+Accept subject to Major Revisions, Journal of Monetary Economics
 
 <details>
 <summary>Details</summary>
@@ -20,7 +20,7 @@ subtitle:
 ---
 
 **"Solving Models of Economic Dynamics with Ridgeless Kernel Regressions"**  
-**_Revise and Resubmit, Quantitative Economics_**
+Revise and Resubmit, Quantitative Economics
 
 <details>
 <summary>Details</summary>
@@ -68,7 +68,7 @@ subtitle:
 -----
 
 **["Modelling the 'S Curve': Transition Dynamics in EV Adoption"](https://iopscience.iop.org/article/10.1088/2515-7620/ae2cf1/pdf)**  
-**_Environmental Research Communications (2025)_**
+Environmental Research Communications (2025)
 
 <details>
 <summary>Details</summary>
@@ -78,7 +78,7 @@ subtitle:
 ---
 
 **["Macroprudential Policy: A Review"](https://www.sciencedirect.com/science/article/abs/pii/S1572308916302297)**  
-**_Journal of Financial Stability (2017)_**
+Journal of Financial Stability (2017)
 
 <details>
 <summary>Details</summary>
@@ -88,7 +88,7 @@ subtitle:
 ---
 
 **["Quantum Search with Interacting Bose-Einstein Condensates"](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.88.032310)**  
-**_Physical Review A (2013)_**
+Physical Review A (2013)
 
 <details>
 <summary>Details</summary>
