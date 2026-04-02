@@ -5,7 +5,7 @@ subtitle:
 ---
 
 ### Working Papers
------
+<hr style="border: 2px solid #404040;">
 
 **"Spooky Boundaries at a Distance: Inductive Bias, Dynamic Models, and Behavioral Macro"**  
 <small>Accept subject to Major Revisions, **Journal of Monetary Economics**</small>
@@ -53,7 +53,7 @@ subtitle:
 ---
 
 ### Work in Progress
------
+<hr style="border: 2px solid #404040;">
 
 **"The Blessings of Overparameterization"**
 
@@ -65,7 +65,7 @@ subtitle:
 ---
 
 ### Publications
------
+<hr style="border: 2px solid #404040;">
 
 <a target="_blank" href="https://iopscience.iop.org/article/10.1088/2515-7620/ae2cf1/pdf"><strong>"Modelling the 'S Curve': Transition Dynamics in EV Adoption"</strong></a>  
 <small>**Environmental Research Communications** (2025)</small>
