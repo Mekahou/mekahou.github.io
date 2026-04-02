@@ -12,9 +12,9 @@ I am an assistant professor of economics at <a href="https://www.bowdoin.edu/eco
 
 ---
 
-### Updates
+<h4 style="font-size: 0.95em;">Updates</h4>
 
-<ul style="font-size: 0.9em;">
+<ul style="font-size: 0.8em;">
   <li><strong>January 2026</strong> — Presented at <strong>ASSA</strong>.</li>
   <li><strong>June 2026</strong> — Scheduled talk at the <strong>International Symposium on Nonparametric Statistics</strong> (June 22–26).</li>
   <li><strong>January 2026</strong> — New note: <a href="https://github.com/Mekahou/Notes/blob/main/deep_learning/Runge_phenomenon_DL.ipynb" target="_blank">Deep Learning and Smooth Interpolation — Runge's Phenomenon</a></li>
