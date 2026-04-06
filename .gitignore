@@ -22,6 +22,8 @@ beautiful-jekyll-theme-*.gem
 *.snm
 *.gz
 *.toc
+*.fdb_latexmk
+*.fls
 \CV.log
 
 #Specific latex stuff
