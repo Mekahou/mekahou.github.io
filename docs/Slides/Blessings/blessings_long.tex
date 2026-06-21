@@ -84,9 +84,59 @@
 
 \maketitle
 
+\section{\textcolor{KahouBlack}{Motivation, Question, and Contribution}}
+
+\begin{frame}{Motivation}
+	\begin{center}
+		\emphcolor{``I remember my friend Johnny von Neumann used to say, with four parameters I can fit an elephant, and with five I can make him wiggle his trunk.''---{\it Enrico Fermi}}
+		\vspace{0.1in}
+	\end{center}
+	\vspace{0.1in}
+	\begin{itemize}
+		\item Deep learning has proved remarkably capable at solving \emphcolor{high-dimensional problems}.
+		\vspace{0.1in}
+		\item Economists are now using it to find accurate approximate solutions to dynamic models once thought intractable.
+		\vspace{0.1in}
+		\item These networks are \emphcolor{massively overparameterized}, with far more parameters than ``data'' points.
+		\vspace{0.1in}
+		\item Standard statistical wisdom says: more parameters than ``data'' points leads to \emphcolor{overfitting} and poor out-of-grid performance.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Question}
+	content...
+\end{frame}
+
+\begin{frame}{Contribution}
+	content...
+\end{frame}
+
 %=====================================================================
-\section{\textcolor{KahouBlack}{What economists mean by ``solving a model''}}
+\section{\textcolor{KahouBlack}{What do we mean by ``solving a model''?}}
 %=====================================================================
+
+
+\begin{frame}{An economic model is a system of functional equations}
+	Many theoretical models can be written as functional equations:
+	\begin{itemize}
+		\item Economic object of interest: $f $, where $f : \Xdom\to \mathcal{R}\subseteq \mathbb{R}^N$ 
+		\begin{itemize}
+			\item e.g., production, investment choice, best-response, etc.
+		\end{itemize}
+		\vspace{0.1in}
+		\item Domain of $f$: $\Xdom$  
+		\begin{itemize}
+			\item e.g. space of capital, opponents state, etc.
+		\end{itemize}
+		\vspace{0.1in}
+		\item The ``Economics model'':  $\ell \big(x,f\big)$  
+		\begin{itemize}
+			\item e.g., Euler and Bellman residuals, equilibrium FOCs.
+		\end{itemize}
+		\vspace{0.1in}
+	\end{itemize}
+	Then a \emphcolor{solution} is $f^*\in \F$ where $\ell(x,f^*) = \mathbf{0}$ for all $x \in \Xdom$.\vspace{0.1in}
+\end{frame}
 
 \begin{frame}{An economic model is a system of functional equations}
 	\begin{itemize}
