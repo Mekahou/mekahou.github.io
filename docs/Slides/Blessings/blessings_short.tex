@@ -104,16 +104,31 @@
 \end{frame}
 
 \begin{frame}{Question}
-	content...
+	When solving dynamic models with neural networks
+	\begin{itemize}
+		\item Does overparameterization lead to poor approximation in out-of-grid performance?
+		\vspace{0.1in}
+		\item Is overparameterization a ``necessary evil'' that comes with modern machine learning methods, or does it give us something extra?
+		
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Contribution}
-	content...
+	\begin{enumerate}
+		\item \emphcolor{No overfitting:} as the number of network parameters grows, the solutions become more accurate.
+		\vspace{0.1in}
+		\item \emphcolor{Algorithmic stability:} the approximate solutions of dynamic models in economics are unstable; overparameterization increases stability.
+	\end{enumerate}
+	\begin{block}{Implication}
+		When in doubt, use a bigger network. Overparameterization is not a source of risk to be managed but a feature to be exploited.
+	\end{block}
 \end{frame}
 
 %=====================================================================
-\section{\textcolor{KahouBlack}{What do we mean by ``solving a model''?}}
+\section{\textcolor{KahouBlack}{Background: Economic Models, Approximate Solutions, and Overparameterization}}
 %=====================================================================
+
+\subsection{\textcolor{KahouBlack}{What do we mean by ``solving a model''?}}
 
 
 \begin{frame}{An economic model is a system of functional equations}
@@ -138,28 +153,42 @@
 	Then a \emphcolor{solution} is $f^*\in \F$ where $\ell(x,f^*) = \mathbf{0}$ for all $x \in \Xdom$.\vspace{0.1in}
 \end{frame}
 
-\begin{frame}{An economic model is a system of functional equations}
+\begin{frame}{Approximate solution}
+	\begin{enumerate}
+		\item Sample $\mathcal{X}$: $\mathcal{D} = \{x_1,\cdots,x_N\}$
+		\vspace{0.025in}
+		\item Pick a family of parametric functions (e.g., polynomials, Chebyshev polynomials, neural networks) $f_\theta(\cdot)$:
+		\begin{itemize}
+			\item $\theta = \{\theta_1,\cdots,\theta_M\}$: parameters for optimization (e.g., coefficients, or weights and biases).
+		\end{itemize}
+		\vspace{0.025in}
+		\item To find an approximation for $f$ solve:
+		\begin{align*}
+			\min_{\theta } \frac{1}{N}\sum_{x \in \mathcal{D}} \|\underbrace{\ell(x,f_\theta)}_{\text{Econ model error}}\|_2^2
+		\end{align*}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Neural Networks and Overparameterization}
+	\emphcolor{Neural Networks} form a \emphcolor{highly-overparameterized} ($M\gg N$) class of functions.
 	\begin{itemize}
-		\item Economists build models by specifying how agents behave: what they want (preferences), what they can do (technology), and what limits them (constraints).
+
+		\item Example: one layer neural network, $f_{\theta} : \mathbb{R}^Q\rightarrow \mathbb{R}$:
+		\begin{equation*}
+			f_{\theta}(x) = W_2 \cdot \sigma \left(W_1\cdot x+b_1\right)+b_2
+		\end{equation*}
 		\vspace{0.1in}
-		\item Optimizing behavior implies \emphcolor{functional equations whose unknowns are functions}.
+		\item $W_1\in \mathbb{R}^{P\times Q}$, $b_1\in \mathbb{R}^{P\times 1}$, $W_2 \in \mathbb{R}^{1\times P}$, and $b_2 \in \mathbb{R}$.
 		\vspace{0.1in}
-		\item \emphcolor{Example:} a social planner chooses a consumption rate $c_t$ given capital $k_t$ and stochastic productivity $z_t$. Capital evolves as:
-		\begin{align*}
-			\dot{k}_t = e^{z_t} k_t^{\alpha} - \delta k_t - c_t
-		\end{align*}
-		Output $e^{z_t} k_t^\alpha$ is produced, capital depreciates at rate $\delta$, and whatever is not consumed is invested.
-		\vspace{0.05in}
-		\item Productivity follows an Ornstein--Uhlenbeck process:
-		\begin{align*}
-			dz_t = -\mu z_t\, dt + \sigma\, dW_t
-		\end{align*}
-		\item The social planner maximizes expected discounted lifetime utility:
-		\begin{align*}
-			\max_{\{c_t\}} \mathbb{E}_0 \int_0^\infty e^{-\rho t} u(c_t)\, dt
-		\end{align*}
+		\item $\theta \equiv \{b_1,W_1,b_2,W_2\}$ are the coefficients, in this example $M = PQ+P+P+1$.
+		\vspace{0.1in}
+		\item $\sigma(\cdot)$ is a nonlinear function applied element-wise (e.g., $\max\{\cdot,0\}$).
+		\vspace{0.1in}
+		\item Making it ``deeper'' by adding another ``layer'':
+		$f_{\theta}(x)\equiv W_3\cdot\sigma(W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2)+b_3.$
 	\end{itemize}
 \end{frame}
+
 
 \begin{frame}{What does ``solving'' this model mean?}
 	\begin{itemize}
