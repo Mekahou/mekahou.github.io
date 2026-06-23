@@ -275,7 +275,7 @@
 \end{frame}
 
 
-\begin{frame}{LQ: neural network implementation}
+\begin{frame}[label=lq-nn-impl]{LQ: neural network implementation}
 	\begin{itemize}
 		\item \emphcolor{Architecture:} one-hidden-layer ReLU networks for value and policy functions. Hidden units $H = 1$ to $H = 7$ (4 to 22 parameters).
 		\item \emphcolor{Training data:} the optimal $u$ depends only on $Y$ ($y$ enters linearly and does not affect the marginal return to investment), so we minimize the mean squared Euler residual over $n_Y = 6$ grid points:
@@ -285,25 +285,19 @@
 		\item  Adam optimizer with early stopping at loss $< 10^{-8}$.
 		\item \emphcolor{Test data:} $T = 29$ period path simulated from fixed initial conditions. Test points lie in the interior of the state space and never on a training node.
 	\end{itemize}
+	\vspace{0.05in}
+	\hfill\hyperlink{lq-param}{\beamerskipbutton{Parameterization}}
 \end{frame}
-
-
-\begin{frame}{Parameterization}
-	\vspace{0.2in}
-	\begin{center}
-		\begin{tabular}{llcl}
-			\toprule
-			Description & Symbol & Value & \\
-			\midrule
-			Discount factor       & $\beta$    & \textcolor{emphcolorval}{0.9}  & \\
-			Demand intercept      & $\alpha_0$ & \textcolor{emphcolorval}{1.0}  & inverse demand level \\
-			Demand slope          & $\alpha_1$ & \textcolor{emphcolorval}{1.3}  & price sensitivity to aggregate \\
-			Adjustment cost       & $\gamma$   & \textcolor{emphcolorval}{100}  & convex investment cost \\
-			Aggregate drift       & $h_0$      & \textcolor{emphcolorval}{0.05} & constant in $Y' = h_0 + h_1 Y$ \\
-			Aggregate persistence & $h_1$      & \textcolor{emphcolorval}{0.9}  & AR coefficient for $Y$ \\
-			\bottomrule
-		\end{tabular}
-	\end{center}
+\begin{frame}{Deep learning is a \emphcolor{non-convex} optimization}
+	\begin{itemize}
+		\item Deep learning is a non-convex optimization.
+		\vspace{0.1in}
+		\item In non-convex optimization solutions depends on the initialization of weights and biases $\theta$.
+		\vspace{0.1in}
+		\item Most economic dynamical models are non-linear.
+		\vspace{0.1in} 
+		\item We run the algorithm for $50$ different initialization (seed) of the weights and biases.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{LQ: train and test Euler-residual loss}
@@ -316,10 +310,12 @@
 	\end{itemize}
 \end{frame}
 
+
+
 \begin{frame}{LQ: absolute relative error vs.\ closed-form solution}
 	\begin{figure}[t!]
 		\centering
-		\includegraphics[width=0.85\textwidth]{figures/LQ_policy_rel_error_median_vs_max.pdf}
+		\includegraphics[width=0.8\textwidth]{figures/LQ_policy_rel_error_median_vs_max.pdf}
 	\end{figure}
 	\begin{itemize}
 		\item Median (left) and maximum (right) absolute relative error of the NN policy. Both statistics and their cross-seed dispersion fall with network width.
@@ -337,28 +333,13 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{LQ: value function results}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{center}\footnotesize (A) Train and test Bellman MSE\end{center}
-			\includegraphics[width=\textwidth]{figures/LQ_value_test_train_loss.pdf}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{center}\footnotesize (B) Median and max relative error\end{center}
-			\includegraphics[width=\textwidth]{figures/LQ_value_rel_error_median_vs_max.pdf}
-		\end{column}
-	\end{columns}
-	\vspace{0.1in}
-	\begin{itemize}
-		\item Value function network (trained conditional on estimated policy) displays the same pattern: accuracy improves and cross-seed uncertainty collapses with width.
-	\end{itemize}
-\end{frame}
+
 
 %=====================================================================
 \section{\textcolor{KahouBlack}{Application 2: McCall job-search model}}
 %=====================================================================
 
-\begin{frame}{From a linear to a non-smooth operator equation}
+\begin{frame}{From a linear to a non-smooth problem equation}
 	\begin{itemize}
 		\item The LQ model is linear, which makes it the cleanest test but also the easiest.
 		\item Does the blessing survive when the operator $\Op$ is nonlinear and the solution is non-smooth?
@@ -388,22 +369,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Parameterization}
-	\vspace{0.2in}
-	\begin{center}
-		\begin{tabular}{llcl}
-			\toprule
-			Description & Symbol & Value & \\
-			\midrule
-			Discount factor      & $\beta$ & \textcolor{emphcolorval}{0.9} & \\
-			Wage support         & $B$     & \textcolor{emphcolorval}{1.0} & upper bound of $\mathrm{U}[0,B]$ \\
-			Unemployment benefit & $c$     & \textcolor{emphcolorval}{0.1} & flow payoff while searching \\
-			\bottomrule
-		\end{tabular}
-	\end{center}
-\end{frame}
-
-\begin{frame}{McCall: deep learning implementation}
+\begin{frame}[label=mccall-impl]{McCall: deep learning implementation}
 	\begin{itemize}
 		\item \emphcolor{Architecture:} one-hidden-layer ReLU network $v(w;\theta_v)$, linear output. 50 random seeds per width.
 		\item \emphcolor{Training:} $N = 12$ uniform grid on $[0,1]$. Minimize mean squared Bellman residual:
@@ -414,6 +380,8 @@
 		\item \emphcolor{Test:} finer $N = 100$ uniform grid, strictly outside the training set.
 		\item \emphcolor{Accuracy metric:} absolute relative error $\varepsilon_v(w) = |v(w;\theta_v^*) - v(w)| / |v(w)|$. Summarized by max and median across test grid, then 10th/50th/90th percentiles across 50 seeds.
 	\end{itemize}
+	\vspace{0.05in}
+	\hfill\hyperlink{mccall-param}{\beamerskipbutton{Parameterization}}
 \end{frame}
 
 \begin{frame}{McCall: train and test Bellman-residual loss}
@@ -423,8 +391,7 @@
 		\end{column}
 		\begin{column}{0.45\textwidth}
 			\begin{itemize}
-				\item Train loss hits the early-stopping floor at the interpolation threshold ($\sim$12 parameters, matching $N = 12$ training points).
-				\item Test loss descends again in the overparameterized regime: the \emphcolor{double-descent pattern}.
+				\item Test loss descends again in the overparameterized regime: the \emphcolor{double-descent pattern}?.
 				\item The across-seed band collapses.
 			\end{itemize}
 		\end{column}
@@ -434,7 +401,7 @@
 \begin{frame}{McCall: absolute relative error}
 	\begin{figure}[t!]
 		\centering
-		\includegraphics[width=0.85\textwidth]{figures/Mccall_rel_error_median_vs_max.pdf}
+		\includegraphics[width=0.8\textwidth]{figures/Mccall_rel_error_median_vs_max.pdf}
 	\end{figure}
 	\begin{itemize}
 		\item Median (left) and max (right) relative error fall from $\sim$30\% to $\sim$2\% as the network enters the overparameterized regime.
@@ -674,21 +641,42 @@
 \section{Appendix}
 %=====================================================================
 
-\begin{frame}{Two PDEs, one key difference}
+
+\begin{frame}[label=lq-param]{Parameterization: Linear-Quadratic model}
+	\vspace{0.2in}
+	\begin{center}
+		\begin{tabular}{llcl}
+			\toprule
+			Description & Symbol & Value & \\
+			\midrule
+			Discount factor       & $\beta$    & \textcolor{emphcolorval}{0.9}  & \\
+			Demand intercept      & $\alpha_0$ & \textcolor{emphcolorval}{1.0}  & inverse demand level \\
+			Demand slope          & $\alpha_1$ & \textcolor{emphcolorval}{1.3}  & price sensitivity to aggregate \\
+			Adjustment cost       & $\gamma$   & \textcolor{emphcolorval}{100}  & convex investment cost \\
+			Aggregate drift       & $h_0$      & \textcolor{emphcolorval}{0.05} & constant in $Y' = h_0 + h_1 Y$ \\
+			Aggregate persistence & $h_1$      & \textcolor{emphcolorval}{0.9}  & AR coefficient for $Y$ \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
 	\vspace{0.1in}
-	\begin{itemize}
-		\item The time-dependent \emphcolor{Schr\"odinger equation} for a single particle in one dimension:
-		\begin{align*}
-			i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + V(x)\, \psi
-		\end{align*}
-		Unknown: $\psi(x,t)$. The potential $V(x)$ is given.
-		\vspace{0.1in}
-		\item The \emphcolor{Hamilton--Jacobi--Bellman equation} for the stochastic neoclassical growth model:
-		\begin{align*}
-			\rho V = \max_c \left\{ u(c) + V_k\!\left[e^z k^\alpha - \delta k - c\right] - \mu z\, V_z + \tfrac{1}{2}\sigma^2 V_{zz} \right\}
-		\end{align*}
-		Unknown: $V(k,z)$. The drift of $k$ depends on $(u')^{-1}(V_k)$, a derivative of the unknown.
-	\end{itemize}
+	\hfill\hyperlink{lq-nn-impl}{\beamerreturnbutton{Back}}
+\end{frame}
+
+\begin{frame}[label=mccall-param]{Parameterization: McCall model}
+	\vspace{0.2in}
+	\begin{center}
+		\begin{tabular}{llcl}
+			\toprule
+			Description & Symbol & Value & \\
+			\midrule
+			Discount factor      & $\beta$ & \textcolor{emphcolorval}{0.9} & \\
+			Wage support         & $B$     & \textcolor{emphcolorval}{1.0} & upper bound of $\mathrm{U}[0,B]$ \\
+			Unemployment benefit & $c$     & \textcolor{emphcolorval}{0.1} & flow payoff while searching \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\vspace{0.1in}
+	\hfill\hyperlink{mccall-impl}{\beamerreturnbutton{Back}}
 \end{frame}
 
 \end{document}
