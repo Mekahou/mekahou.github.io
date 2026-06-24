@@ -99,14 +99,14 @@
 		\vspace{0.1in}
 		\item These networks are \emphcolor{massively overparameterized}, with far more parameters than ``data'' points.
 		\vspace{0.1in}
-		\item Standard statistical wisdom says: more parameters than ``data'' points leads to \emphcolor{overfitting} and poor out-of-grid performance.
+		\item Standard statistical wisdom says: more parameters than ``data'' points leads to \emphcolor{overfitting} and poor out-of-grid / out-of-distribution performance.
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Question}
-	When solving dynamic models with neural networks
+	When solving dynamic models with neural networks:
 	\begin{itemize}
-		\item Does overparameterization lead to poor approximation in out-of-grid performance?
+		\item Does overparameterization lead to poor approximation in out-of-grid / out-of-distribution performance?
 		\vspace{0.1in}
 		\item Is overparameterization a ``necessary evil'' that comes with modern machine learning methods, or does it give us something extra?
 		
@@ -128,23 +128,20 @@
 \section{\textcolor{KahouBlack}{Background: Economic Models, Approximate Solutions, and Overparameterization}}
 %=====================================================================
 
-\subsection{\textcolor{KahouBlack}{What do we mean by ``solving a model''?}}
-
-
 \begin{frame}{An economic model is a system of functional equations}
 	Many theoretical models can be written as functional equations:
 	\begin{itemize}
-		\item Economic object of interest: $f $, where $f : \Xdom\to \mathcal{R}\subseteq \mathbb{R}^N$ 
+		\item Economic object of interest: $f$, where $f : \Xdom\to \mathcal{R}\subseteq \mathbb{R}^N$
 		\begin{itemize}
-			\item e.g., production, investment choice, best-response, etc.
+			\item e.g., entry/exit decision, investment choice, best-response, etc.
 		\end{itemize}
 		\vspace{0.1in}
-		\item Domain of $f$: $\Xdom$  
+		\item Domain of $f$: $\Xdom$
 		\begin{itemize}
-			\item e.g. space of capital, opponents state, etc.
+			\item e.g., space of capital, opponents' state, etc.
 		\end{itemize}
 		\vspace{0.1in}
-		\item The ``Economics model'':  $\ell \big(x,f\big)$  
+		\item The ``Economics model'': $\ell \big(x,f\big)$
 		\begin{itemize}
 			\item e.g., Euler and Bellman residuals, equilibrium FOCs.
 		\end{itemize}
@@ -157,14 +154,14 @@
 	\begin{enumerate}
 		\item Sample $\mathcal{X}$: $\mathcal{D} = \{x_1,\cdots,x_N\}$
 		\vspace{0.025in}
-		\item Pick a family of parametric functions (e.g., polynomials, Chebyshev polynomials, neural networks) $f_\theta(\cdot)$:
+		\item Pick a family of parametric functions (e.g., polynomials, Chebyshev polynomials, neural networks) $f(\cdot;\theta)$:
 		\begin{itemize}
 			\item $\theta = \{\theta_1,\cdots,\theta_M\}$: parameters for optimization (e.g., coefficients, or weights and biases).
 		\end{itemize}
 		\vspace{0.025in}
 		\item To find an approximation for $f$ solve:
 		\begin{align*}
-			\min_{\theta } \frac{1}{N}\sum_{x \in \mathcal{D}} \|\underbrace{\ell(x,f_\theta)}_{\text{Econ model error}}\|_2^2
+			\min_{\theta } \frac{1}{N}\sum_{x \in \mathcal{D}} \|\underbrace{\ell\left(x,f(\cdot;\theta)\right)}_{\text{Econ model error}}\|_2^2
 		\end{align*}
 	\end{enumerate}
 \end{frame}
@@ -173,9 +170,9 @@
 	\emphcolor{Neural Networks} form a \emphcolor{highly-overparameterized} ($M\gg N$) class of functions.
 	\begin{itemize}
 
-		\item Example: one layer neural network, $f_{\theta} : \mathbb{R}^Q\rightarrow \mathbb{R}$:
+		\item Example: one layer neural network, $f(\cdot;\theta) : \mathbb{R}^Q\rightarrow \mathbb{R}$:
 		\begin{equation*}
-			f_{\theta}(x) = W_2 \cdot \sigma \left(W_1\cdot x+b_1\right)+b_2
+			f(x;\theta) = W_2 \cdot \sigma \left(W_1\cdot x+b_1\right)+b_2
 		\end{equation*}
 		\vspace{0.1in}
 		\item $W_1\in \mathbb{R}^{P\times Q}$, $b_1\in \mathbb{R}^{P\times 1}$, $W_2 \in \mathbb{R}^{1\times P}$, and $b_2 \in \mathbb{R}$.
@@ -185,10 +182,25 @@
 		\item $\sigma(\cdot)$ is a nonlinear function applied element-wise (e.g., $\max\{\cdot,0\}$).
 		\vspace{0.1in}
 		\item Making it ``deeper'' by adding another ``layer'':
-		$f_{\theta}(x)\equiv W_3\cdot\sigma(W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2)+b_3.$
+		$f(x;\theta)\equiv W_3\cdot\sigma(W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2)+b_3.$
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Deep learning is a \emphcolor{non-convex} optimization}
+	\begin{itemize}
+		\item Training a neural network is \emphcolor{non-convex} in $\theta$ on its own, since the layers compose nonlinear activations.
+		\vspace{0.1in}
+		\item On top of that, most economic dynamic models are \emphcolor{nonlinear}.
+		\vspace{0.1in}
+		\item In a non-convex problem, the solution depends on the \emphcolor{initialization} of the weights and biases $\theta$.
+		\vspace{0.1in}
+		\item So the ``answer'' can depend on the random seed.
+		\vspace{0.1in}
+		\item We run the algorithm for $50$ different initializations (seeds) of the weights and biases.
+	\end{itemize}
+\end{frame}
+
+%=====================================================================
 \section{\textcolor{KahouBlack}{Applications}}
 
 \begin{frame}{Experimental design}
@@ -247,7 +259,7 @@
 			v(x) &= \max_u \left\{ -x^\top R\, x - u^\top Q\, u + \beta\, v(x') \right\} \\
 			&\st\quad x' = A x + B u, \quad x_0 \text{ given}
 		\end{align*}
-		\item State variable: $x\in \mathbb{R}^{n}$. Control variable: $u\in \mathbb{R}^k$.
+		\item State variable: $x\in \mathbb{R}^{n}$. Control variable: $u\in \mathbb{R}^m$.
 		\item Closed-form solution:
 		\begin{empheq}[box=\tcbhighmath]{align*}
 			v(x) = -x^\top P x, \qquad u(x) = -F x
@@ -282,22 +294,11 @@
 		\begin{empheq}[box=\tcbhighmath]{align*}
 			\min_{\theta_u} \frac{1}{n_Y} \sum_{i=1}^{n_Y} \left[\gamma\, u(Y_i;\theta_u) - \beta\big(\gamma\, u(Y_i';\theta_u) + \alpha_0 - \alpha_1 Y_i'\big)\right]^2
 		\end{empheq}
-		\item  Adam optimizer with early stopping at loss $< 10^{-8}$.
+		\item Adam optimizer with early stopping at loss $< 10^{-8}$.
 		\item \emphcolor{Test data:} $T = 29$ period path simulated from fixed initial conditions. Test points lie in the interior of the state space and never on a training node.
 	\end{itemize}
 	\vspace{0.05in}
 	\hfill\hyperlink{lq-param}{\beamerskipbutton{Parameterization}}
-\end{frame}
-\begin{frame}{Deep learning is a \emphcolor{non-convex} optimization}
-	\begin{itemize}
-		\item Deep learning is a non-convex optimization.
-		\vspace{0.1in}
-		\item In non-convex optimization solutions depends on the initialization of weights and biases $\theta$.
-		\vspace{0.1in}
-		\item Most economic dynamical models are non-linear.
-		\vspace{0.1in} 
-		\item We run the algorithm for $50$ different initialization (seed) of the weights and biases.
-	\end{itemize}
 \end{frame}
 
 \begin{frame}{LQ: train and test Euler-residual loss}
@@ -339,7 +340,7 @@
 \section{\textcolor{KahouBlack}{Application 2: McCall job-search model}}
 %=====================================================================
 
-\begin{frame}{From a linear to a non-smooth problem equation}
+\begin{frame}{From a linear to a non-smooth operator equation}
 	\begin{itemize}
 		\item The LQ model is linear, which makes it the cleanest test but also the easiest.
 		\item Does the blessing survive when the operator $\Op$ is nonlinear and the solution is non-smooth?
@@ -369,7 +370,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[label=mccall-impl]{McCall: deep learning implementation}
+\begin{frame}[label=mccall-impl]{McCall: neural network implementation}
 	\begin{itemize}
 		\item \emphcolor{Architecture:} one-hidden-layer ReLU network $v(w;\theta_v)$, linear output. 50 random seeds per width.
 		\item \emphcolor{Training:} $N = 12$ uniform grid on $[0,1]$. Minimize mean squared Bellman residual:
@@ -391,7 +392,7 @@
 		\end{column}
 		\begin{column}{0.45\textwidth}
 			\begin{itemize}
-				\item Test loss descends again in the overparameterized regime: the \emphcolor{double-descent pattern}?.
+				\item Test loss descends again in the overparameterized regime: the \emphcolor{double-descent pattern}.
 				\item The across-seed band collapses.
 			\end{itemize}
 		\end{column}
@@ -401,7 +402,7 @@
 \begin{frame}{McCall: absolute relative error}
 	\begin{figure}[t!]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figures/Mccall_rel_error_median_vs_max.pdf}
+		\includegraphics[width=0.75\textwidth]{figures/Mccall_rel_error_median_vs_max.pdf}
 	\end{figure}
 	\begin{itemize}
 		\item Median (left) and max (right) relative error fall from $\sim$30\% to $\sim$2\% as the network enters the overparameterized regime.
@@ -446,53 +447,23 @@
 		\item \emphcolor{LHS}: marginal utility cost of saving one unit today.
 		\item \emphcolor{RHS}: expected discounted marginal utility gain from extra capital tomorrow (marginal product plus undepreciated capital).
 		\item Nonlinearity plus stochastic two-dimensional state means no analytical solution.
-		\item This is the operator equation from slide 1, now in its full stochastic form.
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Parameterization}
-	\vspace{0.2in}
-	\begin{center}
-		\begin{tabular}{llcl}
-			\toprule
-			Description & Symbol & Value & \\
-			\midrule
-			Discount factor   & $\beta$  & \textcolor{emphcolorval}{0.96} & \\
-			Capital share     & $\alpha$ & \textcolor{emphcolorval}{1/3}  & Cobb--Douglas exponent \\
-			Depreciation rate & $\delta$ & \textcolor{emphcolorval}{0.1}  & per-period capital depreciation \\
-			TFP persistence   & $\rho$   & \textcolor{emphcolorval}{0.9}  & AR(1) coefficient for $z_t$ \\
-			TFP volatility    & $\sigma$ & \textcolor{emphcolorval}{0.01} & std.\ dev.\ of $\varepsilon_t$ \\
-			Utility function  & $u(c)$   & \textcolor{emphcolorval}{$\ln c$} & log utility \\
-			\bottomrule
-		\end{tabular}
-	\end{center}
-\end{frame}
-
-\begin{frame}{RBC: deep learning implementation}
+\begin{frame}[label=rbc-impl]{RBC: neural network implementation}
 	\begin{itemize}
 		\item \emphcolor{Architecture:} one-hidden-layer ReLU network $k'(k,z;\theta)$. Output layer: Softplus activation $\log(1+e^x)$ to enforce $k' > 0$. 50 seeds per width.
 		\item \emphcolor{Training:} $20 \times 20$ Cartesian grid ($N = 400$). Euler residual:
 		\begin{empheq}[box=\tcbhighmath]{align*}
-			\ell_{\mathrm{Euler}}(k,z;\theta) = \frac{1}{c(k,z;\theta)} - \beta \sum_{i=1}^M \frac{w_i}{\sqrt{\pi}} \left[ \frac{\alpha e^{\rho z + \sqrt{2}\sigma \zeta_i} k'(k,z;\theta)^{\alpha-1} + 1 - \delta}{c\big(k'(k,z;\theta),\, \rho z + \sqrt{2}\sigma \zeta_i;\, \theta\big)} \right]
+			\ell_{\mathrm{Euler}}(k,z;\theta) = \frac{1}{c(k,z;\theta)} - \beta \sum_{i=1}^J \frac{w_i}{\sqrt{\pi}} \left[ \frac{\alpha e^{\rho z + \sqrt{2}\sigma \zeta_i} k'(k,z;\theta)^{\alpha-1} + 1 - \delta}{c\big(k'(k,z;\theta),\, \rho z + \sqrt{2}\sigma \zeta_i;\, \theta\big)} \right]
 		\end{empheq}
-		with $M = 15$ Gauss--Hermite nodes. Adam with StepLR scheduler.
+		with $J = 15$ Gauss--Hermite nodes. Adam with StepLR scheduler.
 		\item \emphcolor{Penalty term:} $\lambda\big(k'(k^*,0;\theta) - k^*\big)^2$ with $\lambda = 0.01$, enforcing a necessary implication of the transversality condition at the steady state.
 	\end{itemize}
+	\vspace{0.05in}
+	\hfill\hyperlink{rbc-param}{\beamerskipbutton{Parameterization}}
 \end{frame}
 
-\begin{frame}{RBC: why the penalty term?}
-	\begin{itemize}
-		\item The Euler equation is a \emph{necessary but not sufficient} condition for optimality.
-		\item Both the stable and explosive solution manifolds through the steady state satisfy it identically.
-		\item What rules out explosive solutions is the transversality condition (TVC):
-		\begin{align*}
-			\lim_{t\to\infty} \beta^t u'(c_t) k_{t+1} = 0
-		\end{align*}
-		\item The Euler residual loss does not enforce the TVC directly.
-		\item The penalty resolves this multiplicity by imposing $k'(k^*,0) = k^*$: the steady state is a fixed point of the policy function.
-		\item Without this, gradient-based training can converge to the explosive manifold: small Euler residuals but divergent simulated paths.
-	\end{itemize}
-\end{frame}
 
 \begin{frame}{RBC: training and test data}
 	\begin{columns}
@@ -526,7 +497,7 @@
 \begin{frame}{RBC: absolute relative error vs.\ VFI}
 	\begin{figure}[t!]
 		\centering
-		\includegraphics[width=0.85\textwidth]{figures/RBC_rel_error_median_vs_max.pdf}
+		\includegraphics[width=0.8\textwidth]{figures/RBC_rel_error_median_vs_max.pdf}
 	\end{figure}
 	\begin{itemize}
 		\item Median (left) and maximum (right) absolute relative error of the NN capital policy versus VFI.
@@ -628,7 +599,7 @@
 \begin{frame}{Takeaways}
 	\begin{itemize}
 		\item \emphcolor{Finding 1:} no overfitting. As network width increases, out-of-sample Euler and Bellman residuals decline. Value and policy functions converge toward their benchmarks.
-		\item \emphcolor{Finding 2:} algorithmic stability. Small networks produce solutions that depend on the random seed. Wide networks concentrate across seeds, making the algorithm reliable and initialization-independent.
+		\item \emphcolor{Finding 2:} algorithmic stability. Small networks produce solutions that depend on the \emphcolor{initialization}. Wide networks concentrate across seeds, making the algorithm reliable and \emphcolor{initialization-independent}.
 		\item Documented consistently across three operator equations: linear with closed form (LQ), nonlinear with kink (McCall), stochastic with no analytical solution (RBC).
 		\item Robust across activations (ReLU, Leaky ReLU, Sigmoid) and depths (one and two hidden layers).
 	\end{itemize}
@@ -677,6 +648,26 @@
 	\end{center}
 	\vspace{0.1in}
 	\hfill\hyperlink{mccall-impl}{\beamerreturnbutton{Back}}
+\end{frame}
+
+\begin{frame}[label=rbc-param]{Parameterization: Real Business Cycle model}
+	\vspace{0.2in}
+	\begin{center}
+		\begin{tabular}{llcl}
+			\toprule
+			Description & Symbol & Value & \\
+			\midrule
+			Discount factor   & $\beta$  & \textcolor{emphcolorval}{0.96} & \\
+			Capital share     & $\alpha$ & \textcolor{emphcolorval}{1/3}  & Cobb--Douglas exponent \\
+			Depreciation rate & $\delta$ & \textcolor{emphcolorval}{0.1}  & per-period capital depreciation \\
+			TFP persistence   & $\rho$   & \textcolor{emphcolorval}{0.9}  & AR(1) coefficient for $z_t$ \\
+			TFP volatility    & $\sigma$ & \textcolor{emphcolorval}{0.01} & std.\ dev.\ of $\varepsilon_t$ \\
+			Utility function  & $u(c)$   & \textcolor{emphcolorval}{$\ln c$} & log utility \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\vspace{0.1in}
+	\hfill\hyperlink{rbc-impl}{\beamerreturnbutton{Back}}
 \end{frame}
 
 \end{document}
