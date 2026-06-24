@@ -196,7 +196,7 @@
 		\vspace{0.1in}
 		\item In a non-convex problem, the solution depends on the \emphcolor{initialization} of the weights and biases $\theta$.
 		\vspace{0.1in}
-		\item So the ``answer'' can depend on the random seed.
+		\item So the ``answer'' can depend on the initialization.
 		\vspace{0.1in}
 		\item We run the algorithm for $50$ different initializations (seeds) of the weights and biases.
 	\end{itemize}
@@ -537,7 +537,7 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}{Robustness: alternative activations for the LQ model}
+\begin{frame}[label=robustness-activations]{Robustness: alternative activations for the LQ model}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
 			\includegraphics[width=\textwidth]{figures/LQ_policy_robustness_activations.pdf}
@@ -548,6 +548,8 @@
 				\item Top row: train/test Euler MSE. Bottom row: median relative error.
 				\item Both activations replicate the main finding: accuracy improves with width, across-seed dispersion collapses.
 			\end{itemize}
+			\vspace{0.05in}
+			\hfill\hyperlink{activation-defs}{\beamerskipbutton{Activation functions}}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -670,6 +672,31 @@
 	\end{center}
 	\vspace{0.1in}
 	\hfill\hyperlink{rbc-impl}{\beamerreturnbutton{Back}}
+\end{frame}
+
+\begin{frame}[label=activation-defs]{Activation functions}
+	For a scalar pre-activation $z \in \mathbb{R}$, applied element-wise:
+	\vspace{0.1in}
+	\begin{itemize}
+		\item \emphcolor{ReLU}:
+		\begin{equation*}
+			\sigma(z) = \max\{0, z\} =
+			\begin{cases} z & \text{if } z \geq 0, \\ 0 & \text{if } z < 0. \end{cases}
+		\end{equation*}
+		\vspace{0.05in}
+		\item \emphcolor{Leaky ReLU} (slope $\alpha = 0.01$):
+		\begin{equation*}
+			\sigma(z) = \max\{\alpha z, z\} =
+			\begin{cases} z & \text{if } z \geq 0, \\ \alpha z & \text{if } z < 0. \end{cases}
+		\end{equation*}
+		\vspace{0.05in}
+		\item \emphcolor{Sigmoid}:
+		\begin{equation*}
+			\sigma(z) = \frac{1}{1 + e^{-z}}.
+		\end{equation*}
+	\end{itemize}
+	\vspace{0.05in}
+	\hfill\hyperlink{robustness-activations}{\beamerreturnbutton{Back}}
 \end{frame}
 
 \end{document}
