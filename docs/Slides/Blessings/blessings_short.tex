@@ -72,15 +72,17 @@
 \newcommand{\Op}{\mathcal{T}}
 \newcommand{\st}{\textrm{s.t.}\,}
 
-\begin{document}
+\begin{document}	
 \title{{\vspace{0.4in}\hspace{0.2in}\textcolor{KahouBlack}{The Blessings of Overparameterization: \\ \hspace*{5mm}Applications in Solving Economic Models}}}
-\author{\hspace*{4mm} Mahdi Ebrahimi Kahou\inst{1} \and
+\author{\hspace*{4mm} Mahdi E Kahou\inst{1} \and
 	Jes\'{u}s Fern\'{a}ndez-Villaverde\inst{2}}
 
-\institute{\inst{1}Bowdoin College \and
-	\inst{2}University of Pennsylvania}
 
-\date{International Symposium on Nonparametric Statistics (ISNPS 2026) \\ \vspace{0.05in} Thessaloniki, Greece \quad June 22--26, 2026}
+\institute{\inst{1}Bowdoin College \and
+	\inst{2}University of Pennsylvania \\[0.18in]
+	\textcolor{Terracotta}{International Symposium on Nonparametric Statistics (ISNPS 2026) \\ Thessaloniki, Greece \quad June 22--26, 2026}}
+
+\date{}
 
 \maketitle
 
@@ -188,7 +190,7 @@
 
 \begin{frame}{Deep learning is a \emphcolor{non-convex} optimization}
 	\begin{itemize}
-		\item Training a neural network is \emphcolor{non-convex} in $\theta$ on its own, since the layers compose nonlinear activations.
+		\item Training a neural network is \emphcolor{non-convex} in $\theta$ on its own (even with linear neural networks).
 		\vspace{0.1in}
 		\item On top of that, most economic dynamic models are \emphcolor{nonlinear}.
 		\vspace{0.1in}
@@ -343,7 +345,7 @@
 \begin{frame}{From a linear to a non-smooth operator equation}
 	\begin{itemize}
 		\item The LQ model is linear, which makes it the cleanest test but also the easiest.
-		\item Does the blessing survive when the operator $\Op$ is nonlinear and the solution is non-smooth?
+		\item Does the blessing survive when the solution is nonlinear and non-smooth?
 		\item The McCall model (\textcolor{emphcolorval}{McCall, 1970}) provides exactly this test: the value function has a \emphcolor{kink} at the reservation wage, so the network must approximate a non-differentiable function.
 		\item An unemployed worker receives i.i.d.\ wage offers $w \sim f$ on $[0,B]$ each period.
 		\item Accept: permanent income stream $w/(1-\beta)$. Reject: unemployment compensation $c$ plus continuation value.
@@ -596,7 +598,7 @@
 \section{\textcolor{KahouBlack}{Conclusion}}
 %=====================================================================
 
-\begin{frame}{Takeaways}
+\begin{frame}{Conclusion}
 	\begin{itemize}
 		\item \emphcolor{Finding 1:} no overfitting. As network width increases, out-of-sample Euler and Bellman residuals decline. Value and policy functions converge toward their benchmarks.
 		\item \emphcolor{Finding 2:} algorithmic stability. Small networks produce solutions that depend on the \emphcolor{initialization}. Wide networks concentrate across seeds, making the algorithm reliable and \emphcolor{initialization-independent}.

@@ -48,7 +48,7 @@ subtitle:
 <details>
 <summary><strong>"The Blessings of Overparameterization"</strong></summary>
 <p>With: <a target="_blank" href="https://www.sas.upenn.edu/~jesusfv/">Jesús Fernández-Villaverde</a></p>
-<p><a target="_blank" href="https://www.sas.upenn.edu/~jesusfv/Blessings_JHU.pdf">Slides</a> &nbsp;|&nbsp; <a target="_blank" href="https://github.com/Mekahou/blessings-of-overparameterization">Code</a></p>
+<p>Slides (<a target="_blank" href="https://mekahou.github.io/docs/Slides/blessings_short.pdf">short</a>) &nbsp;|&nbsp; <a target="_blank" href="https://github.com/Mekahou/blessings-of-overparameterization">Code</a></p>
 </details>
 
 ---
