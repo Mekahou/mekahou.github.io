@@ -165,6 +165,10 @@
 		\begin{align*}
 			\min_{\theta } \frac{1}{N}\sum_{x \in \mathcal{D}} \|\underbrace{\ell\left(x,f(\cdot;\theta)\right)}_{\text{Econ model error}}\|_2^2
 		\end{align*}
+		\begin{itemize}
+			\item We call this objective the \emphcolor{loss function} $\mathcal{L}(\theta;\mathcal{D}) = \frac{1}{N}\sum_{x \in \mathcal{D}} \|\ell(x,f(\cdot;\theta))\|_2^2$.
+			\item Evaluated on the training sample $\mathcal{D}$ it is the \emphcolor{train loss}; on test points not used in training $\mathcal{D}_{\text{test}}$ it is the \emphcolor{test loss}.
+		\end{itemize}
 	\end{enumerate}
 \end{frame}
 
@@ -298,6 +302,7 @@
 		\end{empheq}
 		\item Adam optimizer with early stopping at loss $< 10^{-8}$.
 		\item \emphcolor{Test data:} $T = 29$ period path simulated from fixed initial conditions. Test points lie in the interior of the state space and never on a training node.
+		\item \emphcolor{Accuracy metric:} absolute relative error $\varepsilon_u(Y) = |u(Y;\theta_u^*) - u(Y)| / |u(Y)|$. Summarized by max and median across the test path, then 10th/50th/90th percentiles across 50 seeds.
 	\end{itemize}
 	\vspace{0.05in}
 	\hfill\hyperlink{lq-param}{\beamerskipbutton{Parameterization}}
