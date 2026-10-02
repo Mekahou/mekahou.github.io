@@ -62,6 +62,8 @@
 \setlength{\onecolwid}{0.30\paperwidth}
 \newlength{\colheight}
 \setlength{\colheight}{3000pt}
+% stacked-figure widths in column 3 (square plots vs wide plots)
+\newlength{\curw}\setlength{\curw}{0.61\onecolwid}
 
 \begin{document}
 \begin{frame}[t]
@@ -107,9 +109,12 @@
 \Large
 
 \begin{block}{Motivation}
-  Deep learning now solves \emphcolor{high-dimensional} dynamic models once thought intractable. But these networks are \emphcolor{massively overparameterized}: far more parameters than ``data'' points.
-  \vskip1ex
-  The classical worry is \emphcolor{overfitting} and poor out-of-grid performance. One key difference from statistics: our residuals are deterministic evaluations of the functional equation, so there is \emphcolor{no noise to overfit}. The question is what the algorithm does \emphcolor{between the grid points}.
+  \begin{itemize}
+    \item Deep learning solves \emphcolor{high-dimensional} dynamic models once thought intractable.
+    \item The networks are \emphcolor{massively overparameterized}: far more parameters than ``data'' points.
+    \item Classical worry: \emphcolor{``overfitting''} out of grid.
+    \item Difference: residuals are deterministic, so \emphcolor{no noise to overfit}. What matters is \emphcolor{between the grid points}.
+  \end{itemize}
 \end{block}
 
 \vfill
@@ -121,24 +126,33 @@
 \vfill
 
 \begin{block}{Setup: models as functional equations}
-  An economic object $f:\Xdom\to\R\subseteq\mathbb{R}^d$ (a policy, a value function) with model error $\ell(x,f)$ (Euler or Bellman residual). A \emphcolor{solution} satisfies $\ell(x,f^\star)=\mathbf{0}$ for all $x$.
-  \vskip1ex
-  Pick a parametric family $f(\cdot;\theta)$, sample a grid $\mathcal{D}=\{x_1,\dots,x_N\}$, and minimize the mean squared residual:
-  \vskip1ex
+  An economic model is an equation (Euler or Bellman):
+  \vskip0.5ex
   \begin{eqbox}
-  $\displaystyle \min_{\theta}\ \mathcal{L}(\theta;\mathcal{D}) = \frac{1}{N}\sum_{x\in\mathcal{D}} \big\| \ell\big(x,f(\cdot;\theta)\big)\big\|_2^2$
+  $\displaystyle \ell(x,f^\star)=\mathbf{0}$
   \end{eqbox}
-  \vskip1ex
-  Neural networks are a \emphcolor{highly overparameterized} class ($M\gg N$). Training is \emphcolor{non-convex}, so the solution can depend on the \emphcolor{initialization}. We run \emphcolor{50 seeds} at every width.
+  \vskip0.5ex
+  Fit $f(\cdot;\theta)$ by minimizing the residual loss
+  \vskip0.5ex
+  \begin{eqbox}
+  $\displaystyle \mathcal{L}(\theta;\mathcal{D}) = \frac{1}{N}\sum_{x\in\mathcal{D}} \big\| \ell\big(x,f(\cdot;\theta)\big)\big\|_2^2$
+  \end{eqbox}
+  \vskip0.5ex
+  Neural nets: \emphcolor{overparameterized} ($M\gg N$), \emphcolor{non-convex}. Solution depends on \emphcolor{initialization}.
 \end{block}
 
 \vfill
 
 \begin{block}{What we find}
+  {\textcolor{Sienna}{\textbf{Empirically}}}
   \begin{itemize}
-    \item \emphcolor{Accuracy improves with size.} Wider networks give more accurate solutions.
-    \item \emphcolor{Stability improves with size.} The spread across seeds collapses as width grows.
-    \item \emphcolor{A mechanism.} In a dissectable random-features case: width buys agreement, the implicit bias decides what you agree on.
+    \item \textbf{Accuracy improves with size.}
+    \item \textbf{Stability improves with size:} the seed spread collapses.
+  \end{itemize}
+  \vskip0.5ex
+  {\textcolor{Sienna}{\textbf{Theoretically}}}
+  \begin{itemize}
+    \item \textbf{Width buys agreement; the implicit bias decides what you agree on.}
   \end{itemize}
 \end{block}
 
@@ -146,13 +160,13 @@
 
 \begin{block}{Four models of increasing difficulty}
   \begin{itemize}
-    \item \emphcolor{Linear-Quadratic:} closed form, sharpest test of error.
-    \item \emphcolor{McCall job search:} 1D, kink at the reservation wage.
-    \item \emphcolor{Real Business Cycle:} 2D stochastic state, no closed form, benchmarked vs.\ VFI.
-    \item \emphcolor{Small Open Economy:} 5D, three shocks, beyond any grid benchmark.
+    \item \emphcolor{Linear-Quadratic:} closed form, sharpest test.
+    \item \emphcolor{McCall:} 1D, kink at the reservation wage.
+    \item \emphcolor{RBC:} 2D stochastic, no closed form (vs.\ VFI).
+    \item \emphcolor{Small Open Economy:} 5D, beyond any grid.
   \end{itemize}
   \vskip0.5ex
-  This poster details the first two and the random-features dissection. In all four, \emphcolor{accuracy} and \emphcolor{stability} improve with overparameterization.
+  Here: the first two, plus the random-features dissection.
 \end{block}
 
 \end{minipage}
@@ -164,7 +178,7 @@
 \large
 
 \begin{block}{The two worked models}
-  \emphcolor{Linear-Quadratic.} A price-taking firm chooses investment $u$ at quadratic adjustment cost, state $(y,Y)$:
+  \emphcolor{Linear-Quadratic:} firm chooses investment $u$, quadratic adjustment cost, state $(y,Y)$.
   \vskip0.5ex
   \begin{eqbox}
   $\begin{array}{c}
@@ -173,7 +187,7 @@
   \end{array}$
   \end{eqbox}
   \vskip1ex
-  \emphcolor{McCall job search.} An unemployed worker gets i.i.d.\ offers $w\sim f$ on $[0,B]$ and accepts or keeps searching:
+  \emphcolor{McCall:} worker accepts offer $w\sim f$ on $[0,B]$ or keeps searching.
   \vskip0.5ex
   \begin{eqbox}
   $\displaystyle v(w)=\max\!\left\{\tfrac{w}{1-\beta},\ c+\beta\!\int_0^B v(w')f(w')\,dw'\right\}$
@@ -183,25 +197,25 @@
 \vfill
 
 \begin{block}{Result 1 -- Linear-Quadratic regulator}
-  A competitive firm with quadratic adjustment costs. \emphcolor{Closed-form} solution, so the approximation error is known exactly at every point. Minimize the Euler residual over a grid of $n_Y=6$ points. Train and test loss stay \emphcolor{indistinguishable} at every width.
+  \emphcolor{Closed form}, so error is exact. Euler residual on $n_Y=6$ points; train and test loss \emphcolor{indistinguishable} at every width.
   \vskip1ex
   \centering
   \includegraphics[width=0.95\textwidth]{LQ_policy_rel_error_median_vs_max_tanh}
   \vskip1ex
   \raggedright
-  Median and max relative error fall to $\sim10^{-4}$ and the across-seed band narrows: accuracy \emphcolor{and} agreement improve together.
+  Median and max error fall to $\sim10^{-4}$. The \emphcolor{seed band narrows}.
 \end{block}
 
 \vfill
 
 \begin{block}{Result 2 -- McCall job search}
-  Nonlinear and \emphcolor{non-smooth}: the value function has a \emphcolor{kink} at the reservation wage. The network must learn it from only $N=11$ points. Median relative error falls from $\sim17\%$ to $\sim0.2\%$, its plateau set by the kink, not the network.
+  \emphcolor{Non-smooth:} a \emphcolor{kink} at the reservation wage, learned from only $N=11$ points.
   \vskip1ex
   \centering
   \includegraphics[width=0.95\textwidth]{McCall_value_function_24_vs_128_tanh}
   \vskip1ex
   \raggedright
-  Narrow ($H=24$, left): the median tracks the truth but seeds disagree near the kink. Wide ($H=128$, right): 50 initializations \emphcolor{converge to the same function}, corner gently rounded. \emphcolor{Stability blessing confirmed.}
+  Narrow ($H=24$): seeds disagree near the kink. Wide ($H=128$): all 50 \emphcolor{converge to the same function}. \emphcolor{Stability confirmed.}
 \end{block}
 
 \end{minipage}
@@ -212,56 +226,63 @@
 \begin{minipage}[t][\colheight][s]{\linewidth}
 
 \begin{block}{A careful examination: random features}
-  Something selects one solution among many. To see what, strip the model to a case where nothing is hidden: draw the first layer $(\tilde{w}_j,\tilde{b}_j)$ once, \emphcolor{freeze it}, train only the readout $\theta=(v_1,\dots,v_H,c)$:
-  \vskip1ex
+  \emphcolor{Freeze} the first layer, train only the outer weights $v$:
+  \vskip0.5ex
   \begin{eqbox}
-  $\displaystyle f_H(Y;\theta) = \sum_{j=1}^{H} v_j\,\sigma(\tilde{w}_j Y + \tilde{b}_j) + c$
+  $\displaystyle f_H(Y;\theta)=\sum_{j} v_j\,\sigma(\tilde{w}_j Y + \tilde{b}_j) + c$
   \end{eqbox}
-  \vskip1ex
-  The LQ residual is then \emphcolor{linear in $\theta$}:
-  \vskip1ex
+  \vskip0.5ex
+  The LQ residual is \emphcolor{linear in $\theta$}: $\Phi\theta=d$ with $H+1>N$, so \emphcolor{infinitely many solutions}. \emphcolor{The algorithm is the identifying assumption}. Gradient descent from zero picks
+  \vskip0.5ex
   \begin{eqbox}
-  $\displaystyle \Phi\,\theta = d, \qquad \Phi\in\mathbb{R}^{N\times(H+1)}$
+  $\displaystyle \theta^\star = \operatorname*{argmin}_{\theta:\,\Phi\theta=d}\ \|\theta\|_2 = \Phi^\top(\Phi\Phi^\top)^{-1}d,$
   \end{eqbox}
-  \vskip1ex
-  For $H+1>N$ there are \emphcolor{infinitely many exact solutions}. The loss cannot identify $\theta$: \emphcolor{the algorithm is the identifying assumption}. Gradient descent from zero converges to the minimum-norm interpolant
-  \vskip1ex
-  \begin{eqbox}
-  $\displaystyle \theta^\star = \operatorname*{argmin}_{\theta:\,\Phi\theta=d}\ \|\theta\|_2 = \Phi^\top(\Phi\Phi^\top)^{-1}d$
-  \end{eqbox}
-  \vskip1ex
-  which we solve directly, \emphcolor{bypassing training entirely}.
+  \vskip0.5ex
+  computed directly, \emphcolor{bypassing training}.
 \end{block}
 
 \vfill
 
 \begin{block}{Minimum norm knows no economic model}
   \begin{columns}[t]
-    \begin{column}{0.49\textwidth}\centering
-      \includegraphics[width=\textwidth]{LQ_policy_RF_lstsq_N6_relu_test_train_loss}
+    \begin{column}{0.5\textwidth}\centering
+      \includegraphics[width=\textwidth]{LQ_policy_RF_lstsq_N6_tanh_test_train_loss}\\[0.2ex]
+      {\footnotesize \emphcolor{Tanh works:} test loss stays flat.}
     \end{column}
-    \begin{column}{0.49\textwidth}\centering
-      \includegraphics[width=\textwidth]{relu_bumps_illustration}
+    \begin{column}{0.5\textwidth}\centering
+      \includegraphics[width=\textwidth]{LQ_policy_RF_lstsq_N6_relu_test_train_loss}\\[0.2ex]
+      {\footnotesize \emphcolor{ReLU fails:} test loss rises with width.}
     \end{column}
   \end{columns}
   \vskip1ex
-  With \emphcolor{ReLU} features the train loss is pinned at machine zero, but the test error \emphcolor{rises} with width. Min-norm in \emphcolor{coefficients} is not smoothness in \emphcolor{functions}: kinked features inject curvature between grid points, where the truth is linear. That is where the error lives.
+  Train loss is zero for both; min-norm in \emphcolor{coefficients}, not in \emphcolor{functions}:
+  \begin{itemize}
+    \item \emphcolor{Tanh:} smooth features, the fit stays linear.
+    \item \emphcolor{ReLU:} kinks inject curvature between points.
+  \end{itemize}
 \end{block}
 
 \vfill
 
 \begin{block}{The cure: penalize the kinks between points}
   \centering
-  \includegraphics[width=0.74\textwidth]{LQ_policy_RF_lstsq_penalty_N6_relu_rel_error_median_vs_max}
+  \includegraphics[width=\curw]{relu_bumps_illustration}\\[0.2ex]
+  {\footnotesize $u(x)-u^\star(x)$: the fit kinks between grid points.}
+  \vskip1.5ex
+  \includegraphics[width=\curw]{LQ_policy_RF_lstsq_penalty_N6_relu_rel_error_median_vs_max}\\[0.2ex]
+  {\footnotesize Regularized: flat at $10^{-15}$ at every width.}
   \vskip1ex
   \raggedright
-  Charging for slope jumps inside the training range (a measure of interior curvature) snaps the fit back to the line: flat at $10^{-15}$ at every width.
+  Penalize the interior kinks (curvature between points): the fit \emphcolor{snaps back} to the truth.
 \end{block}
 
 \vfill
 
 \begin{block}{Conclusion}
-  Across four models (LQ, McCall, RBC, and a five-dimensional small open economy) and smooth activations, \emphcolor{out-of-sample residuals fall and seeds concentrate as width grows}. The mechanism: \emphcolor{width buys agreement; the implicit bias decides what you agree on}. The parameter count was never the risk.
+  \begin{itemize}
+    \item Robust across \emphcolor{four models} and smooth activations.
+    \item \emphcolor{The parameter count was never the risk.}
+  \end{itemize}
 \end{block}
 
 \end{minipage}
