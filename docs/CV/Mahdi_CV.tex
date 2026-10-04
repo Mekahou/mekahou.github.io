@@ -108,7 +108,7 @@
 % NOTE: uncomment the \pagestyle{empty} line to get rid of all page
 %       numbers (make sure includefoot is commented out above)
 %
-\usepackage{fancyhdr,lastpage}
+\usepackage{fancyhdr}
 \pagestyle{fancy}
 %\pagestyle{empty}      % Uncomment this to get rid of page numbers
 \fancyhf{}\renewcommand{\headrulewidth}{0pt}
@@ -118,8 +118,8 @@
           {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
 \lfoot{\hspace{\footpageshift}%
        \parbox{4in}{\, \hfill %
-                    \arabic{page} of \protect\pageref*{LastPage} % +LP
-%                    \arabic{page}                               % -LP
+%                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+                    \arabic{page}                               % -LP
                     \hfill \,}}
 
 % Finally, give us PDF bookmarks
@@ -229,7 +229,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\makeheading{{\Large Curriculum Vitae}\vspace{2 mm} \\Mahdi Ebrahimi Kahou \hfill {\small Last Update: August 2026}} \\
+\makeheading{{\Large Curriculum Vitae}\vspace{2 mm} \\Mahdi Ebrahimi Kahou \hfill {\small Last Update: October 2026}} \\
 \vspace{5 mm}
 
 \section{Personal Information}\vspace{3 mm}
@@ -356,11 +356,33 @@ Revise and Resubmit, {\bf Quantitative Economics}\\
 
 \end{innerlist}
 
+\section{Work in Progress}\vspace{\baselineskip}
+\makeheading{}\vspace{2 mm}
+\begin{innerlist}
+\raggedright
+\item ``Best-Response Gradients for Deep Learning in Time-Inconsistent Dynamic Models". \\
+{\small With \href{https://lmaliar.ws.gc.cuny.edu/}{Lilia Maliar}.}
 
+\halfblankline
+
+\item ``The Blessings of Overparameterization: Applications in Solving Economic Models". \\
+{\small With \href{https://www.sas.upenn.edu/~jesusfv/}{Jesús Fernández-Villaverde}.}
+
+\halfblankline
+
+\item ``Perfect Foresight Is Almost Enough: Risk Corrections in Function Space for Nonlinear New Keynesian Models". \\
+{\small With \href{https://www.sas.upenn.edu/~jesusfv/}{Jesús Fernández-Villaverde} and \href{https://janrosa.org/}{Jan Rosa}.}
+
+\halfblankline
+
+\item ``Detecting Bifurcations in Technology Adoption Data: What Machine Learning and Early-warning Signals Can and Cannot Reveal?". (submitted) \\
+{\small With Omid Khajehdehi, \href{https://alanhastings.ucdavis.edu/}{Alan Hastings}, and \href{https://www.hastingssimon.com/}{Sara Hastings-Simon}.}
+\end{innerlist}
 
 \section{Publications}\vspace{0 mm}
 \makeheading{}\vspace{2 mm}
 \begin{innerlist}
+	\item \href{https://iopscience.iop.org/article/10.1088/2634-4505/aea89b/meta}{``Policy, Trade, and Opinion Dynamics in the Transition to Electric Vehicles in Canada"}, Environmental Research: Infrastructure and Sustainability, 2026. (With Omid Khajehdehi, Alan Hastings, and Sara Hastings-Simon).
 	\item \href{https://iopscience.iop.org/article/10.1088/2515-7620/ae2cf1}{``Modeling the “S curve”: Transition Dynamics in
 			EV Adoption"},  Environmental Research Communications, 2025. (With Omid Khajehdehi, Alan Hastings, and Sara Hastings-Simon).
   \item \href{http://pra.aps.org/abstract/PRA/v88/i3/e032310}{``Quantum Search with Interacting Bose-Einstein Condensates"},  Physical Review A,   2013. (With  David L. Feder)
@@ -382,6 +404,7 @@ Revise and Resubmit, {\bf Quantitative Economics}\\
 	\vspace{1mm}
 	\item {\bf 2012}: Canadian Association of Physicists (Calgary).
 \end{innerlist}
+
 
 \section{Scholarships, Awards and Honours}\vspace{7 mm}
 \makeheading{}\vspace{2 mm}
@@ -421,7 +444,7 @@ Revise and Resubmit, {\bf Quantitative Economics}\\
 %\item Farsi
 %\end{innerlist}
 
-\newpage
+
 \section{Teaching Experience}\vspace{3 mm}
 \makeheading{}\vspace{2 mm}
 {\it Bowdoin College}:\\
@@ -440,12 +463,12 @@ Revise and Resubmit, {\bf Quantitative Economics}\\
 \end{innerlist}
 
 
-\section{Computer Programming}\vspace{3 mm}
-\makeheading{}\vspace{2 mm}
+%\section{Computer Programming}\vspace{3 mm}
+%\makeheading{}\vspace{2 mm}
 
-\begin{innerlist}
-	\item \Matlab, Mathematica, Julia, Python.  
-\end{innerlist}
+%\begin{innerlist}
+%	\item \Matlab, Mathematica, Julia, Python.  
+%\end{innerlist}
 
 \section{References}\vspace{0 mm}
 \makeheading{}\vspace{2 mm}
