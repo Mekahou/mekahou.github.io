@@ -78,6 +78,13 @@ subtitle:
 <hr style="border: 2px solid #404040;">
 
 <details>
+<summary><a target="_blank" href="https://iopscience.iop.org/article/10.1088/2634-4505/aea89b/meta"><strong>"Policy, Trade, and Opinion Dynamics in the Transition to Electric Vehicles in Canada"</strong></a><br><small><strong>Environmental Research: Infrastructure and Sustainability</strong> (2026)</small></summary>
+<p>With: Omid Khajehdehi, <a target="_blank" href="https://alanhastings.ucdavis.edu/">Alan Hastings</a>, <a target="_blank" href="https://www.hastingssimon.com/">Sara Hastings-Simon</a></p>
+</details>
+
+---
+
+<details>
 <summary><a target="_blank" href="https://iopscience.iop.org/article/10.1088/2515-7620/ae2cf1/pdf"><strong>"Modelling the 'S Curve': Transition Dynamics in EV Adoption"</strong></a><br><small><strong>Environmental Research Communications</strong> (2025)</small></summary>
 <p>With: Omid Khajehdehi, <a target="_blank" href="https://alanhastings.ucdavis.edu/">Alan Hastings</a>, <a target="_blank" href="https://www.hastingssimon.com/">Sara Hastings-Simon</a></p>
 </details>
