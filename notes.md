@@ -42,6 +42,14 @@ These are my notes on computational economics and modern machine learning method
 
 ---
 
+**5. Spectral Bias and the Frequency Principle**  
+*Application: Learning a sum of sinusoids with a neural network*  
+<a href="https://github.com/Mekahou/Notes/blob/main/deep_learning/spectral_bias_DL.ipynb" target="_blank">Notebook</a>
+
+<video src="https://raw.githubusercontent.com/Mekahou/Notes/main/animations/spectral_bias.mp4" controls width="100%"></video>
+
+---
+
 ### Optimization
 
 **1. On the Magnitude of the Learning Rate and the Stability of Gradient Descent**  
