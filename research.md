@@ -53,6 +53,13 @@ subtitle:
 
 ---
 
+<details>
+<summary><strong>"Perfect Foresight Is Almost Enough: Risk Corrections in Function Space for Nonlinear New Keynesian Models"</strong></summary>
+<p>With: <a target="_blank" href="https://www.sas.upenn.edu/~jesusfv/">Jesús Fernández-Villaverde</a> and <a target="_blank" href="https://janrosa.org/">Jan Rosa</a></p>
+</details>
+
+---
+
 ### Publications
 <hr style="border: 2px solid #404040;">
 
