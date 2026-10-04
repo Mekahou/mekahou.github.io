@@ -46,6 +46,13 @@ subtitle:
 <hr style="border: 2px solid #404040;">
 
 <details>
+<summary><strong>"Best-Response Gradients for Deep Learning in Time-Inconsistent Dynamic Models"</strong></summary>
+<p>With: <a target="_blank" href="https://lmaliar.ws.gc.cuny.edu/">Lilia Maliar</a></p>
+</details>
+
+---
+
+<details>
 <summary><strong>"The Blessings of Overparameterization"</strong></summary>
 <p>With: <a target="_blank" href="https://www.sas.upenn.edu/~jesusfv/">Jesús Fernández-Villaverde</a></p>
 <p><a target="_blank" href="https://github.com/Mekahou/blessings-of-overparameterization">Code</a></p>
