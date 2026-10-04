@@ -67,6 +67,13 @@ subtitle:
 
 ---
 
+<details>
+<summary><strong>"Detecting Bifurcations in Technology Adoption Data: What Machine Learning and Early-warning Signals Can and Cannot Reveal?"</strong></summary>
+<p>With: Omid Khajehdehi, <a target="_blank" href="https://alanhastings.ucdavis.edu/">Alan Hastings</a>, <a target="_blank" href="https://www.hastingssimon.com/">Sara Hastings-Simon</a></p>
+</details>
+
+---
+
 ### Publications
 <hr style="border: 2px solid #404040;">
 
