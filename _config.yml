@@ -22,7 +22,7 @@ navbar-links:
 
   Notes: "notes"
 
-  Blog Posts : "blogposts"
+  #Blog Posts : "blogposts"
   #Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
   #  - Learn markdown: "https://www.markdowntutorial.com/"
